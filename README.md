@@ -1,10 +1,10 @@
 ---
 description: >-
-  This is a guide for KVision - an Object oriented Web UI framework for
+  This is a guide for KVision - an object oriented Web UI framework for
   Kotlin/JS.
 ---
 
 # KVision guide
 
-## 
+This documentation is work in progress.
 

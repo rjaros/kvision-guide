@@ -2,5 +2,5 @@
 
 * [KVision guide](README.md)
 * [Introduction](introduction.md)
-* [Untitled](untitled-1.md)
+* [Part 1: KVision fundamentals](untitled-1.md)
 

@@ -45,6 +45,7 @@ KVision contains innovative connectivity interface for [Jooby](https://jooby.org
 * Type safe DSL builders
 * Drag & drop support
 * Integrated JS router
+* Compatible with modern browsers \(MS Edge, Firefox, Chrome, Safari, Opera\)
 * [Karma](https://karma-runner.github.io/) testing framework support
 
 

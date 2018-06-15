@@ -1,0 +1,2 @@
+# Icons and images
+

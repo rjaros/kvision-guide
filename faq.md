@@ -10,7 +10,7 @@ There are of course many different front-end frameworks on the market. A lot of 
 
 I’ve been working with different technologies and frameworks for many years. I’ve used them in many commercial and non-commercial projects of different size and complexity. Most of the time I was more then satisfied with the tools I’ve been using. But I’ve never found a solution, I could just call perfect. There was always something missing and something was not fully correct.
 
-I don’t really like to go with the mainstream. I like to explore and learn new possibilities. I try to make things easier and more productive. I like to reuse and integrate good stuff, made by other people available in open source. I had many thoughts and conclusions about features, a perfect framework should have. And finally I’ve decided to make my own framework. I plan to make it a perfect solution for me - it’s quite easy when you know the expectations ;-\) But I hope it can be a good solutions for a few other developers as well.
+I don’t really like to go with the mainstream. I like to explore and learn new possibilities. I try to make things easier and more productive. I like to reuse and integrate good stuff, made by other people available in open source. I had many thoughts and conclusions about features, a perfect framework should have. And finally I’ve decided to make my own framework. I plan to make it a perfect solution for me - it’s quite easy when you know the expectations ;-\) But I hope it can be a good solution for a few other developers as well.
 
 ## Why the name "KVision"?
 

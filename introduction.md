@@ -37,12 +37,13 @@ Ability to implement a fully compatible [TodoMVC](http://todomvc.com/) applicati
 
 #### Server side interface
 
-KVision contains innovative connectivity interface for [Jooby](https://jooby.org/) micro web framework on the server side, which allows to build full-stack, multiplatform applications with shared common code. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides \(based on automatically generated routings and JSON-RPC endpoints\). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. This makes KVision full-stack applications very easy to create and maintain.
+KVision contains innovative connectivity interface for two popular server side frameworks - [Jooby](https://jooby.org/) and [Spring Boot](https://spring.io/projects/spring-boot), which allows to build full-stack, multiplatform applications with shared common code. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides \(based on automatically generated routings and JSON-RPC endpoints\). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. This makes KVision full-stack applications very easy to create and maintain.
 
 #### Other features
 
 * Utilizes [Snabbdom](https://github.com/snabbdom/snabbdom) fast virtual DOM implementation
 * Type safe DSL builders
+* Internationalization support based on [Jed](http://messageformat.github.io/Jed/) library and [gettext](https://www.gnu.org/software/gettext/) translations
 * Drag & drop support
 * Integrated JS router
 * Compatible with modern browsers \(MS Edge, Firefox, Chrome, Safari, Opera\)

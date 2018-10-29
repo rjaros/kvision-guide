@@ -6,5 +6,5 @@ description: >-
 
 # KVision guide
 
-This documentation is work in progress.
+This documentation is a work in progress.
 

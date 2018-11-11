@@ -81,7 +81,5 @@ KVision consists of both required and optional functionality. Modules can be add
       </td>
     </tr>
   </tbody>
-</table>
-
-
+</table>Add to your application only modules which are used, because every KVision module has some dependencies on additional Node.js modules. By removing unused modules you will get faster build times and much smaller size of JavaScript output code.
 

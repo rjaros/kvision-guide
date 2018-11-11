@@ -10,7 +10,7 @@ There are of course many different front-end frameworks on the market. A lot of 
 
 I’ve been working with different technologies and frameworks for many years. I’ve used them in many commercial and non-commercial projects of different size and complexity. Most of the time I was more then satisfied with the tools I’ve been using. But I’ve never found a solution, I could just call perfect. There was always something missing and something was not fully correct.
 
-I don’t really like to go with the mainstream. I like to explore and learn new possibilities. I try to make things easier and more productive. I like to reuse and integrate good stuff, made by other people available in open source. I had many thoughts and conclusions about features, a perfect framework should have. And finally I’ve decided to make my own framework. I plan to make it a perfect solution for me - it’s quite easy when you know the expectations ;-\) But I hope it can be a good solution for a few other developers as well.
+I don’t really like to go with the mainstream. I like to explore and learn new possibilities. I try to make things easier and more productive. I like to reuse and integrate good stuff, made by other people and available as open source. I had many thoughts and conclusions about features a perfect framework should have. And finally I’ve decided to make my own framework. I plan to make it a perfect solution for me - it’s quite easy when you know the expectations ;-\) But I hope it can be a good solution for other developers as well.
 
 ## Why the name "KVision"?
 
@@ -26,7 +26,7 @@ You can find some of the concepts and ideas implemented in KVision in:
 
 ## What is the size of a typical application?
 
-KVision applications are built with [Kotlin JavaScript DCE \(dead code elimination\)](https://kotlinlang.org/docs/reference/javascript-dce.html) so the size of an application depends on what libraries are used. Of course Kotlin run-time library and other required dependencies add an overhead, so you can't expect resulting code to be as small as with plain JavaScript projects. Currently minimal size of the "Hello World" application is 380KB \(100KB gzipped\). The size of the "TodoMVC" is about 500KB \(130KB gzipped\) and the size of the "Showcase" application, which presents most of the frameworks features, is about 1400KB \(330KB gzipped\).
+KVision applications are built with [Kotlin JavaScript DCE \(dead code elimination\)](https://kotlinlang.org/docs/reference/javascript-dce.html) so the size of an application depends on what components are used. Of course Kotlin run-time library and other required dependencies add an overhead, so you can't expect resulting code to be as small as with plain JavaScript projects. Currently the size of the "Hello World" application is 470KB \(120KB gzipped\). The size of the "TodoMVC" is about 600KB \(150KB gzipped\) and the size of the "Showcase" application, which presents most of the framework features, is about 1800KB \(430KB gzipped\).
 
 
 

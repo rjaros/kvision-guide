@@ -6,18 +6,17 @@ KVision applications have dependencies on some Kotlin libraries as well as a few
 
 ## Creating a new application
 
-To create a new application it is recommended to download and copy [KVision template](https://github.com/rjaros/kvision-examples/tree/master/template) project, available on GitHub.
+The recommended way to create a new application it to download and copy [KVision template](https://github.com/rjaros/kvision-examples/tree/master/template) project, available on GitHub.
 
 ### build.gradle
 
-The build.gradle file is responsible for the definition of the build process. It declares necessary repositories \(e.g. external bintray repositories\) and required dependencies \(both Kotlin and npm\). It declares `dist` and `distZip` tasks, used to build distribution packs.
+The build.gradle file is responsible for the definition of the build process. It declares necessary repositories \(e.g. external bintray repositories\) and required dependencies. It declares `dist` and `distZip` tasks, used to build distribution packs.
 
 {% code-tabs %}
 {% code-tabs-item title="build.gradle" %}
 ```groovy
 buildscript {
     ext.production = (findProperty('prod') ?: 'false') == 'true'
-    ext.npmdeps = new File("npm.dependencies").getText()
 
     repositories {
         jcenter()
@@ -28,12 +27,17 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:${kotlinVersion}"
         classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:${frontendPluginVersion}"
-        classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:${serializationVersion}"
     }
 }
 
+plugins {
+    id "com.moowork.grunt" version "1.2.0"
+}
+
 apply plugin: 'kotlin2js'
+
 if (production) {
     apply plugin: 'kotlin-dce-js'
 }
@@ -42,39 +46,28 @@ apply plugin: 'kotlinx-serialization'
 
 repositories {
     jcenter()
+    maven { url = 'https://dl.bintray.com/kotlin/kotlin-eap' }
     maven { url = 'https://kotlin.bintray.com/kotlinx' }
     maven { url = 'https://dl.bintray.com/gbaldeck/kotlin' }
     maven { url = 'https://dl.bintray.com/rjaros/kotlin' }
+    mavenLocal()
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:${kotlinVersion}"
     compile "pl.treksoft:kvision:${kvisionVersion}"
+    compile "pl.treksoft:kvision-bootstrap:${kvisionVersion}"
+    compile "pl.treksoft:kvision-select:${kvisionVersion}"
+    compile "pl.treksoft:kvision-datetime:${kvisionVersion}"
+    compile "pl.treksoft:kvision-spinner:${kvisionVersion}"
+    compile "pl.treksoft:kvision-richtext:${kvisionVersion}"
+    compile "pl.treksoft:kvision-upload:${kvisionVersion}"
+    compile "pl.treksoft:kvision-handlebars:${kvisionVersion}"
+    compile "pl.treksoft:kvision-i18n:${kvisionVersion}"
     compile "org.jetbrains.kotlin:kotlin-test-js:${kotlinVersion}"
 }
 
 kotlinFrontend {
-    npm {
-        dependency("css-loader")
-        dependency("style-loader")
-        dependency("less")
-        dependency("less-loader")
-        dependency("imports-loader")
-        dependency("uglifyjs-webpack-plugin")
-        dependency("file-loader")
-        dependency("url-loader")
-        dependency("jquery", "3.2.1")
-        dependency("fecha", "2.3.2")
-        dependency("snabbdom", "0.7.1")
-        dependency("snabbdom-virtualize", "0.7.0")
-        dependency("navigo", "7.0.0")
-        npmdeps.eachLine { line ->
-            def (name, version) = line.tokenize(" ")
-            dependency(name, version)
-        }
-        devDependency("karma")
-        devDependency("qunit")
-    }
 
     webpackBundle {
         bundleName = "main"
@@ -100,20 +93,44 @@ compileTestKotlin2Js {
     kotlinOptions.moduleKind = 'umd'
 }
 
+task pot(type: GruntTask) {
+    args = ["pot"]
+}
+
+task po2json(type: GruntTask) {
+    args = ["default"]
+    inputs.dir(file('translation'))
+    outputs.dir(file('build/js'))
+    outputs.dir(file('build/kotlin-js-min/main'))
+}
+
+pot.dependsOn 'installGrunt'
+pot.dependsOn 'npmInstall'
+po2json.dependsOn 'installGrunt'
+po2json.dependsOn 'npmInstall'
+
 task copyResources(type: Copy) {
     from "src/main/resources"
     into file(buildDir.path + "/js")
 }
 
-task copyResourcesForDce(type: Copy) {
-    from "src/main/resources"
-    from("${buildDir.path}/node_modules_imported/kvision") {
-        include "css/**"
-        include "img/**"
-        include "js/**"
-        include "hbs/**"
+task copyResourcesForDce() {
+    doLast {
+        copy {
+            from "src/main/resources"
+            ext.modulesDir = new File("${buildDir.path}/node_modules_imported/")
+            modulesDir.eachDir {
+                if (it.name.startsWith("kvision")) {
+                    from(it) {
+                        include "css/**"
+                        include "img/**"
+                        include "js/**"
+                    }
+                }
+            }
+            into file(buildDir.path + "/kotlin-js-min/main")
+        }
     }
-    into file(buildDir.path + "/kotlin-js-min/main")
 }
 
 task dist(type: Copy, dependsOn: 'bundle') {
@@ -123,44 +140,26 @@ task dist(type: Copy, dependsOn: 'bundle') {
 }
 
 task distZip(type: Zip, dependsOn: 'dist') {
-    from (buildDir.path + "/distributions/" + project.name)
+    from(buildDir.path + "/distributions/" + project.name)
 }
 
 afterEvaluate {
-    tasks.getByName("webpack-bundle") { dependsOn(copyResources, copyResourcesForDce) }
-    tasks.getByName("webpack-run") { dependsOn(copyResources) }
-    tasks.getByName("karma-start") { dependsOn(copyResources) }
+    if (production) {
+        tasks.getByName("copyResourcesForDce") { dependsOn(runDceKotlinJs) }
+    }
+    tasks.getByName("webpack-bundle") {
+        dependsOn(po2json, copyResources, copyResourcesForDce)
+    }
+    tasks.getByName("webpack-run") { dependsOn(po2json, copyResources) }
+    tasks.getByName("karma-start") { dependsOn(po2json, copyResources) }
 }
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### npm.dependencies
+### Node.js dependency
 
-The npm.dependencies file contains optional npm libraries, which are not required for every application. These can be removed, when components based on their functionality are not used. You can create fully functional KVision application even without any of them \(see TodoMVC example\). By removing these dependencies the size of the distributed application will be smaller. 
-
-{% code-tabs %}
-{% code-tabs-item title="npm.dependencies" %}
-```text
-bootstrap 3.3.7                                     // Bootstrap CSS layout
-bootstrap-webpack 0.0.6                             // Bootstrap CSS layout
-bootstrap-select 1.12.4                             // for Select / SelectInput component
-ajax-bootstrap-select 1.4.3                         // for Select / SelectInput component
-bootstrap-datetime-picker 2.4.4                     // for DateTime / DateTimeInput component
-bootstrap-touchspin 3.1.1                           // for Spinner / SpinnerInput component
-font-awesome 4.7.0                                  // for Font Awesome icons 
-font-awesome-webpack github:jarecsni/font-awesome-webpack // for Font Awesome icons
-jquery-resizable-dom 0.28.0                         // for SplitPanel component
-awesome-bootstrap-checkbox 0.3.7                    // for Checkbox / Radio / RadioGroup components
-trix 0.11.1                                         // for RichText component
-element-resize-event 2.0.9                          // for Window component
-bootstrap-fileinput 4.4.7                           // for Upload / UploadInput component
-handlebars 4.0.11                                   // for Handlebar.js templates
-handlebars-loader 1.7.0                             // for Handlebar.js templates
-
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+The build process uses some Gradle plugins which require Node.js to be installed and available in the system. All npm dependencies are downloaded and managed automatically by Gradle.
 
 ### Source code
 
@@ -187,9 +186,10 @@ Add some code inside the **`start`** function:
 {% code-tabs-item title="App.kt" %}
 ```kotlin
 override fun start(state: Map<String, Any>) {
-     Root("kvapp") {
-         label("Hello world!")
-     }
+    // ...
+    root = Root("kvapp") {
+        label("Hello world!")
+    }
  }
 ```
 {% endcode-tabs-item %}

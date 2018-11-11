@@ -1,6 +1,6 @@
 # UI structure
 
-A KVision application is built with components and containers. A container can be a parent of one or more components \(called its children\) and its purpose is to lay out children in some type of order. Every container is a component as well, so it can be a child of another container.
+A KVision application is built with components and containers. A container can be a parent of one or more components \(called children\) and its purpose is to lay out children in some type of order. Every container is a component as well, so it can be a child of another container.
 
 You can instantiate any KVision component and set any of its properties, but the component won't be rendered on the page until it is added to a container. Of course this container has to be a child of another container and so on until the [Root container](root-container.md).
 

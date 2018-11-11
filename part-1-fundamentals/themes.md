@@ -4,9 +4,9 @@ By default KVision includes standard [Bootstrap](http://getbootstrap.com/docs/3.
 
 ## Adding a custom CSS file to your application
 
-You can add a custom CSS file to define your own CSS classes, which can be used throughout you code \(almost every component supports `classes: Set<String>` constructor parameter and `addCssClass(css: String)` and `removeCssClass(css: String)` methods\). Of course you can also overwrite and change standard Bootstrap classes if you wish. 
+You can add a custom CSS file to define your own CSS classes, which can be used throughout you code \(almost every component supports `classes: Set<String>` constructor parameter and `addCssClass(css: String)` and `removeCssClass(css: String)` methods\). Of course you can also overwrite and change standard Bootstrap classes. 
 
-You can add as many CSS files as you wish. Just save your `*.css` files in `src/main/resources/css` directory and `require` them in your `BaseApplication` class.
+You can add as many CSS files as you wish. Just save your `*.css` files in `src/main/resources/css` directory and `require` them in your main `App` object.
 
 {% code-tabs %}
 {% code-tabs-item title="App.kt" %}
@@ -55,7 +55,7 @@ You can create such a file manually or use [Customize Bootstrap](http://getboots
 
 ## Using free themes from [Bootswatch](https://bootswatch.com/3/)
 
-There are some great free themes ready to use available at [Bootswatch CDN](https://www.bootstrapcdn.com/legacy/bootswatch/). For instance to use Paper \(material-like\) theme make the following change to you `index.html`.
+There are some great free themes ready to use available at [Bootswatch CDN](https://www.bootstrapcdn.com/legacy/bootswatch/). For instance to use Paper \(material-like\) theme make the following change to your `index.html`.
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -78,9 +78,13 @@ There are some great free themes ready to use available at [Bootswatch CDN](http
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+{% hint style="info" %}
+Note: Use [Bootswatch](https://bootswatch.com/3/) themes for Bootstrap version 3.
+{% endhint %}
+
 ## Using KVision without Bootstrap
 
-KVision can also be used with no Bootstrap at all. But you will not be able to use all parts off the framework is such configuration. Many components will not work correctly or will not work at all \(especially Modals, Dropdowns, Windows, Date picker, Spinner and other components dependent on Bootstrap's Java Script\). But you can still create a fully functional application \(see [TodoMVC example](https://github.com/rjaros/kvision-examples#todomvc)\).   
+KVision can also be used with no Bootstrap at all. But you will not be able to use all parts of the framework is such configuration. Many components will not work correctly or will not work at all \(especially Modals, Dropdowns, Windows, Date picker, Spinner and other components dependent on Bootstrap's Java Script\). But you can still create a fully functional application \(see [TodoMVC example](https://github.com/rjaros/kvision-examples#todomvc)\).   
 
-To disable Bootstrap completely just remove `bootstrap` and `bootstrap-webpack` dependencies from `npm.dependencies` file. As a result no Bootstrap CSS and no Bootstrap JavaScript will be included in the resulting application. 
+To disable Bootstrap completely just remove `kvision-bootstrap` dependency from `build.gradle` file.  As a result no Bootstrap CSS and no Bootstrap JavaScript will be included in the resulting application. 
 

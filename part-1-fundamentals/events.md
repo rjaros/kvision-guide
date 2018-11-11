@@ -46,7 +46,7 @@ button.setEventListener {
 
 Unfortunately, due to internal Snabbdom implementation, you can't bind two or more handlers to the same event - the later handler will overwrite the prior one.
 
-## Self reference
+## Self reference inside an event handler
 
 In the code of a basic form of an event handler you can get the reference to the component instance with a special `self` variable.
 

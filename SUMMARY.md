@@ -17,7 +17,6 @@
   * [Internationalization](part-1-fundamentals/internationalization.md)
   * [JS Routing](part-1-fundamentals/js-routing.md)
   * [jQuery bindings](part-1-fundamentals/jquery-bindings.md)
-  * [Helper types](part-1-fundamentals/helper-types.md)
 * [Part 2: Advanced features](part-2-advanced-features/README.md)
   * [Forms](part-2-advanced-features/forms.md)
   * [Observable data model](part-2-advanced-features/observable-data-model.md)

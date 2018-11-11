@@ -4,7 +4,7 @@ This section will cover everything you will need to get started with KVision. Th
 
 {% hint style="info" %}
 Note:  
-This part focuses on client side applications and does not address building full-stack, multi-platform KVision applications. See [Part 3 of the Guide](../part-3-server-side-interface.md) for this topic.
+This part focuses on client side applications and does not address building full-stack, multi-platform KVision applications. See [Part 4 of the Guide](../part-4-server-side-interface.md) for this topic.
 {% endhint %}
 
 

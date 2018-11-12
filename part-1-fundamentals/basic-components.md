@@ -28,7 +28,9 @@ A label with custom CSS styling
 </div>
 ```
 
-You can use the [`pl.treksoft.kvision.html.ListTag`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-list-tag/index.html) class to create  HTML lists:
+### Lists
+
+You can use the [`pl.treksoft.kvision.html.ListTag`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-list-tag/index.html) class to create  HTML lists. You can use a `List<String>` value to quickly populate the list:
 
 ```kotlin
 div {
@@ -36,7 +38,21 @@ div {
 }
 ```
 
-And you can use classes from the [`pl.treksoft.kvision.table.*`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.table/index.html) package to create HTML tables:
+but you can also treat `ListTag` as a typical container:
+
+```kotlin
+div {
+    listTag(ListType.OL) {
+        tag(TAG.H4, "Header")
+        button("Button")
+        image(require("./img/cat.png"))
+    }
+}
+```
+
+### Tables
+
+You can use classes from the [`pl.treksoft.kvision.table.*`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.table/index.html) package to create HTML tables:
 
 ```kotlin
 table(
@@ -56,7 +72,9 @@ table(
 }
 ```
 
-To create a link use [`pl.treksoft.kvision.html.Link`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-link/index.html):
+### Links
+
+To create a link use [`pl.treksoft.kvision.html.Link`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-link/index.html)`class`:
 
 ```text
 div {
@@ -79,7 +97,7 @@ link("A link to Google", "http://www.google.com").setEventListener<Link> {
 
 ## Rich text
 
-All components which render text content allow to declare such content as "rich text". If you set the `rich` property to `true`, the content will be treated as HTML. The framework takes care of making the output markup valid HTML if it's not. This code:
+All components which render textual content allow to declare such content as "rich text". If you set the `rich` property to `true`, the content will be treated as raw HTML. The framework takes care of making the output markup valid HTML if it's not. This code:
 
 ```kotlin
 tag(

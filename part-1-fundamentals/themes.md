@@ -1,6 +1,6 @@
 # Theming
 
-By default KVision includes standard [Bootstrap](http://getbootstrap.com/docs/3.3/) \(version 3\) look and feel. It's modern, elegant and undoubtedly proven on production. But there are other possibilities as well.
+By default KVision includes standard [Bootstrap](http://getbootstrap.com/docs/3.3/) \(version 3\) look and feel. It's modern, elegant and undoubtedly proven in production. But there are other possibilities as well.
 
 ## Adding a custom CSS file to your application
 
@@ -84,7 +84,7 @@ Note: Use [Bootswatch](https://bootswatch.com/3/) themes for Bootstrap version 3
 
 ## Using KVision without Bootstrap
 
-KVision can also be used with no Bootstrap at all. But you will not be able to use all parts of the framework is such configuration. Many components will not work correctly or will not work at all \(especially Modals, Dropdowns, Windows, Date picker, Spinner and other components dependent on Bootstrap's Java Script\). But you can still create a fully functional application \(see [TodoMVC example](https://github.com/rjaros/kvision-examples#todomvc)\).   
+KVision can also be used with no Bootstrap at all. But you will not be able to use all parts of the framework is such configuration. Many components will not work correctly or will not work at all \(especially Modals, Dropdowns, Windows, Date picker, Spinner, TabPanel and other components dependent on Bootstrap's Java Script and it also disables support for Font Awesome icons\). But you can still create a fully functional application \(see [TodoMVC example](https://github.com/rjaros/kvision-examples#todomvc)\).   
 
 To disable Bootstrap completely just remove `kvision-bootstrap` dependency from `build.gradle` file.  As a result no Bootstrap CSS and no Bootstrap JavaScript will be included in the resulting application. 
 

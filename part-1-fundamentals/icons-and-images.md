@@ -31,5 +31,12 @@ To use an external image just use its URL address without `require`.
 val l = Link("A link with an external image", image = "https://www.host.com/logo.png")
 ```
 
-The dedicated `pl.treksoft.kvision.html.Image` component lets you use images inside any container.
+The dedicated `pl.treksoft.kvision.html.Image` component lets you use images inside any container. It gives you also some additional control over image align, shape and responsiveness:
+
+```kotlin
+val catImg = Image(require("./img/cat.jpg"), alt = "A rounded and responsive cat", 
+    responsive = true, shape = ImageShape.ROUNDED)
+val dogImg = Image(require("./img/dog.jpg"), alt = "Centered dog in a circle",
+    shape = ImageShape.CIRCLE, centered = true)
+```
 

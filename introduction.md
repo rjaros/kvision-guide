@@ -10,7 +10,9 @@ Kotlin is a modern programming language released in 2016 by JetBrains. It's a st
 
 #### Object oriented, imperative design
 
-Unlike most of the popular web frameworks \(AngularJS, React, Vue.js and others\), KVision is not declarative - it is not designed to mix HTML code \(or pseudo code\) with a typical programming language. In KVision everything is just written in Kotlin. KVision gives you a hierarchy of consistent components, which you can just use in your project or which you can extend to modify their default behavior.
+Unlike most of the popular web frameworks \(AngularJS, React, Vue.js and others\), KVision is not declarative - it is not designed to mix HTML code \(or pseudo code\) with a typical programming language. In KVision everything is just written in Kotlin. KVision gives you a hierarchy of consistent components, which you can just use in your project or which you can extend to modify their default behavior. 
+
+This design is quite similar to many non-web UI programming libraries including Swing \(Java\), JavaFX, QT \(C++\), WinForms \(C\#\) and Flutter.
 
 #### **Ready to use components**
 
@@ -29,7 +31,7 @@ Unlike most of the popular web frameworks \(AngularJS, React, Vue.js and others\
 * many HTML components including tables, lists, images, canvas and iframe
 * built-in support for [Handlebars](http://handlebarsjs.com) templates and [Font Awesome](https://fontawesome.com/) icons
 
-#### Suitable for any application
+#### Flexibility
 
 KVision was designed to be open and flexible. By default it gives you [Bootstrap](https://getbootstrap.com/) based look & feel. You can also use themes from [Bootswatch](https://bootswatch.com/) or you can disable them all and design your application appearance from the scratch, limited only by your own knowledge of CSS.
 

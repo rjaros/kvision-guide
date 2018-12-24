@@ -1,2 +1,2 @@
-# JS Routing
+# JS routing
 

@@ -78,3 +78,18 @@ dropDown("Dropdown with custom list", icon = "fa-picture-o") {
 
 ### ContextMenu
 
+This component allows to define a context menu for any widget. The menu is typically opened with a right mouse button click. The [`pl.treksoft.kvision.dropdown.ContextMenu`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.dropdown/-context-menu/index.html) class is a subclass of a `pl.treksoft.kvision.html.ListTag`. To create a menu, you can add components like `pl.treksoft.kvision.html.Link`, `pl.treksoft.kvision.dropdown.Header`, `pl.treksoft.kvision.dropdown.Separator` or others to the `ContextMenu` container . Next, bind the menu to your widget with a `setContextMenu` method of a `pl.treksoft.kvision.core.Widget` class. You can use DSL builders to simplify all of this.
+
+```kotlin
+contextMenu {
+    header("Menu header")
+    link("First option", "#!/first")
+    link("Second option", "#!/second")
+    separator()
+    dropDown("Submenu", forNavbar = true) {
+        link("Third option", "#!/third")
+        link("Fourth option", "#!/fourth")
+    }
+}
+```
+

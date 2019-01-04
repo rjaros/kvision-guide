@@ -15,7 +15,7 @@
   * [Buttons and toolbars](part-1-fundamentals/buttons-and-toolbars.md)
   * [Layout containers](part-1-fundamentals/layout-containers.md)
   * [Navigation and menus](part-1-fundamentals/navigation-and-menus.md)
-  * [Windows and modals](part-1-fundamentals/windows-and-modals.md)
+  * [Modals and windows](part-1-fundamentals/windows-and-modals.md)
   * [Events](part-1-fundamentals/events.md)
   * [Internationalization](part-1-fundamentals/internationalization.md)
   * [JS routing](part-1-fundamentals/js-routing.md)

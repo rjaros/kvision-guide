@@ -4,6 +4,15 @@ KVision applications are built with [Gradle](http://gradle.org/). Although it ma
 
 KVision applications have dependencies on some Kotlin libraries as well as a few [npm](https://www.npmjs.com/) libraries \(which of course depend on other libraries\). The Kotlin Frontend Plugin provides an easy way to gather dependencies, pack bundles \(via [webpack](https://webpack.github.io/)\) and test the application using [Karma](http://karma-runner.github.io/1.0/index.html). By using Gradle continuous build, you also can get hot module replacement feature \(apply code changes in the browser on the fly\).
 
+## Requirements
+
+To build a typical KVision application you should have some tools installed on your machine and available on the system PATH:
+
+* [JDK](https://jdk.java.net/) 8 or higher
+* [NodeJS](https://nodejs.org) with NPM package manager
+* [Git](https://git-scm.com) \(with additional UNIX tools if using Windows\)
+* GNU [xgettext](https://www.gnu.org/software/gettext) and [msgmerge](https://www.gnu.org/software/gettext) utilities to use [Internationalization](internationalization.md) features    
+
 ## Creating a new application
 
 The recommended way to create a new application it to download and copy [KVision template](https://github.com/rjaros/kvision-examples/tree/master/template) project, available on GitHub.

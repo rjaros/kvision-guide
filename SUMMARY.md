@@ -22,7 +22,7 @@
   * [jQuery bindings](part-1-fundamentals/jquery-bindings.md)
 * [Part 2: Advanced features](part-2-advanced-features/README.md)
   * [Forms](part-2-advanced-features/forms.md)
-  * [Form controls reference](part-2-advanced-features/form-controls-reference.md)
+  * [Form controls guide](part-2-advanced-features/form-controls-guide.md)
   * [Observable data model](part-2-advanced-features/observable-data-model.md)
   * [Drag and drop](part-2-advanced-features/drag-and-drop.md)
 * [Part 3: Server side interface](part-3-server-side-interface.md)

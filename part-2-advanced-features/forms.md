@@ -71,7 +71,7 @@ Under the hood `FormPanel` container uses non-visual form container - `Form<K>`,
 
 ### Data binding
 
-Usuing `add` method of the container, you add form controls to the `FormPanel` and at the same time you bind them to your data model by referencing class properties. The binding is type-safe, e.g. you can't bind `StringFormControl` to `Boolean` or `Date` field.
+You add form controls to the `FormPanel` using `add` method of the container, and at the same time you bind your controls to your data model by referencing class properties. The binding is type-safe, e.g. you can't bind `StringFormControl` to `Boolean` or `Date` field.
 
 ```kotlin
 formPanel<Form> {

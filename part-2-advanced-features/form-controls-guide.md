@@ -177,9 +177,115 @@ println(radioGroup.value)
 
 ## Select boxes
 
-### `p.t.k.f.select.Select`
+### \`\`[`p.t.k.f.select.Select`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-select/index.html)\`\`
 
-### `p.t.k.f.select.RemoteSelect`
+The kvision-select module allows you to use a sophisticated form control based on a [Bootstrap Select](https://github.com/silviomoreto/bootstrap-select). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network with an AJAX extension. The `Select` component can be initialized with a list of options \(key to values pairs\).
+
+```kotlin
+Select(
+    options = listOf("first" to "First option", "second" to "Second option"),
+    label = "Simple select"
+)
+```
+
+It can also be initialized by adding options components \(`SelectOption` and `SelectOptGroup` classes\) by hand. This way you can also use some more advanced features, like option groups, subtexts, icons and dividers.
+
+```kotlin
+Select(label = "Simple select with features").apply {
+    selectOption("first", "First Option", "Subtext")
+    selectOption(divider = true)
+    selectOption("second", "Second Option")
+    selectOptGroup("Option group") {
+        selectOption("g1", "Group 1", icon = "fa-apple")
+        selectOption("g2", "Group 2", icon = "fa-google")
+    }
+}
+```
+
+You can select many options at the same time  with `multiple` property. You can use `maxOptions` property to limit the number of selected options.
+
+```kotlin
+Select(
+    options = listOf("first" to "First option", "second" to "Second option", "third" to "Third option"),
+    multiple = true,
+    label = "Multiple select"
+).apply {
+    maxOptions = 2
+}
+```
+
+If your select has a long list of options you can use `liveSearch` property to add a simple search box.
+
+```kotlin
+Select(
+    options = listOf("first" to "First option", "second" to "Second option", "third" to "Third option"),
+    label = "Select with a search box"
+).apply {
+    liveSearch = true
+}
+```
+
+By default the `Select` component is resized to 100% of its parent width, but this can be changed with properties`selectWidth` \(any CSS size\) or `selectWidthType` \(`AUTO` or `FIT` values\).
+
+```kotlin
+Select(
+    options = listOf("first" to "First option", "second" to "Second option"),
+    label = "Resized select"
+).apply {
+    // selectWidth = 800.px
+    selectWidthType = SelectWidthType.AUTO
+}
+```
+
+Other properties allow to define a placeholder, a button style, an autofocus attribute and to automatically generate an empty option \(to be able to de-select value\).
+
+```kotlin
+Select(
+    options = listOf("first" to "First option", "second" to "Second option"),
+    label = "Styled Select"
+).apply {
+    placeholder = "Select a value"
+    style = ButtonStyle.DANGER
+    autofocus = true
+    emptyOption = true
+}
+```
+
+`Select` component can also work with a remote data source, by integrating [Ajax Bootstrap Select](https://github.com/truckingsim/Ajax-Bootstrap-Select) extension. To use AJAX mode you should initialize`ajaxOptions` property with an instance of   [`pl.treksoft.kvision.form.select.AjaxOptions`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-ajax-options/index.html) data class. See API documentation for more information about options and parameters of AJAX mode.
+
+```kotlin
+Select(label = "Select with remote data source").apply {
+    ajaxOptions = AjaxOptions("https://api.github.com/search/repositories", preprocessData = {
+        it.items.map { item ->
+            obj {
+                this.value = item.id
+                this.text = item.name
+            }
+        }
+    }, data = obj {
+        q = "{{{q}}}"
+    }, minLength = 3, requestDelay = 1000)
+}
+```
+
+### \`\`[`p.t.k.f.select.RemoteSelect`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-remote-select/index.html)\`\`
+
+This component is contained in the kvision-select-remote module and is a special version of `Select` control, tailored for use with KVision's multiplatform services. It allows you to define remote data source for a select picker control with a callable reference to a special function \(all data transformations will be done automatically by the framework\). You can find more information about server side interface in [part 3](../part-3-server-side-interface.md) of this guide.
+
+```kotlin
+// server side
+class MainService: IMainService {
+    overwrite fun getDictionary(search: String?, initial: String?): List<RemoteSelectOption> {
+        // ...
+    }
+}
+...
+// client side
+RemoteSelect(serviceManager = MainServiceManager, 
+    function = MainService::getDictionary,
+    label = "Select option from dictionary"
+)
+```
 
 ## Others
 

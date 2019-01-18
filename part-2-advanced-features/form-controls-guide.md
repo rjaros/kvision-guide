@@ -179,7 +179,7 @@ println(radioGroup.value)
 
 ### \`\`[`p.t.k.f.select.Select`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-select/index.html)\`\`
 
-The kvision-select module allows you to use a sophisticated form control based on a [Bootstrap Select](https://github.com/silviomoreto/bootstrap-select). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network with an AJAX extension. The `Select` component can be initialized with a list of options \(key to values pairs\).
+The kvision-select module allows you to use a sophisticated form control based on [Bootstrap Select](https://github.com/silviomoreto/bootstrap-select). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network with an AJAX extension. The `Select` component can be initialized with a list of options \(key to values pairs\).
 
 ```kotlin
 Select(
@@ -289,11 +289,147 @@ RemoteSelect(serviceManager = MainServiceManager,
 
 ## Others
 
-### `p.t.k.f.time.DateTime`
+### \`\`[`p.t.k.f.time.DateTime`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.time/-date-time/index.html)\`\`
 
-### `p.t.k.f.spinner.Spinner`
+The kvision-datetime module allows you to use a sophisticated form control based on [Bootstrap datetime picker](https://github.com/smalot/bootstrap-datetimepicker). It's a full-featured component, configurable with plenty of options. It can be used to display date and/or time picker, based on the date format specified with [Fecha library formatting tokens](https://github.com/taylorhakes/fecha#formatting-tokens). The default format is _"YYYY-MM-DD HH:mm"_, which means the control will display date and time picker.
 
-### `p.t.k.f.upload.Upload`
+```kotlin
+DateTime(format = "YYYY-MM-DD", label = "Date field").apply {
+    placeholder = "Enter date"
+}
 
+DateTime(format = "HH:mm", label = "Time field").apply {
+    placeholder = "Enter time"
+}
 
+DateTime(label = "Date and time field").apply {
+    placeholder = "Enter date and time"
+}
+```
+
+Other properties allow you to set the day of the week start, days of the week that should be disabled,  visibility of "Clear", "Today" and "AM/PM" buttons and also the increment used to build the hour view \(default - 5 minutes\).
+
+```kotlin
+DateTime(label = "Date and time field").apply {
+    placeholder = "Enter date and time"
+    weekStart = 1 // Monday
+    daysOfWeekDisabled = arrayOf(0, 6) // Saturday, Sunday
+    clearBtn = false
+    todayBtn = false
+    showMeridian = false
+    minuteStep = 30
+}
+```
+
+### \`\`[`p.t.k.f.spinner.Spinner`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.spinner/-spinner/index.html)\`\`
+
+The kvision-spinner module allows you to use a form component based on [Bootstrap TouchSpin](https://github.com/istvan-ujjmeszaros/bootstrap-touchspin), which can be used to get numeric input from the user. The `Spinner` component has a few options to customize its appearance and functionality. You can set `min` and `max` values \(default - no limits\) and set the `step` value \(default - 1\).
+
+```kotlin
+Spinner(label = "Number 10 - 20", 
+    min = 10, 
+    max = 20, 
+    step = 2.0) 
+```
+
+ You can force rounding type with `forceType` property \(`NONE`, `ROUND`, `FLOOR` and `CEIL` - default `NONE`\) and set the number of decimal places of the result with `decimals` property.
+
+```kotlin
+Spinner(label = "Number 0.0 - 2.0", 
+    min = 0, 
+    max = 2, 
+    step = 0.1,
+    decimals = 1,
+    forceType = ForceType.ROUND) 
+```
+
+{% hint style="info" %}
+When using this component inside a form container, make sure the form model data class field is of correct type \(e.g. Double\) when `decimals` is set &gt; 0.
+{% endhint %}
+
+You can put spinner buttons in horizontal position with `buttonsType` property.
+
+```kotlin
+Spinner(label = "Number", buttonsType = ButtonsType.HORIZONTAL) 
+```
+
+You can also hide spinner buttons at all and force the user to enter the value from the keyboard \(all the constraints remain active\).
+
+```kotlin
+Spinner(label = "Number", buttonsType = ButtonsType.NONE) 
+```
+
+### \`\`[`p.t.k.f.upload.Upload`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.upload/-upload/index.html)\`\`
+
+The kvision-upload module allows you to use a form component based on [Bootstrap fileinput](https://github.com/kartik-v/bootstrap-fileinput), which allows the user to select and upload files. It can be used as a standard file input element, with files being sent as a multi-part form submission or as an AJAX submission and it can be also used as a client-side file selection tool to be used with [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) available in modern browsers. The `Upload` component has a lot of options to customize its appearance and functionality - see API documentation for more details. 
+
+#### Standard HTML form submission
+
+You can use the `Upload` component to upload files to the server with standard multi-part form action. You should create the `FormPanel` container with additional parameters \(`FormMethod.POST`, `FormEnctype.MULTIPART`\). In this mode you will be able to upload only one file at a time \(unless you add more `Upload` controls\). You should also add a button with type `SUBMIT`.
+
+```kotlin
+formPanel<Form>(FormMethod.POST, "/upload", FormEnctype.MULTIPART) {
+    add(Form::text, Text(label = "Text", name = "text_field"))
+    add(Form::upload, Upload(label = "Upload file").apply {
+        name = "file_field"
+    })
+    hPanel {
+        button("Submit", type = ButtonType.SUBMIT)
+    }
+}
+```
+
+#### AJAX upload
+
+To use this mode you have to create a server endpoint responsible for processing an AJAX request and returning the correctly formatted response \(at least an empty JSON object {}\). More information can be found on this [Bootstrap fileinput page](http://plugins.krajee.com/file-input#ajax-async). On the client side you can use all available options including multiple file uploads. There is no need to add any form parameters or submit buttons.
+
+```kotlin
+formPanel<Form> {
+    add(Form::text, Text(label = "Text"))
+    add(Form::upload, Upload("/ajax-upload", label = "Upload file").apply {
+        multiple = true
+        explorerTheme = true
+        dropZoneEnabled = false
+        allowedFileTypes = setOf("image")
+    })
+}
+```
+
+In this mode you have to handle your uploaded files and the rest of your form data separately. Alternatively you can use `uploadExtraData` property and add your form data directly to your AJAX request.
+
+```kotlin
+formPanel<Form> {
+    add(Form::text, Text(label = "Text"))
+    add(Form::upload, Upload("/ajax-upload", label = "Upload file").apply {
+        uploadExtraData = { _, _ -> this@formPanel.getDataJson() }
+    })
+}
+```
+
+#### Client side file handling
+
+Modern browsers support FileReader API and allow you to work with files entirely on the client side. The `FormPanel<K>` class has a suspending `getDataWithFileContent` method, which is  using Kotlin coroutines to read the content of all uploaded files as BASE64 dataURL strings. It makes it very easy to use such content in other KVision components \(e.g. images or any HTML formatted text\).
+
+```kotlin
+formPanel<Form> {
+    add(Form::text, Text(label = "Caption"))
+    add(Form::upload, Upload("/", label = "Image").apply {
+        showUpload = false
+        showCancel = false
+        explorerTheme = true
+        allowedFileTypes = setOf("image")
+    })
+    hPanel {
+        button("Use form data").onClick {
+            GlobalScope.launch {
+                val fdata = this@formPanel.getDataWithFileContent()
+                val firstImage = fdata.upload?.firstOrNull()?.content
+                if (firstImage != null) {
+                    Alert.show(fdata.text, "<img src=\"$firstImage\">", rich = true)
+                }
+            }
+        }
+    }
+}
+```
 

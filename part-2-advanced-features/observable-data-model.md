@@ -119,8 +119,8 @@ With additional parameters of the data container class, data model can be filter
 data class Data(val text: String, val order: Int)
 val model = observableListOf(Data("One", 3), Data("Two", 2), Data("Three", 1))
 
-dataContainer(model, { data, _, _ ->
-    Label(data.text)
+dataContainer(model, { element, index, _ ->
+    Label(element.text)
 }, container = HPanel(spacing = 10), 
 filter = { it.order < 3 }, sorter = { it.order }, sorterType = { SorterType.DESC })
 ```

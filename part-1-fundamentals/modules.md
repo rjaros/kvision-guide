@@ -28,7 +28,8 @@ KVision consists of both required and optional functionality. Modules can be add
     </tr>
     <tr>
       <td style="text-align:left">kvision-handlebars</td>
-      <td style="text-align:left">Handlebars.js templates support for text components.</td>
+      <td style="text-align:left"><a href="https://handlebarsjs.com/">Handlebars.js</a> templates support
+        for text components.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-i18n</td>

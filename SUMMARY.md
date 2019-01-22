@@ -25,6 +25,7 @@
   * [Form controls guide](part-2-advanced-features/form-controls-guide.md)
   * [Observable data model](part-2-advanced-features/observable-data-model.md)
   * [Drag and drop](part-2-advanced-features/drag-and-drop.md)
+  * [Handlebars.js templates](part-2-advanced-features/handlebars.js-templates.md)
 * [Part 3: Server side interface](part-3-server-side-interface.md)
 * [FAQ](faq.md)
 

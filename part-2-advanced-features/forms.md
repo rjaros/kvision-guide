@@ -18,8 +18,8 @@ data class Form(
     val password2: String? = null,
     val textarea: String? = null,
     val richtext: String? = null,
-    val date: Date? = null,
-    val time: Date? = null,
+    @ContextualSerialization val date: Date? = null,
+    @ContextualSerialization val time: Date? = null,
     val checkbox: Boolean = false,
     val radio: Boolean = false,
     val select: String? = null,
@@ -29,6 +29,10 @@ data class Form(
     val upload: List<KFile>? = null
 )
 ```
+
+{% hint style="info" %}
+Note: You have to add `@ContextualSerialization` annotations to your `Date` fields in order to explicitly allow serialization with the KVision context. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/custom_serializers.md#contextualserialization-annotation) documentation.
+{% endhint %}
 
 ### Form controls
 

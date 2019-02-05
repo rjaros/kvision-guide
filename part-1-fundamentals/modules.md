@@ -94,7 +94,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p><a href="https://jooby.org">Jooby</a> server-side connectivity module for
           multi-platform, full-stack applications.</p>
-        <p><em>See: </em><a href="../part-3-server-side-interface.md"><em>Part 3</em></a><em></em>
+        <p><em>See: </em><a href="../part-3-server-side-interface/"><em>Part 3</em></a><em></em>
         </p>
       </td>
     </tr>
@@ -103,7 +103,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p><a href="https://spring.io/projects/spring-boot">Spring Boot</a> server-side
           connectivity module for multi-platform, full-stack applications.</p>
-        <p><em>See: </em><a href="../part-3-server-side-interface.md"><em>Part 3</em></a><em></em>
+        <p><em>See: </em><a href="../part-3-server-side-interface/"><em>Part 3</em></a><em></em>
         </p>
       </td>
     </tr>

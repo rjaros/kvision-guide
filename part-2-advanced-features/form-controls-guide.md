@@ -270,7 +270,7 @@ Select(label = "Select with remote data source").apply {
 
 ### \`\`[`p.t.k.f.select.RemoteSelect`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-remote-select/index.html)\`\`
 
-This component is contained in the kvision-select-remote module and is a special version of `Select` control, tailored for use with KVision's multiplatform services. It allows you to define remote data source for a select picker control with a callable reference to a special function \(all data transformations will be done automatically by the framework\). You can find more information about server side interface in [part 3](../part-3-server-side-interface.md) of this guide.
+This component is contained in the kvision-select-remote module and is a special version of `Select` control, tailored for use with KVision's multiplatform services. It allows you to define remote data source for a select picker control with a callable reference to a special function \(all data transformations will be done automatically by the framework\). You can find more information about server side interface in [part 3](../part-3-server-side-interface/) of this guide.
 
 ```kotlin
 // server side

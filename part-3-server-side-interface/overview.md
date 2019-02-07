@@ -22,7 +22,7 @@ interface IEncodingService {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next we declare an expected class, which we will implement in the client and server modules, and define a `ServiceManager` object, that will allow KVision to do it's "magic".
+Next we declare an expected class, which will be implemented in the client and server modules, and define a `ServiceManager` object, that will allow KVision to do it's "magic".
 
 {% code-tabs %}
 {% code-tabs-item title="Common.kt" %}
@@ -41,12 +41,12 @@ object EncodingServiceManager : KVServiceManager<EncodingService>(EncodingServic
 {% endcode-tabs %}
 
 {% hint style="info" %}
-Note: The `GlobalScope.launch` builder is necessary only because of the bug in the Kotlin/JS compiler \([KT-27855](https://youtrack.jetbrains.com/issue/KT-27855)\).
+Note: The `GlobalScope.launch` builder is necessary because of the bug in the Kotlin/JS compiler \([KT-27855](https://youtrack.jetbrains.com/issue/KT-27855)\).
 {% endhint %}
 
 ### Client module
 
-To use `EncodingService` in our KVision application, we need to create and use a helper object of `KVRemoteAgent` class in the client module. It's really just some boilerplate code that could be generated \(e.g. from annotation\), but unfortunately there are no such generators on the Kotlin/JS platform at the moment.
+To implement `EncodingService` class in our KVision application, we need to create a helper object of `KVRemoteAgent` class in the client module. It's really just some boilerplate code that could be generated \(e.g. from annotation\), but unfortunately there are no such generators on the Kotlin/JS platform at the moment.
 
 {% code-tabs %}
 {% code-tabs-item title="Client.kt" %}
@@ -92,7 +92,7 @@ Notice we just call the `encode` method and get the result value directly. All a
 
 KVision server side code is based on some dependency injection framework. In case of Ktor and Jooby we use Guice and in case of Spring Boot - built-in IoC. For convenience we will use Ktor in this chapter.
 
-To create an actual implementation of our `EncodingService` we just have to create a Guice singleton.
+To create an actual implementation of our `EncodingService` we have to create a Guice singleton and implement the methods of the service interface.
 
 {% code-tabs %}
 {% code-tabs-item title="Server.kt" %}
@@ -140,6 +140,8 @@ fun Application.main() {
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
+
+When we run our application everything will work automatically - a call on the client side will run the code on the server and the result will be sent back to the caller.
 
 That's all - our first, full-stack KVision application is ready!
 

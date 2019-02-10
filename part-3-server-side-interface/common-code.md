@@ -18,25 +18,25 @@ This requirement allows the framework to translate asynchronous calls into synch
 
 #### A method must have from zero to five parameters
 
-This is the restriction of the current version of the framework. It is possible to allow more parameters in the future - it just requires some more code to write and maintain.
+This is the restriction of the current version of the framework. It may change in the future.
 
 #### A method can't return nullable value
 
 `Unit` return type is not supported as well.
 
-#### Method parameters and return value can take limited set of types
+#### Method parameters and return value must be of supported types
 
 Supported types are:
 
 * all basic Kotlin types \(`String`, `Boolean`, `Int`, `Long`, `Short`, `Char`, `Byte`,  `Float`, `Double`\)
 * `Enum` class defined in common code
 * `pl.treksoft.kvision.types.Date`, which is automatically mapped to `kotlin.js.Date` on the client side and `java.util.Date` on the server side
-* any class defined in common code with `@Serializable` annotation
+* any class defined in the common code with `@Serializable` annotation
 * a `List<T>`, where T is one of the above types
 * a `T?`, where T is one of the above types \(allowed only as method parameters - see previous rule\)
 
 {% hint style="info" %}
-Note: Default parameters values are fully supported.
+Note: Default parameters values are supported.
 {% endhint %}
 
 Even with the above restrictions, the set of supported types is quite rich and you should be able to model almost any use case for your applications. With the help of `@Serializable` annotation you can always wrap any data structure into a serializable data class. It's also a simple way to pass around the parameters count limit.
@@ -66,7 +66,7 @@ interface IAddressService {
 
 ### An expected class
 
-An expected class declaration is just a class implementing your service interface. The compiler forces you to implement this class in both the client and the server module. 
+An expected class declaration have to implement your service interface. The compiler forces you to implement this class in both the client and the server module. 
 
 ```kotlin
 expect class AddressService : IAddressService
@@ -74,7 +74,7 @@ expect class AddressService : IAddressService
 
 ### `KVServiceManager` object
 
-By instantiating `KVServiceManager` object you actually define bindings between the client and the server code. These bindings are created by a series of calls to the `bind` methods, which must be called inside the initialization block of the object - one call for every method.
+By instantiating `KVServiceManager` object you actually define connections between the client and the server code. These connections are created by a series of calls to the `bind` methods, which must be called inside the initialization block of the object - one call for every method.
 
 ```kotlin
 object AddressServiceManager : KVServiceManager<AddressService>(AddressService::class) {
@@ -93,7 +93,9 @@ object AddressServiceManager : KVServiceManager<AddressService>(AddressService::
 Note: Because of the bug in the Kotlin/JS compiler \([KT-27855](https://youtrack.jetbrains.com/issue/KT-27855)\) at the moment it is necessary to wrap these calls into a special `GlobalScope.launch` coroutine builder.
 {% endhint %}
 
-Typically you do not have to use any parameters other then the method callable reference. KVision will use HTTP POST server calls and automatically generated endpoint names. But you can also change the HTTP method and the endpoint URL with additional parameters of `bind`.
+The `bind` method saves the information what endpoint should be called and how to process parameters when the method is being called from the client code. At the same time it attaches the service implementation as a handler for this endpoint on the server side, taking care of processing parameters and the result value.
+
+Typically you do not have to use any parameters of the `bind` method, other then the callable references to your service methods. By default KVision will use HTTP POST server calls and automatically generated endpoint names. But you can also change the HTTP method and the endpoint URL with additional parameters of `bind`.
 
 ```kotlin
 object AddressServiceManager : KVServiceManager<AddressService>(AddressService::class) {
@@ -109,7 +111,7 @@ object AddressServiceManager : KVServiceManager<AddressService>(AddressService::
 ```
 
 {% hint style="info" %}
-Note: All KVision endpoint names \(even those with user defined names\) are prefixed with "/kv/".
+Note: All KVision endpoint names \(even those with user defined names\) are prefixed with "/kv/" to avoid potential conflicts with other endpoints.
 {% endhint %}
 
 {% hint style="info" %}

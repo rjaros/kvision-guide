@@ -22,7 +22,7 @@ interface IEncodingService {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next we declare an expected class, which will be implemented in the client and server modules, and define a `ServiceManager` object, that will allow KVision to do it's "magic".
+Next we declare an expected class, which will be implemented in the client and server modules, and define a `KVServiceManager` object, that will allow KVision to do it's "magic".
 
 {% code-tabs %}
 {% code-tabs-item title="Common.kt" %}

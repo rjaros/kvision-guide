@@ -2,7 +2,7 @@
 
 KVision supports three server-side frameworks - Ktor, Jooby and Spring Boot - so you have to choose one of them for your needs. It's worth to mention, that common and client modules of your application are exactly the same for all three servers, as well as the greater part of the actual service implementation in the server module. The differences are tied to the actual framework build configuration and initialization code.
 
-KVision fullstack applications utilize [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) architecture and the special Gradle configuration  and the project layout is required. To start, it's best to just clone one of the template-fullstack projects from [kvision-examples](https://github.com/rjaros/kvision-examples) GitHub repository.
+KVision fullstack applications utilize [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) architecture that's why it is required to prepare the special Gradle configuration and the project layout. To start, it's best to just clone one of the template-fullstack projects from [kvision-examples](https://github.com/rjaros/kvision-examples) GitHub repository.
 
 {% hint style="info" %}
 Note: The "new MPP" model introduced in Kotlin 1.3 is not yet supported, because of problems with various Gradle plugins.
@@ -41,7 +41,7 @@ gradlew.bat server:joobyRun                             (on Windows)
 gradlew.bat server:bootRun                             (on Windows)
 ```
 
-All three frameworks have auto-reload feature, but only Jooby is watching for changes directly in the source code. In case of Ktor and Spring Boot auto-reload is based on the classpath monitoring. So you have to run another Gradle process for continuous build \(in the additional terminal/console window\).
+All three frameworks have auto-reload feature, but only Jooby is watching for changes directly in the source code. In case of Ktor and Spring Boot auto-reload is based on the classpath monitoring, so you have to run another Gradle process for continuous build \(in the additional terminal/console window\).
 
 ```text
 ### Ktor or Spring Boot

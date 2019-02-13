@@ -31,7 +31,7 @@ data class Form(
 ```
 
 {% hint style="info" %}
-Note: You have to add `@ContextualSerialization` annotations to your `Date` fields in order to explicitly allow serialization with the KVision context. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/custom_serializers.md#contextualserialization-annotation) documentation.
+Note: You have to add `@ContextualSerialization` annotations to your `Date` fields in order to explicitly allow serialization with the KVision context. You can also use `@file:ContextualSerialization(Date::class)` file annotation if you want to keep your model classes cleaner. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/custom_serializers.md#contextualserialization-annotation) documentation.
 {% endhint %}
 
 ### Form controls

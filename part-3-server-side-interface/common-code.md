@@ -41,6 +41,10 @@ Note: Default parameters values are supported.
 
 Even with the above restrictions, the set of supported types is quite rich and you should be able to model almost any use case for your applications. With the help of `@Serializable` annotation you can always wrap any data structure into a serializable data class. It's also a simple way to pass around the parameters count limit.
 
+{% hint style="info" %}
+Note: You have to add `@ContextualSerialization` annotations to your `Date` fields in order to explicitly allow serialization with the KVision context. You can also use `@file:ContextualSerialization(Date::class)` file annotation if you want to keep your model classes cleaner. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/custom_serializers.md#contextualserialization-annotation) documentation.
+{% endhint %}
+
 With an interface defined in the common module, the type safety of your whole application is forced at a compile time. Any incompatibility between the client and the server code will be marked as a compile-time error.
 
 ```kotlin

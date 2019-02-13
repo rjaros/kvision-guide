@@ -17,7 +17,7 @@ div {
 }
 ```
 
-To actually call the template function and render its output in your app, you need to set some data by setting `templateData` property. It's required to use plain JavaScript object. To generate one from your data  you can use `obj` function builder.
+To actually call the template function and render its output in your app, you need to set some data. You can use `templateData` property and use plain JavaScript object. To generate one from your data  you can use `obj` function builder.
 
 ```kotlin
 import pl.treksoft.kvision.utils.obj
@@ -58,5 +58,12 @@ div {
 
 ```
 
+The `setData` extension function is a convenient shortcut for the above.
 
+```kotlin
+div {
+    template = require("hbs/template.hbs")
+    setData(person)
+}
+```
 

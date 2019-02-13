@@ -46,7 +46,7 @@ Note: The `GlobalScope.launch` builder is necessary because of the bug in the Ko
 
 ### Client module
 
-To implement `EncodingService` class in our KVision application, we inherit from the `KVRemoteAgent` class and implement the interface with a special `call` method. It's really just some boilerplate code that could be generated \(e.g. from annotation\), but unfortunately there are no such generators on the Kotlin/JS platform at the moment.
+To implement `EncodingService` class in our KVision application, we inherit from the `KVRemoteAgent` class and implement the interface with a special `call` method.
 
 {% code-tabs %}
 {% code-tabs-item title="Client.kt" %}

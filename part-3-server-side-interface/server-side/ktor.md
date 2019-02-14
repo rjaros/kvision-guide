@@ -69,7 +69,7 @@ Note: You can use other engines instead of Netty - see [Ktor documentation](http
 
 ## Application configuration
 
-The standard way to configure Ktor application is `conf/application.conf` file. Among other options It contains the name of the main function of your app.
+The standard way to configure Ktor application is `conf/application.conf` file. Among other options it contains the name of the main function of your app.
 
 {% code-tabs %}
 {% code-tabs-item title="application.conf" %}
@@ -153,7 +153,7 @@ actual class AddressService : IAddressService {
 
 ### Main function
 
-This function is the application entry point. It's used to initialize and configure application modules and features. Minimal implementation for KVision integration contains `kvisionInit` and `applyRoutes` function calls.
+This function is the application starting point. It's used to initialize and configure application modules and features. Minimal implementation for KVision integration contains `kvisionInit` and `applyRoutes` function calls.
 
 ```kotlin
 import io.ktor.application.Application

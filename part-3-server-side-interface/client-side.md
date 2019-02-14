@@ -1,5 +1,25 @@
 # Client side
 
+## Build configuration
+
+The client side build configuration is almost the same as the config of the standalone KVision project \(see: [Part 1, Setting up](../part-1-fundamentals/setting-up.md)\). The main difference is the `expectedBy` dependency on the common subproject and standard dependency on the kvision-remote module.
+
+{% code-tabs %}
+{% code-tabs-item title="build.gradle" %}
+```groovy
+dependencies {
+    expectedBy project(':common')
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:${kotlinVersion}"
+    compile "pl.treksoft:kvision:${kvisionVersion}"
+    compile "pl.treksoft:kvision-bootstrap:${kvisionVersion}"
+    compile "pl.treksoft:kvision-remote:${kvisionVersion}"
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+## Implementation
+
 The whole point of server side interface is to allow the client application use the services implemented on the server. KVision makes the process of sending and receiving data fully transparent and invisible in the client code. To make it possible you have to create a class, that will implement the service interface and will work as a proxy, allowing you to call remote methods exactly as if they were local. To do this, you inherit your class from both the service interface and the `KVRemoteAgent` class and implement all required interface methods with a special `call` method \(or more precisely a set of them\). Every time you just pass a callable reference to the method itself and all its parameters to the appropriate `call`.  
 
 ```kotlin

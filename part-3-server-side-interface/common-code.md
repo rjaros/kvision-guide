@@ -1,5 +1,26 @@
 # Common code
 
+## Build configuration
+
+The common module must declare the dependencies on kvision-common-types and kvision-common-remote modules.
+
+{% code-tabs %}
+{% code-tabs-item title="build.gradle" %}
+```groovy
+apply plugin: 'kotlin-platform-common'
+apply plugin: 'kotlinx-serialization'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-common:${kotlinVersion}"
+    compile "pl.treksoft:kvision-common-types:${kvisionVersion}"
+    compile "pl.treksoft:kvision-common-remote:${kvisionVersion}"
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+## Implementation
+
 The common module is the place where you define how your remote services should look and how they should work. You can define as many services as you wish, and they can have as many methods as you need. It's a good practice to split your services based on their context and functions.
 
 {% hint style="info" %}

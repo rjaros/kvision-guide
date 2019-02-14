@@ -88,19 +88,17 @@ Notice we just call the `encode` method and get the result value directly. All a
 
 ### Server module
 
-KVision server side code is based on some dependency injection framework. In case of Ktor and Jooby we use Guice and in case of Spring Boot - built-in IoC. For convenience we will use Ktor in this chapter.
+_\(For convenience we will use Ktor module in this chapter\)_
 
-To create an actual implementation of our `EncodingService` we have to create a Guice singleton and implement the methods of the service interface.
+To create an actual implementation of our `EncodingService` we just have to implement the methods of the service interface.
 
 {% code-tabs %}
 {% code-tabs-item title="Server.kt" %}
 ```kotlin
-import com.google.inject.Singleton
 import java.net.URLEncoder
 import acme.Base64Encoder
 import acme.HexEncoder
 
-@Singleton
 actual class EncodingService : IEncodingService {
     override suspend fun encode(input: String?, encodingType: EncodingType) {
         return input?.let {

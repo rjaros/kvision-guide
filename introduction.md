@@ -47,6 +47,7 @@ KVision contains innovative connectivity interface for three popular server side
 * Type safe DSL builders
 * Internationalization support based on [Jed](http://messageformat.github.io/Jed/) library and [gettext](https://www.gnu.org/software/gettext/) translations
 * Drag & drop support
+* Type-safe REST connectivity
 * Integrated JS router
 * Compatible with modern browsers \(MS Edge, Firefox, Chrome, Safari, Opera\)
 * [Karma](https://karma-runner.github.io/) testing framework support

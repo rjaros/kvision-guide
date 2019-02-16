@@ -31,6 +31,13 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
     compile "pl.treksoft:kvision-server-jooby:${kvisionVersion}"
     compile "org.jooby:jooby-netty:${joobyVersion}"
+    compile "org.jooby:jooby-jdbc:${joobyVersion}"
+    compile "org.jooby:jooby-pac4j2:${joobyVersion}"
+    compile "org.pac4j:pac4j-sql:${pac4jVersion}"
+    compile "org.springframework.security:spring-security-crypto:${springSecurityCryptoVersion}"
+    compile "commons-logging:commons-logging:${commonsLoggingVersion}"
+    compile "com.h2database:h2:${h2Version}"
+    compile "org.postgresql:postgresql:${pgsqlVersion}"
 }
 
 sourceSets.main.resources {
@@ -74,7 +81,7 @@ The standard way to configure Jooby application is `conf/application.conf` file.
 
 ### Service class
 
-The implementation of the simple service class comes down to implementing required interface methods.
+The implementation of the service class comes down to implementing required interface methods.
 
 ```kotlin
 actual class AddressService : IAddressService {
@@ -116,6 +123,10 @@ actual class AddressService : IAddressService {
 You can also inject other components, defined in different Jooby modules, configured in your custom modules and with [just-in-time bindings](https://github.com/google/guice/wiki/JustInTimeBindings).
 
 {% hint style="info" %}
+Note: Because of the threading model of Kotlin coroutines, you should prefer dependency injection over using the [`require`](https://jooby.org/doc/#request-require) method.
+{% endhint %}
+
+{% hint style="info" %}
 Note: The new instance of the service class will be created by Guice for every server request. Use session or request objects to store your state with appropriate scope.
 {% endhint %}
 
@@ -139,7 +150,11 @@ fun main(args: Array<String>) {
 }
 ```
 
-Apart from the above KVision configuration you are free to use any other module of the Jooby framework. KVision is already integrated with [Pac4j](https://jooby.org/doc/pac4j2/) security module and you can use the `Profile` class in common, client and server code. By calling `applyRoutes` function before or after Pac4j module declaration, you apply different requirements to different services.
+Apart from the above KVision configuration you are free to use any other module of the Jooby framework. 
+
+### Authentication with Pac4j
+
+KVision is already integrated with [Pac4j](https://jooby.org/doc/pac4j2/) security module and you can use the `Profile` class in common, client and server code. By calling `applyRoutes` function before or after Pac4j module declaration, you apply different security requirements to different services.
 
 ```kotlin
 class App : Kooby({

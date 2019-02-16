@@ -91,7 +91,7 @@ ktor {
 
 ### Service class
 
-The implementation of the simple service class comes down to implementing required interface methods.
+The implementation of the service class comes down to implementing required interface methods.
 
 ```kotlin
 actual class AddressService : IAddressService {
@@ -189,7 +189,11 @@ class HelloModule() : AbstractModule() {
 }
 ```
 
-Apart from the above KVision configuration you are free to use any other module or feature of the Ktor framework. When using [authentication feature](https://ktor.io/servers/features/authentication.html) you can choose where to apply KVision routes for different services.
+Apart from the above KVision configuration you are free to use any other module or feature of the Ktor framework.
+
+### Authentication
+
+When using [authentication feature](https://ktor.io/servers/features/authentication.html) you can choose where to apply KVision routes for different services.
 
 ```kotlin
 fun Application.main() {

@@ -2,7 +2,7 @@
 
 KVision supports three server-side frameworks - Ktor, Jooby and Spring Boot - so you have to choose one of them for your needs. It's worth to mention, that common and client modules of your application are exactly the same for all three servers, as well as the greater part of the actual service implementation in the server module. The differences are tied to the actual framework build configuration and initialization code.
 
-KVision fullstack applications utilize [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) architecture that's why it is required to prepare the special Gradle configuration and the project layout. To start, it's best to just clone one of the template-fullstack projects from [kvision-examples](https://github.com/rjaros/kvision-examples) GitHub repository.
+KVision full-stack applications utilize [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) architecture. That's why you have to prepare the special Gradle configuration and the project layout. To start, it's best to just clone one of the template-fullstack projects from [kvision-examples](https://github.com/rjaros/kvision-examples) GitHub repository.
 
 {% hint style="info" %}
 Note: The "new MPP" model introduced in Kotlin 1.3 is not yet supported, because of problems with various Gradle plugins.
@@ -53,7 +53,7 @@ After both parts of your application are running, you can open [http://localhost
 
 ## Production
 
-To build complete application optimized for production run the command depending on your framework choice.
+To build complete application optimized for production you run the command depending on your framework choice.
 
 ```text
 ### Ktor or Jooby

@@ -22,7 +22,7 @@ interface IEncodingService {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next we declare an expected class, which will be implemented in the client and server modules, and define a `KVServiceManager` object, that will allow KVision to do it's "magic".
+Next we declare an expected class, which will be implemented in the client and server modules, and define a `KVServiceManager` object, that will allow KVision to do its "magic".
 
 {% code-tabs %}
 {% code-tabs-item title="Common.kt" %}
@@ -120,7 +120,7 @@ actual class EncodingService : IEncodingService {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Finally, we initialize routing generation in the main application function.
+Finally, we initialize routing in the main application function.
 
 {% code-tabs %}
 {% code-tabs-item title="Main.kt" %}

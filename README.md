@@ -6,5 +6,9 @@ description: >-
 
 # KVision guide
 
+### [KVision guide](https://kvision.gitbook.io/kvision-guide/)
+
 This documentation is a work in progress.
+
+
 

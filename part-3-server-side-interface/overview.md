@@ -16,7 +16,7 @@ enum class EncodingType {
 }
 
 interface IEncodingService {
-    suspend fun encode(input: String?, encodingType: EncodingType): String?
+    suspend fun encode(input: String, encodingType: EncodingType): String
 }
 ```
 {% endcode-tabs-item %}
@@ -44,6 +44,10 @@ object EncodingServiceManager : KVServiceManager<EncodingService>(EncodingServic
 Note: The `GlobalScope.launch` builder is necessary because of the bug in the Kotlin/JS compiler \([KT-27855](https://youtrack.jetbrains.com/issue/KT-27855)\).
 {% endhint %}
 
+{% hint style="info" %}
+Note: At this point the project will not compile correctly, because `EncodingService` class has no actual declarations.
+{% endhint %}
+
 ### Client module
 
 To implement `EncodingService` class in our KVision application, we inherit from the `KVRemoteAgent` class and implement the interface with a special `call` method.
@@ -52,7 +56,7 @@ To implement `EncodingService` class in our KVision application, we inherit from
 {% code-tabs-item title="Client.kt" %}
 ```kotlin
 actual class EncodingService : IEncodingService, KVRemoteAgent<EncodingService>(EncodingServiceManager) {
-    override suspend fun encode(input: String?, encodingType: EncodingType) = 
+    override suspend fun encode(input: String, encodingType: EncodingType) = 
         call(IEncodingService::encode, input, encodingType)
 }
 ```
@@ -75,8 +79,8 @@ vPanel {
     button.onClick {
         GlobalScope.launch {
             val encodingType = select.value?.let { EncodingType.valueOf(it) } ?: EncodingType.BASE64
-            val result = service.encode(input.value, encodingType)
-            output.value = result
+            val result = service.encode(input.value ?: "", encodingType)
+            output.content = result
         }
     }
 }
@@ -100,19 +104,17 @@ import acme.Base64Encoder
 import acme.HexEncoder
 
 actual class EncodingService : IEncodingService {
-    override suspend fun encode(input: String?, encodingType: EncodingType) {
-        return input?.let {
-            when (encodingType) {
+    override suspend fun encode(input: String, encodingType: EncodingType): String {
+        return when (encodingType) {
                 EncodingType.BASE64 -> {
-                    Base64.encode(it)
+                    Base64Encoder.encode(input)
                 }
                 EncodingType.URLENCODE -> {
-                    URLEncoder.encode(it, "UTF-8")
+                    URLEncoder.encode(input, "UTF-8")
                 }
                 EncodingType.HEX -> {
-                    HexEncoder.encode(it)
+                    HexEncoder.encode(input)
                 }
-            }
         }
     }
 }

@@ -59,7 +59,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">kvision-remote</td>
       <td style="text-align:left">
         <p>KVision JS module for multi-platform, full-stack applications.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a><em>​</em>
+        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
         </p>
       </td>
     </tr>
@@ -67,7 +67,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">kvision-select-remote</td>
       <td style="text-align:left">
         <p>Select form component tailored for multi-platform, full-stack applications.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a><em>​</em>
+        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
         </p>
       </td>
     </tr>
@@ -76,7 +76,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p>KVision common module for multi-platform, full-stack applications, with
           types definitions.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a><em>​</em>
+        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
         </p>
       </td>
     </tr>
@@ -85,8 +85,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p>KVision common module for multi-platform, full-stack applications, with
           remote services definitions.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a><em></em>
-        </p>
+        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>
@@ -94,8 +93,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p><a href="https://jooby.org">Jooby</a> server-side connectivity module for
           multi-platform, full-stack applications.</p>
-        <p><em>See: </em><a href="../part-3-server-side-interface/"><em>Part 3</em></a><em></em>
-        </p>
+        <p><em>See: </em><a href="../part-3-server-side-interface/"><em>Part 3</em></a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>
@@ -103,8 +101,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p><a href="https://spring.io/projects/spring-boot">Spring Boot</a> server-side
           connectivity module for multi-platform, full-stack applications.</p>
-        <p><em>See: </em><a href="../part-3-server-side-interface/"><em>Part 3</em></a><em></em>
-        </p>
+        <p><em>See: </em><a href="../part-3-server-side-interface/"><em>Part 3</em></a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
   </tbody>

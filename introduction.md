@@ -49,6 +49,7 @@ KVision contains innovative connectivity interface for three popular server side
 * Drag & drop support
 * Type-safe REST connectivity
 * Integrated JS router
+* Support for building cross-platform, desktop applications with [Electron](https://electronjs.org/).
 * Compatible with modern browsers \(MS Edge, Firefox, Chrome, Safari, Opera\)
 * [Karma](https://karma-runner.github.io/) testing framework support
 

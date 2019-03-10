@@ -56,6 +56,18 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">Upload form component.</td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-chart</td>
+      <td style="text-align:left">Chart component.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-electron</td>
+      <td style="text-align:left">
+        <p>Kotlin language bindings for Electron API.</p>
+        <p><em>See </em><a href="../part-2-advanced-features/building-with-electron.md"><em>Building with Electron</em></a><em> chapter for more information.</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-remote</td>
       <td style="text-align:left">
         <p>KVision JS module for multi-platform, full-stack applications.</p>
@@ -86,6 +98,14 @@ KVision consists of both required and optional functionality. Modules can be add
         <p>KVision common module for multi-platform, full-stack applications, with
           remote services definitions.</p>
         <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/~/drafts/-LQzzS6ee8cG6vfpNbeb/primary/part-3-server-side-interface"><em>Part 3</em></a>&lt;em&gt;&lt;/em&gt;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-server-ktor</td>
+      <td style="text-align:left">
+        <p><a href="https://ktor.io/">Ktor</a> server-side connectivity module for
+          multi-platform, full-stack applications.</p>
+        <p><em>See: </em><a href="../part-3-server-side-interface/"><em>Part 3</em></a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>

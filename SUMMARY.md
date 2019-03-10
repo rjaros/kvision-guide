@@ -25,6 +25,7 @@
   * [Form controls guide](part-2-advanced-features/form-controls-guide.md)
   * [Observable data model](part-2-advanced-features/observable-data-model.md)
   * [Drag and drop](part-2-advanced-features/drag-and-drop.md)
+  * [Charts](part-2-advanced-features/charts.md)
   * [Handlebars.js templates](part-2-advanced-features/handlebars.js-templates.md)
   * [Using REST services](part-2-advanced-features/using-rest-services.md)
   * [Building with Electron](part-2-advanced-features/building-with-electron.md)

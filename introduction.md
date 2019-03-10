@@ -24,6 +24,7 @@ This design is quite similar to many non-web UI programming libraries including 
 * spinner
 * advanced select box with ajax support
 * file upload with preview and multi-selection
+* advanced charts
 * data binding components with observable data model
 * navigation bar, toolbar and context menu
 * modals including ready to use alerts and confirm dialogs

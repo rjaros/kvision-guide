@@ -38,7 +38,9 @@ KVision's design is quite similar to many non-web UI programming libraries inclu
 
 KVision was designed to be open and flexible. By default it gives you [Bootstrap](https://getbootstrap.com/) based look & feel. You can also use themes from [Bootswatch](https://bootswatch.com/) or you can disable them all and design your application appearance from the scratch, limited only by your own knowledge of CSS.
 
-Ability to implement a fully compatible [TodoMVC](http://todomvc.com/) application, which you can find in the [KVision-examples](https://github.com/rjaros/kvision-examples) repository, proves that KVision is suitable for any kind of projects, including responsive, mobile web applications or even a simple, plain websites.
+KVision is open source and modular. You can create your own modules taking an example from quite a few already existing. Almost all KVision classes are declared as open. With inheritance and composition you can build your own components, with all new features you need in your apps.
+
+KVision is suitable for any kind of projects, including responsive, mobile web applications or even a simple, plain websites.
 
 #### Server side interface
 

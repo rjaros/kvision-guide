@@ -1,6 +1,6 @@
 # Introduction
 
-[KVision](https://github.com/rjaros/kvision) is an open source Web UI framework created for [Kotlin](https://kotlinlang.org/) language. It allows developers to build modern web applications in Kotlin.
+[KVision](https://github.com/rjaros/kvision) is an open source web framework created for [Kotlin](https://kotlinlang.org/) language. It allows developers to build modern web applications in Kotlin.
 
 ## Main features
 
@@ -10,9 +10,11 @@ Kotlin is a modern programming language released in 2016 by JetBrains. It's a st
 
 #### Object oriented, imperative design
 
-Unlike most of the popular web frameworks \(AngularJS, React, Vue.js and others\), KVision is not declarative - it is not designed to mix HTML code \(or pseudo code\) with a typical programming language. In KVision everything is just written in Kotlin. KVision gives you a hierarchy of consistent components, which you can just use in your project or which you can extend to modify their default behavior. 
+KVision allows you to build modern web applications with the Kotlin language, without any use of HTML, CSS or JavaScript.
 
-This design is quite similar to many non-web UI programming libraries including Swing \(Java\), JavaFX, QT \(C++\), WinForms \(C\#\) and Flutter.
+KVision prefers the imperative style of programming. It's object oriented and supports many well known OOP design patterns. It gives you a hierarchy of consistent components, which are used as a builder blocks for the application GUI. The classes you can just use in your project or which you can extend to modify their default behavior.
+
+KVision's design is quite similar to many non-web UI programming libraries including Swing, JavaFX, QT, WinForms and Flutter.
 
 #### **Ready to use components**
 

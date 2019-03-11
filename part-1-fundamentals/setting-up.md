@@ -72,6 +72,7 @@ dependencies {
     compile "pl.treksoft:kvision-richtext:${kvisionVersion}"
     compile "pl.treksoft:kvision-upload:${kvisionVersion}"
     compile "pl.treksoft:kvision-handlebars:${kvisionVersion}"
+    compile "pl.treksoft:kvision-chart:${kvisionVersion}"
     compile "pl.treksoft:kvision-i18n:${kvisionVersion}"
     compile "org.jetbrains.kotlin:kotlin-test-js:${kotlinVersion}"
 }

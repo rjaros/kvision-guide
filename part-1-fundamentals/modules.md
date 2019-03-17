@@ -57,7 +57,15 @@ KVision consists of both required and optional functionality. Modules can be add
     </tr>
     <tr>
       <td style="text-align:left">kvision-chart</td>
-      <td style="text-align:left">Chart component.</td>
+      <td style="text-align:left"><a href="../part-2-advanced-features/charts.md">Chart</a> component.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-datacontainer</td>
+      <td style="text-align:left"><a href="../part-2-advanced-features/observable-data-model.md">DataContainer</a> component.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-dialog</td>
+      <td style="text-align:left"><a href="windows-and-modals.md#dialog-with-a-result">Dialog</a> component.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-electron</td>

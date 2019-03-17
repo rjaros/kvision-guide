@@ -393,7 +393,7 @@ formPanel<Form> {
 
 #### Client side file handling
 
-Modern browsers support FileReader API and allow you to work with files entirely on the client side. The `FormPanel<K>` class has a suspending `getDataWithFileContent` method, which is  using Kotlin coroutines to read the content of all uploaded files as BASE64 dataURL strings. It makes it very easy to use such content in other KVision components \(e.g. images or any HTML formatted text\).
+Modern browsers support FileReader API and allow you to work with files entirely on the client side. The `FormPanel<K>` class has a suspending `getDataWithFileContent` extension function, which is  using Kotlin coroutines to read the content of all uploaded files as BASE64 dataURL strings. It makes it very easy to use such content in other KVision components \(e.g. images or any HTML formatted text\).
 
 ```kotlin
 formPanel<Form> {

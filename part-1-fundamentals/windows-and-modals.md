@@ -75,6 +75,10 @@ GlobalScope.launch {
 }
 ```
 
+{% hint style="info" %}
+Note: `Dialog` component is contained in the kvision-dialog module, bacause its dependency on Kotlin coroutines.
+{% endhint %}
+
 ### Windows
 
 A `pl.treksoft.kvision.window.Window` component allows to create a number of floating, re-sizable windows inside your application. Every window has a frame, which can be used to change its size and position. A `Window` class constructor takes a number of parameters, and two of them allow you to create windows not draggable and not re-sizable as well. When the window is not draggable, the close button is hidden and the caption is null - the caption bar won't be rendered at all.

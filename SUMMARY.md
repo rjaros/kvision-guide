@@ -27,6 +27,7 @@
   * [Drag and drop](part-2-advanced-features/drag-and-drop.md)
   * [Charts](part-2-advanced-features/charts.md)
   * [Handlebars.js templates](part-2-advanced-features/handlebars.js-templates.md)
+  * [Using Redux](part-2-advanced-features/using-redux.md)
   * [Using REST services](part-2-advanced-features/using-rest-services.md)
   * [Building with Electron](part-2-advanced-features/building-with-electron.md)
 * [Part 3: Server side interface](part-3-server-side-interface/README.md)

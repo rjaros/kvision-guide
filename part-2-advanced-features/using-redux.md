@@ -70,10 +70,10 @@ To change the state of the application you have to use the `dispatch` method of 
 ```kotlin
 store.dispatch(MyAction.Increment)
 store.dispatch(MyAction.SetContent("Welcome to KVision!"))
-println(store.getState()) // MyState("Welcome to Kvision!", 1)
+println(store.getState()) // MyState("Welcome to KVision!", 1)
 ```
 
-KVision comes with [Redux Thunk](https://github.com/reduxjs/redux-thunk) middleware already installed, and you can also dispatch functions, so called "action creators", which gets `dispatch` and `getState` function as parameters. This is the recommended way to dispatch actions asynchronously. 
+KVision comes with [Redux Thunk](https://github.com/reduxjs/redux-thunk) middleware already installed, and you can also dispatch functions, so called "action creators", which get `dispatch` and `getState` functions as parameters. This is the recommended way to dispatch actions asynchronously. 
 
 ```kotlin
 store.dispatch { dispatch, getState ->
@@ -95,7 +95,7 @@ store.subscribe { state ->
 
 ### State binding
 
-To help you describe the relationship between the state of the Redux store and appearance of the application, KVision allows you to bind the store state with a content of any container. By using the `StateBinding` component and the `stateBinding` extension function, you can use standard KVision DSL builders to easily represent the UI as the function of the state. The container content will be automatically refreshed after the state of the application changes.
+To help you describe the relationship between the state of the Redux store and the appearance of the application, KVision allows you to bind the store state with a content of any container. By using the `stateBinding` extension function, you can use standard KVision DSL builders to easily represent the UI as the function of the state. The container content will be automatically refreshed after the state of the application changes.
 
 ```kotlin
 hPanel(spacing = 10).stateBinding(store) { state ->
@@ -129,7 +129,7 @@ val store = createReduxStore(::myReducer, MyState("Hello World!", 0), reduxLogge
 ```
 
 {% hint style="info" %}
-Note: Different middleware can have different ways and options of creating the main object.
+Note: Different middleware can have different ways and options of creating their main objects.
 {% endhint %}
 
 {% hint style="info" %}

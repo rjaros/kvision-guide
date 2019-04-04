@@ -10,7 +10,7 @@ Modal dialogs are automatically added to the components tree, so there is no nee
 
 ```kotlin
 val modal = Modal("Custom modal dialog")
-modal.add(Tag(TAG.H4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+modal.add(H4("Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
 modal.add(Image(require("./img/dog.jpg")))
 modal.addButton(Button("Close").onClick {
     modal.hide()
@@ -65,7 +65,7 @@ A `pl.treksoft.kvision.modal.Dialog` component allows to create a dialog, which 
 ```kotlin
 GlobalScope.launch {
     val dialog = Dialog<String>("Dialog with result") {
-        add(Label("Press a button"))
+        add(Span("Press a button"))
         addButton(Button("Button").onClick {
             setResult("STRING RESULT")
         })
@@ -91,7 +91,7 @@ Unlike modals, window components have to be added to a container, and they are d
 window("Window", 600.px, 300.px, closeButton = true) {
     left = ((Random.nextDouble() * 800).toInt()).px
     top = ((Random.nextDouble() * 300).toInt()).px
-    label("A window content")
+    span("A window content")
 }
 ```
 

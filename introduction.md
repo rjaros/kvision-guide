@@ -29,6 +29,7 @@ KVision's design is quite similar to many non-web UI programming libraries inclu
 * advanced charts
 * data binding components with observable data model
 * navigation bar, toolbar and context menu
+* tooltips and popovers
 * modals including ready to use alerts and confirm dialogs
 * floating, re-sizable windows
 * many HTML components including tables, lists, images, canvas and iframe
@@ -46,6 +47,8 @@ KVision is suitable for any kind of projects, including responsive, mobile web a
 #### Server side interface
 
 KVision contains innovative connectivity interface for three popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.org/) and [Spring Boot](https://spring.io/projects/spring-boot), which allows to build full-stack, multiplatform applications with shared common code. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides \(based on automatically generated routings and JSON-RPC endpoints\). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. This makes KVision full-stack applications very easy to create and maintain.
+
+There is also experimental support for type-safe websockets connections with the Ktor server, based on [Kotlin coroutines channels](https://kotlinlang.org/docs/reference/coroutines/channels.html).
 
 #### Other features
 

@@ -94,7 +94,7 @@ val boxStyle = Style {
 
 div {
     addCssClass(boxStyle)
-    tag(TAG.H1) {
+    h1 {
         +"Header"
     }
 }

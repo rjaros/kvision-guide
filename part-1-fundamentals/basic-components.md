@@ -2,12 +2,12 @@
 
 ## HTML markup
 
-KVision contains classes for creating typical HTML markup of a web page. The main class for this purpose is [`pl.treksoft.kvision.html.Tag`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-tag/index.html), which allows you to render any HTML element. This class is also a container, so instances of `Tag` can be nested inside other `Tag` objects. Two subclasses of `Tag` - `Div` and `Label` - are shortcuts to easily render `DIV` and `SPAN` elements. With DSL builders you can declare simple markup as follows:
+KVision contains classes for creating typical HTML markup of a web page. The main class for this purpose is [`pl.treksoft.kvision.html.Tag`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-tag/index.html), which allows you to render any HTML element. This class is also a container, so instances of `Tag` can be nested inside other `Tag` objects. There are a few  subclasses of `Tag` - `Div` , `P`, `Span`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Section`, `Header`, `Footer` - which render the most used HTML elements. With DSL builders you can declare simple markup as follows:
 
 ```kotlin
 div {
-    label("A simple label")
-    label("A label with custom CSS styling") {
+    span("A simple text")
+    span("A text with custom CSS styling") {
         fontFamily = "Times New Roman"
         fontSize = 32.px
         textDecoration = TextDecoration(TextDecorationLine.UNDERLINE, TextDecorationStyle.DOTTED, Col.RED)
@@ -20,9 +20,9 @@ And it will be rendered as:
 
 ```markup
 <div>
-<span>A simple label</span>
+<span>A simple text</span>
 <span style="font-family: Times New Roman; font-size: 32px; text-decroration: underline dotted red">
-A label with custom CSS styling
+A test with custom CSS styling
 </span>
 <code>Some text written in &lt;code&gt;&lt;/code&gt; HTML tag.</code>
 </div>
@@ -100,8 +100,7 @@ link("A link to Google", "http://www.google.com").setEventListener<Link> {
 All components which render textual content allow to declare such content as "rich text". If you set the `rich` property to `true`, the content will be treated as raw HTML. The framework takes care of making the output markup valid HTML if it's not. This code:
 
 ```kotlin
-tag(
-    TAG.P,
+p(
     "Rich <b>text</b> <i>written</i> with <span style=\"font-family: Verdana; font-size: 14pt\">" +
             "any <strong>forma</strong>tting</span>.",
     rich = true

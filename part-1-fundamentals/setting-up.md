@@ -198,7 +198,7 @@ Add some code inside the **`start`** function:
 override fun start(state: Map<String, Any>) {
     // ...
     root = Root("kvapp") {
-        label("Hello world!")
+        span("Hello world!")
     }
  }
 ```

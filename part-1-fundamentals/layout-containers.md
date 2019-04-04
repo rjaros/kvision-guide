@@ -8,9 +8,9 @@ This container puts its children components in a simple sequence, without any ad
 
 ```kotlin
 simplePanel {
-    label("First span")
-    label("Second span")
-    label("Third span")
+    span("First span")
+    span("Second span")
+    span("Third span")
 }
 ```
 
@@ -30,8 +30,8 @@ This container displays only one of its children components at a time. You can u
 
 ```kotlin
 val panel = stackPanel(activateLast = true) {
-    label("First span")
-    label("Second span")
+    span("First span")
+    span("Second span")
 }
 ```
 

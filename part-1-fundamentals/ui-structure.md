@@ -56,7 +56,7 @@ Components can be added to containers explicitly, by calling appropriate methods
 
 ```kotlin
 val panel = HPanel(spacing = 20, alignItems = FlexAlignItems.CENTER).apply {
-    add(Label("A label."))
+    add(Span("A label."))
     val button = Button("Click me")
     add(button)
     // do something with a Button instance
@@ -67,13 +67,13 @@ val panel = HPanel(spacing = 20, alignItems = FlexAlignItems.CENTER).apply {
 
 ```kotlin
 hPanel(spacing = 20, alignItems = FlexAlignItems.CENTER) {
-    label("A label.")
+    span("A label.")
     val button = button("Click me")
     // do something with a Button instance
 }
 ```
 
-As you can see from the above example KVision defines extension functions with names matching the component classes with a first character lower case \(e.g. `HPanel` -&gt; `hPanel`, `Label` -&gt; `label`, `Button` -&gt; `button`\). These functions takes the same parameters as the primary constructors, their receiver is `pl.treksoft.kvision.core.Container` and they are returning the reference to the created object instance.
+As you can see from the above example KVision defines extension functions with names matching the component classes with a first character lower case \(e.g. `HPanel` -&gt; `hPanel`, `Span` -&gt; `span`, `Button` -&gt; `button`\). These functions takes the same parameters as the primary constructors, their receiver is `pl.treksoft.kvision.core.Container` and they are returning the reference to the created object instance.
 
 At the moment the DSL builders allow you to use only basic `add` method of the `Container` interface. If you want to use any of the specialized add methods of different containers you must call them explicitly.
 

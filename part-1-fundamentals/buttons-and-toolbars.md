@@ -35,7 +35,7 @@ toolbar {
         button("3")
     }
     buttonGroup {
-        label("...")
+        span("...")
     }
     buttonGroup {
         button("10")

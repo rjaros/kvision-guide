@@ -47,7 +47,7 @@ Dynamic translations are bound to the components they are part of \(tag content,
 import pl.treksoft.kvision.i18n.I18n.tr
 // ...
 
-label(tr("Label text"))
+span(tr("Label text"))
 button(tr("Button text"))
 ```
 
@@ -70,8 +70,8 @@ import pl.treksoft.kvision.i18n.I18n.ntr
 
 val count = 5
 hPanel {
-    label("$count")
-    label(ntr("file", "files", count))
+    span("$count")
+    span(ntr("file", "files", count))
 }
 ```
 

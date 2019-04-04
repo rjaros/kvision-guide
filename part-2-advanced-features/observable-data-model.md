@@ -60,7 +60,7 @@ data class Data(val text: String)
 val model = observableListOf(Data("One"), Data("Two"), Data("Three"))
 
 dataContainer(model, { element, _, _ ->
-    Label(element.text)
+    Span(element.text)
 })
 ```
 
@@ -73,7 +73,7 @@ class Data(text: String) : BaseDataComponent() {
 val model = observableListOf(Data("One"), Data("Two"), Data("Three"))
 
 dataContainer(model, { element, _, _ ->
-    Label(element.text).setEventListener<Label> {
+    Span(element.text).setEventListener<Label> {
         click = {
             element.text = "Clicked"
         }
@@ -90,7 +90,7 @@ data class Data(val text: String)
 val model = observableListOf(Data("One"), Data("Two"), Data("Three"))
 
 dataContainer(model, { element, _, _ ->
-    Label(element.text)
+    Span(element.text)
 }, container = HPanel(spacing = 10, wrap = FlexWrap.WRAP))
 ```
 
@@ -105,7 +105,7 @@ data class Data(val text: String, val order: Int)
 val model = observableListOf(Data("One", 3), Data("Two", 2), Data("Three", 1))
 
 dataContainer(model, { element, _, _ ->
-    Label(element.text)
+    Span(element.text)
 }, container = HPanel(spacing = 10), containerAdd = { component, element ->
     this.add(component, element.order)
 })
@@ -120,7 +120,7 @@ data class Data(val text: String, val order: Int)
 val model = observableListOf(Data("One", 3), Data("Two", 2), Data("Three", 1))
 
 dataContainer(model, { element, index, _ ->
-    Label(element.text)
+    Span(element.text)
 }, container = HPanel(spacing = 10), 
 filter = { it.order < 3 }, sorter = { it.order }, sorterType = { SorterType.DESC })
 ```

@@ -16,6 +16,7 @@
   * [Layout containers](part-1-fundamentals/layout-containers.md)
   * [Navigation and menus](part-1-fundamentals/navigation-and-menus.md)
   * [Modals and windows](part-1-fundamentals/windows-and-modals.md)
+  * [Tooltips and popovers](part-1-fundamentals/tooltips-and-popovers.md)
   * [Events](part-1-fundamentals/events.md)
   * [Internationalization](part-1-fundamentals/internationalization.md)
   * [JS routing](part-1-fundamentals/js-routing.md)

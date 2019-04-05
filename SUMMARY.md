@@ -42,6 +42,7 @@
     * [Jooby](part-3-server-side-interface/server-side/jooby.md)
     * [Spring Boot](part-3-server-side-interface/server-side/spring-boot.md)
   * [Remote select](part-3-server-side-interface/remote-select.md)
+  * [Websockets](part-3-server-side-interface/websockets.md)
   * [External usage](part-3-server-side-interface/external-usage.md)
 * [FAQ](faq.md)
 

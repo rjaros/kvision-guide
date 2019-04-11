@@ -4,8 +4,6 @@ In addition to using RPC-style interfaces, KVision support two-way type-safe con
 
 {% hint style="info" %}
 Note: Since channels API in Kotlin is still marked as experimental, you should treat websockets support in KVision as experimental feature, too.
-
-Currently websockets are only supported for Ktor server module.
 {% endhint %}
 
 ### Common code
@@ -105,7 +103,7 @@ actual class WsService : IWsService {
 }
 ```
 
-If you want to have more control over the client connection and more information about it, you can inject `WebSocketServerSession` into your service class. This object gives you access to, among others, the `ApplicationCall` object.
+If you want to have more control over the client connection and more information about it, you can inject `WebSocketServerSession` when using Ktor module. This object gives you access to, among others, the `ApplicationCall` object.
 
 ```kotlin
 actual class WsService : IWsService {
@@ -114,6 +112,23 @@ actual class WsService : IWsService {
 
     override suspend fun wservice(input: ReceiveChannel<Int>, output: SendChannel<String>) {
         // wsSession.call.request
+    }
+}
+```
+
+When using Spring Boot module, you can @autowire `WebSocketSession` and `HttpServletRequest`.
+
+```kotlin
+@Service
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+actual class WsService : IWsService {
+    @Autowired
+    lateinit var wsSession: WebSocketSession
+    @Autowired
+    lateinit var request: HttpServletRequest
+
+    override suspend fun wservice(input: ReceiveChannel<Int>, output: SendChannel<String>) {
+        //
     }
 }
 ```

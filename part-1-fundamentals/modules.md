@@ -68,6 +68,10 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left"><a href="windows-and-modals.md#dialog-with-a-result">Dialog</a> component.</td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-tabulator</td>
+      <td style="text-align:left"><a href="../part-2-advanced-features/tabulator-tables.md">Tabulator</a> component.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-electron</td>
       <td style="text-align:left">
         <p>Kotlin language bindings for Electron API.</p>

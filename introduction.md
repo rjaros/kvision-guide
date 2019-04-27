@@ -27,6 +27,7 @@ KVision's design is quite similar to many non-web UI programming libraries inclu
 * advanced select box with ajax support
 * file upload with preview and multi-selection
 * advanced charts
+* reactive tables
 * data binding components with observable data model
 * navigation bar, toolbar and context menu
 * tooltips and popovers

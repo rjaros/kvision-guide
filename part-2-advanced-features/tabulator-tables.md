@@ -40,7 +40,7 @@ tabulator(
 }
 ```
 
-To make the Tabulator component reactive just can use `ObservableList` for your model.
+To make the Tabulator component reactive just can use `ObservableList` for your model. You can also use Redux store as a table data source.
 
 ### Local JavaScript array
 

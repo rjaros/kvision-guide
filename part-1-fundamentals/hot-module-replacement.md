@@ -1,6 +1,6 @@
 # Hot Module Replacement
 
-The template project contains files necessary to utilize HMR \(Hot Module Replacement\) feature of [Webpack](https://webpack.js.org/concepts/hot-module-replacement/). HMR can significantly speed up development by updating browser content automatically after changes are made in the source code. It allows to retain the state of the application, too.
+The template project contains files necessary to utilize the HMR \(Hot Module Replacement\) feature of [Webpack](https://webpack.js.org/concepts/hot-module-replacement/). HMR can significantly speed up development by updating browser content automatically after changes are made in the source code. It allows you to retain the state of the application, too.
 
 {% code-tabs %}
 {% code-tabs-item title="Main.kt" %}
@@ -68,7 +68,7 @@ object App : ApplicationBase {
         root.dispose()
         return mapOf()
     }
-    
+
 }
 ```
 {% endcode-tabs-item %}
@@ -76,5 +76,4 @@ object App : ApplicationBase {
 
 The HMR module calls `start` method after every change in the source code, and this method is responsible for recreating the user interface.
 
-In case of a need to retain the state of the application, it should be returned as a `Map<String, Any>` from the`dispose` method. It will be send back to the application in the `state` parameter of the `start` method. 
-
+In case of a need to retain the state of the application, it should be returned as a `Map<String, Any>` from the`dispose` method. It will be sent back to the application in the `state` parameter of the `start` method.

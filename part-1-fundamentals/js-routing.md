@@ -1,6 +1,6 @@
 # JS routing
 
-KVision has a built-in support for JavaScript router [Navigo](https://github.com/krasimir/navigo) by using a wrapper library [navigo-kotlin](https://github.com/rjaros/navigo-kotlin). The router object is available as a global variable `routing` in a `pl.treksoft.kvision.routing` package, and all [Navigo API](https://github.com/krasimir/navigo#api) can be used directly.
+KVision has a built-in support for the JavaScript router [Navigo](https://github.com/krasimir/navigo) by using a wrapper library [navigo-kotlin](https://github.com/rjaros/navigo-kotlin). The router object is available as a global variable `routing` in the `pl.treksoft.kvision.routing` package, and all [Navigo API](https://github.com/krasimir/navigo#api) methods can be called directly.
 
 ```kotlin
 routing.on({ _ -> println("Main page") })
@@ -9,7 +9,7 @@ routing.on({ _ -> println("Main page") })
     .resolve()
 ```
 
-The JS router support is also directly available in `TabPanel` and `StackPanel` containers. This way you can easily bind different parts of your application GUI with distinct URL addresses and make the "Back" button of the browser work as expected.
+The JS router support is also directly available in the `TabPanel` and `StackPanel` containers. This way you can easily bind different parts of your application GUI with distinct URL addresses and make the "Back" button of the browser work as expected.
 
 ```kotlin
 tabPanel {
@@ -25,4 +25,3 @@ tabPanel {
     addTab("Drag & Drop", DragDropTab(), "fa-arrows-alt", route = "/dragdrop")
 }
 ```
-

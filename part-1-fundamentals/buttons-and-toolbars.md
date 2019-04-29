@@ -2,7 +2,7 @@
 
 ## Buttons
 
-KVision can render buttons in one of seven styles \(DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK\) and one of three sizes \(LARGE, SMALL, XSMALL\). Button can have a label and also an icon \(Glyphicon or Font Awesome\) or a custom image. The `pl.treksoft.kvision.html.Button` class offers a shortcut `onClick` method, which gives an easy way to bind a handler to the click event.
+KVision can render buttons in one of seven styles \(DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK\) and one of three sizes \(LARGE, SMALL, XSMALL\). Buttons can have a label as well as an icon \(Glyphicon or Font Awesome\) or a custom image. The `pl.treksoft.kvision.html.Button` class offers a shortcut `onClick` method, which gives an easy way to bind a handler to the click event.
 
 ```kotlin
 vPanel {
@@ -45,6 +45,3 @@ toolbar {
     }
 }
 ```
-
-
-

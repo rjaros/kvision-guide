@@ -4,9 +4,9 @@ Every component in KVision can display a tooltip and a popover, both are based o
 
 ### Tooltips
 
-A tooltip is a small informational text displayed usually when a mouse pointer stops over the given component \(you can also change the default trigger\). By default the tooltip content is taken from the `title` property of the component.
+A tooltip is a small informational text component usually displayed when a mouse pointer stops over the given component \(you can also change the default trigger\). By default the tooltip content is taken from the `title` property of the component.
 
-To activate the tooltip handler use `enableTooltip` method from the `Widget` class.
+To activate the tooltip handler use the `enableTooltip` method from the `Widget` class.
 
 ```kotlin
 button("A button") {
@@ -15,7 +15,7 @@ button("A button") {
 }
 ```
 
-Use `disableTooltip` to deactivate the handler. 
+Use `disableTooltip` to deactivate the handler.
 
 The `enableTooltip` method takes the `TooltipOptions` object as a parameter. It allows you to specify the alternative text if the `title` property is not set, specify if the content contains HTML formatting, disable animation, set the tooltip delay, the placement and the list of trigger events \(by default tooltips are triggered by hover and focus events\).
 
@@ -31,7 +31,7 @@ button("A button") {
 }
 ```
 
-You can use `Trigger.MANUAL` to disable automatic tooltip handling and then use `showTooltip()` and `hideTooltip()` methods to control the visibility.
+You can use `Trigger.MANUAL` to disable automatic tooltip handling and then use the `showTooltip()` and `hideTooltip()` methods to control the visibility.
 
 ```kotlin
 button("A button") {
@@ -47,7 +47,7 @@ button("A button") {
 
 ### Popovers
 
-A popover is a small informational window displayed usually when a user clicks given component \(you can also change the default trigger\). Unlike tooltip, a popover has a title and a content. By default the title is taken from the `title` property of the component and the content must be given as a parameter.
+A popover is a small informational window usually displayed  when a user clicks on a given component \(you can also change the default trigger\). Unlike a tooltip, a popover has a title and content. By default the title is taken from the `title` property of the component and the content must be given as a parameter.
 
 To activate the popover handler use `enablePopover` method from the `Widget` class.
 
@@ -58,9 +58,9 @@ button("A button") {
 }
 ```
 
-Use `disablePopover` to deactivate the handler. 
+Use `disablePopover` to deactivate the handler.
 
-The `enablePopover` method takes the `PopoverOptions` object as a parameter. It allows you to specify the alternative title text if the `title` property is not set, the content text, specify if the title and/or content contains HTML formatting, disable animation, set the popover delay, the placement and the list of trigger events  \(by default popovers are triggered by the click event\).
+The `enablePopover` method takes the `PopoverOptions` object as a parameter. It allows you to specify the alternative title text if the `title` property is not set, as well as set the content text, specify if the title and/or content contains HTML formatting, disable animation, set the popover delay, the placement and the list of trigger events  \(by default popovers are triggered by a click event\).
 
 ```kotlin
 button("A button") {
@@ -75,7 +75,7 @@ button("A button") {
 }
 ```
 
-You can use `Trigger.MANUAL` to disable automatic popover handling and then use `showPopover()` and `hidePopover()` methods to control the visibility.
+You can use `Trigger.MANUAL` to disable automatic popover handling and then use `showPopover()` and `hidePopover()` methods to control the visibility programmatically.
 
 ```kotlin
 button("A button") {
@@ -91,4 +91,3 @@ button("A button") {
     }
 }
 ```
-

@@ -1,6 +1,6 @@
 # Setting up
 
-KVision applications are built with [Gradle](http://gradle.org/). Although it may be possible to manage all the dependencies with other tools \(like [Maven](https://maven.apache.org/)\), the supported way is to use [Kotlin Frontend Plugin](https://github.com/Kotlin/kotlin-frontend-plugin) with Gradle. 
+KVision applications are built with [Gradle](http://gradle.org/). Although it may be possible to manage all the dependencies with other tools \(like [Maven](https://maven.apache.org/)\), the supported way is to use [Kotlin Frontend Plugin](https://github.com/Kotlin/kotlin-frontend-plugin) with Gradle.
 
 KVision applications have dependencies on some Kotlin libraries as well as a few [npm](https://www.npmjs.com/) libraries \(which of course depend on other libraries\). The Kotlin Frontend Plugin provides an easy way to gather dependencies, pack bundles \(via [webpack](https://webpack.github.io/)\) and test the application using [Karma](http://karma-runner.github.io/1.0/index.html). By using Gradle continuous build, you also can get hot module replacement feature \(apply code changes in the browser on the fly\).
 
@@ -15,7 +15,7 @@ To build a typical KVision application you should have some tools installed on y
 
 ## Creating a new application
 
-The recommended way to create a new application it to download and copy [KVision template](https://github.com/rjaros/kvision-examples/tree/master/template) project, available on GitHub.
+The recommended way to create a new application is to download and copy the [KVision template](https://github.com/rjaros/kvision-examples/tree/master/template) project, available on GitHub.
 
 ### build.gradle
 
@@ -179,14 +179,14 @@ Test sources are contained in `src/test` directory.
 
 ## Development
 
-To run the application with Gradle continuous build enter:
+To run the application with Gradle continuous build, enter:
 
 ```text
 ./gradlew -t run                                    (on Linux)
 gradlew.bat -t run                                  (on Windows)
 ```
 
-After Gradle finishes downloading dependencies and building the application open [http://localhost:8088/](http://localhost:8088/) in your favorite browser.
+After Gradle finishes downloading dependencies and building the application, open [http://localhost:8088/](http://localhost:8088/) in your favorite browser.
 
 You can import the project in **IntelliJ IDEA** and open `src/main/kotlin/com/example/App.kt` file. You can of course use your favorite text editor.
 
@@ -209,7 +209,7 @@ You should see your changes immediately in the browser.
 
 ## Production
 
-To build complete application optimized for production run:
+To build a complete application optimized for production, run:
 
 ```text
 ./gradlew -Pprod=true clean distZip                   (on Linux)
@@ -217,6 +217,3 @@ gradlew.bat -Pprod=true clean distZip                 (on Windows)
 ```
 
 The application files will be saved in `build/distributions/template` directory and a package containing all of them will be saved as `build/distributions/template.zip`as well.
-
-
-

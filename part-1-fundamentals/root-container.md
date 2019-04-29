@@ -27,7 +27,6 @@ override fun start(state: Map<String, Any>) {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-The Root container is the root of the components tree, which is inserted to the DOM in the place of the selected HTML element. This tree is managed, rendered and refreshed by the Root container.
+The Root container is the root of the components tree, which is inserted into the DOM in the place of the selected HTML element. This tree is managed, rendered and refreshed by the Root container.
 
-It is possible to have more than one Root containers in one application. In such case there will be more than one independent components trees.
-
+It is possible to have more than one Root container in one application. In such case there will be more than one independent components trees.

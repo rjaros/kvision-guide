@@ -8,7 +8,7 @@
 
   * datetime control - 46 languages
   * select control - 12 languages
-  * upload control - 39 languages 
+  * upload control - 39 languages
   * richtext editor - 2 languages
 
   Contributions are welcomed.
@@ -19,7 +19,7 @@
 
 ### Requirements
 
-To create multi-language application you have to add `kvision-i18n` module as a dependency for your project.
+To create a multi-language application you have to add the `kvision-i18n` module as a dependency for your project.
 
 ```groovy
 dependencies {
@@ -31,7 +31,7 @@ dependencies {
 
 ### Using multi-language text in application sources
 
-To mark some text for translation just use one of four available helper methods from `pl.treksoft.kvision.i18n.I18n` object instead of plain string literals.
+To mark some text for translation just use one of the four available helper methods from the `pl.treksoft.kvision.i18n.I18n` object instead of plain string literals.
 
 | Method | Description |
 | :--- | :--- |
@@ -92,11 +92,11 @@ This command will search your sources for any usages of internationalization met
 You should correctly set `Language` and `Plural-Forms` headers of your PO files.
 {% endhint %}
 
-After adding some new texts to your sources you can call `./gradlew pot` task to refresh `messages.pot` file. You can then use [`msgmerge`](https://www.gnu.org/software/gettext/manual/html_node/msgmerge-Invocation.html) tool from the GNU gettext package to merge new keys with existing translation files. You can also add new `msgid` and `msgstr` lines to your translation files by hand.
+After adding some new texts to your sources you can call the `./gradlew pot` task to refresh the `messages.pot` file. You can then use the [`msgmerge`](https://www.gnu.org/software/gettext/manual/html_node/msgmerge-Invocation.html) tool from the GNU gettext package to merge new keys with existing translation files. You can also add new `msgid` and `msgstr` lines to your translation files by hand.
 
 ### Initializing translations
 
-To initialize translations for one or more languages, you need to initialize `I18n.manager` property during application initialization \(preferably in the `start` method of your `Application` object\). You should add all supported languages to the map given as the parameter to the `DefaultI18nManager` constructor.
+To initialize translations for one or more languages, you need to initialize the `I18n.manager` property during application initialization \(preferably in the `start` method of your `Application` object\). You should add all supported languages to the map given as the parameter to the `DefaultI18nManager` constructor.
 
 ```kotlin
 object Helloworld : ApplicationBase {
@@ -128,6 +128,3 @@ select(listOf("en" to "English", "de" to "Deutsch"), I18n.language) {
     }
 }
 ```
-
- 
-

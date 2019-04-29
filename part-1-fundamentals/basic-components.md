@@ -72,6 +72,8 @@ table(
 }
 ```
 
+For interactive, editable tables KVision also supports [`Tabulator`](https://kvision.gitbook.io/kvision-guide/part-2-advanced-features/tabulator-tables)
+
 ### Links
 
 To create a link use [`pl.treksoft.kvision.html.Link`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-link/index.html)`class`:
@@ -84,7 +86,7 @@ div {
 
 ## Dynamic content
 
-Note that all the generated HTML markup is fully dynamic and is bound to the state of the KVision components. If you change content or styling properties of any visible object, it will automatically re-render the content shown in the browser. These changes can be triggered by any sources \(timers, coroutines, network events\) but probably most often they will be triggered by user interaction.
+Note that all the generated HTML markup is fully dynamic and is bound to the state of the KVision components. If you change content or styling properties of any visible object, it will automatically re-render the content shown in the browser. These changes can be triggered by any source \(timers, coroutines, network events\) but probably most often they will be triggered by user interaction.
 
 ```kotlin
 link("A link to Google", "http://www.google.com").setEventListener<Link> {
@@ -97,7 +99,7 @@ link("A link to Google", "http://www.google.com").setEventListener<Link> {
 
 ## Rich text
 
-All components which render textual content allow to declare such content as "rich text". If you set the `rich` property to `true`, the content will be treated as raw HTML. The framework takes care of making the output markup valid HTML if it's not. This code:
+All components which render textual content allow you to declare such content as "rich text". If you set the `rich` property to `true`, the content will be treated as raw HTML. The framework takes care of making the output markup valid HTML if it's not. This code:
 
 ```kotlin
 p(
@@ -110,12 +112,11 @@ p(
 will render:
 
 ```markup
-<p><span>Rich <b>text</b> <i>written</i> with 
+<p><span>Rich <b>text</b> <i>written</i> with
 <span style="font-family: Verdana; font-size: 14pt;">any <strong>forma</strong>tting
 </span>.</span></p>
 ```
 
 {% hint style="info" %}
-Notice the extra `<span>` element surrounding the given content. 
+Notice the extra `<span>` element surrounding the given content.
 {% endhint %}
-

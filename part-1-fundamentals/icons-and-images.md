@@ -13,7 +13,7 @@ The dedicated `pl.treksoft.kvision.html.Icon` component lets you use those icons
 
 ## Images
 
-Components like buttons, links, tabs and the css background class have an `image` property, which can be used to display custom images. To use your own graphical resources, put them inside `src/main/resources/img` directory and refer to them with a `require` function:
+Components like buttons, links, tabs and the css background class have an `image` property, which can be used to display custom images. To use your own graphical resources, put them inside the `src/main/resources/img` directory and refer to them with a `require` function:
 
 ```kotlin
 val i = Button("A button with an image") {
@@ -34,9 +34,8 @@ val l = Link("A link with an external image", image = "https://www.host.com/logo
 The dedicated `pl.treksoft.kvision.html.Image` component lets you use images inside any container. It gives you also some additional control over image align, shape and responsiveness:
 
 ```kotlin
-val catImg = Image(require("./img/cat.jpg"), alt = "A rounded and responsive cat", 
+val catImg = Image(require("./img/cat.jpg"), alt = "A rounded and responsive cat",
     responsive = true, shape = ImageShape.ROUNDED)
 val dogImg = Image(require("./img/dog.jpg"), alt = "Centered dog in a circle",
     shape = ImageShape.CIRCLE, centered = true)
 ```
-

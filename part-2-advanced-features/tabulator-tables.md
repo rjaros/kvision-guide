@@ -135,3 +135,31 @@ search.setEventListener {
 }
 ```
 
+## Editing the table
+
+Tabulator also allows you to edit the values in each cell according to a user specified Editor type. Just pass the desired Editor as a parameter in ColumnDefinition.
+
+```kotlin
+val model = listOf(
+    Book("Fairy tales", "Hans Christian Andersen", 1836, 4),
+    Book("Don Quijote De La Mancha", "Miguel de Cervantes", 1610, 4),
+    Book("Crime and Punishment", "Fyodor Dostoevsky", 1866, 3),
+    Book("In Search of Lost Time", "Marcel Proust", 1920, 5)
+)
+val tabulator = tabulator(
+    model,
+    Options(
+        layout = Layout.FITCOLUMNS,
+        columns = listOf(
+            ColumnDefinition("Title", "title", editor = Editor.INPUT),
+            ColumnDefinition("Author", "author", editor = Editor.INPUT),
+            ColumnDefinition("Year", "year", editor = Editor.NUMBER),
+            ColumnDefinition("Rating", "rating", formatter = Formatter.STAR, editor = Editor.STAR)
+        )
+    )
+) {
+    height = 400.px
+}
+```
+
+Tabulator currently supports the following Editor types: `Editor.INPUT`, `Editor.TEXTAREA`, `Editor.NUMBER`, `Editor.RANGE`, `Editor.TICK`, `Editor.STAR`, `Editor.SELECT` and `Editor.AUTOCOMPLETE`

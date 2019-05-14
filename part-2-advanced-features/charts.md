@@ -22,7 +22,7 @@ Chart(
         ChartType.BAR,
         listOf(DataSets(data = listOf(6, 12, 19, 13, 7))),
         listOf("Africa", "Asia", "Europe", "Latin America", "North America"),
-        Options(responsive = false)
+        ChartOptions(responsive = false)
     ), 200, 200
 )
 ```

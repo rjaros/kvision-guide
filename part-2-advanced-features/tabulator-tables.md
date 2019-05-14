@@ -8,7 +8,7 @@ Note: At the moment these functionalities are not supported: tree structure, gro
 
 ## Creating a table
 
-To create a table use `pl.treksoft.kvision.tabulator.Tabulator` class. Although all constructor parameters have default values, you will usually want to specify Tabulator options with `pl.treksoft.kvision.tabulator.Options` object . The table data can be specified in a few different ways - with local Kotlin collection, local JavaScript array or remote AJAX URL. The table component can be made reactive for all types of local data. 
+To create a table use `pl.treksoft.kvision.tabulator.Tabulator` class. Although all constructor parameters have default values, you will usually want to specify Tabulator options with `pl.treksoft.kvision.tabulator.TabulatorOptions` object . The table data can be specified in a few different ways - with local Kotlin collection, local JavaScript array or remote AJAX URL. The table component can be made reactive for all types of local data. 
 
 ### Local Kotlin list
 
@@ -26,7 +26,7 @@ val model = listOf(
 )
 
 tabulator(
-    model, Options(
+    model, TabulatorOptions(
         layout = Layout.FITCOLUMNS,
         columns = listOf(
             ColumnDefinition("Title", "title"),
@@ -44,7 +44,7 @@ To make the Tabulator component reactive just can use `ObservableList` for your 
 
 ### Local JavaScript array
 
-You should use `Any` as your Tabulator type parameter and leave both `data` and `dataSerializer` constructor parameters with `null` values. You pass a reference to native JS array with a `data` parameter inside your `Options` object.
+You should use `Any` as your Tabulator type parameter and leave both `data` and `dataSerializer` constructor parameters with `null` values. You pass a reference to native JS array with a `data` parameter inside your `TabulatorOptions` object.
 
 ```kotlin
 val model = JSON.parse<dynamic>(
@@ -54,7 +54,7 @@ val model = JSON.parse<dynamic>(
                 "{\"title\":\"In Search of Lost Time\", \"author\":\"Marcel Proust\", \"year\":1920, \"rating\":5}]"
             )
 
-tabulator<Any>(Options(
+tabulator<Any>(TabulatorOptions(
         layout = Layout.FITCOLUMNS,
         columns = listOf(
             ColumnDefinition("Title", "title"),
@@ -68,7 +68,7 @@ tabulator<Any>(Options(
 }
 ```
 
-To make the Tabulator component reactive use `reactiveData = true` parameter inside your `Options` object. 
+To make the Tabulator component reactive use `reactiveData = true` parameter inside your `TabulatorOptions` object. 
 
 ### Remote AJAX URL
 
@@ -76,7 +76,7 @@ Tabulator tables can get the data from the remote endpoint. You can find more in
 
 ```kotlin
 tabulator<Any>(
-    Options(
+    TabulatorOptions(
         ajaxURL = "/remote/tableData",
         ajaxConfig = "POST",
         ajaxContentType = "json",
@@ -112,7 +112,7 @@ val search = textInput(TextInputType.SEARCH) {
 }
 val tabulator = tabulator(
     model,
-    Options(
+    TabulatorOptions(
         layout = Layout.FITCOLUMNS,
         columns = listOf(
             ColumnDefinition("Title", "title"),
@@ -135,3 +135,31 @@ search.setEventListener {
 }
 ```
 
+## Editing the table
+
+Tabulator also allows you to edit the values in each cell according to a user specified Editor type. Just pass the desired Editor as a parameter in ColumnDefinition.
+
+```kotlin
+val model = listOf(
+    Book("Fairy tales", "Hans Christian Andersen", 1836, 4),
+    Book("Don Quijote De La Mancha", "Miguel de Cervantes", 1610, 4),
+    Book("Crime and Punishment", "Fyodor Dostoevsky", 1866, 3),
+    Book("In Search of Lost Time", "Marcel Proust", 1920, 5)
+)
+val tabulator = tabulator(
+    model,
+    TabulatorOptions(
+        layout = Layout.FITCOLUMNS,
+        columns = listOf(
+            ColumnDefinition("Title", "title", editor = Editor.INPUT),
+            ColumnDefinition("Author", "author", editor = Editor.INPUT),
+            ColumnDefinition("Year", "year", editor = Editor.NUMBER),
+            ColumnDefinition("Rating", "rating", formatter = Formatter.STAR, editor = Editor.STAR)
+        )
+    )
+) {
+    height = 400.px
+}
+```
+
+Tabulator currently supports the following Editor types: `Editor.INPUT`, `Editor.TEXTAREA`, `Editor.NUMBER`, `Editor.RANGE`, `Editor.TICK`, `Editor.STAR`, `Editor.SELECT` and `Editor.AUTOCOMPLETE`

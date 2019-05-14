@@ -2,7 +2,7 @@
 
 Layout containers allow you to position your components in a different ways to create both simple and complex views. Different container types can be stacked together to achieve even the most sophisticated layouts. Core containers are available in `pl.treksoft.kvision.panel` package.
 
-### SimplePanel
+## SimplePanel
 
 This container puts its children components in a simple sequence, without any additional formatting or markup. It's the most basic container and is the base class for all other containers. It is internally rendered as a `DIV` HTML element.
 
@@ -24,7 +24,7 @@ It will be rendered as:
 </div>
 ```
 
-### StackPanel
+## StackPanel
 
 This container displays only one of its children components at a time. You can use properties and methods of the `StackPanel` class to manage its children visibility.
 
@@ -57,7 +57,7 @@ the content in the browser will change to:
 </div>
 ```
 
-### SplitPanel
+## SplitPanel
 
 This container divides the available space into two areas and provides a possibility to resize the panes by the user.
 
@@ -76,7 +76,7 @@ splitPanel(Direction.HORIZONTAL) {
 `SplitPanel` container is required to have exactly two children. If there are more or less than two children nothing will be rendered at all.
 {% endhint %}
 
-### TabPanel
+## TabPanel
 
 This container creates a popular tabbed layout, with tabs on the top, left or right side of the content. You use the dedicated `addTab` method of the `TabPanel` class to create tabs with given names, icons, images and routing URLs.
 
@@ -104,7 +104,7 @@ tabPanel(tabPosition = TabPosition.LEFT, sideTabSize = SideTabSize.SIZE_2) {
 }
 ```
 
-### DockPanel
+## DockPanel
 
 This container can have up to five children, and it shows them in five distinct positions - CENTER, UP, DOWN, LEFT and RIGHT. The default `add` method of the `DockPanel` class \(used also by the DSL builders\) puts the given component in the CENTER position. You have to use the dedicated `add(child: Component, position: Side)` method to put your child components in the other four positions.
 
@@ -120,7 +120,7 @@ dockPanel {
 }
 ```
 
-### FlexPanel
+## FlexPanel
 
 The `FlexPanel` class allows you to display children components with all the power of[ CSS Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox/) W3C recommendation. In the flex layout model, the children components can be laid out horizontally or vertically, left to right, right to left, top to bottom or bottom to top. Children can change their sizes, either growing or shrinking. The specification is quite complex and most of the available CSS attributes are supported with Kotlin enum values used with the `FlexPanel` class. You use the dedicated `add(child: Component, order: Int? = null, grow: Int? = null, shrink: Int? = null, basis: Int? = null, alignSelf: FlexAlignItems? = null, classes: Set = setOf())` method of `FlexPanel` class to add children components with additional flexbox attributes:
 
@@ -135,7 +135,7 @@ flexPanel(
 }
 ```
 
-### HPanel, VPanel
+## HPanel, VPanel
 
 Both`HPanel` and `VPanel` classes are direct subclasses of `FlexPanel` and are convenient shortcuts for frequently used horizontal \(left to right\) and respectively vertical \(top to bottom\) flexbox layouts:
 
@@ -152,7 +152,7 @@ vPanel(spacing = 5) {
 }
 ```
 
-### GridPanel
+## GridPanel
 
 The `GridPanel` class allows you to display children components with the use of [CSS Grid Layout Module](https://www.w3.org/TR/css-grid/) W3C recommendation - a two-dimensional layout system, which allows the children to be positioned into arbitrary slots in a predefined flexible or fixed-size grid. This specification is even more complex than Flexbox, but is still supported mostly with Kotlin enum values and type-safe parameters. You use the dedicated `add(child: Component, columnStart: Int? = null, rowStart: Int? = null, columnEnd: String? = null, rowEnd: String? = null, area: String? = null, justifySelf: GridJustify? = null, alignSelf: GridAlign? = null, classes: Set = setOf())` method of `GridPanel` class to add children components with additional grid attributes:
 
@@ -165,9 +165,9 @@ gridPanel(columnGap = 5, rowGap = 5, justifyItems = GridJustify.CENTER) {
 }
 ```
 
-### ResponsiveGridPanel
+## ResponsiveGridPanel
 
-This container allows you to position children components inside Bootstrap's popular responsive 12-columns grid system. It's well suited for mobile websites and applications, but can also be used as an  alternative to the CSS Grid. The `ResponsiveGridPanel` class allows you to choose grid size \(with XS, SM, MD, LG enum values\) and automatically wraps children components into appropriate rows and cols elements. The number of rows and columns can be declared as parameters of the class constructor or calculated on the fly based on children added to the container. You use the dedicated `add(child: Component, col: Int, row: Int, size: Int = 0, offset: Int = 0)` method of the `ResponsiveGridPanel` class to add children to selected positions in the grid:
+This container allows you to position children components inside Bootstrap's popular responsive 12-columns grid system. It's well suited for mobile websites and applications, but can also be used as an alternative to the CSS Grid. The `ResponsiveGridPanel` class allows you to choose grid size \(with XS, SM, MD, LG enum values\) and automatically wraps children components into appropriate rows and cols elements. The number of rows and columns can be declared as parameters of the class constructor or calculated on the fly based on children added to the container. You use the dedicated `add(child: Component, col: Int, row: Int, size: Int = 0, offset: Int = 0)` method of the `ResponsiveGridPanel` class to add children to selected positions in the grid:
 
 ```kotlin
 responsiveGridPanel {
@@ -177,3 +177,4 @@ responsiveGridPanel {
     add(Div("3,3"), 3, 3)
 }
 ```
+

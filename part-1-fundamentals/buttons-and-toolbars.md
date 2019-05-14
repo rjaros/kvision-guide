@@ -22,7 +22,7 @@ vPanel {
 
 ### Toolbars
 
-You can join some buttons together to create a button group and join some groups to create a toolbar. In KVision you use `pl.treksoft.kvision.toolbar.ButtonGroup` and  `pl.treksoft.kvision.toolbar.Toolbar` classes for this purpose. Use DSL builders to easily create even complex toolbars.
+You can join some buttons together to create a button group and join some groups to create a toolbar. In KVision you use `pl.treksoft.kvision.toolbar.ButtonGroup` and `pl.treksoft.kvision.toolbar.Toolbar` classes for this purpose. Use DSL builders to easily create even complex toolbars.
 
 ```kotlin
 toolbar {
@@ -45,3 +45,4 @@ toolbar {
     }
 }
 ```
+

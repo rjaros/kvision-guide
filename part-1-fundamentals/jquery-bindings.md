@@ -2,7 +2,7 @@
 
 [jQuery](https://jquery.com/) is used internally by the framework and is available for use in all KVision applications with a wrapper library [jquery-kotlin](https://github.com/rjaros/jquery-kotlin).
 
-### jQuery object
+## jQuery object
 
 You can use the `pl.treksoft.jquery.jQuery` object to create a jQuery instance with all supported selector types. You can use them to directly access and modify underlying DOM elements and their attributes.
 
@@ -12,7 +12,7 @@ import pl.treksoft.jquery.jQuery
 jQuery("#ident").addClass("blue").show()
 ```
 
-### getElementJQuery\(\) method
+## getElementJQuery\(\) method
 
 Every KVision component has a method `getElementJQuery()`, which can be used to access the jQuery instance bound to the underlying DOM element of the component. It gives you the possibility to easily access and modify the default behavior of KVision components.
 
@@ -35,3 +35,4 @@ override fun afterInsert(node: VNode) {
     getElementJQueryD()?.selectpicker("render").ajaxSelectPicker()
 }
 ```
+

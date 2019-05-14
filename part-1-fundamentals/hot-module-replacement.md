@@ -77,3 +77,4 @@ object App : ApplicationBase {
 The HMR module calls `start` method after every change in the source code, and this method is responsible for recreating the user interface.
 
 In case of a need to retain the state of the application, it should be returned as a `Map<String, Any>` from the`dispose` method. It will be sent back to the application in the `state` parameter of the `start` method.
+

@@ -1,6 +1,6 @@
 # Tabulator tables
 
-KVision Tabulator component is based on awesome [Tabulator](http://tabulator.info) library. It allows you to create interactive and reactive tables, with advanced sorting, filtering and editing capabilities. Tabulator component can be integrated with [observable data model](https://github.com/rjaros/kotlin-observable-js) or [Redux](using-redux.md) store and will automatically react to all changes in your data model.  This component is contained in kvision-tabulator module. KVision adds Kotlin type-safe bindings for most of Tabulator API but you should get familiar with [Tabulator documentation](http://tabulator.info/docs/4.2) to achieve best results.
+KVision Tabulator component is based on awesome [Tabulator](http://tabulator.info) library. It allows you to create interactive and reactive tables, with advanced sorting, filtering and editing capabilities. Tabulator component can be integrated with [observable data model](https://github.com/rjaros/kotlin-observable-js) or [Redux](using-redux.md) store and will automatically react to all changes in your data model. This component is contained in kvision-tabulator module. KVision adds Kotlin type-safe bindings for most of Tabulator API but you should get familiar with [Tabulator documentation](http://tabulator.info/docs/4.2) to achieve best results.
 
 {% hint style="info" %}
 Note: At the moment these functionalities are not supported: tree structure, grouping, mutators, column calculations, download. Please fill a [feature request ](https://github.com/rjaros/kvision/issues/new)if you require any of these.
@@ -8,7 +8,7 @@ Note: At the moment these functionalities are not supported: tree structure, gro
 
 ## Creating a table
 
-To create a table use `pl.treksoft.kvision.tabulator.Tabulator` class. Although all constructor parameters have default values, you will usually want to specify Tabulator options with `pl.treksoft.kvision.tabulator.TabulatorOptions` object . The table data can be specified in a few different ways - with local Kotlin collection, local JavaScript array or remote AJAX URL. The table component can be made reactive for all types of local data. 
+To create a table use `pl.treksoft.kvision.tabulator.Tabulator` class. Although all constructor parameters have default values, you will usually want to specify Tabulator options with `pl.treksoft.kvision.tabulator.TabulatorOptions` object . The table data can be specified in a few different ways - with local Kotlin collection, local JavaScript array or remote AJAX URL. The table component can be made reactive for all types of local data.
 
 ### Local Kotlin list
 
@@ -26,7 +26,7 @@ val model = listOf(
 )
 
 tabulator(
-    model, TabulatorOptions(
+    model, options = TabulatorOptions(
         layout = Layout.FITCOLUMNS,
         columns = listOf(
             ColumnDefinition("Title", "title"),
@@ -68,7 +68,7 @@ tabulator<Any>(TabulatorOptions(
 }
 ```
 
-To make the Tabulator component reactive use `reactiveData = true` parameter inside your `TabulatorOptions` object. 
+To make the Tabulator component reactive use `reactiveData = true` parameter inside your `TabulatorOptions` object.
 
 ### Remote AJAX URL
 
@@ -111,8 +111,7 @@ val search = textInput(TextInputType.SEARCH) {
     placeholder = "Search ..."
 }
 val tabulator = tabulator(
-    model,
-    TabulatorOptions(
+    model, options = TabulatorOptions(
         layout = Layout.FITCOLUMNS,
         columns = listOf(
             ColumnDefinition("Title", "title"),
@@ -147,8 +146,7 @@ val model = listOf(
     Book("In Search of Lost Time", "Marcel Proust", 1920, 5)
 )
 val tabulator = tabulator(
-    model,
-    TabulatorOptions(
+    model, options = TabulatorOptions(
         layout = Layout.FITCOLUMNS,
         columns = listOf(
             ColumnDefinition("Title", "title", editor = Editor.INPUT),
@@ -163,3 +161,4 @@ val tabulator = tabulator(
 ```
 
 Tabulator currently supports the following Editor types: `Editor.INPUT`, `Editor.TEXTAREA`, `Editor.NUMBER`, `Editor.RANGE`, `Editor.TICK`, `Editor.STAR`, `Editor.SELECT` and `Editor.AUTOCOMPLETE`
+

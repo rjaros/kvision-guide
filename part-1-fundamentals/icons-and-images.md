@@ -2,7 +2,7 @@
 
 ## Icons
 
-KVision has built-in support for font icons distributed with [Bootstrap version 3](https://getbootstrap.com/docs/3.3/components/#glyphicons) \(glyphicons\) and [Font Awesome version 4](https://fontawesome.com/v4.7.0/icons/).  Components like buttons, links, drop-downs, select options and tabs have an `icon` property, which can be set to one of many available icon names. To use a glyphicon from Bootstrap just use the name of the selected icon \(e.g. "asterisk"\). To use Font Awesome icon use the name with "fa-" prefix \(e.g. "fa-asterisk"\).  Some examples:
+KVision has built-in support for font icons distributed with [Bootstrap version 3](https://getbootstrap.com/docs/3.3/components/#glyphicons) \(glyphicons\) and [Font Awesome version 4](https://fontawesome.com/v4.7.0/icons/). Components like buttons, links, drop-downs, select options and tabs have an `icon` property, which can be set to one of many available icon names. To use a glyphicon from Bootstrap just use the name of the selected icon \(e.g. "asterisk"\). To use Font Awesome icon use the name with "fa-" prefix \(e.g. "fa-asterisk"\). Some examples:
 
 ```kotlin
 val g = Button("A button with a glyphicon", "asterisk")
@@ -39,3 +39,4 @@ val catImg = Image(require("./img/cat.jpg"), alt = "A rounded and responsive cat
 val dogImg = Image(require("./img/dog.jpg"), alt = "Centered dog in a circle",
     shape = ImageShape.CIRCLE, centered = true)
 ```
+

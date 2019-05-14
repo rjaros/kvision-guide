@@ -1,6 +1,6 @@
 # CSS properties
 
-Every KVision component has a full range of properties based on CSS specification. Most of them are 100% type-safe - based on enumeration values, dedicated classes and functions. You can of course use custom CSS stylesheets and assign predefined classes to your components  \(as explained in the [Theming](themes.md#adding-a-custom-css-file-to-your-application) chapter\), but KVision gives you a choice. With CSS properties you can style any component's size, position, margins, paddings, borders, colors, backgrounds, text and fonts with pure Kotlin code.
+Every KVision component has a full range of properties based on CSS specification. Most of them are 100% type-safe - based on enumeration values, dedicated classes and functions. You can of course use custom CSS stylesheets and assign predefined classes to your components \(as explained in the [Theming](themes.md#adding-a-custom-css-file-to-your-application) chapter\), but KVision gives you a choice. With CSS properties you can style any component's size, position, margins, paddings, borders, colors, backgrounds, text and fonts with pure Kotlin code.
 
 Most of the CSS properties are defined in the [pl.treksoft.kvision.core.StyledComponent](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.core/-styled-component/index.html) class.
 
@@ -19,11 +19,11 @@ div("A label with custom CSS styling") {
 }
 ```
 
-### CSS units
+## CSS units
 
 KVision supports all CSS units as an extension properties on `Int` type. So you can specify dimensions, sizes, position and thickness with such example notations: `50.px`, `12.pt`, `2.em`, `90.perc`, `100.vh`etc.
 
-### Colors
+## Colors
 
 There are two ways to specify colors. You can use hexadecimal `Int` literals or predefined color names as the parameters of `Color` class. To specify the "color" property, you can also use convenient setters: `colorHex` and `colorName`.
 
@@ -36,7 +36,7 @@ div {
 }
 ```
 
-### CSS helper classes
+## CSS helper classes
 
 To specify borders, backgrounds, text decorations and text shadows you use the dedicated classes.
 
@@ -51,7 +51,7 @@ div {
 }
 ```
 
-###  Style objects
+## Style objects
 
 When the CSS properties are set directly on the component, the corresponding style attributes are inlined in the generated HTML code. Sometimes it's better to define a CSS class, which can be reused by other components. In KVision you can do this using the `Style` class. By instantiating the `Style` object you create a CSS class definition. This definition can be assigned to any component with the `addCssClass` method.
 
@@ -99,3 +99,4 @@ div {
     }
 }
 ```
+

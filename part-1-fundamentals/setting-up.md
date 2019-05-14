@@ -190,7 +190,7 @@ After Gradle finishes downloading dependencies and building the application, ope
 
 You can import the project in **IntelliJ IDEA** and open `src/main/kotlin/com/example/App.kt` file. You can of course use your favorite text editor.
 
-Add some code inside the **`start`** function:
+Add some code inside the `start` function:
 
 {% code-tabs %}
 {% code-tabs-item title="App.kt" %}
@@ -217,3 +217,4 @@ gradlew.bat -Pprod=true clean distZip                 (on Windows)
 ```
 
 The application files will be saved in `build/distributions/template` directory and a package containing all of them will be saved as `build/distributions/template.zip`as well.
+

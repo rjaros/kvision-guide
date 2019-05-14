@@ -2,7 +2,7 @@
 
 Every component in KVision can display a tooltip and a popover, both are based on Bootstrap components.
 
-### Tooltips
+## Tooltips
 
 A tooltip is a small informational text component usually displayed when a mouse pointer stops over the given component \(you can also change the default trigger\). By default the tooltip content is taken from the `title` property of the component.
 
@@ -45,9 +45,9 @@ button("A button") {
 }
 ```
 
-### Popovers
+## Popovers
 
-A popover is a small informational window usually displayed  when a user clicks on a given component \(you can also change the default trigger\). Unlike a tooltip, a popover has a title and content. By default the title is taken from the `title` property of the component and the content must be given as a parameter.
+A popover is a small informational window usually displayed when a user clicks on a given component \(you can also change the default trigger\). Unlike a tooltip, a popover has a title and content. By default the title is taken from the `title` property of the component and the content must be given as a parameter.
 
 To activate the popover handler use `enablePopover` method from the `Widget` class.
 
@@ -60,7 +60,7 @@ button("A button") {
 
 Use `disablePopover` to deactivate the handler.
 
-The `enablePopover` method takes the `PopoverOptions` object as a parameter. It allows you to specify the alternative title text if the `title` property is not set, as well as set the content text, specify if the title and/or content contains HTML formatting, disable animation, set the popover delay, the placement and the list of trigger events  \(by default popovers are triggered by a click event\).
+The `enablePopover` method takes the `PopoverOptions` object as a parameter. It allows you to specify the alternative title text if the `title` property is not set, as well as set the content text, specify if the title and/or content contains HTML formatting, disable animation, set the popover delay, the placement and the list of trigger events \(by default popovers are triggered by a click event\).
 
 ```kotlin
 button("A button") {
@@ -91,3 +91,4 @@ button("A button") {
     }
 }
 ```
+

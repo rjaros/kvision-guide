@@ -25,3 +25,4 @@ tabPanel {
     addTab("Drag & Drop", DragDropTab(), "fa-arrows-alt", route = "/dragdrop")
 }
 ```
+

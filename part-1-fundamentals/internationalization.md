@@ -1,6 +1,6 @@
 # Internationalization
 
-### Features
+## Features
 
 * Automatic language detection \(based on the browser language settings\).
 * Dynamic language change with automatic re-rendering of the whole application GUI.
@@ -17,7 +17,7 @@
 * Automatic extraction of text to be translated from the application code.
 * Support for well known translation files format \(gettext `*.po` files\).
 
-### Requirements
+## Requirements
 
 To create a multi-language application you have to add the `kvision-i18n` module as a dependency for your project.
 
@@ -29,7 +29,7 @@ dependencies {
 }
 ```
 
-### Using multi-language text in application sources
+## Using multi-language text in application sources
 
 To mark some text for translation just use one of the four available helper methods from the `pl.treksoft.kvision.i18n.I18n` object instead of plain string literals.
 
@@ -75,7 +75,7 @@ hPanel {
 }
 ```
 
-### Translation files
+## Translation files
 
 Until you create and initialize translation files for some other language, your application will use string literals used in the source code. It's probably a good practice to use English literals in your code and other languages in the translation files.
 
@@ -94,7 +94,7 @@ You should correctly set `Language` and `Plural-Forms` headers of your PO files.
 
 After adding some new texts to your sources you can call the `./gradlew pot` task to refresh the `messages.pot` file. You can then use the [`msgmerge`](https://www.gnu.org/software/gettext/manual/html_node/msgmerge-Invocation.html) tool from the GNU gettext package to merge new keys with existing translation files. You can also add new `msgid` and `msgstr` lines to your translation files by hand.
 
-### Initializing translations
+## Initializing translations
 
 To initialize translations for one or more languages, you need to initialize the `I18n.manager` property during application initialization \(preferably in the `start` method of your `Application` object\). You should add all supported languages to the map given as the parameter to the `DefaultI18nManager` constructor.
 
@@ -115,7 +115,7 @@ object Helloworld : ApplicationBase {
 }
 ```
 
-### Changing the current language
+## Changing the current language
 
 The current language is bound to the `I18n.language` property. This property is initialized with the default country code from the browser language settings. It can be changed at any time from your code.
 
@@ -128,3 +128,4 @@ select(listOf("en" to "English", "de" to "Deutsch"), I18n.language) {
     }
 }
 ```
+

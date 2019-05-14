@@ -2,7 +2,7 @@
 
 A KVision application can use two types of windows - modal dialogs and floating, re-sizable windows. Modals can be used to create popups with information messages, alerts, warnings or custom forms and buttons. Floating windows can be used to split your GUI into any number of separate parts, to work with them simultaneously \(multiple documents, floating toolbars etc.\)
 
-### Modals
+## Modals
 
 Modal components are grouped in the `pl.treksoft.kvision.modal` package. The base class for all modals is `pl.treksoft.kvision.modal.Modal`. You can use this class to create a modal with any content you need - just add your components to the container. You can use the standard `add` method to add typical components or containers to your modal. You can also use the `addButton` method to add some buttons to the footer of the modal \(these buttons will be right-aligned by default\).
 
@@ -28,7 +28,7 @@ modal.show()
 
 There are some ready to use, convenience subclasses of the `Modal` class.
 
-#### Alert popups
+### Alert popups
 
 Alert popup is a simple modal window that shows information text and an OK button. You can use the companion function `Alert.show(...)` to easily create and display an Alert window. You can define a callback function for the OK button. You can also change some other parameters of the popup \(e.g. size, align, rich content or disabling animation effect\).
 
@@ -38,7 +38,7 @@ Alert.show("Alert dialog", "Lorem ipsum dolor sit amet, consectetur adipiscing."
 }
 ```
 
-#### Confirm popups
+### Confirm popups
 
 Confirm popup is a simple modal window which displays a question and two \(YES / NO\) or three \(YES / NO / CANCEL\) buttons. You can also use the companion function `Confirm.show(...)` to easily create and display a Confirm popup. You can define two distinct callback functions for the YES and NO buttons. You can also change button titles \(e.g. to support [I18N](internationalization.md)\) and some other parameters of the popup \(e.g. size, align, rich content or disabling animation effect\).
 
@@ -58,7 +58,7 @@ Confirm.show(
 }
 ```
 
-#### Dialog with a result
+### Dialog with a result
 
 A `pl.treksoft.kvision.modal.Dialog` component allows you to create a dialog, which can return any data as a result. This class has a suspending method `getResult()`, which must be called inside a Kotlin coroutine. You can create a subclass of the `Dialog` class or use a `Dialog` instance directly. You should call `setResult()` method from your own code to pass your data back to the caller.
 
@@ -79,7 +79,7 @@ GlobalScope.launch {
 Note: The `Dialog` component is contained in a separate kvision-dialog module, bacause of its dependency on Kotlin coroutines.
 {% endhint %}
 
-### Windows
+## Windows
 
 The `pl.treksoft.kvision.window.Window` component allows you to create a number of floating, re-sizable windows inside your application. Every window has a frame, which can be used to change its size and position. The `Window` class constructor takes a number of parameters, two of which allow you to create windows that are not draggable and not re-sizable as well. When the window is not draggable, the close button is hidden and the caption is null - the caption bar won't be rendered at all.
 
@@ -94,3 +94,4 @@ window("Window", 600.px, 300.px, closeButton = true) {
     span("A window content")
 }
 ```
+

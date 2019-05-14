@@ -104,7 +104,32 @@ tabPanel(tabPosition = TabPosition.LEFT, sideTabSize = SideTabSize.SIZE_2) {
 }
 ```
 
-## DockPanel
+Tabs can be made closable. A closable tab displays a cross icon to the tab bar. When the user clicks this icon, the `removeTab` method is called and the tab is deleted from the container. Two events are sent - `tabClosing` and `tabClosed` with the tab index saved in `detail.data` property. The first event is cancelable -  you can call `preventDefault()` method to cancel the action.
+
+```kotlin
+tabPanel {
+    val tab1Content = Div("Apple description")
+    val tab2Content = Div("Google description")
+    val tab3Content = Div("Microsoft description")
+    addTab("Apple", tab1Content, "fa-apple", closable = true)
+    addTab("Google", tab2Content, "fa-google", closable = true)
+    addTab("Microsoft", tab3Content, "fa-windows", closable = true)
+    setEventListener<TabPanel> {
+        tabClosing = { e ->
+            if (e.detail.data == 2) {
+                e.preventDefault()
+            } else {
+                console.log("Closing tab on index ${e.detail.data}")
+            }
+        }
+        tabClosed = { e ->
+            console.log("Closed tab on index ${e.detail.data}")
+        }
+    }
+}
+```
+
+##  DockPanel
 
 This container can have up to five children, and it shows them in five distinct positions - CENTER, UP, DOWN, LEFT and RIGHT. The default `add` method of the `DockPanel` class \(used also by the DSL builders\) puts the given component in the CENTER position. You have to use the dedicated `add(child: Component, position: Side)` method to put your child components in the other four positions.
 

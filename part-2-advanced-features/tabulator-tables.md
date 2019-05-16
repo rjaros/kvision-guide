@@ -96,6 +96,71 @@ tabulator<Any>(
 }
 ```
 
+## Formatting the data
+
+### Built-in formatters
+
+You can use many different formatters to present the data in the tabulator cells. Just pass the desired `Formatter` as a `formatter` parameter in `ColumnDefinition`.
+
+```kotlin
+val model = listOf(
+    Book("Fairy tales", "Hans Christian Andersen", 1836, 4),
+    Book("Don Quijote De La Mancha", "Miguel de Cervantes", 1610, 4),
+    Book("Crime and Punishment", "Fyodor Dostoevsky", 1866, 3),
+    Book("In Search of Lost Time", "Marcel Proust", 1920, 5)
+)
+val tabulator = tabulator(
+    model, options = TabulatorOptions(
+        layout = Layout.FITCOLUMNS,
+        columns = listOf(
+            ColumnDefinition("Title", "title"),
+            ColumnDefinition("Author", "author"),
+            ColumnDefinition("Year", "year"),
+            ColumnDefinition("Rating", "rating", formatter = Formatter.STAR)
+        )
+    )
+) {
+    height = 400.px
+}
+```
+
+Tabulator currently supports the following built-in formatter types: `Formatter.PLAINTEXT`, `Formatter.TEXTAREA`, `Formatter.HTML`, `Formatter.MONEY`, `Formatter.IMAGE`, `Formatter.LINK`, `Formatter.DATETIME`, `Formatter.DATATIMEDIFF`, `Formatter.TICKCROSS`, `Formatter.COLOR`, `Formatter.STAR`, `Formatter.TRAFFIC`, `Formatter.PROGRESS`, `Formatter.LOOKUP`, `Formatter.BUTTONTICK`, `Formatter.BUTTONCROSS`, `Formatter.ROWNUM`, `Formatter.HANDLE`. You can find more information about formatters configuration in the [Tabulator docs](http://tabulator.info/docs/4.2/format). 
+
+{% hint style="info" %}
+Note: You need to include kvision-moment module to use built-in date/time formatters.
+{% endhint %}
+
+### Custom formatters
+
+You can use any KVision components to display data in Tabulator cells. You define the component with the `formatterComponentFunction` property of the `ColumnDefinition` class. When the Tabulator component is bound to the Kotlin data source, this function gives you also direct and type-safe access to the Kotlin data model for the current row.
+
+```kotlin
+@Serializable
+data class Employee(
+    val name: String?,
+    val position: String?,
+    val office: String?,
+    val active: Boolean = false,
+    val startDate: Date?,
+    val salary: Int?
+)
+// ...
+val model = mutableListOf<Employee>()
+// ...
+tabulator(model, options = TabulatorOptions(layout = Layout.FITCOLUMNS,
+    columns = listOf(
+    // ...
+      ColumnDefinition(
+        "Start date",
+        "startDate", formatterComponentFunction = { _, _, data: Employee ->
+            Span(data.startDate?.toStringF("YYYY-MM-DD"))
+        }
+      )
+    )
+    // ...
+))
+```
+
 ## Local filtering
 
 Tabulator component allows you to filter the data with external, fully type-safe Kotlin code. You can set the filtering function with `setFilter` method, and then use `applyFilter` after the condition change \(e.g. after search input value change\).
@@ -136,7 +201,9 @@ search.setEventListener {
 
 ## Editing the table
 
-Tabulator also allows you to edit the values in each cell according to a user specified Editor type. Just pass the desired Editor as a parameter in ColumnDefinition.
+### Built-in editors
+
+Tabulator also allows you to edit the values in each cell according to a user specified `Editor` type. Just pass the desired `Editor` as an `editor` parameter in `ColumnDefinition`.
 
 ```kotlin
 val model = listOf(
@@ -160,5 +227,53 @@ val tabulator = tabulator(
 }
 ```
 
-Tabulator currently supports the following Editor types: `Editor.INPUT`, `Editor.TEXTAREA`, `Editor.NUMBER`, `Editor.RANGE`, `Editor.TICK`, `Editor.STAR`, `Editor.SELECT` and `Editor.AUTOCOMPLETE`
+Tabulator currently supports the following built-in editor types: `Editor.INPUT`, `Editor.TEXTAREA`, `Editor.NUMBER`, `Editor.RANGE`, `Editor.TICK`, `Editor.STAR`, `Editor.SELECT` and `Editor.AUTOCOMPLETE`
+
+### Custom editors
+
+You can use most of KVision components to edit data in Tabulator cells. You define the component with the `editorComponentFunction` property of the `ColumnDefinition` class. When the Tabulator component is bound to the Kotlin data source, this function gives you also direct and type-safe access to the Kotlin data model for the current row.
+
+```kotlin
+@Serializable
+data class Employee(
+    val name: String?,
+    val position: String?,
+    val office: String?,
+    val active: Boolean = false,
+    val startDate: Date?,
+    val salary: Int?
+)
+// ...
+val model = mutableListOf<Employee>()
+// ...
+tabulator(model, options = TabulatorOptions(layout = Layout.FITCOLUMNS,
+    columns = listOf(
+    // ...
+      ColumnDefinition(
+        "Start date",
+        "startDate", editorComponentFunction = { _, _, success, _, data: Employee ->
+            DateTimeInput(value = data.startDate, format = "YYYY-MM-DD").apply {
+                size = InputSize.SMALL
+                clearBtn = false
+                setEventListener<DateTimeInput> {
+                    change = {
+                        success(self.value?.toStringF())
+                    }
+                }
+            }
+        })
+    )
+    // ...
+))
+```
+
+{% hint style="info" %}
+Note: Not all KVision edit controls work well inside Tabulator cells. Currently you cannot use `Select` component, because of conflict in event handling. You can use `SimpleSelect` without problems, though.
+{% endhint %}
+
+### Automatic model update
+
+When using editable table with Tabulator component bound to Kotlin `MutableList` data model, the changed data is automatically updated in the model. You can disable this function by setting `dataUpdateOnEdit` Tabulator constructor parameter to `false`.
+
+ 
 

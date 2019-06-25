@@ -73,7 +73,28 @@ KVision consists of both required and optional functionality. Modules can be add
     </tr>
     <tr>
       <td style="text-align:left">kvision-moment</td>
-      <td style="text-align:left">Kotlin language bindings for Moment.js library.</td>
+      <td style="text-align:left">Kotlin language bindings for <a href="https://momentjs.com/">Moment.js</a> library.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-pace</td>
+      <td style="text-align:left"><a href="https://github.hubspot.com/pace/docs/welcome/">Pace</a> automatic
+        page loader.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-redux</td>
+      <td style="text-align:left">
+        <p><a href="https://redux.js.org/">Redux</a> state container.</p>
+        <p>See <a href="../part-2-advanced-features/using-redux.md">Using Redux</a> chapter
+          for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-cordova</td>
+      <td style="text-align:left">
+        <p>Kotlin language bindings for Apache Cordova core API.</p>
+        <p>See <a href="../part-2-advanced-features/building-with-apache-cordova.md">Building with Apache Cordova</a> chapter
+          for more information.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-electron</td>

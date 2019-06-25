@@ -37,6 +37,8 @@ KVision's design is quite similar to many non-web UI programming libraries inclu
 * built-in support for [Handlebars](http://handlebarsjs.com) templates 
 * built-in support for [Font Awesome](https://fontawesome.com/) icons
 * built-in support for [Redux](https://redux.js.org/)
+* built-in support for [Moment.js](https://momentjs.com/) library
+* built-in support for [Pace](https://github.hubspot.com/pace/docs/welcome/) automatic page loader
 
 #### Flexibility
 
@@ -60,6 +62,7 @@ There is also experimental support for type-safe websocket connections, based on
 * Drag & drop support
 * Type-safe REST connectivity
 * Integrated JS router
+* Support for building hybrid, mobile applications for Android and iOS with [Apache Cordova](https://cordova.apache.org/).
 * Support for building cross-platform, desktop applications with [Electron](https://electronjs.org/).
 * Compatible with modern browsers \(MS Edge, Firefox, Chrome, Safari, Opera\)
 * [Karma](https://karma-runner.github.io/) testing framework support

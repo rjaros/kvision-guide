@@ -12,10 +12,9 @@ To create a table use `pl.treksoft.kvision.tabulator.Tabulator` class. Although 
 
 ### Local Kotlin list
 
-Single row data should be specified with a`@Serializable` class. You can use DSL builer function or factory `create` function to automatically get the appropriate serializer for your data type.
+Data classes are preferred objects representing a single row data.
 
 ```kotlin
-@Serializable
 data class Book(val title: String, val author: String, val year: Int, val rating: Int)
 
 val model = listOf(
@@ -135,7 +134,6 @@ Note: You need to include kvision-moment module to use built-in date/time format
 You can use any KVision components to display data in Tabulator cells. You define the component with the `formatterComponentFunction` property of the `ColumnDefinition` class. When the Tabulator component is bound to the Kotlin data source, this function gives you also direct and type-safe access to the Kotlin data model for the current row.
 
 ```kotlin
-@Serializable
 data class Employee(
     val name: String?,
     val position: String?,
@@ -234,7 +232,6 @@ Tabulator currently supports the following built-in editor types: `Editor.INPUT`
 You can use most of KVision components to edit data in Tabulator cells. You define the component with the `editorComponentFunction` property of the `ColumnDefinition` class. When the Tabulator component is bound to the Kotlin data source, this function gives you also direct and type-safe access to the Kotlin data model for the current row.
 
 ```kotlin
-@Serializable
 data class Employee(
     val name: String?,
     val position: String?,

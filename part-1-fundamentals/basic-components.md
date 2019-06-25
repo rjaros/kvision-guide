@@ -121,3 +121,15 @@ will render:
 Notice the extra `<span>` element surrounding the given content.
 {% endhint %}
 
+## Custom attributes
+
+All KVision components support additional, custom attributes using `setAttribute`, `getAttribute` and `removeAttribute` methods from the `Widget` class.
+
+```kotlin
+button(text = "X", classes = setOf("close")) {
+    setAttribute("data-dismiss", "alert")
+}
+```
+
+
+

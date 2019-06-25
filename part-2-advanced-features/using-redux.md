@@ -6,10 +6,9 @@
 
 The state of the application is hidden inside the Redux store. It can not be modified from outside. The only way to change the state is to use the actions and the reducer function.
 
-KVision implementation requires the state to be serializable with kotlinx.serialization library. It's recommended to use a data class annotated with `@Serializable` annotation.
+It's recommended to use a data class to represent the state.
 
 ```kotlin
-@Serializable
 data class MyState(val content: String, val counter: Int)
 ```
 
@@ -46,7 +45,7 @@ fun myReducer(state: MyState, action: MyAction): MyState = when (action) {
 ```
 
 {% hint style="info" %}
-Note: In the KVision implementation of the Redux store, only the value returned from the reducer function is relevant. It doesn't matter if you create the new state object or mutate and return the object given as the parameter, although it's a good practice to use immutable objects.
+Note: You should not mutate the state parameter. It's recommended to use immutable data types.
 {% endhint %}
 
 ### Store

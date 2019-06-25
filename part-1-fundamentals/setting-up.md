@@ -13,6 +13,10 @@ To build a typical KVision application you should have some tools installed on y
 * [Git](https://git-scm.com) \(with additional UNIX tools if using Windows\)
 * GNU [xgettext](https://www.gnu.org/software/gettext) and [msgmerge](https://www.gnu.org/software/gettext) utilities to use [Internationalization](internationalization.md) features    
 
+{% hint style="info" %}
+Note: Make sure you are building KVision applications on the local file system.  
+{% endhint %}
+
 ## Creating a new application
 
 The recommended way to create a new application is to download and copy the [KVision template](https://github.com/rjaros/kvision-examples/tree/master/template) project, available on GitHub.
@@ -72,15 +76,22 @@ dependencies {
     compile "pl.treksoft:kvision-richtext:${kvisionVersion}"
     compile "pl.treksoft:kvision-upload:${kvisionVersion}"
     compile "pl.treksoft:kvision-handlebars:${kvisionVersion}"
-    compile "pl.treksoft:kvision-chart:${kvisionVersion}"
     compile "pl.treksoft:kvision-i18n:${kvisionVersion}"
+    compile "pl.treksoft:kvision-datacontainer:${kvisionVersion}"
+    compile "pl.treksoft:kvision-dialog:${kvisionVersion}"
+    compile "pl.treksoft:kvision-redux:${kvisionVersion}"
+    compile "pl.treksoft:kvision-chart:${kvisionVersion}"
+    compile "pl.treksoft:kvision-tabulator:${kvisionVersion}"
+    compile "pl.treksoft:kvision-pace:${kvisionVersion}"
     compile "org.jetbrains.kotlin:kotlin-test-js:${kotlinVersion}"
 }
 
 kotlinFrontend {
+    sourceMaps = !production
 
     webpackBundle {
         bundleName = "main"
+        sourceMapEnabled = false
         contentPath = file('src/main/web')
         mode = production ? "production" : "development"
     }
@@ -93,6 +104,7 @@ compileKotlin2Js {
     kotlinOptions.metaInfo = true
     kotlinOptions.outputFile = "$project.buildDir.path/js/${project.name}.js"
     kotlinOptions.sourceMap = !production
+    kotlinOptions.sourceMapEmbedSources = "always"
     kotlinOptions.moduleKind = 'umd'
 }
 
@@ -100,6 +112,7 @@ compileTestKotlin2Js {
     kotlinOptions.metaInfo = true
     kotlinOptions.outputFile = "$project.buildDir.path/js-tests/${project.name}-tests.js"
     kotlinOptions.sourceMap = !production
+    kotlinOptions.sourceMapEmbedSources = "always"
     kotlinOptions.moduleKind = 'umd'
 }
 

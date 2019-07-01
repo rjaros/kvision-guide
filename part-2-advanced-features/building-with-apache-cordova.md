@@ -57,7 +57,10 @@ Cordova project configuration is saved inside `config.xml` and `package.json` fi
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-media": {},
       "cordova-plugin-media-capture": {}
-    }
+    },
+    "platforms": [
+      "android"
+    ]
   }
 }
 ```
@@ -71,4 +74,88 @@ Note: kvision-cordova module offers Kotlin bindings for all core Cordova plugins
 {% endhint %}
 
 Currently the template project targets only the Android platform. You can use `cordova platform add ios` command to add iOS target.
+
+## Cordova API
+
+Most of the original, callback-based Cordova API has been wrapped into simple suspending functions. They can be used with the full power of Kotlin coroutines, although the Cordova's usage patterns are closely followed, so the standard Cordova documentation should give enough knowledge to work with KVision.
+
+A special `Result<V, E: Exception>` class is used whenever possible to handle both success and failure of Cordova API function call.
+
+### Device
+
+This plugin allows to get information about the device, and also add listeners for standard [Cordova events](https://cordova.apache.org/docs/en/latest/cordova/events/events.html).
+
+```kotlin
+GlobalScope.launch {
+    console.log(getDevice())
+}
+addResumeListener { resumeEvent ->
+    console.log(resumeEvent)
+}
+addCordovaEventListener(CordovaEvent.BACKBUTTON) {
+    console.log("backbutton")
+}
+addCordovaEventListener(CordovaEvent.VOLUMEDOWNBUTTON) {
+    console.log("volume down")
+}
+addCordovaEventListener(CordovaEvent.VOLUMEUPBUTTON) {
+    console.log("volume up")
+}
+```
+
+{% hint style="info" %}
+All Cordova API is available only after `deviceready` event is dispatched. Most of KVision functions already handle this event internally, so usually there is no need to wrap your code into `deviceready` listener. 
+{% endhint %}
+
+### Battery status
+
+This plugin allows you to get information about the current battery level.
+
+```kotlin
+Battery.addStatusListener(BATTERY_STATUS) {
+    console.log("Battery level: it.level")
+}
+Battery.addStatusListener(BATTERY_LOW) {
+    console.log("Battery low level: ${it.level}")
+}
+Battery.addStatusListener(BATTERY_CRITICAL) {
+    console.log("Battery critical level: ${it.level}")
+}
+```
+
+### Camera
+
+This plugin allows you to use the phone camera to get a picture or a video.
+
+```kotlin
+button("Take a photo", "fa-camera") {
+    onClick {
+        GlobalScope.launch {
+            val result = Camera.getPicture(
+                CameraOptions(
+                    mediaType = Camera.MediaType.PICTURE,
+                    destinationType = Camera.DestinationType.FILE_URI
+                )
+            )
+            processCameraResult(result)
+            Camera.cleanup()
+        }
+    }
+}
+Camera.addCameraResultCallback {
+    processCameraResult(it)
+}
+fun processCameraResult(result: Result<String, CameraException>) {
+    result.success {
+        GlobalScope.launch {
+            File.resolveLocalFileSystemURLForFile(it).success {
+                store.dispatch(ImageAction.Image(it.toInternalURL()))
+            }
+        }
+    }
+    result.failure {
+        store.dispatch(ImageAction.Error(it.message ?: "No data"))
+    }
+}
+```
 

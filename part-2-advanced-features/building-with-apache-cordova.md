@@ -402,3 +402,23 @@ GlobalScope.launch {
 }
 ```
 
+## Building for production
+
+To build for production, first you have to build the distribution version of your KVision application. Run the dedicated Gradle task by calling:
+
+```text
+./gradlew -Pprod=true distCordova
+```
+
+This task will compile, generate and copy the distribution files to the Cordova's `www` directory.
+
+After that you are ready to sign the code and build the final package, by calling:
+
+```text
+cordova build --release --buildConfig=signingConfig.json
+```
+
+You have to create signingConfig.json file containing [private signing information](https://cordova.apache.org/docs/en/dev/guide/platforms/android/index.html#using-buildjson).
+
+Refer to Cordova documentation for details regarding all supported platforms. 
+

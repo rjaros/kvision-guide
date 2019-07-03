@@ -56,7 +56,8 @@ Cordova project configuration is saved inside `config.xml` and `package.json` fi
       "cordova-plugin-geolocation": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-media": {},
-      "cordova-plugin-media-capture": {}
+      "cordova-plugin-media-capture": {},
+      "cordova-plugin-locationservices": {}
     },
     "platforms": [
       "android"
@@ -279,7 +280,7 @@ button("Vibrate with a given pattern").onClick {
 
 ### File
 
-The File plugin provides a comprehensive API to access the device file system. KVision bindings for the original, callback based API are designed as suspending functions and suspending extension functions.
+The File plugin provides a comprehensive API to access the device's file system. KVision bindings for the original, callback based API are designed as suspending functions and suspending extension functions.
 
 ```kotlin
 GlobalScope.launch {
@@ -319,6 +320,83 @@ GlobalScope.launch {
             console.log(it.toURL())
             // Get Cordova cdvfile:// file URL.
             console.log(it.toInternalURL())
+        }
+    }
+}
+```
+
+### Geolocation
+
+This plugin provides information about the device's location, such as latitude and longitude. 
+
+```kotlin
+GlobalScope.launch {
+    Geolocation.getCurrentPosition().success {
+        console.log("Timestamp: ${it.timestamp}")
+        console.log("Lat: ${it.coords.latitude}")
+        console.log("Lng: ${it.coords.longitude}")
+    }
+    val watchId = Geolocation.watchPosition(timeout = 5000, maximumAge = 3000) {
+        it.success {
+            console.log("Timestamp: ${it.timestamp}")
+            console.log("Lat: ${it.coords.latitude}")
+            console.log("Lng: ${it.coords.longitude}")
+        }
+        it.failure {
+            console.log(it)
+        }
+    }
+    window.setTimeout({
+        Geolocation.clearWatch(watchId)
+    }, 30000)
+}
+```
+
+{% hint style="info" %}
+KVision has support for an additional Cordova plugin, dedicated for the Android platform: [cordova-plugin-locationservices](https://github.com/louisbl/cordova-plugin-locationservices). Just use `Locationservices` instead of `Geolocation` object. The API usage is similar, but the functions have some additional parameters.
+{% endhint %}
+
+### In app browser
+
+The browser plugin allows to open external URL address inside your application. 
+
+```kotlin
+GlobalScope.launch {
+    val ref = InAppBrowser.open("https://www.google.com")
+    console.log(ref)
+}
+```
+
+### Media
+
+The media plugin allows to record and play back audio files.
+
+```kotlin
+addDeviceReadyListener {
+    val media = Media("https://archive.org/download/testmp3testfile/mpthreetest.mp3", {
+        console.log("Media play success")
+    }, { e ->
+        console.log("Media play error", e)
+    }) { status ->
+        console.log(status)
+    }
+    media.play()
+}
+```
+
+### Media capture
+
+This plugin provides access to the device's audio, image, and video capture capabilities.
+
+```kotlin
+GlobalScope.launch {
+    val media = MediaCapture.captureImage()
+    media.success {
+        it.forEach {
+            console.log(it)
+            console.log(it.lastModifiedDate)
+            val mediaDetail = it.getFormatData()
+            console.log(mediaDetail)
         }
     }
 }

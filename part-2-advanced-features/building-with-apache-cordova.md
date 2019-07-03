@@ -277,3 +277,50 @@ button("Vibrate with a given pattern").onClick {
 }
 ```
 
+### File
+
+The File plugin provides a comprehensive API to access the device file system. KVision bindings for the original, callback based API are designed as suspending functions and suspending extension functions.
+
+```kotlin
+GlobalScope.launch {
+    // Get external data directory root
+    File.getSystemDirectories().externalDataDirectory?.toDirectoryEntry()?.success { root ->
+        // Print root directory information.
+        console.log(root)
+        root.getMetadata().success { console.log(it) }
+        // List root directory entries.
+        root.readEntries().success {
+            console.log(it)
+        }
+        // Create new file from a Blob.
+        root.getFile("test.txt").success { it.write(Blob(arrayOf("A test content."))) }
+        // List root directory entries (with new file on the list).
+        root.readEntries().success {
+            console.log(it)
+        }
+        // Read file content as text.
+        root.getFile("test.txt").success { console.log(it.readAsText()) }
+        // Append content to the file.
+        root.getFile("test.txt").success { it.append(Blob(arrayOf("two"))) }
+        // Access the file.
+        root.getFile("test.txt").success {
+            // Read file content as a buffer.
+            val buf = it.readAsArrayBuffer().component1()
+            // Create a blob from a buffer.
+            val blob = Blob(arrayOf(Uint8Array(buf!!)))
+            // Write blob to a new file.
+            root.getFile("test2.txt").success {
+                it.write(blob)
+            }
+        }
+        // Access the file.
+        root.getFile("test.txt").success {
+            // Get native file URL.
+            console.log(it.toURL())
+            // Get Cordova cdvfile:// file URL.
+            console.log(it.toInternalURL())
+        }
+    }
+}
+```
+

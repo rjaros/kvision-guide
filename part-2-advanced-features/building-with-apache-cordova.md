@@ -112,13 +112,13 @@ All Cordova API is available only after `deviceready` event is dispatched. Most 
 This plugin allows you to get information about the current battery level.
 
 ```kotlin
-Battery.addStatusListener(BATTERY_STATUS) {
+Battery.addStatusListener(BatteryEvent.BATTERY_STATUS) {
     console.log("Battery level: it.level")
 }
-Battery.addStatusListener(BATTERY_LOW) {
+Battery.addStatusListener(BatteryEvent.BATTERY_LOW) {
     console.log("Battery low level: ${it.level}")
 }
-Battery.addStatusListener(BATTERY_CRITICAL) {
+Battery.addStatusListener(BatteryEvent.BATTERY_CRITICAL) {
     console.log("Battery critical level: ${it.level}")
 }
 ```
@@ -156,6 +156,124 @@ fun processCameraResult(result: Result<String, CameraException>) {
     result.failure {
         store.dispatch(ImageAction.Error(it.message ?: "No data"))
     }
+}
+```
+
+{% hint style="info" %}
+When using the camera on the Android platform, use `addCameraResultCallback` method to correctly support [Android lifecycle](https://cordova.apache.org/docs/en/dev/guide/platforms/android/index.html#lifecycle-guide).
+{% endhint %}
+
+### Dialogs
+
+The dialog plugin allows to display native notifications - alert, prompt and confirmation dialog windows and also the beep sound.
+
+```kotlin
+Notification.alert("The message", "Title", "OK") {
+    console.log("You pressed OK")
+}
+Notification.confirm("Are you sure?", "Delete", listOf("Yes", "No")) { index ->
+    console.log("You pressed button number $index")
+}
+Notification.prompt("Enter your name:", "Register", listOf("OK", "Cancel"), "John Snow") { res ->
+    console.log("You pressed button number ${res.buttonIndex} and your name is ${res.input1}")
+}
+Notification.beep(3)
+```
+
+### Network information
+
+This plugin allows to get information about the current network connection and add listeners for the network status events. 
+
+```kotlin
+GlobalScope.launch {
+    console.log(Network.getConnectionType().toString())
+}
+Network.addStatusListener(NetworkEvent.OFFLINE) {
+    console.log("Going offline")
+}
+Network.addStatusListener(NetworkEvent.ONLINE) {
+    console.log("Going online")
+}
+```
+
+### Screen orientation
+
+This plugin allows to get current screen orientation, lock and unlock the specified orientation and also add listeners for the screen orientation change events.
+
+```kotlin
+console.log(Screen.getOrientation())
+
+button("Lock landscape").onClick {
+    Screen.lock(Screen.Orientation.LANDSCAPE)
+}
+button("Lock portrait").onClick {
+    Screen.lock(Screen.Orientation.PORTRAIT)
+}
+button("Unlock").onClick {
+    Screen.unlock()
+}
+Screen.addOrientationChangeListener {
+    console.log("Orientation changed to ${it}")
+}
+```
+
+### Splash screen
+
+Cordova allows to configure a splash screen for your application, which is displayed before the application is fully loaded. Check [Cordova documentation](https://cordova.apache.org/docs/en/dev/reference/cordova-plugin-splashscreen/index.html) for details. This plugin has also simple methods to show and hide the splash screen at runtime.
+
+```kotlin
+button("Show splash screen for 3 seconds").onClick {
+    Splashscreen.show()
+    window.setTimeout({
+        Splashscreen.hide()
+    }, 3000)
+}
+```
+
+### Status bar
+
+This plugin allow to style the native status bar with a few predefined color schemes.
+
+```kotlin
+button("Show status bar").onClick {
+    StatusBar.show()
+}
+button("Hide status bar").onClick {
+    StatusBar.hide()
+}
+button("Set overlay").onClick {
+    StatusBar.overlaysWebView(true)
+}
+button("Set no overlay").onClick {
+    StatusBar.overlaysWebView(false)
+}
+button("Set style to light content").onClick {
+    StatusBar.styleLightContent()
+}
+button("Set style to black opaque").onClick {
+    StatusBar.styleBlackOpaque()
+}
+button("Set style to black translucent").onClick {
+    StatusBar.styleBlackTranslucent()
+}
+button("Set style to default").onClick {
+    StatusBar.styleDefault()
+}
+button("Set background color").onClick {
+    StatusBar.setBackgroundColorByHexString("#88FF0000")
+}
+```
+
+### Vibration
+
+This plugin provides a way to vibrate the device with a single vibration or with a given pattern 
+
+```kotlin
+button("Vibrate for 1 second").onClick {
+    Vibration.vibrate(1000)
+}
+button("Vibrate with a given pattern").onClick {
+    Vibration.vibrate(1000, 2000, 1000, 2000)
 }
 ```
 

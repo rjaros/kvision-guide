@@ -1,77 +1,55 @@
 # Setting up
 
-KVision supports three server-side frameworks - Ktor, Jooby and Spring Boot - so you have to choose one of them for your needs. It's worth to mention, that common and client modules of your application are exactly the same for all three servers, as well as the greater part of the actual service implementation in the server module. The differences are tied to the actual framework build configuration and initialization code.
+KVision supports three server-side frameworks - Ktor, Jooby and Spring Boot - so you have to choose one of them for your needs. It's worth to mention, that common and frontend targets of your application are exactly the same for all three servers, as well as the greater part of the actual service implementation in the backend target. The differences are tied to the actual framework build configuration and initialization code.
 
-KVision full-stack applications utilize [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) architecture. That's why you have to prepare the special Gradle configuration and the project layout. To start, it's best to just clone one of the template-fullstack projects from [kvision-examples](https://github.com/rjaros/kvision-examples) GitHub repository.
+KVision full-stack applications utilize [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) architecture \(Kotlin 1.3 MPP\). That's why you have to prepare the special Gradle configuration and the project layout. To start, it's best to just clone one of the template-fullstack projects from [kvision-examples](https://github.com/rjaros/kvision-examples) GitHub repository.
 
-{% hint style="info" %}
-Note: The "new MPP" model introduced in Kotlin 1.3 is not yet supported, because of problems with various Gradle plugins.
-{% endhint %}
-
-The application project is split into three Gradle subprojects - `common`, `client` and `server`. Every subproject has it's own `build.gradle` configuration file and it's own sources \(`src` folder\). The requirements and dependencies for build process are the same as mentioned in [Part 1 of this guide](../part-1-fundamentals/setting-up.md).
+The application sources are split into three source sets - `common`, `frontend` and `backend`, located in three directories: `src/commonMain` `src/frontendMain` and `src/backendMain`. The requirements and dependencies for build process are the same as mentioned in [Part 1 of this guide](../part-1-fundamentals/setting-up.md).
 
 ## Development
 
-During the development phase you compile and run client and server modules separately.
+During the development phase you compile and run frontend and backend targets separately.
 
-#### Client
+#### Frontend
 
-To run the client application with Gradle continuous build enter:
-
-```text
-./gradlew -t client:run                                    (on Linux)
-gradlew.bat -t client:run                                  (on Windows)
-```
-
-#### Server
-
-To run the server application you should use the command depending on your framework choice.
+To run the frontend application with Gradle continuous build enter:
 
 ```text
-### Ktor
-./gradlew server:run                                    (on Linux)
-gradlew.bat server:run                                  (on Windows)
-
-### Jooby
-./gradlew server:joobyRun                               (on Linux)
-gradlew.bat server:joobyRun                             (on Windows)
-
-### Spring Boot
-./gradlew server:bootRun                               (on Linux)
-gradlew.bat server:bootRun                             (on Windows)
+./gradlew -t frontendRun                                (on Linux)
+gradlew.bat -t frontendRun                              (on Windows)
 ```
 
-All three frameworks have auto-reload feature, but only Jooby is watching for changes directly in the source code. In case of Ktor and Spring Boot auto-reload is based on the classpath monitoring, so you have to run another Gradle process for continuous build \(in the additional terminal/console window\).
+#### Backend
+
+To run the backend application enter:
+
+```text
+./gradlew backendRun                                    (on Linux)
+gradlew.bat backendRun                                  (on Windows)
+```
+
+All three frameworks have auto-reload feature, but only Jooby is watching for changes directly in the source code. In case of Ktor and Spring Boot auto-reload is based on the classpath monitoring, so you have to run another Gradle process for continuous build:
 
 ```text
 ### Ktor or Spring Boot
-./gradlew -t server:build                                    (on Linux)
-gradlew.bat -t server:build                                  (on Windows)
+./gradlew -t backendMainClasses                        (on Linux)
+gradlew.bat -t backendMainClasses                      (on Windows)
 ```
 
-After both parts of your application are running, you can open [http://localhost:8088/](http://localhost:8088/) in your favorite browser. Changes made to your sources \(in any module\) should be automatically applied to your running application. 
+After both parts of your application are running, you can open [http://localhost:3000/](http://localhost:3000/) in your favorite browser. Changes made to your sources \(in any source set\) should be automatically applied to your running application. 
 
 ## Production
 
-To build complete application optimized for production you run the command depending on your framework choice.
+To build complete application optimized for production run:
 
 ```text
-### Ktor or Jooby
-./gradlew -Pprod=true clean shadowJar                   (on Linux)
-gradlew.bat -Pprod=true clean shadowJar                 (on Windows)
-
-### Spring Boot
-./gradlew -Pprod=true clean bootJar                     (on Linux)
-gradlew.bat -Pprod=true clean bootJar                   (on Windows)
+./gradlew -Pprod=true clean jar                   (on Linux)
+gradlew.bat -Pprod=true clean jar                 (on Windows)
 ```
 
-The application jar will be saved in `server/build/libs` directory \(`server-all.jar` or `server.jar` respectively\). You can run your application with  the`java -jar` command.
+The application jar will be saved in `build/libs` directory \(`projectname-1.0.0-SNAPSHOT.jar`\). You can run your application with  the`java -jar` command.
 
 ```text
-### Ktor or Jooby
-java -jar server/build/libs/server-all.jar
-
-### Spring Boot
-java -jar server/build/libs/server.jar
+java -jar build/libs/projectname-1.0.0-SNAPSHOT.jar
 ```
 

@@ -4,9 +4,9 @@ This is a short overview of how to use server-side interface in KVision with the
 
 Let's assume we want to create an encoder application, that gets some text from the user and encodes it on the server with a chosen algorithm.
 
-### Common module
+### Common source set
 
-We start by defining our data model and service interface in the common \(shared\) module. We have to declare our "business" method as suspending.
+We start by defining our data model and service interface in the common \(shared\) source set. We have to declare our "business" method as suspending.
 
 {% code-tabs %}
 {% code-tabs-item title="Common.kt" %}
@@ -22,7 +22,7 @@ interface IEncodingService {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next we declare an expected class, which will be implemented in the client and server modules, and define a `KVServiceManager` object, that will allow KVision to do its "magic".
+Next we declare an expected class, which will be implemented in the frontend and backend modules, and define a `KVServiceManager` object, that will allow KVision to do its "magic".
 
 {% code-tabs %}
 {% code-tabs-item title="Common.kt" %}
@@ -48,12 +48,12 @@ Note: The `GlobalScope.launch` builder is necessary because of the bug in the Ko
 Note: At this point the project will not compile correctly, because `EncodingService` class has no actual declarations.
 {% endhint %}
 
-### Client module
+### Frontend source set
 
 To implement `EncodingService` class in our KVision application, we inherit from the `KVRemoteAgent` class and implement the interface with a special `call` method.
 
 {% code-tabs %}
-{% code-tabs-item title="Client.kt" %}
+{% code-tabs-item title="Frontend.kt" %}
 ```kotlin
 actual class EncodingService : IEncodingService, KVRemoteAgent<EncodingService>(EncodingServiceManager) {
     override suspend fun encode(input: String, encodingType: EncodingType) = 
@@ -63,10 +63,10 @@ actual class EncodingService : IEncodingService, KVRemoteAgent<EncodingService>(
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-That's all what is needed to use this service class in the client application.
+That's all what is needed to use this service class in the frontend application.
 
 {% code-tabs %}
-{% code-tabs-item title="ClientApp.kt" %}
+{% code-tabs-item title="FrontendApp.kt" %}
 ```kotlin
 val service = EncodingService()
 
@@ -90,14 +90,14 @@ vPanel {
 
 Notice we just call the `encode` method and get the result value directly. All asynchronous operations are hidden by the framework. We only have to use a coroutine builder function \(`launch` in this case\).
 
-### Server module
+### Backend source set
 
 _\(For convenience we will use Ktor module in this chapter\)_
 
 To create an actual implementation of our `EncodingService` we just have to implement the methods of the service interface.
 
 {% code-tabs %}
-{% code-tabs-item title="Server.kt" %}
+{% code-tabs-item title="Backend.kt" %}
 ```kotlin
 import java.net.URLEncoder
 import acme.Base64Encoder

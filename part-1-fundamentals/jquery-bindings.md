@@ -40,5 +40,3 @@ override fun afterInsert(node: VNode) {
 
 Every KVision component is bound to the DOM tree after it has been rendered. You can get access to the underlying  `HTMLElement` object with the `getElement()` method from the `Widget` class. 
 
-There are some edge cases, especially when components are often removed and recreated \(e.g. when using `DataContainer` or Redux `stateBinding`\), when this binding can be lost due to a virtual DOM optimization. In such cases you will notice `getElement()` method returning `null`. You can resolve this issue by setting `strictDOM` property of the `Widget` class to `true`. With this indication KVision will force recreation of the DOM binding every time the component is recreated. Remember to use this property only when it's necessary.
-

@@ -79,20 +79,20 @@ hPanel {
 
 Until you create and initialize translation files for some other language, your application will use string literals used in the source code. It's probably a good practice to use English literals in your code and other languages in the translation files.
 
-To generate basic translation files, create a directory called `translation` in you project. Next run the command:
+To generate basic translation files run the command:
 
 ```text
-./gradlew pot                                    (on Linux)
-gradlew.bat pot                                  (on Windows)
+./gradlew generatePotFile                                (on Linux)
+gradlew.bat generatePotFile                              (on Windows)
 ```
 
-This command will search your sources for any usages of internationalization methods \(`tr` or others\) and generate a `messages.pot` file in the `translation` directory. This file is the base for your translations. For any language you would like to support, copy the `messages.pot` file to `messages-XX.po`, where XX is a country code \(en, de, es, fr etc.\). These files should be translated according to the [PO format specification](https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html). You can use many popular tools for editing PO files to simplify the translation process.
+This command will search your sources for any usages of internationalization methods \(`tr` or others\) and generate a `messages.pot` file in the `src/main/resources/i18n` directory. This file is the base for your translations. For any language you would like to support, copy the `messages.pot` file to `messages-XX.po`, where XX is a country code \(en, de, es, fr etc.\). These files should be translated according to the [PO format specification](https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html). You can use many popular tools for editing PO files to simplify the translation process.
 
 {% hint style="info" %}
 You should correctly set `Language` and `Plural-Forms` headers of your PO files.
 {% endhint %}
 
-After adding some new texts to your sources you can call the `./gradlew pot` task to refresh the `messages.pot` file. You can then use the [`msgmerge`](https://www.gnu.org/software/gettext/manual/html_node/msgmerge-Invocation.html) tool from the GNU gettext package to merge new keys with existing translation files. You can also add new `msgid` and `msgstr` lines to your translation files by hand.
+After adding some new texts to your sources you can call the `./gradlew generatePotFile` task to refresh the `messages.pot` file. You can then use the [`msgmerge`](https://www.gnu.org/software/gettext/manual/html_node/msgmerge-Invocation.html) tool from the GNU gettext package to merge new keys with existing translation files. You can also add new `msgid` and `msgstr` lines to your translation files by hand.
 
 ## Initializing translations
 
@@ -105,9 +105,9 @@ object Helloworld : ApplicationBase {
         I18n.manager =
                 DefaultI18nManager(
                     mapOf(
-                        "en" to require("./messages-en.json"),
-                        "pl" to require("./messages-pl.json"),
-                        "de" to require("./messages-de.json")
+                        "en" to require("i18n/messages-en.json"),
+                        "pl" to require("i18n/messages-pl.json"),
+                        "de" to require("i18n/messages-de.json")
                     )
                 )
         // ...

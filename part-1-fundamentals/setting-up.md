@@ -21,172 +21,234 @@ Note: Make sure you are building KVision applications on the local file system.
 
 The recommended way to create a new application is to download and copy the [KVision template](https://github.com/rjaros/kvision-examples/tree/master/template) project, available on GitHub.
 
-### build.gradle
+### build.gradle.kts
 
-The build.gradle file is responsible for the definition of the build process. It declares necessary repositories \(e.g. external bintray repositories\) and required dependencies. It declares `dist` and `distZip` tasks, used to build distribution packs.
+The `build.gradle.kts` file is responsible for the definition of the build process. It declares necessary repositories \(e.g. external bintray repositories\) and all required dependencies. It declares `zip` task, typically used to build distribution pack.
 
 {% code-tabs %}
-{% code-tabs-item title="build.gradle" %}
-```groovy
+{% code-tabs-item title="build.gradle.kts" %}
+```kotlin
+import org.jetbrains.kotlin.gradle.frontend.KotlinFrontendExtension
+import org.jetbrains.kotlin.gradle.frontend.npm.NpmExtension
+import org.jetbrains.kotlin.gradle.frontend.webpack.WebPackExtension
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.nodeJs
+
+import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinJsDce
+
 buildscript {
-    ext.production = (findProperty('prod') ?: 'false') == 'true'
-
-    repositories {
-        jcenter()
-        maven { url = 'https://dl.bintray.com/kotlin/kotlin-eap' }
-        maven { url = 'https://plugins.gradle.org/m2/' }
-        maven { url = 'https://kotlin.bintray.com/kotlinx' }
-    }
-
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:${kotlinVersion}"
-        classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:${frontendPluginVersion}"
-    }
+    extra.set("production", (findProperty("prod") ?: findProperty("production") ?: "false") == "true")
 }
 
 plugins {
-    id "com.moowork.grunt" version "1.2.0"
+    val kotlinVersion: String by System.getProperties()
+    id("kotlinx-serialization") version kotlinVersion
+    id("kotlin2js") version kotlinVersion
+    id("kotlin-dce-js") version kotlinVersion
+    kotlin("frontend") version System.getProperty("frontendPluginVersion")
 }
 
-apply plugin: 'kotlin2js'
-
-if (production) {
-    apply plugin: 'kotlin-dce-js'
-}
-apply plugin: 'org.jetbrains.kotlin.frontend'
-apply plugin: 'kotlinx-serialization'
+version = "1.0.0-SNAPSHOT"
+group = "com.example"
 
 repositories {
     jcenter()
-    maven { url = 'https://dl.bintray.com/kotlin/kotlin-eap' }
-    maven { url = 'https://kotlin.bintray.com/kotlinx' }
-    maven { url = 'https://dl.bintray.com/gbaldeck/kotlin' }
-    maven { url = 'https://dl.bintray.com/rjaros/kotlin' }
+    maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
+    maven { url = uri("https://kotlin.bintray.com/kotlinx") }
+    maven { url = uri("https://dl.bintray.com/kotlin/kotlin-js-wrappers") }
+    maven { url = uri("https://dl.bintray.com/gbaldeck/kotlin") }
+    maven { url = uri("https://dl.bintray.com/rjaros/kotlin") }
     mavenLocal()
 }
 
+// Versions
+val kotlinVersion: String by System.getProperties()
+val kvisionVersion: String by project
+
+// Custom Properties
+val webDir = file("src/main/web")
+val isProductionBuild = project.extra.get("production") as Boolean
+
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-js:${kotlinVersion}"
-    compile "pl.treksoft:kvision:${kvisionVersion}"
-    compile "pl.treksoft:kvision-bootstrap:${kvisionVersion}"
-    compile "pl.treksoft:kvision-select:${kvisionVersion}"
-    compile "pl.treksoft:kvision-datetime:${kvisionVersion}"
-    compile "pl.treksoft:kvision-spinner:${kvisionVersion}"
-    compile "pl.treksoft:kvision-richtext:${kvisionVersion}"
-    compile "pl.treksoft:kvision-upload:${kvisionVersion}"
-    compile "pl.treksoft:kvision-handlebars:${kvisionVersion}"
-    compile "pl.treksoft:kvision-i18n:${kvisionVersion}"
-    compile "pl.treksoft:kvision-datacontainer:${kvisionVersion}"
-    compile "pl.treksoft:kvision-dialog:${kvisionVersion}"
-    compile "pl.treksoft:kvision-redux:${kvisionVersion}"
-    compile "pl.treksoft:kvision-chart:${kvisionVersion}"
-    compile "pl.treksoft:kvision-tabulator:${kvisionVersion}"
-    compile "pl.treksoft:kvision-pace:${kvisionVersion}"
-    compile "org.jetbrains.kotlin:kotlin-test-js:${kotlinVersion}"
+    implementation(kotlin("stdlib-js"))
+    implementation("pl.treksoft:kvision:$kvisionVersion")
+    implementation("pl.treksoft:kvision-bootstrap:$kvisionVersion")
+    implementation("pl.treksoft:kvision-select:$kvisionVersion")
+    implementation("pl.treksoft:kvision-datetime:$kvisionVersion")
+    implementation("pl.treksoft:kvision-spinner:$kvisionVersion")
+    implementation("pl.treksoft:kvision-richtext:$kvisionVersion")
+    implementation("pl.treksoft:kvision-upload:$kvisionVersion")
+    implementation("pl.treksoft:kvision-handlebars:$kvisionVersion")
+    implementation("pl.treksoft:kvision-i18n:$kvisionVersion")
+    implementation("pl.treksoft:kvision-datacontainer:$kvisionVersion")
+    implementation("pl.treksoft:kvision-dialog:$kvisionVersion")
+    implementation("pl.treksoft:kvision-redux:$kvisionVersion")
+    implementation("pl.treksoft:kvision-chart:$kvisionVersion")
+    implementation("pl.treksoft:kvision-tabulator:$kvisionVersion")
+    implementation("pl.treksoft:kvision-pace:$kvisionVersion")
+    implementation("pl.treksoft:kvision-moment:$kvisionVersion")
+    testImplementation(kotlin("test-js"))
 }
 
 kotlinFrontend {
-    sourceMaps = !production
-
+    sourceMaps = !isProductionBuild
+    npm {
+        devDependency("po2json")
+        devDependency("grunt")
+        devDependency("grunt-pot")
+    }
     webpackBundle {
         bundleName = "main"
         sourceMapEnabled = false
-        contentPath = file('src/main/web')
-        mode = production ? "production" : "development"
+        port = 3000
+        proxyUrl = "http://localhost:8080"
+        contentPath = webDir
+        mode = if (isProductionBuild) "production" else "development"
     }
 
-    define "PRODUCTION", production
-
+    define("PRODUCTION", isProductionBuild)
 }
+sourceSets["main"].resources.srcDir(webDir)
 
-compileKotlin2Js {
-    kotlinOptions.metaInfo = true
-    kotlinOptions.outputFile = "$project.buildDir.path/js/${project.name}.js"
-    kotlinOptions.sourceMap = !production
-    kotlinOptions.sourceMapEmbedSources = "always"
-    kotlinOptions.moduleKind = 'umd'
-}
-
-compileTestKotlin2Js {
-    kotlinOptions.metaInfo = true
-    kotlinOptions.outputFile = "$project.buildDir.path/js-tests/${project.name}-tests.js"
-    kotlinOptions.sourceMap = !production
-    kotlinOptions.sourceMapEmbedSources = "always"
-    kotlinOptions.moduleKind = 'umd'
-}
-
-task pot(type: GruntTask) {
-    args = ["pot"]
-}
-
-task po2json(type: GruntTask) {
-    args = ["default"]
-    inputs.dir(file('translation'))
-    outputs.dir(file('build/js'))
-    outputs.dir(file('build/kotlin-js-min/main'))
-}
-
-pot.dependsOn 'installGrunt'
-pot.dependsOn 'npmInstall'
-po2json.dependsOn 'installGrunt'
-po2json.dependsOn 'npmInstall'
-
-task copyResources(type: Copy) {
-    from "src/main/resources"
-    into file(buildDir.path + "/js")
-}
-
-task copyResourcesForDce() {
-    doLast {
-        copy {
-            from "src/main/resources"
-            ext.modulesDir = new File("${buildDir.path}/node_modules_imported/")
-            modulesDir.eachDir {
-                if (it.name.startsWith("kvision")) {
-                    from(it) {
-                        include "css/**"
-                        include "img/**"
-                        include "js/**"
+tasks {
+    withType<Kotlin2JsCompile> {
+        kotlinOptions {
+            moduleKind = "umd"
+            sourceMap = !isProductionBuild
+            metaInfo = true
+            if (!isProductionBuild) {
+                sourceMapEmbedSources = "always"
+            }
+        }
+    }
+    withType<KotlinJsDce> {
+        dceOptions {
+            devMode = !isProductionBuild
+        }
+        inputs.property("production", isProductionBuild)
+        doFirst {
+            destinationDir.deleteRecursively()
+        }
+        doLast {
+            copy {
+                file("$buildDir/node_modules_imported/").listFiles()?.forEach {
+                    if (it.isDirectory && it.name.startsWith("kvision")) {
+                        from(it) {
+                            include("css/**")
+                            include("img/**")
+                            include("js/**")
+                        }
                     }
                 }
+                into(file(buildDir.path + "/kotlin-js-min/main"))
             }
-            into file(buildDir.path + "/kotlin-js-min/main")
+        }
+    }
+    create("generateGruntfile") {
+        outputs.file("$buildDir/Gruntfile.js")
+        doLast {
+            file("$buildDir/Gruntfile.js").run {
+                writeText(
+                    """
+                    module.exports = function (grunt) {
+                        grunt.initConfig({
+                            pot: {
+                                options: {
+                                    text_domain: "messages",
+                                    dest: "../src/main/resources/i18n/",
+                                    keywords: ["tr", "ntr:1,2", "gettext", "ngettext:1,2"],
+                                    encoding: "UTF-8"
+                                },
+                                files: {
+                                    src: ["../src/main/kotlin/**/*.kt"],
+                                    expand: true,
+                                },
+                            }
+                        });
+                        grunt.loadNpmTasks("grunt-pot");
+                    };
+                """.trimIndent()
+                )
+            }
+        }
+    }
+    create("generatePotFile", Exec::class) {
+        dependsOn("npm-install", "generateGruntfile")
+        workingDir = file("$buildDir")
+        executable = project.nodeJs.root.nodeCommand
+        args("$buildDir/node_modules/grunt/bin/grunt", "pot")
+        inputs.files(sourceSets["main"].allSource)
+        outputs.file("$projectDir/src/main/resources/i18n/messages.pot")
+    }
+}
+afterEvaluate {
+    tasks {
+        getByName("processResources", Copy::class) {
+            dependsOn("npm-install")
+            exclude("**/*.pot")
+            doLast("Convert PO to JSON") {
+                destinationDir.walkTopDown().filter {
+                    it.isFile && it.extension == "po"
+                }.forEach {
+                    exec {
+                        executable = project.nodeJs.root.nodeCommand
+                        args(
+                            "$buildDir/node_modules/po2json/bin/po2json",
+                            it.absolutePath,
+                            "${it.parent}/${it.nameWithoutExtension}.json",
+                            "-f",
+                            "jed1.x"
+                        )
+                        println("Converted ${it.name} to ${it.nameWithoutExtension}.json")
+                    }
+                    it.delete()
+                }
+            }
+        }
+        getByName("webpack-run").dependsOn("classes")
+        getByName("webpack-bundle").dependsOn("classes", "runDceKotlinJs")
+        create("webJar", Jar::class) {
+            dependsOn("webpack-bundle")
+            group = "package"
+            val from = project.tasks["webpack-bundle"].outputs.files + webDir
+            from(from)
+            inputs.files(from)
+            outputs.file(archiveFile)
+
+            manifest {
+                attributes(
+                    mapOf(
+                        "Implementation-Title" to rootProject.name,
+                        "Implementation-Group" to rootProject.group,
+                        "Implementation-Version" to rootProject.version,
+                        "Timestamp" to System.currentTimeMillis()
+                    )
+                )
+            }
+        }
+        create("zip", Zip::class) {
+            dependsOn("webpack-bundle")
+            group = "package"
+            destinationDirectory.set(file("$buildDir/libs"))
+            val from = project.tasks["webpack-bundle"].outputs.files + webDir
+            from(from)
+            inputs.files(from)
+            outputs.file(archiveFile)
         }
     }
 }
 
-task dist(type: Copy, dependsOn: 'bundle') {
-    from "src/main/web"
-    from "${buildDir.path}/bundle"
-    into file(buildDir.path + "/distributions/" + project.name)
-}
+fun KotlinFrontendExtension.webpackBundle(block: WebPackExtension.() -> Unit) =
+    bundle("webpack", delegateClosureOf(block))
 
-task distZip(type: Zip, dependsOn: 'dist') {
-    from(buildDir.path + "/distributions/" + project.name)
-}
-
-afterEvaluate {
-    if (production) {
-        tasks.getByName("copyResourcesForDce") { dependsOn(runDceKotlinJs) }
-    }
-    tasks.getByName("webpack-bundle") {
-        dependsOn(po2json, copyResources, copyResourcesForDce)
-    }
-    tasks.getByName("webpack-run") { dependsOn(po2json, copyResources) }
-    tasks.getByName("karma-start") { dependsOn(po2json, copyResources) }
-}
+fun KotlinFrontendExtension.npm(block: NpmExtension.() -> Unit) = configure(block)
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Node.js dependency
-
-The build process uses some Gradle plugins which require Node.js to be installed and available in the system. All npm dependencies are downloaded and managed automatically by Gradle.
-
 ### Source code
 
-The source code for the application is contained in `src/main` directory. It consists of Kotlin sources in `kotlin` directory, optional `resources` \(e.g. images, CSS files, Handlebars templates\), and main `index.html` file in a `web` directory.
+The source code for the application is contained in `src/main` directory. It consists of Kotlin sources in `kotlin` directory, optional `resources` \(e.g. images, CSS files, Handlebars templates, translation files\), and main `index.html` file in a `web` directory.
 
 Test sources are contained in `src/test` directory.
 
@@ -199,7 +261,7 @@ To run the application with Gradle continuous build, enter:
 gradlew.bat -t run                                  (on Windows)
 ```
 
-After Gradle finishes downloading dependencies and building the application, open [http://localhost:8088/](http://localhost:8088/) in your favorite browser.
+After Gradle finishes downloading dependencies and building the application, open [http://localhost:3000/](http://localhost:3000/) in your favorite browser.
 
 You can import the project in **IntelliJ IDEA** and open `src/main/kotlin/com/example/App.kt` file. You can of course use your favorite text editor.
 
@@ -225,9 +287,9 @@ You should see your changes immediately in the browser.
 To build a complete application optimized for production, run:
 
 ```text
-./gradlew -Pprod=true clean distZip                   (on Linux)
-gradlew.bat -Pprod=true clean distZip                 (on Windows)
+./gradlew -Pprod=true clean zip                   (on Linux)
+gradlew.bat -Pprod=true clean zip                 (on Windows)
 ```
 
-The application files will be saved in `build/distributions/template` directory and a package containing all of them will be saved as `build/distributions/template.zip`as well.
+The package containing all of application files will be saved as `build/libs/template-1.0.0-SNAPSHOT.zip`.
 

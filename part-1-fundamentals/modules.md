@@ -1,6 +1,6 @@
 # Modules
 
-KVision consists of both required and optional functionality. Modules can be added as dependencies in `build.gradle` file. This is the current list of available modules.
+KVision consists of both required and optional functionality. Modules can be added as dependencies in `build.gradle.kts` file. This is the current list of available modules.
 
 <table>
   <thead>
@@ -117,6 +117,14 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p>Select form component tailored for multi-platform, full-stack applications.</p>
         <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-tabulator-remote</td>
+      <td style="text-align:left">
+        <p>Tabulator component tailored for multi-platform, full-stack applications.</p>
+        <p>See: <a href="../part-3-server-side-interface/">Part 3</a>
         </p>
       </td>
     </tr>

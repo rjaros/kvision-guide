@@ -21,7 +21,7 @@ div("A label with custom CSS styling") {
 
 ## CSS units
 
-KVision supports all CSS units as an extension properties on `Int` type. So you can specify dimensions, sizes, position and thickness with such example notations: `50.px`, `12.pt`, `2.em`, `90.perc`, `100.vh`etc.
+KVision supports all CSS units as an extension properties on `Number` type. So you can specify dimensions, sizes, position and thickness with such example notations: `50.px`, `12.pt`, `2.em`, `90.perc`, `100.vh`, `1.49.em` etc.
 
 ## Colors
 

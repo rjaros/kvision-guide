@@ -86,5 +86,5 @@ Note: Use [Bootswatch](https://bootswatch.com/3/) themes for Bootstrap version 3
 
 KVision can also be used with no Bootstrap at all. But you will not be able to use all parts of the framework is such configuration. Some components will not work correctly or will not work at all \(especially Modals, Dropdowns, Windows, Date picker, Spinner, TabPanel and other components dependent on Bootstrap's JavaScript and it also disables support for Font Awesome icons\). But you can still create a fully functional application \(see [TodoMVC example](https://github.com/rjaros/kvision-examples#todomvc)\).
 
-To disable Bootstrap completely just remove the `kvision-bootstrap` dependency from the `build.gradle` file. As a result no Bootstrap CSS and no Bootstrap JavaScript will be included in the resulting application.
+To disable Bootstrap completely just remove the `kvision-bootstrap` dependency from the `build.gradle.kts` file. As a result no Bootstrap CSS and no Bootstrap JavaScript will be included in the resulting application.
 

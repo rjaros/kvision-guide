@@ -81,17 +81,20 @@ Note: The `Dialog` component is contained in a separate kvision-dialog module, b
 
 ## Windows
 
-The `pl.treksoft.kvision.window.Window` component allows you to create a number of floating, re-sizable windows inside your application. Every window has a frame, which can be used to change its size and position. The `Window` class constructor takes a number of parameters, two of which allow you to create windows that are not draggable and not re-sizable as well. When the window is not draggable, the close button is hidden and the caption is null - the caption bar won't be rendered at all.
+The `pl.treksoft.kvision.window.Window` component allows you to create a number of floating, re-sizable windows inside your application. Every window has a frame, which can be used to change its size and position. The `Window` class constructor takes a number of parameters, two of which allow you to create windows that are not draggable and not re-sizable as well. When the window is not draggable, the close, minimize and maximize buttons are hidden and the caption is null - the caption bar won't be rendered at all.
 
 Windows overlap each other - one is shown on top of the others. The window clicked \(inside the window caption bar\) is brought to the front. You can also use `toFront()` method to bring a given window to the front programmatically.
 
 Unlike modals, window components have to be added to a container, and they are displayed in the context of their parent \(e.g. you can hide all windows by hiding their parent container\). But windows are not confined to the parent container area - they can be positioned anywhere inside the browser window.
 
 ```kotlin
-window("Window", 600.px, 300.px, closeButton = true) {
+window("Window", 600.px, 300.px, closeButton = true, 
+    maximizeButton = true, minimizeButton = true, icon = "fa-edit") {
     left = ((Random.nextDouble() * 800).toInt()).px
     top = ((Random.nextDouble() * 300).toInt()).px
     span("A window content")
 }
 ```
+
+Window caption can contain both minimize and maximize buttons, but the actual implementation of minimize and maximize functions must be done within the application. The `Window` component sends "maximizeWindow" and "minimizeWindow" events and both operations can be implemented by overriding `toggleMaximize()` and `toggleMinimize()` methods.
 

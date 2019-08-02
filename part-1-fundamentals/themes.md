@@ -19,8 +19,8 @@ object App : ApplicationBase {
     // ...
     }
 
-    val css1 = require("./css/kvapp.css")
-    val css2 = require("./css/other.css")
+    val css1 = require("css/kvapp.css")
+    val css2 = require("css/other.css")
 }
 ```
 {% endcode-tabs-item %}

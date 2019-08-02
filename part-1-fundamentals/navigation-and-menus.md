@@ -70,9 +70,9 @@ Another way is to add all children components to the `DropDown` container manual
 ```kotlin
 dropDown("Dropdown with custom list", icon = "fa-picture-o") {
     minWidth = 250.px
-    image(require("./img/cat.jpg")) { margin = 10.px; title = "Cat" }
+    image(require("img/cat.jpg")) { margin = 10.px; title = "Cat" }
     separator()
-    image(require("./img/dog.jpg")) { margin = 10.px; title = "Dog" }
+    image(require("img/dog.jpg")) { margin = 10.px; title = "Dog" }
 }
 ```
 

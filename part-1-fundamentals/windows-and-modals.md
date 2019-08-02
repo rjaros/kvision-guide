@@ -11,7 +11,7 @@ Modal dialogs are automatically added to the components tree, so there is no nee
 ```kotlin
 val modal = Modal("Custom modal dialog")
 modal.add(H4("Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
-modal.add(Image(require("./img/dog.jpg")))
+modal.add(Image(require("img/dog.jpg")))
 modal.addButton(Button("Close").onClick {
     modal.hide()
 })
@@ -76,7 +76,7 @@ GlobalScope.launch {
 ```
 
 {% hint style="info" %}
-Note: The `Dialog` component is contained in a separate kvision-dialog module, bacause of its dependency on Kotlin coroutines.
+Note: The `Dialog` component is contained in a separate kvision-dialog module, because of its dependency on Kotlin coroutines.
 {% endhint %}
 
 ## Windows

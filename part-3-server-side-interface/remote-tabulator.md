@@ -1,0 +1,47 @@
+# Tabulator remote
+
+The `pl.treksoft.kvision.tabulator.TabulatorRemote` component, contained in the `kvision-tabulator-remote` module, is a subclass of the `Tabulator` component, dedicated for use with the server side interfaces. Unlike standard Tabulator component \(which can also load data from an AJAX source but needs a defined endpoint\) `TabulatorRemote` is bound directly to the method of the remote service. The method signature looks like this:
+
+```kotlin
+@Serializable
+data class Row(val column1: String, val column2: String, val column3: String)
+
+interface IRowDataService {
+    fun rowData(page: Int?, size: Int?, filter: List<RemoteFilter>?, sorter: List<RemoteSorter>?): RemoteData<Row>
+}
+```
+
+{% hint style="info" %}
+Note: This method doesn't need to be suspending, because it is not called directly on the client side.
+{% endhint %}
+
+This model is prepared for server side pagination, sorting and filtering, but the parameters are nullable, and will be sent only when configured by the appropriate `TabulatorOptions` .
+
+```kotlin
+remoteTabulator(
+    RowDataServiceManager,
+    IRowDataService::rowData,
+    TabulatorOptions(
+        layout = Layout.FITCOLUMNS,
+        pagination = PaginationMode.REMOTE,
+        paginationSize = 3,
+        ajaxFiltering = true,
+        ajaxSorting = true,
+        columns = listOf(
+            ColumnDefinition("Column 1", Row::column1.name, headerFilter = Editor.INPUT),
+            ColumnDefinition("Column 2", Row::column2.name),
+            ColumnDefinition("Column 3", Row::column3.name)
+        )
+    )
+)
+```
+
+The `page` parameter contains the current requested page, the `size` parameter - the number of requested rows, the `filter` and `sorter` parameters contain values of selected filters and sorters. The returned data is always wrapped into `RemoteData` class, defined as:
+
+```kotlin
+@Serializable
+data class RemoteData<T>(val data: List<T> = listOf(), val last_page: Int = 0)
+```
+
+You can ignore `last_page` value, if the `RemoteTabulator` component is not configured for remote pagination.
+

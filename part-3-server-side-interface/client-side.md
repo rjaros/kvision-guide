@@ -1,18 +1,31 @@
-# Client side
+# Frontend side
 
 ## Build configuration
 
-The client side build configuration is almost the same as the config of the standalone KVision project \(see: [Part 1, Setting up](../part-1-fundamentals/setting-up.md)\). The main difference is the `expectedBy` dependency on the common subproject and standard dependency on the kvision-remote module.
+You have to declare the dependency on the `kvision-remote`  module in the frontend target. Except that you can use any of the standard KVision modules.
 
 {% code-tabs %}
-{% code-tabs-item title="build.gradle" %}
-```groovy
+{% code-tabs-item title="build.gradle.kts" %}
+```kotlin
 dependencies {
-    expectedBy project(':common')
-    compile "org.jetbrains.kotlin:kotlin-stdlib-js:${kotlinVersion}"
-    compile "pl.treksoft:kvision:${kvisionVersion}"
-    compile "pl.treksoft:kvision-bootstrap:${kvisionVersion}"
-    compile "pl.treksoft:kvision-remote:${kvisionVersion}"
+    implementation(kotlin("stdlib-js"))
+    implementation("pl.treksoft:kvision:$kvisionVersion")
+    implementation("pl.treksoft:kvision-bootstrap:$kvisionVersion")
+    implementation("pl.treksoft:kvision-select:$kvisionVersion")
+    implementation("pl.treksoft:kvision-datetime:$kvisionVersion")
+    implementation("pl.treksoft:kvision-spinner:$kvisionVersion")
+    implementation("pl.treksoft:kvision-richtext:$kvisionVersion")
+    implementation("pl.treksoft:kvision-upload:$kvisionVersion")
+    implementation("pl.treksoft:kvision-handlebars:$kvisionVersion")
+    implementation("pl.treksoft:kvision-i18n:$kvisionVersion")
+    implementation("pl.treksoft:kvision-datacontainer:$kvisionVersion")
+    implementation("pl.treksoft:kvision-dialog:$kvisionVersion")
+    implementation("pl.treksoft:kvision-redux:$kvisionVersion")
+    implementation("pl.treksoft:kvision-chart:$kvisionVersion")
+    implementation("pl.treksoft:kvision-tabulator:$kvisionVersion")
+    implementation("pl.treksoft:kvision-pace:$kvisionVersion")
+    implementation("pl.treksoft:kvision-moment:$kvisionVersion")
+    implementation("pl.treksoft:kvision-remote:$kvisionVersion")
 }
 ```
 {% endcode-tabs-item %}
@@ -20,7 +33,7 @@ dependencies {
 
 ## Implementation
 
-The whole point of server side interface is to allow the client application use the services implemented on the server. KVision makes the process of sending and receiving data fully transparent and invisible in the client code. To make it possible you have to create a class, that will implement the service interface and will work as a proxy, allowing you to call remote methods exactly as if they were local. To do this, you inherit your class from both the service interface and the `KVRemoteAgent` class and implement all required interface methods with a special `call` method \(or more precisely a set of them\). Every time you just pass a callable reference to the method itself and all its parameters to the appropriate `call`.  
+The whole point of server side interface is to allow the client application use the services implemented on the server. KVision makes the process of sending and receiving data fully transparent and invisible in the frontend code. To make it possible you have to create a class, that will implement the service interface and will work as a proxy, allowing you to call remote methods exactly as if they were local. You inherit your class from both the service interface and the `KVRemoteAgent` class and implement all required interface methods with a special `call` method \(or more precisely a set of them\). You just pass a callable reference to the method itself and all its parameters to the appropriate `call`.  
 
 ```kotlin
 actual class AddressService : IAddressService, KVRemoteAgent<AddressService>(AddressServiceManager) {

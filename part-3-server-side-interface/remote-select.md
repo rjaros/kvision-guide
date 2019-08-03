@@ -1,10 +1,10 @@
 # Remote select
 
-The `pl.treksoft.kvision.form.select.RemoteSelectInput` component, contained in kvision-select-remote module, is a special component you can use to render a select box with options loaded from the server. Unlike standard `SelectInput` component \(which can also load options from an AJAX source but needs a defined endpoint\) `RemoteSelectInput` is bound directly to the method of the remote service. The method signature looks like this:
+The `pl.treksoft.kvision.form.select.SelectRemoteInput` component, contained in `kvision-select-remote` module, is a special component you can use to render a select box with options loaded from the server. Unlike standard `SelectInput` component \(which can also load options from an AJAX source but needs a defined endpoint\) `SelectRemoteInput` is bound directly to the method of the remote service. The method signature looks like this:
 
 ```kotlin
 interface IDictionaryService {
-    fun dictionary(search: String?, initial: String?): List<RemoteSelectOption>
+    fun dictionary(search: String?, initial: String?): List<RemoteOption>
 }
 ```
 
@@ -16,11 +16,11 @@ The `search` parameter is send with the value entered by the user into the searc
 
  The `initial` parameter is send with the initial value of the select control. If it's not null, the option bound to the given value should be returned \(even if `search` is not null and does not match the initial value\).
 
-The `RemoteSelectOption` class is defined as:
+The `RemoteOption` class is defined as:
 
 ```kotlin
 @Serializable
-data class RemoteSelectOption(
+data class RemoteOption(
     val value: String? = null,
     val text: String? = null,
     val className: String? = null,
@@ -34,10 +34,10 @@ data class RemoteSelectOption(
 
 and allows to send full set of properties for every option.
 
-To use `RemoteSelect` form control, you initialize it with the `ServiceManager` instance and a callable reference to the right method. 
+To use `SelectRemote` form control, you initialize it with the `ServiceManager` instance and a callable reference to the right method. 
 
 ```kotlin
-RemoteSelect(serviceManager = DictionaryServiceManager, 
+SelectRemote(serviceManager = DictionaryServiceManager, 
     function = IDictionaryService::dictionary,
     label = "Select option from the dictionary"
 )

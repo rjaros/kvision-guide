@@ -4,70 +4,29 @@
 
 ## Build configuration
 
-The integration with Jooby is contained in the kvision-server-jooby module. It has to be added as the dependency in the server subproject. This module depends on the `jooby-lang-kotlin`, `jooby-jackson`, `jooby-pac4j2` and `jackson-module-kotlin` libraries. Any other dependencies can be added to build.gradle and then be used in your application.
+The integration with Jooby is contained in the `kvision-server-jooby` module. It has to be added as the dependency in the backend target. This module depends on the `jooby-lang-kotlin`, `jooby-jackson`, `jooby-pac4j2` and `jackson-module-kotlin` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
 {% code-tabs %}
-{% code-tabs-item title="build.gradle" %}
-```groovy
-apply plugin: 'kotlin-platform-jvm'
-apply plugin: 'kotlinx-serialization'
-apply plugin: 'application'
-apply plugin: 'jooby'
-apply plugin: 'io.spring.dependency-management'
-apply plugin: "com.github.johnrengelman.shadow"
-
-mainClassName = 'com.example.MainKt'
-
-dependencyManagement {
-    imports {
-        mavenBom "org.jooby:jooby-bom:${joobyVersion}"
-    }
-}
-
+{% code-tabs-item title="build.gradle.kts" %}
+```kotlin
 dependencies {
-    expectedBy project(':common')
-
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
-    compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
-    compile "pl.treksoft:kvision-server-jooby:${kvisionVersion}"
-    compile "org.jooby:jooby-netty:${joobyVersion}"
-    compile "org.jooby:jooby-jdbc:${joobyVersion}"
-    compile "org.jooby:jooby-pac4j2:${joobyVersion}"
-    compile "org.pac4j:pac4j-sql:${pac4jVersion}"
-    compile "org.springframework.security:spring-security-crypto:${springSecurityCryptoVersion}"
-    compile "commons-logging:commons-logging:${commonsLoggingVersion}"
-    compile "com.h2database:h2:${h2Version}"
-    compile "org.postgresql:postgresql:${pgsqlVersion}"
-}
-
-sourceSets.main.resources {
-    srcDirs = ["conf", "public"]
-}
-
-sourceSets.main.java {
-    srcDirs "../common/src/main/kotlin"
-}
-
-compileKotlin {
-    targetCompatibility = javaVersion
-    sourceCompatibility = javaVersion
-    kotlinOptions {
-        jvmTarget = javaVersion
-    }
-}
-
-shadowJar {
-    into('/assets') {
-        from fileTree('../client/build/distributions/client')
-    }
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("reflect"))
+    implementation("pl.treksoft:kvision-server-jooby:$kvisionVersion")
+    implementation("org.jooby:jooby-netty:$joobyVersion")
+    implementation("org.jooby:jooby-jdbc:$joobyVersion")
+    implementation("org.jooby:jooby-pac4j2:$joobyVersion")
+    implementation("org.pac4j:pac4j-sql:$pac4jVersion")
+    implementation("org.springframework.security:spring-security-crypto:$springSecurityCryptoVersion")
+    implementation("commons-logging:commons-logging:$commonsLoggingVersion")
+    implementation("com.h2database:h2:$h2Version")
+    implementation("org.postgresql:postgresql:$pgsqlVersion")
+    implementation("com.github.andrewoma.kwery:core:$kweryVersion")
+    implementation("com.github.andrewoma.kwery:mapper:$kweryVersion")
 }
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
-
-{% hint style="info" %}
-Note the assets location defined inside the `shadowJar` task. It contains the compiled production code of the client application.
-{% endhint %}
 
 {% hint style="info" %}
 Note: You can use other engines instead of Netty - see [Jooby documentation](https://jooby.org/doc/servers/). Remember to add the appropriate dependency.
@@ -75,7 +34,7 @@ Note: You can use other engines instead of Netty - see [Jooby documentation](htt
 
 ## Application configuration
 
-The standard way to configure Jooby application is `conf/application.conf` file. It contains options needed for optional modules. It can be empty if no modules are used.
+The standard way to configure Jooby application is `src/backendMain/resources/application.conf` file. It contains options needed for optional modules. It can be empty if no modules are used.
 
 ## Implementation
 
@@ -100,7 +59,7 @@ actual class AddressService : IAddressService {
 }
 ```
 
-Since the service interface is strictly bound to the definition used in the common and client modules, the best way to access additional information inside its implementation methods is the dependency injection. Jooby is based on [Guice](https://github.com/google/guice) and you can access external information and resources by injecting server objects into your class. Most notably the `Config` and the `Request` objects, which give you access to the application configuration, the current request and the user session \(with the `request.session()` method\).
+Jooby is based on [Guice](https://github.com/google/guice) and you can access external components and resources by injecting server objects into your class. Most notably the `Config` and the `Request` objects, which give you access to the application configuration, the current request and the user session \(with the `request.session()` method\).
 
 ```kotlin
 actual class AddressService : IAddressService {
@@ -154,7 +113,7 @@ Apart from the above KVision configuration you are free to use any other module 
 
 ### Authentication with Pac4j
 
-KVision is already integrated with [Pac4j](https://jooby.org/doc/pac4j2/) security module and you can use the `Profile` class in common, client and server code. By calling `applyRoutes` function before or after Pac4j module declaration, you apply different security requirements to different services.
+KVision is already integrated with [Pac4j](https://jooby.org/doc/pac4j2/) security module and you can use the `Profile` class in common, frontend and backend code. By calling `applyRoutes` function before or after Pac4j module declaration, you apply different security requirements to different services.
 
 ```kotlin
 class App : Kooby({

@@ -1,14 +1,14 @@
 # External usage
 
-The kvision-remote module does not depend on the rest of KVision framework. It means that you can use KVision server side interfaces in applications, those client GUI is not based on KVision at all. While it's hard to think of a good reason not to use KVision ;-\), there may be some use cases for that.
+The `kvision-remote` module does not depend on the rest of KVision framework. It means that you can use KVision server side interfaces in applications, those client GUI is not based on KVision at all. While it's hard to think of a good reason not to use KVision ;-\), there may be some use cases for that.
 
 ### Requirements
 
-Of course the application has to be written in Kotlin and the project must be created with Gradle multiplatform feature \(new Kotlin 1.3 MPP model can be used\). One of the supported frameworks \(Ktor, Jooby,  Spring Boot\) must be used on the server side. A client module loader \(e.g. RequireJS\) should be used to load JavaScript modules and a jQuery library must be added as a dependency. Just like in standard configuration, all remote methods must be called with a coroutine context.
+Of course the application has to be written in Kotlin and the project must be created with Gradle multiplatform feature. One of the supported frameworks \(Ktor, Jooby,  Spring Boot\) must be used on the server side. A client module loader \(e.g. RequireJS\) should be used to load JavaScript modules and a jQuery library must be added as a dependency. Just like in standard configuration, all remote methods must be called with a coroutine context.
 
 ### Example
 
-You can find a [simple-mpp-fullstack-ktor](https://github.com/rjaros/kvision-examples/tree/master/simple-mpp-fullstack-ktor) example on GitHub. It's based on the official Ktor [fullstack-mpp](https://github.com/ktorio/ktor-samples/tree/master/mpp/fullstack-mpp) example with only a few changes. You can take a look if you are interested in details. The client code looks like this:
+You can find a [simple-mpp-fullstack-ktor](https://github.com/rjaros/kvision-examples/tree/master/simple-mpp-fullstack-ktor) example on GitHub. It's based on the official Ktor [fullstack-mpp](https://github.com/ktorio/ktor-samples/tree/master/mpp/fullstack-mpp) example with only a few changes. You can take a look if you are interested in details. The frontend code looks like this:
 
 ```kotlin
 @JsName("app")

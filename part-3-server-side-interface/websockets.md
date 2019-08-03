@@ -8,7 +8,7 @@ Note: Since channels API in Kotlin is still marked as experimental, you should t
 
 ### Common code
 
-The way the connections are defined is in many ways similar to defining remote methods \(see previous chapters\). You start by declaring an interface method in the common module, which will be used in the client and server modules. To work with websockets the method needs to have a specific signature:
+The way the websocket connections are defined is in many ways similar to defining remote methods \(see previous chapters\). You start by declaring an interface method in the common code, which will be used in the frontend and backend parts. This method needs to have a specific signature:
 
 ```kotlin
 suspend (ReceiveChannel<M>, SendChannel<N>) -> Unit
@@ -16,7 +16,7 @@ suspend (ReceiveChannel<M>, SendChannel<N>) -> Unit
 
 When you establish the websocket connection, you will be able to send objects of type `M` from the client to the server and send objects of type `N` from the server to the client. Both types `M` and `N` need to  fulfill the criteria described in this [chapter](common-code.md#method-parameters-and-return-value-must-be-of-supported-types). Of course type `M` can be the same as `N`.
 
-The declared interface method has to be used with the `bind` method of the `KVServiceManager` object.
+The declared interface method has to be passed to the call of a `bind` method of the `KVServiceManager` object.
 
 ```kotlin
 interface IWsService {
@@ -34,15 +34,15 @@ object WsServiceManager : KVServiceManager<WsService>(WsService::class) {
 }
 ```
 
-### Client code
+### Frontend code
 
-On the client side you implement the actual class, using `webSocket` methods from the `KVRemoteAgent` class. Note that, unlike the implementation of remote methods, you do not implement the interface `wservice` method inside the actual class \(it wont be used directly and it can have the empty implementation `{}` already added inside the interface declaration\). Instead, you create a method, which takes a specific `handler` function as a parameter. The handler's signature is:
+On the frontend side you implement the actual class, using `webSocket` methods from the `KVRemoteAgent` class. Note that, unlike the implementation of remote methods, you do not implement the interface `wservice` method inside the actual class \(it wont be used directly and it can have the empty implementation `{}` already added inside the interface declaration\). Instead, you create a method, which takes a specific `handler` function as a parameter. The handler's signature is:
 
 ```kotlin
 suspend (SendChannel<M>, ReceiveChannel<N>) -> Unit
 ```
 
-The types are reversed \(!\), because on the client side we will send `M` and receive `N` objects. Our implementation could look like this:
+The types are reversed \(!\), because on the frontend side we will send `M` and receive `N` objects. Our implementation could look like this:
 
 ```kotlin
 actual class WsService : IWsService, KVRemoteAgent<WsService>(WsServiceManager) {
@@ -75,9 +75,9 @@ GlobalScone.launch {
 }
 ```
 
-### Server code
+### Backend code
 
-The server code is probably the most simple. You just have to implement the interface method. It will be automatically called when a new client is connected, and it should run as long as the connection is active.
+The backend code is probably the most simple. You just have to implement the interface method. It will be automatically called when a new client is connected, and it should run as long as the connection is active.
 
 ```kotlin
 actual class WsService : IWsService {
@@ -116,7 +116,7 @@ actual class WsService : IWsService {
 }
 ```
 
-When using Spring Boot module, you can @autowire `WebSocketSession` and `HttpServletRequest`.
+When using Spring Boot module, you can @Autowire `WebSocketSession` and `HttpServletRequest`.
 
 ```kotlin
 @Service
@@ -135,9 +135,9 @@ actual class WsService : IWsService {
 
 ### Disconnection
 
-When the user leaves or closes the browser page the websocket connection is closed. On the server side you will find both input and output channels closed and then you should return from the server method.
+When the user leaves or closes the browser page the websocket connection is closed. On the backend side you will find both input and output channels closed and then you should return from the backend method.
 
-On the other hand, when the server is stopped the connection is closed as well. But on the client side you have the possibility to re-establish the connection when the server is online again. Just run your client method again after a few seconds.
+On the other hand, when the server is stopped the connection is closed as well. But on the frontend side you have the possibility to re-establish the connection when the server is online again. Just run your frontend method again after a few seconds.
 
 ```kotlin
 val ws = WsService()

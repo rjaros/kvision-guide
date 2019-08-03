@@ -4,64 +4,29 @@
 
 ## Build configuration
 
-The integration with Ktor is contained in the kvision-server-ktor module. It has to be added as the dependency in the server subproject. This module depends on the `ktor-server-core`, `ktor-jackson`, `jackson-module-kotlin` and `guice` libraries. Any other dependencies can be added to build.gradle and then be used in your application.
+The integration with Ktor is contained in the `kvision-server-ktor` module. It has to be added as the dependency in the backend target. This module depends on the `ktor-server-core`, `ktor-jackson`, `jackson-module-kotlin` and `guice` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
 {% code-tabs %}
-{% code-tabs-item title="build.gradle" %}
-```groovy
-apply plugin: 'kotlin-platform-jvm'
-apply plugin: 'kotlinx-serialization'
-apply plugin: 'application'
-apply plugin: "com.github.johnrengelman.shadow"
-
-mainClassName = 'io.ktor.server.netty.EngineMain'
-
+{% code-tabs-item title="build.gradle.kts" %}
+```kotlin
 dependencies {
-    expectedBy project(':common')
-
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
-    compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
-    compile "pl.treksoft:kvision-server-ktor:${kvisionVersion}"
-    compile "io.ktor:ktor-server-netty:${ktorVersion}"
-    compile "io.ktor:ktor-auth:${ktorVersion}"
-    compile "ch.qos.logback:logback-classic:${logbackVersion}"
-    compile "com.h2database:h2:${h2Version}"
-    compile "org.postgresql:postgresql:${pgsqlVersion}"
-    compile "org.jetbrains.exposed:exposed:${exposedVersion}"
-    compile "com.zaxxer:HikariCP:${hikariVersion}"
-}
-
-sourceSets.main.resources {
-    srcDirs = ["conf", "public"]
-}
-
-sourceSets.main.java {
-    srcDirs "../common/src/main/kotlin"
-}
-
-compileKotlin {
-    targetCompatibility = javaVersion
-    sourceCompatibility = javaVersion
-    kotlinOptions {
-        jvmTarget = javaVersion
-    }
-}
-
-shadowJar {
-    manifest {
-        attributes 'Main-Class': mainClassName
-    }
-    into('/assets') {
-        from fileTree('../client/build/distributions/client')
-    }
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("reflect"))
+    implementation("pl.treksoft:kvision-server-ktor:$kvisionVersion")
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("io.ktor:ktor-auth:$ktorVersion")
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    implementation("com.h2database:h2:$h2Version")
+    implementation("org.jetbrains.exposed:exposed:$exposedVersion")
+    implementation("org.postgresql:postgresql:$pgsqlVersion")
+    implementation("com.zaxxer:HikariCP:$hikariVersion")
+    implementation("commons-codec:commons-codec:$commonsCodecVersion")
+    implementation("com.axiomalaska:jdbc-named-parameters:$jdbcNamedParametersVersion")
+    implementation("com.github.andrewoma.kwery:core:$kweryVersion")
 }
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
-
-{% hint style="info" %}
-Note the assets location defined inside the `shadowJar` task. It contains the compiled production code of the client application.
-{% endhint %}
 
 {% hint style="info" %}
 Note: You can use other engines instead of Netty - see [Ktor documentation](https://ktor.io/servers/configuration#embedded-server). Remember to add the appropriate dependency.
@@ -69,7 +34,7 @@ Note: You can use other engines instead of Netty - see [Ktor documentation](http
 
 ## Application configuration
 
-The standard way to configure Ktor application is `conf/application.conf` file. Among other options it contains the name of the main function of your app.
+The standard way to configure Ktor application is `src/backendMain/resources/application.conf` file. Among other options it contains the name of the main function of your app.
 
 {% code-tabs %}
 {% code-tabs-item title="application.conf" %}
@@ -110,7 +75,7 @@ actual class AddressService : IAddressService {
 }
 ```
 
-Since the service interface is strictly bound to the definition used in the common and client modules, the best way to access additional information inside its implementation methods is the dependency injection. The integration module utilizes [Guice](https://github.com/google/guice) and you can access external information and resources by injecting server objects into your class. By default KVision allows you to inject `Application` and `ApplicationCall` instances. These objects give you access to the application configuration, its state, the current request and the user session \(if it is configured\).
+The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting server objects into your class. KVision allows you to inject `Application` and `ApplicationCall` instances. These objects give you access to the application configuration, its state, the current request and the user session \(if it is configured\).
 
 ```kotlin
 actual class AddressService : IAddressService {

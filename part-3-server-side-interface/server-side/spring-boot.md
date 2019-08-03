@@ -4,72 +4,36 @@
 
 ## Build configuration
 
-The integration with Spring Boot is contained in the kvision-server-spring-boot module. It has to be added as the dependency in the server subproject. This module depends on the `spring-boot-starter`, `spring-boot-starter-web`, `jackson-module-kotlin` and `pac4j-core` libraries. Any other dependencies can be added to build.gradle and then be used in your application.
+The integration with Spring Boot is contained in the `kvision-server-spring-boot` module. It has to be added as the dependency in the server target. This module depends on the `spring-boot-starter`, `spring-boot-starter-web`, `jackson-module-kotlin` and `pac4j-core` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
 {% code-tabs %}
-{% code-tabs-item title="build.gradle" %}
-```groovy
-apply plugin: 'java'
-apply plugin: 'kotlin-platform-jvm'
-apply plugin: 'kotlinx-serialization'
-apply plugin: 'kotlin-spring'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-sourceCompatibility = javaVersion
-
+{% code-tabs-item title="build.gradle.kts" %}
+```kotlin
 dependencies {
-    expectedBy project(':common')
-
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile "org.jetbrains.kotlin:kotlin-reflect"
-    compile "pl.treksoft:kvision-server-spring-boot:${kvisionVersion}"
-    compile "org.springframework.boot:spring-boot-starter"
-    compile "org.springframework.boot:spring-boot-devtools"
-    compile "org.springframework.boot:spring-boot-starter-web"
-    compile "org.springframework.boot:spring-boot-starter-jdbc"
-    compile "org.pac4j:spring-webmvc-pac4j:${springMvcPac4jVersion}"
-    compile "org.pac4j:pac4j-http:${pac4jVersion}"
-    compile "org.pac4j:pac4j-sql:${pac4jVersion}"
-    compile "org.springframework.security:spring-security-crypto:${springSecurityCryptoVersion}"
-    compile "commons-logging:commons-logging:${commonsLoggingVersion}"
-    compile "com.h2database:h2:${h2Version}"
-    compile "org.postgresql:postgresql:${pgsqlVersion}"
-}
-
-compileKotlin {
-    targetCompatibility = javaVersion
-    sourceCompatibility = javaVersion
-    kotlinOptions {
-        freeCompilerArgs = ["-Xjsr305=strict"]
-        jvmTarget = javaVersion
-    }
-}
-
-compileTestKotlin {
-    kotlinOptions {
-        freeCompilerArgs = ["-Xjsr305=strict"]
-        jvmTarget = javaVersion
-    }
-}
-
-bootJar {
-    from("../client/build/distributions/client") {
-        into 'public'
-    }
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("reflect"))
+    implementation("pl.treksoft:kvision-server-spring-boot:$kvisionVersion")
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-devtools")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation("org.pac4j:spring-webmvc-pac4j:$springMvcPac4jVersion")
+    implementation("org.pac4j:pac4j-http:$pac4jVersion")
+    implementation("org.pac4j:pac4j-sql:$pac4jVersion")
+    implementation("org.springframework.security:spring-security-crypto:$springSecurityCryptoVersion")
+    implementation("commons-logging:commons-logging:$commonsLoggingVersion")
+    implementation("com.h2database:h2:$h2Version")
+    implementation("org.postgresql:postgresql:$pgsqlVersion")
+    implementation("com.github.andrewoma.kwery:core:$kweryVersion")
+    implementation("com.github.andrewoma.kwery:mapper:$kweryVersion")
 }
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-{% hint style="info" %}
-Note the assets location defined inside the `bootJar` task. It contains the compiled production code of the client application.
-{% endhint %}
-
 ## Application configuration
 
-The standard way to configure Spring Boot application is `src/main/resources/application.yml` file. It contains options needed for optional dependencies. It can be empty if they are not used.
+The standard way to configure Spring Boot application is `src/backendMain/resources/application.yml` file. It contains options needed for optional dependencies. It can be empty if they are not used.
 
 ## Implementation
 
@@ -130,7 +94,7 @@ Note: The new instance of the service class will be created by Spring for every 
 
 ### Application class
 
-To allow KVision work with Spring Boot you have to pass all instances of the `KVServiceManager` objects \(defined in common module\) to the Spring environment. You do this by defining a provider method for the `List<KVServiceManager<Any>>` instance in the main application class.
+To allow KVision work with Spring Boot you have to pass all instances of the `KVServiceManager` objects \(defined in common code\) to the Spring environment. You do this by defining a provider method for the `List<KVServiceManager<Any>>` instance in the main application class.
 
 ```kotlin
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -150,7 +114,7 @@ fun main(args: Array<String>) {
 
 ### Authentication with Pac4j
 
-KVision is already integrated with [Pac4j](https://www.pac4j.org/) security engine and you can use the `Profile` class in common, client and server code. The configuration below allows you to use [Spring WebMVC Pac4j](https://github.com/pac4j/spring-webmvc-pac4j) project with your KVision application. By using `addPathPatternsFromServices` extension function you can enable authentication for selected services.
+KVision is already integrated with [Pac4j](https://www.pac4j.org/) security engine and you can use the `Profile` class in common, frontend and backend code. The configuration below allows you to use [Spring WebMVC Pac4j](https://github.com/pac4j/spring-webmvc-pac4j) project with your KVision application. By using `addPathPatternsFromServices` extension function you can enable authentication for selected services.
 
 ```kotlin
 @Service

@@ -1,9 +1,9 @@
 # Tabulator tables
 
-KVision Tabulator component is based on awesome [Tabulator](http://tabulator.info) library. It allows you to create interactive and reactive tables, with advanced sorting, filtering and editing capabilities. Tabulator component can be integrated with [observable data model](https://github.com/rjaros/kotlin-observable-js) or [Redux](using-redux.md) store and will automatically react to all changes in your data model. This component is contained in kvision-tabulator module. KVision adds Kotlin type-safe bindings for most of Tabulator API but you should get familiar with [Tabulator documentation](http://tabulator.info/docs/4.2) to achieve best results.
+KVision Tabulator component is based on awesome [Tabulator](http://tabulator.info) library. It allows you to create interactive and reactive tables, with advanced sorting, filtering and editing capabilities. Tabulator component can be integrated with [ObservableList&lt;T&gt;](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.utils/-observable-list/index.html) or [Redux](using-redux.md) store and will automatically react to all changes in your data model. This component is contained in kvision-tabulator module. KVision adds Kotlin type-safe bindings for most of Tabulator API but you should get familiar with [Tabulator documentation](http://tabulator.info/docs/4.2) to achieve best results.
 
 {% hint style="info" %}
-Note: At the moment these functionalities are not supported: tree structure, grouping, mutators, column calculations, download. Please fill a [feature request ](https://github.com/rjaros/kvision/issues/new)if you require any of these.
+Note: At the moment these functionalities are not supported: grouping, mutators, column calculations, download. Please fill a [feature request ](https://github.com/rjaros/kvision/issues/new)if you require any of these.
 {% endhint %}
 
 ## Creating a table
@@ -126,7 +126,7 @@ val tabulator = tabulator(
 Tabulator currently supports the following built-in formatter types: `Formatter.PLAINTEXT`, `Formatter.TEXTAREA`, `Formatter.HTML`, `Formatter.MONEY`, `Formatter.IMAGE`, `Formatter.LINK`, `Formatter.DATETIME`, `Formatter.DATATIMEDIFF`, `Formatter.TICKCROSS`, `Formatter.COLOR`, `Formatter.STAR`, `Formatter.TRAFFIC`, `Formatter.PROGRESS`, `Formatter.LOOKUP`, `Formatter.BUTTONTICK`, `Formatter.BUTTONCROSS`, `Formatter.ROWNUM`, `Formatter.HANDLE`. You can find more information about formatters configuration in the [Tabulator docs](http://tabulator.info/docs/4.2/format). 
 
 {% hint style="info" %}
-Note: You need to include kvision-moment module to use built-in date/time formatters.
+Note: You need to include `kvision-moment` module to use built-in date/time formatters.
 {% endhint %}
 
 ### Custom formatters

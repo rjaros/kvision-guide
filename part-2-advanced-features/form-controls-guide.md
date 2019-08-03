@@ -268,7 +268,7 @@ Select(label = "Select with remote data source").apply {
 }
 ```
 
-### \`\`[`p.t.k.f.select.RemoteSelect`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-remote-select/index.html)\`\`
+### \`\`[`p.t.k.f.select.SelectRemote`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-select-remote/index.html)
 
 This component is contained in the kvision-select-remote module and is a special version of `Select` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../part-3-server-side-interface/remote-select.md) of this guide.
 

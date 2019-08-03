@@ -1,6 +1,10 @@
 # Using Redux
 
-[Redux](https://redux.js.org/) is a popular predictable state container for JavaScript. You can use full power of Redux in your KVision applications by adding the kvision-redux module to your `build.gradle` file. This module contains a dedicated implementation of `ReduxStore` backed by the original JS library.
+[Redux](https://redux.js.org/) is a popular predictable state container for JavaScript. You can use full power of Redux in your KVision applications by adding the kvision-redux module to your `build.gradle.kts` file. This module contains a dedicated implementation of `ReduxStore` backed by the original JS library.
+
+{% hint style="info" %}
+KVision has built-in support for [Redux DevTools Extension](http://extension.remotedev.io/). Just install the extension for your browser and you can easily monitor and debug your Redux based application.   
+{% endhint %}
 
 ### State
 
@@ -110,7 +114,7 @@ Note: You can have multiple containers bound to the same Redux store. You can al
 
 ### Using additional middleware
 
-You can use any Redux [middleware](https://redux.js.org/introduction/ecosystem#middleware) with KVision. You just have to add a correct npm dependency to your build.gradle.
+You can use any Redux [middleware](https://redux.js.org/introduction/ecosystem#middleware) with KVision. You just have to add a correct npm dependency to your `build.gradle.kts`.
 
 ```groovy
 kotlinFrontend {

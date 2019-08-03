@@ -1,10 +1,10 @@
 # Observable data model
 
-Any non trivial application works with some kind of data, and providing a means for users to view and modify the data is very important task for user interface development. KVision brings you support for observable data model with one or two-way data binding, using the [kotlin-observable-js](https://github.com/rjaros/kotlin-observable-js) library and classes from `pl.treksoft.kvision.data` package, contained in the kvision-datacontainer module.
+Any non trivial application works with some kind of data, and providing a means for users to view and modify the data is very important task for user interface development. KVision brings you support for observable data model with one or two-way data binding, using the [`ObservableList<T>`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.utils/-observable-list/index.html) and classes from `pl.treksoft.kvision.data` package, contained in the `kvision-datacontainer` module.
 
 ### Data model
 
-This solution assumes that your data can be modeled as a kind of a list \(it can be a single-element list, too\). Having regard to the above, you have to keep your data in the instance of the `ObservableList` structure. If you like your data elements to be immutable just use a data class.
+This solution assumes that your data can be modeled as a kind of a list \(it can be a single-element list, too\). Having regard to the above, you have to keep your data in the instance of the `ObservableList` collection. If you like your data elements to be immutable just use a data class.
 
 ```kotlin
 data class Tweet(val date: Date, 
@@ -22,10 +22,10 @@ class Tweet(date: Date, nick: String, message: String) : BaseDataComponent() {
 }
 ```
 
-To create your data model just use a builder for an `ObservableList`.
+To create your data model just use a builder for the `ObservableList`.
 
 ```kotlin
-import com.lightningkite.kotlin.observable.list.observableListOf
+import pl.treksoft.kvision.utils.observableListOf
 
 val tweets = observableListOf<Tweet>()
 ```
@@ -33,7 +33,7 @@ val tweets = observableListOf<Tweet>()
 Of course you may also initialize your list with some data elements.
 
 ```kotlin
-import com.lightningkite.kotlin.observable.list.observableListOf
+import pl.treksoft.kvision.utils.observableListOf
 
 val tweets = observableListOf(
     Tweet(Date(), "User1", "How are you?"),
@@ -64,7 +64,7 @@ dataContainer(model, { element, _, _ ->
 })
 ```
 
-If you use mutable data elements, you can define the return binding just by mutating the element \(e.g. in an event handler\).
+If you use mutable data elements, you can easily mutate the element \(e.g. in an event handler\).
 
 ```kotlin
 class Data(text: String) : BaseDataComponent() {

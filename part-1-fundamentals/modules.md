@@ -89,6 +89,14 @@ KVision consists of both required and optional functionality. Modules can be add
       </td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-redux-kotlin</td>
+      <td style="text-align:left">
+        <p><a href="https://reduxkotlin.org/">ReduxKotlin</a> state container.</p>
+        <p>See <a href="../part-2-advanced-features/using-redux.md">Using Redux</a> chapter
+          for more information.</p>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-cordova</td>
       <td style="text-align:left">
         <p>Kotlin language bindings for Apache Cordova core API.</p>

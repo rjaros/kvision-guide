@@ -20,7 +20,7 @@ data class MyState(val content: String, val counter: Int)
 
 Actions are used to describe the possible changes of the state. Actions are represented as classes and they can contain additional data.
 
-An action class have to inherit \(directly or indirectly\) from `redux.RAction`. It's recommended to use a sealed class, to be able to easily use  exhaustive `when` expression.
+An action class have to inherit \(directly or indirectly\) from `pl.treksoft.kvision.redux.RAction`. It's recommended to use a sealed class, to be able to easily use  exhaustive `when` expression.
 
 ```kotlin
 sealed class MyAction : RAction {
@@ -139,3 +139,34 @@ Note: Different middleware can have different ways and options of creating their
 Note: The middleware will not work with the Kotlin object, but with the internal state of the JS Redux store.
 {% endhint %}
 
+### Using ReduxKotlin
+
+[ReduxKotlin](https://reduxkotlin.org/) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library, which is fully interchangable with kvision-redux module and gives you the same API. There are some pros and cons of using ReduxKotlin library, though.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Pros</th>
+      <th style="text-align:left">Cons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <ul>
+          <li>full compatibility with Kotlin classes</li>
+          <li>smaller resulting bundle size</li>
+          <li>multiplatform support (ability to share Redux code between client and
+            server modules)</li>
+        </ul>
+      </td>
+      <td style="text-align:left">
+        <ul>
+          <li>no support for Redux DevTools Extension</li>
+          <li>small ecosystem of existing extensions (compared to original JavaScript
+            Redux)</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

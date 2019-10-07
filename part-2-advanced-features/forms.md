@@ -46,12 +46,13 @@ Form controls are KVision components implementing one of five `FormControl` inte
 | `p.t.k.f.text.Text` | `StringFormControl` | built-in | A text field. |
 | `p.t.k.f.text.Password` | `StringFormControl` | built-in | A text field for password input. |
 | `p.t.k.f.text.TextArea` | `StringFormControl` | built-in | A text area. |
-| `p.t.k.f.time.DateTime` | `DateFormControl` | kvision-datetime | A date and/or time selection control. |
+| `p.t.k.f.select.SimpleSelect` | `StringFormControl` | built-in | A standard select component. |
+| `p.t.k.f.time.DateTime` | `DateFormControl` | kvision-bootstrap-datetime | A date and/or time selection control. |
 | `p.t.k.f.text.RichText` | `StringFormControl` | kvision-richtext | A rich text editor. |
-| `p.t.k.f.select.Select` | `StringFormControl` | kvision-select | A select box with support for multiple selection and AJAX data source support. |
-| `p.t.k.f.select.SelectRemote` | `StringFormControl` | kvision-select-remote | A select box for multi-platform server-side connectivity. |
-| `p.t.k.f.spinner.Spinner` | `NumberFormControl` | kvision-spinner | A spinner control for number selection. |
-| `p.t.k.f.upload.Upload` | `KFilesFormControl` | kvision-upload | An upload file control with preview and multi-selection.  |
+| `p.t.k.f.select.Select` | `StringFormControl` | kvision-bootstrap-select | An advanced select box with support for multiple selection and AJAX data source support. |
+| `p.t.k.f.select.SelectRemote` | `StringFormControl` | kvision-bootstrap-select-remote | A select box for multi-platform server-side connectivity. |
+| `p.t.k.f.spinner.Spinner` | `NumberFormControl` | kvision-bootstrap-spinner | A spinner control for number selection. |
+| `p.t.k.f.upload.Upload` | `KFilesFormControl` | kvision-bootstrap-upload | An upload file control with preview and multi-selection.  |
 
 {% hint style="info" %}
 Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated.

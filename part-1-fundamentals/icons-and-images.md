@@ -2,11 +2,11 @@
 
 ## Icons
 
-KVision has built-in support for font icons distributed with [Bootstrap version 3](https://getbootstrap.com/docs/3.3/components/#glyphicons) \(glyphicons\) and [Font Awesome version 4](https://fontawesome.com/v4.7.0/icons/). Components like buttons, links, drop-downs, select options and tabs have an `icon` property, which can be set to one of many available icon names. To use a glyphicon from Bootstrap just use the name of the selected icon \(e.g. "asterisk"\). To use Font Awesome icon use the name with "fa-" prefix \(e.g. "fa-asterisk"\). Some examples:
+KVision has built-in support for free font icons from the [Font Awesome](https://fontawesome.com) project \(you have to include `kvision-fontawesome` module\). Components like buttons, links, drop-downs, select options and tabs have an `icon` property, which can be set to one of many available icon names. KVision supports all free Font Awesome style prefixes  - Solid \(`fas`\), Regular \(`far`\) and Brands \(`fab`\). You can check icon availability at [Font Awesome gallery page](https://fontawesome.com/icons?d=gallery&m=free).
 
 ```kotlin
-val g = Button("A button with a glyphicon", "asterisk")
-val fb = Link("A link with a Font Awesome icon", "https://google.com", "fa-asterisk")
+val g = Button("A button with an icon", "fas fa-asterisk")
+val fb = Link("A link with an icon", "https://google.com", "fab fa-google")
 ```
 
 The dedicated `pl.treksoft.kvision.html.Icon` component lets you use those icons inside any container.

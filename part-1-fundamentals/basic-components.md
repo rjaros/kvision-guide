@@ -57,7 +57,7 @@ You can use classes from the [`pl.treksoft.kvision.table.*`](https://rjaros.gith
 ```kotlin
 table(
     listOf("Column 1", "Column 2", "Column 3"),
-    setOf(TableType.BORDERED, TableType.CONDENSED, TableType.STRIPED, TableType.HOVER), responsive = true
+    setOf(TableType.BORDERED, TableType.SMALL, TableType.STRIPED, TableType.HOVER), responsive = true
 ) {
     row {
         cell("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec fringilla turpis.")

@@ -17,14 +17,45 @@ KVision consists of both required and optional functionality. Modules can be add
     <tr>
       <td style="text-align:left">kvision-bootstrap</td>
       <td style="text-align:left">
-        <p>Bootstrap styles, layouts and components.</p>
-        <p>Can be omitted for applications, which use only the base functionality
+        <p>Bootstrap based components.</p>
+        <p>Can be omitted for applications, which use only the core functionality
           of the framework.</p>
-        <p><em>Note: A number of core and optional components do not work correctly without this module.</em>
-        </p>
         <p><em>See</em>  <a href="themes.md"><em>Theming</em></a>  <em>chapter for more information.</em>
         </p>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-bootstrap-css</td>
+      <td style="text-align:left">
+        <p>Standard Bootstrap CSS styling.</p>
+        <p>Can be omitted for applications, which use external Bootstrap CSS.</p>
+        <p><em>See</em>  <a href="themes.md"><em>Theming</em></a>  <em>chapter for more information.</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-bootstrap-select</td>
+      <td style="text-align:left">Bootstrap based advanced select form component.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-bootstrap-datetime</td>
+      <td style="text-align:left">Bootstrap based date and time picker form components.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-bootstrap-spinner</td>
+      <td style="text-align:left">Bootstrap based spinner form component.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-bootstrap-upload</td>
+      <td style="text-align:left">Bootstrap based upload form component.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-bootstrap-dialog</td>
+      <td style="text-align:left">Bootstrap based <a href="windows-and-modals.md#dialog-with-a-result">Dialog</a> component.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-fontawesome</td>
+      <td style="text-align:left"><a href="https://fontawesome.com">Font Awesome</a> support.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-handlebars</td>
@@ -36,24 +67,8 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">Internationalization support.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-select</td>
-      <td style="text-align:left">Select form component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-datetime</td>
-      <td style="text-align:left">Date and time form components.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-spinner</td>
-      <td style="text-align:left">Spinner form component.</td>
-    </tr>
-    <tr>
       <td style="text-align:left">kvision-richtext</td>
       <td style="text-align:left">Rich text form component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-upload</td>
-      <td style="text-align:left">Upload form component.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-chart</td>
@@ -62,10 +77,6 @@ KVision consists of both required and optional functionality. Modules can be add
     <tr>
       <td style="text-align:left">kvision-datacontainer</td>
       <td style="text-align:left"><a href="../part-2-advanced-features/observable-data-model.md">DataContainer</a> component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-dialog</td>
-      <td style="text-align:left"><a href="windows-and-modals.md#dialog-with-a-result">Dialog</a> component.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-tabulator</td>
@@ -121,9 +132,10 @@ KVision consists of both required and optional functionality. Modules can be add
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-select-remote</td>
+      <td style="text-align:left">kvision-bootstrap-select-remote</td>
       <td style="text-align:left">
-        <p>Select form component tailored for multi-platform, full-stack applications.</p>
+        <p>Bootstrap based select form component tailored for multi-platform, full-stack
+          applications.</p>
         <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
         </p>
       </td>

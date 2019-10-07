@@ -78,6 +78,10 @@ splitPanel(Direction.HORIZONTAL) {
 
 ## TabPanel
 
+{% hint style="info" %}
+This layout container is only available with the `kvision-bootstrap` module.
+{% endhint %}
+
 This container creates a popular tabbed layout, with tabs on the top, left or right side of the content. You use the dedicated `addTab` method of the `TabPanel` class to create tabs with given names, icons, images and routing URLs.
 
 ```kotlin
@@ -192,7 +196,11 @@ gridPanel(columnGap = 5, rowGap = 5, justifyItems = GridJustify.CENTER) {
 
 ## ResponsiveGridPanel
 
-This container allows you to position children components inside Bootstrap's popular responsive 12-columns grid system. It's well suited for mobile websites and applications, but can also be used as an alternative to the CSS Grid. The `ResponsiveGridPanel` class allows you to choose grid size \(with XS, SM, MD, LG enum values\) and automatically wraps children components into appropriate rows and cols elements. The number of rows and columns can be declared as parameters of the class constructor or calculated on the fly based on children added to the container. You use the dedicated `add(child: Component, col: Int, row: Int, size: Int = 0, offset: Int = 0)` method of the `ResponsiveGridPanel` class to add children to selected positions in the grid:
+{% hint style="info" %}
+This layout container is only available with the `kvision-bootstrap` module.
+{% endhint %}
+
+This container allows you to position children components inside Bootstrap's popular responsive 12-columns grid system. It's well suited for mobile websites and applications, but can also be used as an alternative to the CSS Grid. The `ResponsiveGridPanel` class allows you to choose grid size \(with SM, MD, LG, XL enum values\) and automatically wraps children components into appropriate rows and cols elements. The number of rows and columns can be declared as parameters of the class constructor or calculated on the fly based on children added to the container. You use the dedicated `add(child: Component, col: Int, row: Int, size: Int = 0, offset: Int = 0)` method of the `ResponsiveGridPanel` class to add children to selected positions in the grid:
 
 ```kotlin
 responsiveGridPanel {

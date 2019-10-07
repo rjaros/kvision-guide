@@ -177,21 +177,32 @@ println(radioGroup.value)
 
 ## Select boxes
 
+### \`\`[`p.t.k.f.select.SimpleSelect`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-simple-select/index.html)\`\`
+
+This is a simple select box component, based on standard HTML select control. It can be used when there is no need for advanced options of the `Select` component. The `SimpleSelect` component should be initialized with a list of options \(key to values pairs\).
+
+```kotlin
+SimpleSelect(
+    options = listOf("first" to "First option", "second" to "Second option"),
+    label = "Simple select"
+)
+```
+
 ### \`\`[`p.t.k.f.select.Select`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-select/index.html)\`\`
 
-The kvision-select module allows you to use a sophisticated form control based on [Bootstrap Select](https://github.com/silviomoreto/bootstrap-select). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network with an AJAX extension. The `Select` component can be initialized with a list of options \(key to values pairs\).
+The `kvision-bootstrap-select` module allows you to use a sophisticated form control based on [Bootstrap Select](https://github.com/silviomoreto/bootstrap-select). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network with an AJAX extension. The `Select` component can be initialized with a list of options \(key to values pairs\).
 
 ```kotlin
 Select(
     options = listOf("first" to "First option", "second" to "Second option"),
-    label = "Simple select"
+    label = "Select"
 )
 ```
 
 It can also be initialized by adding options components \(`SelectOption` and `SelectOptGroup` classes\) by hand. This way you can also use some more advanced features, like option groups, subtexts, icons and dividers.
 
 ```kotlin
-Select(label = "Simple select with features").apply {
+Select(label = "A select with features").apply {
     selectOption("first", "First Option", "Subtext")
     selectOption(divider = true)
     selectOption("second", "Second Option")
@@ -270,13 +281,13 @@ Select(label = "Select with remote data source").apply {
 
 ### \`\`[`p.t.k.f.select.SelectRemote`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-select-remote/index.html)
 
-This component is contained in the kvision-select-remote module and is a special version of `Select` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../part-3-server-side-interface/remote-select.md) of this guide.
+This component is contained in the `kvision-bootstrap-select-remote` module and is a special version of `Select` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../part-3-server-side-interface/remote-select.md) of this guide.
 
 ## Others
 
 ### \`\`[`p.t.k.f.time.DateTime`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.time/-date-time/index.html)\`\`
 
-The kvision-datetime module allows you to use a sophisticated form control based on [Bootstrap datetime picker](https://github.com/smalot/bootstrap-datetimepicker). It's a full-featured component, configurable with plenty of options. It can be used to display date and/or time picker, based on the date format specified with [Fecha library formatting tokens](https://github.com/taylorhakes/fecha#formatting-tokens). The default format is _"YYYY-MM-DD HH:mm"_, which means the control will display date and time picker.
+The `kvision-bootstrap-datetime` module allows you to use a sophisticated form control based on [Bootstrap datetime picker](https://github.com/pingcheng/bootstrap4-datetimepicker). It's a full-featured component, configurable with plenty of options. It can be used to display date and/or time picker, based on the date format specified with [Fecha library formatting tokens](https://github.com/taylorhakes/fecha#formatting-tokens). The default format is _"YYYY-MM-DD HH:mm"_, which means the control will display date and time picker.
 
 ```kotlin
 DateTime(format = "YYYY-MM-DD", label = "Date field").apply {
@@ -292,23 +303,24 @@ DateTime(label = "Date and time field").apply {
 }
 ```
 
-Other properties allow you to set the day of the week start, days of the week that should be disabled,  visibility of "Clear", "Today" and "AM/PM" buttons and also the increment used to build the hour view \(default - 5 minutes\).
+Other properties allow you to set days of the week that should be disabled,  visibility of "Clear", "Close" and "Today" buttons and also the increment used to build the hour view \(default - 5 minutes\).
 
 ```kotlin
 DateTime(label = "Date and time field").apply {
     placeholder = "Enter date and time"
-    weekStart = 1 // Monday
     daysOfWeekDisabled = arrayOf(0, 6) // Saturday, Sunday
-    clearBtn = false
-    todayBtn = false
-    showMeridian = false
-    minuteStep = 30
+    showClear = false
+    showClose = false
+    showTodayButton = false
+    stepping = 30
 }
 ```
 
+ You can also use `minDate`, `maxDate`, `enabledDates` and `disabledDates` properties to control which dates the user is allowed to choose.
+
 ### \`\`[`p.t.k.f.spinner.Spinner`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.spinner/-spinner/index.html)\`\`
 
-The kvision-spinner module allows you to use a form component based on [Bootstrap TouchSpin](https://github.com/istvan-ujjmeszaros/bootstrap-touchspin), which can be used to get numeric input from the user. The `Spinner` component has a few options to customize its appearance and functionality. You can set `min` and `max` values \(default - no limits\) and set the `step` value \(default - 1\).
+The `kvision-bootstrap-spinner` module allows you to use a form component based on [Bootstrap TouchSpin](https://github.com/istvan-ujjmeszaros/bootstrap-touchspin), which can be used to get numeric input from the user. The `Spinner` component has a few options to customize its appearance and functionality. You can set `min` and `max` values \(default - no limits\) and set the `step` value \(default - 1\).
 
 ```kotlin
 Spinner(label = "Number 10 - 20", 
@@ -346,7 +358,7 @@ Spinner(label = "Number", buttonsType = ButtonsType.NONE)
 
 ### \`\`[`p.t.k.f.upload.Upload`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.upload/-upload/index.html)\`\`
 
-The kvision-upload module allows you to use a form component based on [Bootstrap fileinput](https://github.com/kartik-v/bootstrap-fileinput), which allows the user to select and upload files. It can be used as a standard file input element, with files being sent as a multi-part form submission or as an AJAX submission and it can be also used as a client-side file selection tool to be used with [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) available in modern browsers. The `Upload` component has a lot of options to customize its appearance and functionality - see API documentation for more details. 
+The kvision-bootstrap-upload module allows you to use a form component based on [Bootstrap fileinput](https://github.com/kartik-v/bootstrap-fileinput), which allows the user to select and upload files. It can be used as a standard file input element, with files being sent as a multi-part form submission or as an AJAX submission and it can be also used as a client-side file selection tool to be used with [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) available in modern browsers. The `Upload` component has a lot of options to customize its appearance and functionality - see API documentation for more details. 
 
 #### Standard HTML form submission
 

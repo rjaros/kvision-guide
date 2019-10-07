@@ -2,6 +2,10 @@
 
 Every component in KVision can display a tooltip and a popover, both are based on Bootstrap components.
 
+{% hint style="info" %}
+This components are only available with the `kvision-bootstrap` module.
+{% endhint %}
+
 ## Tooltips
 
 A tooltip is a small informational text component usually displayed when a mouse pointer stops over the given component \(you can also change the default trigger\). By default the tooltip content is taken from the `title` property of the component.

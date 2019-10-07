@@ -2,6 +2,10 @@
 
 A KVision application can use two types of windows - modal dialogs and floating, re-sizable windows. Modals can be used to create popups with information messages, alerts, warnings or custom forms and buttons. Floating windows can be used to split your GUI into any number of separate parts, to work with them simultaneously \(multiple documents, floating toolbars etc.\)
 
+{% hint style="info" %}
+These components are only available with the `kvision-bootstrap` module.
+{% endhint %}
+
 ## Modals
 
 Modal components are grouped in the `pl.treksoft.kvision.modal` package. The base class for all modals is `pl.treksoft.kvision.modal.Modal`. You can use this class to create a modal with any content you need - just add your components to the container. You can use the standard `add` method to add typical components or containers to your modal. You can also use the `addButton` method to add some buttons to the footer of the modal \(these buttons will be right-aligned by default\).
@@ -76,7 +80,7 @@ GlobalScope.launch {
 ```
 
 {% hint style="info" %}
-Note: The `Dialog` component is contained in a separate kvision-dialog module, because of its dependency on Kotlin coroutines.
+Note: The `Dialog` component is contained in a separate `kvision-bootstrap-dialog` module, because of its dependency on Kotlin coroutines.
 {% endhint %}
 
 ## Windows
@@ -89,7 +93,7 @@ Unlike modals, window components have to be added to a container, and they are d
 
 ```kotlin
 window("Window", 600.px, 300.px, closeButton = true, 
-    maximizeButton = true, minimizeButton = true, icon = "fa-edit") {
+    maximizeButton = true, minimizeButton = true, icon = "fas fa-edit") {
     left = ((Random.nextDouble() * 800).toInt()).px
     top = ((Random.nextDouble() * 300).toInt()).px
     span("A window content")

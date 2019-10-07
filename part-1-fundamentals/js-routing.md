@@ -13,16 +13,16 @@ The JS router support is also directly available in the `TabPanel` and `StackPan
 
 ```kotlin
 tabPanel {
-    addTab("Basic formatting", BasicTab(), "fa-bars", route = "/basic")
-    addTab("Forms", FormTab(), "fa-edit", route = "/forms")
-    addTab("Buttons", ButtonsTab(), "fa-check-square-o", route = "/buttons")
-    addTab("Dropdowns & Menus", DropDownTab(), "fa-arrow-down", route = "/dropdowns")
-    addTab("Containers", ContainersTab(), "fa-database", route = "/containers")
-    addTab("Layouts", LayoutsTab(), "fa-th-list", route = "/layouts")
-    addTab("Modals", ModalsTab(), "fa-window-maximize", route = "/modals")
-    addTab("Data binding", DataTab(), "fa-retweet", route = "/data")
-    addTab("Windows", WindowsTab(), "fa-window-restore", route = "/windows")
-    addTab("Drag & Drop", DragDropTab(), "fa-arrows-alt", route = "/dragdrop")
+    addTab("Basic formatting", BasicTab(), "fas fa-bars", route = "/basic")
+    addTab("Forms", FormTab(), "fas fa-edit", route = "/forms")
+    addTab("Buttons", ButtonsTab(), "far fa-check-square", route = "/buttons")
+    addTab("Dropdowns & Menus", DropDownTab(), "fas fa-arrow-down", route = "/dropdowns")
+    addTab("Containers", ContainersTab(), "fas fa-database", route = "/containers")
+    addTab("Layouts", LayoutsTab(), "fas fa-th-list", route = "/layouts")
+    addTab("Modals", ModalsTab(), "fas fa-window-maximize", route = "/modals")
+    addTab("Data binding", DataTab(), "fas fa-retweet", route = "/data")
+    addTab("Windows", WindowsTab(), "fas fa-window-restore", route = "/windows")
+    addTab("Drag & Drop", DragDropTab(), "fas fa-arrows-alt", route = "/dragdrop")
 }
 ```
 

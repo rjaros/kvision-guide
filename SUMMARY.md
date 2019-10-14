@@ -25,7 +25,7 @@
 * [Part 2: Advanced features](part-2-advanced-features/README.md)
   * [Forms](part-2-advanced-features/forms.md)
   * [Form controls guide](part-2-advanced-features/form-controls-guide.md)
-  * [Observable data model](part-2-advanced-features/observable-data-model.md)
+  * [Observable data sources](part-2-advanced-features/observable-data-model.md)
   * [Drag and drop](part-2-advanced-features/drag-and-drop.md)
   * [Charts](part-2-advanced-features/charts.md)
   * [Tabulator tables](part-2-advanced-features/tabulator-tables.md)

@@ -116,16 +116,13 @@ actual class WsService : IWsService {
 }
 ```
 
-When using Spring Boot module, you can @Autowire `WebSocketSession` and `HttpServletRequest`.
+When using Spring Boot module, you can use `WithWebSocketSession` interface.
 
 ```kotlin
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-actual class WsService : IWsService {
-    @Autowired
-    lateinit var wsSession: WebSocketSession
-    @Autowired
-    lateinit var request: HttpServletRequest
+actual class WsService : IWsService, WithWebSocketSession {
+    lateinit var webSocketSession: WebSocketSession
 
     override suspend fun wservice(input: ReceiveChannel<Int>, output: SendChannel<String>) {
         //

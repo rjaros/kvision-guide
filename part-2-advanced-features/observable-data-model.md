@@ -1,6 +1,6 @@
-# Observable data model
+# Observable data sources
 
-Any non trivial application works with some kind of data, and providing a means for users to view and modify the data is very important task for user interface development. KVision brings you support for observable data model with one or two-way data binding, using the [`ObservableList<T>`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.utils/-observable-list/index.html) and classes from `pl.treksoft.kvision.data` package, contained in the `kvision-datacontainer` module.
+Any non trivial application works with some kind of data, and providing a means for users to view and modify the data is very important task for user interface development. KVision brings you support for observable data model with one or two-way data binding, using the [`ObservableList<T>`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.state/-observable-list/index.html) and classes from `pl.treksoft.kvision.data` package, contained in the `kvision-datacontainer` module.
 
 ### Data model
 
@@ -25,7 +25,7 @@ class Tweet(date: Date, nick: String, message: String) : BaseDataComponent() {
 To create your data model just use a builder for the `ObservableList`.
 
 ```kotlin
-import pl.treksoft.kvision.utils.observableListOf
+import pl.treksoft.kvision.state.observableListOf
 
 val tweets = observableListOf<Tweet>()
 ```
@@ -33,7 +33,7 @@ val tweets = observableListOf<Tweet>()
 Of course you may also initialize your list with some data elements.
 
 ```kotlin
-import pl.treksoft.kvision.utils.observableListOf
+import pl.treksoft.kvision.state.observableListOf
 
 val tweets = observableListOf(
     Tweet(Date(), "User1", "How are you?"),

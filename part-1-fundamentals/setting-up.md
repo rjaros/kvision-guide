@@ -90,6 +90,7 @@ dependencies {
     implementation("pl.treksoft:kvision-pace:$kvisionVersion")
     implementation("pl.treksoft:kvision-moment:$kvisionVersion")
     testImplementation(kotlin("test-js"))
+    testImplementation("pl.treksoft:kvision-testutils:$kvisionVersion:tests")
 }
 
 kotlinFrontend {
@@ -254,6 +255,29 @@ The source code for the application is contained in `src/main` directory. It con
 
 Test sources are contained in `src/test` directory.
 
+### The Application class
+
+The main KVision application class is must extend the `pl.treksoft.kvision.Application` class and override the`start` method.
+
+{% code-tabs %}
+{% code-tabs-item title="App.kt" %}
+```kotlin
+class App : Application() {
+
+    override fun start() {
+        root("kvapp") {
+            // TODO
+        }
+    }
+}
+
+fun main() {
+    startApplication(::App)
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 ## Development
 
 To run the application with Gradle continuous build, enter:
@@ -272,9 +296,9 @@ Add some code inside the `start` function:
 {% code-tabs %}
 {% code-tabs-item title="App.kt" %}
 ```kotlin
-override fun start(state: Map<String, Any>) {
+override fun start() {
     // ...
-    root = Root("kvapp") {
+    root("kvapp") {
         span("Hello world!")
     }
  }

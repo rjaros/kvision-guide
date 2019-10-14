@@ -99,8 +99,8 @@ After adding some new texts to your sources you can call the `./gradlew generate
 To initialize translations for one or more languages, you need to initialize the `I18n.manager` property during application initialization \(preferably in the `start` method of your `Application` object\). You should add all supported languages to the map given as the parameter to the `DefaultI18nManager` constructor.
 
 ```kotlin
-object Helloworld : ApplicationBase {
-    override fun start(state: Map<String, Any>) {
+class Helloworld : Application() {
+    override fun start() {
         // ...
         I18n.manager =
                 DefaultI18nManager(

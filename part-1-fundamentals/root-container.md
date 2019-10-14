@@ -5,8 +5,10 @@ Every KVision application must have at least one Root container \( an instance o
 {% code-tabs %}
 {% code-tabs-item title="App.kt" %}
 ```kotlin
+import pl.treksoft.kvision.panel.Root.Companion.root
+
 override fun start(state: Map<String, Any>) {
-    root = Root("kvapp") {
+    root("kvapp") {
     }
 }
 ```

@@ -76,7 +76,7 @@ KVision consists of both required and optional functionality. Modules can be add
     </tr>
     <tr>
       <td style="text-align:left">kvision-datacontainer</td>
-      <td style="text-align:left"><a href="../part-2-advanced-features/observable-data-model.md">DataContainer</a> component.</td>
+      <td style="text-align:left"><a href="../part-2-advanced-features/data-container.md">DataContainer</a> component.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-tabulator</td>

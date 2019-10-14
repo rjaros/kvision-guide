@@ -1,4 +1,4 @@
-# Observable data sources
+# Data container
 
 Any non trivial application works with some kind of data, and providing a means for users to view and modify the data is very important task for user interface development. KVision brings you support for observable data model with one or two-way data binding, using the [`ObservableList<T>`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.state/-observable-list/index.html) and classes from `pl.treksoft.kvision.data` package, contained in the `kvision-datacontainer` module.
 

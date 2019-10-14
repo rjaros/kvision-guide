@@ -33,4 +33,9 @@ This is the list of incompatibilities you may encounter when migrating your appl
 * `GridSize.XS` was removed from the `ResponsiveGridPanel` component.
 * The `buttonsType` is no longer a var property in the `Spinner` and the `SpinnerInput` components \(changing its value didn't work anyway ;-\)
 * The `DateTime` and `DateTimeInput` components are based on a new version of bootstrap-datetimepicker. The `weekstart`, `todayhighlight` and`showmeridian` properties were removed. The `todayBtn` and `clearBtn` properties were renamed to `showTodayButton` and `showClear` respectively. 
+* The `ObservableList` class was moved from `pl.treksoft.kvision.utils` to `pl.treksoft.kvision.state` package.
+* The `StateBinding` component was moved from `pl.treksoft.kvision.redux` to `pl.treksoft.kvision.state` package and is available in the main KVision module. It also can be used with any data source implementing `ObservableState` interface \(e.g. `ReduxStore` or `ObservableList`\).
+* The mapping of date and time classes between the client and the server code was significantly changed. The `pl.treksoft.kvision.types.Date` class is deprecated and not supported anymore. You should use `LocalDateTime`, `LocalDate`, `LocalTime`, `OffsetDateTime` and `OffsetTime` from `pl.treksoft.kvision.types` package instead. All of these classes are mapped to `kotlin.js.Date` on the client side, but to the corresponding `java.time.*` class on the server side. This way you can easily use new Java types in your server side applications.
+* The `pl.treksoft.kvision.hmr` package was removed and is not needed anymore. All KVision applications should now extend `pl.treksoft.kvision.Application` class and are executed with new `startApplication()` function.
+* `ReduxStore.subscribe()` method calls the callback function once immediately right after the registration.
 

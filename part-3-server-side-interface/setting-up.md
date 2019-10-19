@@ -6,6 +6,8 @@ KVision full-stack applications utilize [Kotlin multiplatform](https://kotlinlan
 
 The application sources are split into three source sets - `common`, `frontend` and `backend`, located in three directories: `src/commonMain` `src/frontendMain` and `src/backendMain`. The requirements and dependencies for build process are the same as mentioned in [Part 1 of this guide](../part-1-fundamentals/setting-up.md).
 
+Since version 2.0 you can use KVision compiler plugin to generate code in the common and frontend modules. You can still create this code by hand, but it's definitely easier to use the plugin.  
+
 ## Development
 
 During the development phase you compile and run frontend and backend targets separately.
@@ -32,8 +34,8 @@ All three frameworks have auto-reload feature, but only Jooby is watching for ch
 
 ```text
 ### Ktor or Spring Boot
-./gradlew -t backendMainClasses                        (on Linux)
-gradlew.bat -t backendMainClasses                      (on Windows)
+./gradlew -t compileKotlinBackend                       (on Linux)
+gradlew.bat -t compileKotlinBackend                     (on Windows)
 ```
 
 After both parts of your application are running, you can open [http://localhost:3000/](http://localhost:3000/) in your favorite browser. Changes made to your sources \(in any source set\) should be automatically applied to your running application. 

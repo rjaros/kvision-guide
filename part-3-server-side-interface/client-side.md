@@ -2,7 +2,7 @@
 
 ## Build configuration
 
-You have to declare the dependency on the `kvision-remote`  module in the frontend target. Except that you can use any of the standard KVision modules.
+You have to declare the dependency on the `kvision-remote`  module in the frontend target. Of course you can use any of the standard KVision modules as well.
 
 {% code-tabs %}
 {% code-tabs-item title="build.gradle.kts" %}
@@ -35,6 +35,10 @@ dependencies {
 
 ## Implementation
 
+{% hint style="info" %}
+This is not required if you use KVision compiler plugin.
+{% endhint %}
+
 The whole point of server side interface is to allow the client application use the services implemented on the server. KVision makes the process of sending and receiving data fully transparent and invisible in the frontend code. To make it possible you have to create a class, that will implement the service interface and will work as a proxy, allowing you to call remote methods exactly as if they were local. You inherit your class from both the service interface and the `KVRemoteAgent` class and implement all required interface methods with a special `call` method \(or more precisely a set of them\). You just pass a callable reference to the method itself and all its parameters to the appropriate `call`.  
 
 ```kotlin
@@ -54,7 +58,7 @@ actual class AddressService : IAddressService, KVRemoteAgent<AddressService>(Add
 Note: You initialize `KVRemoteAgent` class with the appropriate `KVServiceManager` object defined in the common code.
 {% endhint %}
 
-The whole code is just some boilerplate that could be auto-generated \(e.g. from annotations\), but unfortunately there are no such generators available on the Kotlin/JS platform at the moment.
+## The application
 
 The class defined above is ready to be used in the application code. The only thing you need to consider is  the suspending nature of the remote methods - they have to be run inside a coroutine context \(of course your code will not even compile if they are not\).
 

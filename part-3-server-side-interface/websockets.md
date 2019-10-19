@@ -16,6 +16,12 @@ suspend (ReceiveChannel<M>, SendChannel<N>) -> Unit
 
 When you establish the websocket connection, you will be able to send objects of type `M` from the client to the server and send objects of type `N` from the server to the client. Both types `M` and `N` need to  fulfill the criteria described in this [chapter](common-code.md#method-parameters-and-return-value-must-be-of-supported-types). Of course type `M` can be the same as `N`.
 
+#### Service manager object
+
+{% hint style="info" %}
+This is not required if you use KVision compiler plugin.
+{% endhint %}
+
 The declared interface method has to be passed to the call of a `bind` method of the `KVServiceManager` object.
 
 ```kotlin
@@ -36,6 +42,10 @@ object WsServiceManager : KVServiceManager<WsService>(WsService::class) {
 
 ### Frontend code
 
+{% hint style="info" %}
+This is not required if you use KVision compiler plugin.
+{% endhint %}
+
 On the frontend side you implement the actual class, using `webSocket` methods from the `KVRemoteAgent` class. Note that, unlike the implementation of remote methods, you do not implement the interface `wservice` method inside the actual class \(it wont be used directly and it can have the empty implementation `{}` already added inside the interface declaration\). Instead, you create a method, which takes a specific `handler` function as a parameter. The handler's signature is:
 
 ```kotlin
@@ -50,6 +60,8 @@ actual class WsService : IWsService, KVRemoteAgent<WsService>(WsServiceManager) 
         webSocket(IWsService::wservice, handler)
 }
 ```
+
+### Frontend application
 
 Now you are ready to use this method and actually create a websocket connection. The idea is simple - when the method is called, the connection is established and it lasts as long as the method is running. The connection is terminated when the method is finished. It's a suspending method, so you can easily use loops \(even `while(true)` \)  and structured concurrency with `coroutineScope` builders.
 
@@ -77,7 +89,7 @@ GlobalScone.launch {
 
 ### Backend code
 
-The backend code is probably the most simple. You just have to implement the interface method. It will be automatically called when a new client is connected, and it should run as long as the connection is active.
+On the backend side you just have to implement the interface method. It will be automatically called when a new client is connected, and it should run as long as the connection is active.
 
 ```kotlin
 actual class WsService : IWsService {

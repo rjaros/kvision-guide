@@ -21,3 +21,7 @@ fun app() {
 }
 ```
 
+{% hint style="info" %}
+The external usage example doesn't use KVision compiler plugin, although it should be possible to create similar project with this plugin.
+{% endhint %}
+

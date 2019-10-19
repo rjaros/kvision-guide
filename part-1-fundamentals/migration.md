@@ -2,6 +2,7 @@
 
 This is the list of incompatibilities you may encounter when migrating your application from KVision 1.
 
+* All DSL builder functions have been moved out of the companion objects to allow better auto-completion in IntelliJ IDEA. This change is incompatible with KVision 1 code. To migrate you should just remove code based on this regular expression: `[^\.]+\.Companion\.` from all your frontend code imports \(Kotlin compiler will help you easily find all possible errors afterwards\).
 * The default font size in Bootstrap 4 is larger. You may have to adjust your application layout manually or use a [custom CSS theme](themes.md).
 * The direct child of the `Root` component is no longer 100% wide. Use `width = 100.perc` if you want it to be.
 * The modules names have changed \(the API of the components, package names, class names, methods and properties are mostly the same, with the differences described in details below\).
@@ -38,4 +39,5 @@ This is the list of incompatibilities you may encounter when migrating your appl
 * The mapping of date and time classes between the client and the server code was significantly changed. The `pl.treksoft.kvision.types.Date` class is deprecated and not supported anymore. You should use `LocalDateTime`, `LocalDate`, `LocalTime`, `OffsetDateTime` and `OffsetTime` from `pl.treksoft.kvision.types` package instead. All of these classes are mapped to `kotlin.js.Date` on the client side, but to the corresponding `java.time.*` class on the server side. This way you can easily use new Java types in your server side applications.
 * The `pl.treksoft.kvision.hmr` package was removed and is not needed anymore. All KVision applications should now extend `pl.treksoft.kvision.Application` class and are executed with new `startApplication()` function.
 * `ReduxStore.subscribe()` method calls the callback function once immediately right after the registration.
+* You are strongly encouraged to migrate your server-side interfaces common and frontend code with the help of the new KVision compiler plugin.
 

@@ -11,16 +11,13 @@ You can add as many CSS files as you wish. Just save your `*.css` files in `src/
 {% code-tabs %}
 {% code-tabs-item title="App.kt" %}
 ```kotlin
-object App : ApplicationBase {
+class App : Application() {
     init {
         require("css/kvapp.css")
         require("css/other.css")
     }
     
-    override fun start(state: Map<String, Any>) {
-    // ...
-    }
-    override fun dispose(): Map<String, Any> {
+    override fun start() {
     // ...
     }
 }

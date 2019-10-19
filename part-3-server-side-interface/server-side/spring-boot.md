@@ -137,12 +137,22 @@ actual class AddressService : IAddressService {
 
 To allow KVision work with Spring Boot you have to pass all instances of the `KVServiceManager` objects \(defined in common code\) to the Spring environment. You do this by defining a provider method for the `List<KVServiceManager<Any>>` instance in the main application class.
 
+{% hint style="info" %}
+Use `@EnableAutoConfiguration` annotation to disable security if your app doesn't need it.
+{% endhint %}
+
 ```kotlin
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
+@EnableAutoConfiguration(
+    exclude = [
+        org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurityAutoConfiguration::class,
+        org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDetailsServiceAutoConfiguration::class
+    ]
+)
 class KVApplication {
     @Bean
     fun getManagers() = listOf(AddressServiceManager)

@@ -44,7 +44,7 @@ Dynamic translations are bound to the components they are part of \(tag content,
 
 ```kotlin
 // ...
-import pl.treksoft.kvision.i18n.I18n.tr
+import pl.treksoft.kvision.i18n.tr
 // ...
 
 span(tr("Label text"))
@@ -55,7 +55,7 @@ Static translations are evaluated only when the helper method is called. They ca
 
 ```kotlin
 // ...
-import pl.treksoft.kvision.i18n.I18n.gettext
+import pl.treksoft.kvision.i18n.gettext
 // ...
 
 console.log(gettext("Some info message"))

@@ -8,7 +8,7 @@ Every KVision project utilize the HMR \(Hot Module Replacement\) feature of [Web
 package com.example
 
 import pl.treksoft.kvision.Application
-import pl.treksoft.kvision.panel.Root.Companion.root
+import pl.treksoft.kvision.panel.root
 import pl.treksoft.kvision.require
 
 class App : Application() {

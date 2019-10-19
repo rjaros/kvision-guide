@@ -103,10 +103,6 @@ fun Application.main() {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-{% hint style="info" %}
-We have to compile our app with Gradle, to allow compiler plugin generate some common and frontend code. You should at least run `./gradlew compileKotlinMetadata` task once, to allow the project compilation in IntelliJ.
-{% endhint %}
-
 When we run our application everything will work automatically - a call on the client side will run the code on the server and the result will be sent back to the caller.
 
 That's all - our first, full-stack KVision application is ready!

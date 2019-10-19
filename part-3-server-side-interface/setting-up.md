@@ -40,6 +40,10 @@ gradlew.bat -t compileKotlinBackend                     (on Windows)
 
 After both parts of your application are running, you can open [http://localhost:3000/](http://localhost:3000/) in your favorite browser. Changes made to your sources \(in any source set\) should be automatically applied to your running application. 
 
+{% hint style="info" %}
+You have to compile applications with Gradle, to allow KVision compiler plugin to generate some common and frontend code. You should run`compileKotlinMetadata` Gradle task at least once, to allow project compilation in IntelliJ.
+{% endhint %}
+
 ## Production
 
 To build complete application optimized for production run:

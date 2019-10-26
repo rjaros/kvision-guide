@@ -4,17 +4,15 @@ The `pl.treksoft.kvision.form.select.SelectRemoteInput` component, contained in 
 
 ```kotlin
 interface IDictionaryService {
-    fun dictionary(search: String?, initial: String?): List<RemoteOption>
+    suspend fun dictionary(search: String?, initial: String?, state: String?): List<RemoteOption>
 }
 ```
-
-{% hint style="info" %}
-Note: This method doesn't need to be suspending, because it is not called directly on the client side.
-{% endhint %}
 
 The `search` parameter is send with the value entered by the user into the search box of the select control. It should be used to filter the returned list of options.
 
  The `initial` parameter is send with the initial value of the select control. If it's not null, the option bound to the given value should be returned \(even if `search` is not null and does not match the initial value\).
+
+The `state` parameter allows you to send optional, additional data to the backend service, with the help of the `stateFunction` parameter of the `SelectRemoteInput` constructor.
 
 The `RemoteOption` class is defined as:
 
@@ -39,6 +37,7 @@ To use `SelectRemote` form control, you initialize it with the `ServiceManager` 
 ```kotlin
 SelectRemote(serviceManager = DictionaryServiceManager, 
     function = IDictionaryService::dictionary,
+    stateFunction = { someState.toString() }
     label = "Select option from the dictionary"
 )
 ```

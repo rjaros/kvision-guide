@@ -39,5 +39,6 @@ This is the list of incompatibilities you may encounter when migrating your appl
 * The mapping of date and time classes between the client and the server code was significantly changed. The `pl.treksoft.kvision.types.Date` class is deprecated and not supported anymore. You should use `LocalDateTime`, `LocalDate`, `LocalTime`, `OffsetDateTime` and `OffsetTime` from `pl.treksoft.kvision.types` package instead. All of these classes are mapped to `kotlin.js.Date` on the client side, but to the corresponding `java.time.*` class on the server side. This way you can easily use new Java types in your server side applications.
 * The `pl.treksoft.kvision.hmr` package was removed and is not needed anymore. All KVision applications should now extend `pl.treksoft.kvision.Application` class and are executed with new `startApplication()` function.
 * `ReduxStore.subscribe()` method calls the callback function once immediately right after the registration.
+* Service functions for `SelectRemote` / `TabulatorRemote` were changed to suspending. The function for `SelectRemote` component takes additional `state: String?` parameter.
 * You are strongly encouraged to migrate your server-side interfaces common and frontend code with the help of the new KVision compiler plugin.
 

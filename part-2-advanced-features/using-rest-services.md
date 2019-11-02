@@ -44,8 +44,22 @@ val searchResult: Promise<SearchResult> = restClient.call<SearchResult, Query>("
 ```
 
 {% hint style="info" %}
-Note: The `Promise` object can be used directly or easily transformed to the Kotlin coroutine with `asDeferred` extension function \(you need the kotlinx.coroutines library dependency\).
+Note: The `Promise` object can be used directly or easily consumed as the Kotlin coroutine with `await()` extension function \(you need the kotlinx.coroutines library dependency\).
 {% endhint %}
 
+There are also `remoteRequest` and `request` methods, which work exactly like above, but return a wrapper `Response` object defined as:
 
+```kotlin
+data class Response<T>(val data: T, val textStatus: String, val jqXHR: JQueryXHR)
+```
+
+ This object gives you access to the returned data as well as the jQuery XHR object, which allows you to get HTTP header values of the server response.
+
+```kotlin
+val restClient = RestClient()
+val result: Promise<Response<dynamic>> = restClient.remoteRequest("https://api.github.com/search/repositories", obj { q = "kvision" })
+result.then {
+    console.log(it.jqXHR.getResponseHeader("Content-Type"))
+}
+```
 

@@ -44,6 +44,7 @@
     * [Ktor](part-3-server-side-interface/server-side/ktor.md)
     * [Jooby](part-3-server-side-interface/server-side/jooby.md)
     * [Spring Boot](part-3-server-side-interface/server-side/spring-boot.md)
+    * [Exception handling](part-3-server-side-interface/server-side/exception-handling.md)
   * [Select remote](part-3-server-side-interface/remote-select.md)
   * [Tabulator remote](part-3-server-side-interface/remote-tabulator.md)
   * [Websockets](part-3-server-side-interface/websockets.md)

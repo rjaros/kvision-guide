@@ -14,7 +14,7 @@ interface IRowDataService {
 This model is prepared for server side pagination, sorting and filtering, but the parameters are nullable, and will be sent only when configured by the appropriate `TabulatorOptions` .
 
 ```kotlin
-remoteTabulator(
+tabulatorRemote(
     RowDataServiceManager,
     IRowDataService::rowData,
     TabulatorOptions(

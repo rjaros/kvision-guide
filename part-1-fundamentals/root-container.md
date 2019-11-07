@@ -2,8 +2,8 @@
 
 Every KVision application must have at least one Root container \( an instance of `pl.treksoft.kvision.panel.Root` class\). Root container is initialized by an extension function of the Application class, with an ID attribute of HTML tag, which must be present in the main `index.html` file.
 
-{% code-tabs %}
-{% code-tabs-item title="App.kt" %}
+{% tabs %}
+{% tab title="App.kt" %}
 ```kotlin
 import pl.treksoft.kvision.panel.root
 
@@ -12,11 +12,11 @@ override fun start() {
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
-{% code-tabs %}
-{% code-tabs-item title="index.html" %}
+{% tabs %}
+{% tab title="index.html" %}
 ```markup
 <!DOCTYPE html>
 <html>
@@ -26,8 +26,8 @@ override fun start() {
 </body>
 </html>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 The Root container is the root of the components tree, which is inserted into the DOM in the place of the selected HTML element. This tree is managed, rendered and refreshed by the Root container.
 

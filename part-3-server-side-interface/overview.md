@@ -8,8 +8,8 @@ Let's assume we want to create an encoder application, that gets some text from 
 
 We start by defining our data model and service interface in the common \(shared\) source set. We have to declare our "business" `encode` method as suspending. We annotate the service interface with `@KVService`, which will allow KVision do all its "magic".
 
-{% code-tabs %}
-{% code-tabs-item title="Common.kt" %}
+{% tabs %}
+{% tab title="Common.kt" %}
 ```kotlin
 import pl.treksoft.kvision.annotations.KVService
 
@@ -22,15 +22,15 @@ interface IEncodingService {
     suspend fun encode(input: String, encodingType: EncodingType): String
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Frontend source set
 
 KVision compiler plugin will automatically generate `EncodingService` class, which implements `IEncodingService` interface. We just use this class in the frontend application.
 
-{% code-tabs %}
-{% code-tabs-item title="FrontendApp.kt" %}
+{% tabs %}
+{% tab title="FrontendApp.kt" %}
 ```kotlin
 val service = EncodingService()
 
@@ -49,8 +49,8 @@ vPanel {
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Notice we just call the `encode` method and get the result value directly. All asynchronous operations are hidden by the framework. We only have to use a coroutine builder function \(`launch` in this case\).
 
@@ -60,8 +60,8 @@ _\(For convenience we will use Ktor module in this chapter\)_
 
 To create an actual implementation of our `EncodingService` we just have to implement the methods of the service interface.
 
-{% code-tabs %}
-{% code-tabs-item title="Backend.kt" %}
+{% tabs %}
+{% tab title="Backend.kt" %}
 ```kotlin
 import java.net.URLEncoder
 import acme.Base64Encoder
@@ -83,13 +83,13 @@ actual class EncodingService : IEncodingService {
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Finally, we initialize routing in the main application function.
 
-{% code-tabs %}
-{% code-tabs-item title="Main.kt" %}
+{% tabs %}
+{% tab title="Main.kt" %}
 ```kotlin
 import io.ktor.application.Application
 
@@ -100,8 +100,8 @@ fun Application.main() {
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 When we run our application everything will work automatically - a call on the client side will run the code on the server and the result will be sent back to the caller.
 

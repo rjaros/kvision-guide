@@ -25,8 +25,8 @@ The recommended way to create a new application is to download and copy the [KVi
 
 The `build.gradle.kts` file is responsible for the definition of the build process. It declares necessary repositories \(e.g. external bintray repositories\) and all required dependencies. It declares `zip` task, typically used to build distribution pack.
 
-{% code-tabs %}
-{% code-tabs-item title="build.gradle.kts" %}
+{% tabs %}
+{% tab title="build.gradle.kts" %}
 ```kotlin
 import org.jetbrains.kotlin.gradle.frontend.KotlinFrontendExtension
 import org.jetbrains.kotlin.gradle.frontend.npm.NpmExtension
@@ -246,8 +246,8 @@ fun KotlinFrontendExtension.webpackBundle(block: WebPackExtension.() -> Unit) =
 
 fun KotlinFrontendExtension.npm(block: NpmExtension.() -> Unit) = configure(block)
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Source code
 
@@ -259,8 +259,8 @@ Test sources are contained in `src/test` directory.
 
 The main KVision application class is must extend the `pl.treksoft.kvision.Application` class and override the`start` method.
 
-{% code-tabs %}
-{% code-tabs-item title="App.kt" %}
+{% tabs %}
+{% tab title="App.kt" %}
 ```kotlin
 class App : Application() {
 
@@ -275,8 +275,8 @@ fun main() {
     startApplication(::App)
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Development
 
@@ -293,8 +293,8 @@ You can import the project in **IntelliJ IDEA** and open `src/main/kotlin/com/ex
 
 Add some code inside the `start` function:
 
-{% code-tabs %}
-{% code-tabs-item title="App.kt" %}
+{% tabs %}
+{% tab title="App.kt" %}
 ```kotlin
 override fun start() {
     // ...
@@ -303,8 +303,8 @@ override fun start() {
     }
  }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 You should see your changes immediately in the browser.
 

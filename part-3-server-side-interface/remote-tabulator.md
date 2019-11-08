@@ -7,16 +7,17 @@ The `pl.treksoft.kvision.tabulator.TabulatorRemote` component, contained in the 
 data class Row(val column1: String, val column2: String, val column3: String)
 
 interface IRowDataService {
-    suspend fun rowData(page: Int?, size: Int?, filter: List<RemoteFilter>?, sorter: List<RemoteSorter>?): RemoteData<Row>
+    suspend fun rowData(page: Int?, size: Int?, filter: List<RemoteFilter>?, sorter: List<RemoteSorter>?, state: String?): RemoteData<Row>
 }
 ```
 
-This model is prepared for server side pagination, sorting and filtering, but the parameters are nullable, and will be sent only when configured by the appropriate `TabulatorOptions` .
+This model is prepared for server side pagination, sorting, filtering and also receiving external state, but the parameters are nullable, and will be sent only when configured by the appropriate `TabulatorOptions`.
 
 ```kotlin
 tabulatorRemote(
     RowDataServiceManager,
     IRowDataService::rowData,
+    { someState.toString() },
     TabulatorOptions(
         layout = Layout.FITCOLUMNS,
         pagination = PaginationMode.REMOTE,

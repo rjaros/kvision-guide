@@ -37,7 +37,7 @@ To use `SelectRemote` form control, you initialize it with the `ServiceManager` 
 ```kotlin
 SelectRemote(serviceManager = DictionaryServiceManager, 
     function = IDictionaryService::dictionary,
-    stateFunction = { someState.toString() }
+    stateFunction = { someState.toString() },
     label = "Select option from the dictionary"
 )
 ```

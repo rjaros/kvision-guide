@@ -8,8 +8,7 @@ You can add a custom CSS file to define your own CSS classes, which can be used 
 
 You can add as many CSS files as you wish. Just save your `*.css` files in `src/main/resources/css` directory and `require` them in your main `App` object.
 
-{% tabs %}
-{% tab title="App.kt" %}
+{% code title="App.kt" %}
 ```kotlin
 class App : Application() {
     init {
@@ -22,15 +21,13 @@ class App : Application() {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ## Replacing Bootstrap CSS with a custom one
 
 You can remove `kvision-bootstrap-css` module from your application and include different CSS file in the main `index.html` of your application. It can be loaded from any local or remote source.
 
-{% tabs %}
-{% tab title="index.html" %}
+{% code title="index.html" %}
 ```markup
 <!DOCTYPE html>
 <html>
@@ -47,8 +44,7 @@ You can remove `kvision-bootstrap-css` module from your application and include 
 </body>
 </html>
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 You can create such a file manually, [build your own Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/build-tools/) version from sources or use a third party [customizer](http://bootstrapcustomizer.com/). To include a local version of Bootstrap, simply place `mybootstrap.min.css` in the `src/main/web/css` directory.
 
@@ -56,8 +52,7 @@ You can create such a file manually, [build your own Bootstrap](https://getboots
 
 There are some great free themes ready to use available at [Bootswatch CDN](https://www.bootstrapcdn.com/bootswatch/). For instance to use Materia \(material-like\) theme make the following change to your `index.html`.
 
-{% tabs %}
-{% tab title="index.html" %}
+{% code title="index.html" %}
 ```markup
 <!DOCTYPE html>
 <html>
@@ -74,8 +69,7 @@ There are some great free themes ready to use available at [Bootswatch CDN](http
 </body>
 </html>
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ## Using KVision without Bootstrap
 

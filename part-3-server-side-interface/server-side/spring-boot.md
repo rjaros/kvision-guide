@@ -6,8 +6,7 @@
 
 The integration with Spring Boot is contained in the `kvision-server-spring-boot` module. It has to be added as the dependency in the server target. This module depends on the `spring-boot-starter`, `spring-boot-starter-webflux`, `spring-boot-starter-security`, `spring-data-relational` and`jackson-module-kotlin`. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
-{% tabs %}
-{% tab title="build.gradle.kts" %}
+{% code title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -23,8 +22,7 @@ dependencies {
     implementation("io.r2dbc:r2dbc-h2:$r2dbcH2Version")
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ## Application configuration
 

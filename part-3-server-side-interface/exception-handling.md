@@ -4,8 +4,7 @@ When the backend code throws an unhandled exception, it will be logged on the se
 
 There is a special `pl.treksoft.remote.ServiceException` class defined in common KVision code. Unlike all other exception classes this one will be propagated directly from `ServiceException` to `ServiceException` and will not be logged on the backend side. It should be used as typical business error indication.
 
-{% tabs %}
-{% tab title="Backend.kt" %}
+{% code title="Backend.kt" %}
 ```kotlin
 actual class PasswordService : IPasswordService {
     override suspend fun changePassword(oldPassword: String, newPassword: String) {
@@ -16,11 +15,9 @@ actual class PasswordService : IPasswordService {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
-{% tabs %}
-{% tab title="Frontend.kt" %}
+{% code title="Frontend.kt" %}
 ```kotlin
 val passwordService = PasswordService()
 try {
@@ -29,6 +26,5 @@ try {
     Alert.show("Error", e.message)
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 

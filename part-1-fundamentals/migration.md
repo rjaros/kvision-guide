@@ -16,7 +16,7 @@ This is the list of incompatibilities you may encounter when migrating your appl
 | kvision-upload | kvision-bootstrap-upload |
 | kvision-dialog | kvision-bootstrap-dialog |
 
-* Two new modules: `kvision-bootstrap-css` i `kvision-fontawesome` were extracted from the `kvision-bootstrap` module.
+* Two new modules: `kvision-bootstrap-css` and `kvision-fontawesome` were extracted from the `kvision-bootstrap` module.
 * The Glyphicons support is dropped. Use Font Awesome icons instead.
 * The Font Awesome icon names require a style prefix \(`fas`, `far` or `fab`\).
 * Components like dropdown, context menu, modal, window, progressbar, navbar, toolbar, responsive grid, tab panel, tooltip and popover were moved into `kvision-bootstrap` module.

@@ -8,8 +8,7 @@ Let's assume we want to create an encoder application, that gets some text from 
 
 We start by defining our data model and service interface in the common \(shared\) source set. We have to declare our "business" `encode` method as suspending. We annotate the service interface with `@KVService`, which will allow KVision do all its "magic".
 
-{% tabs %}
-{% tab title="Common.kt" %}
+{% code title="Common.kt" %}
 ```kotlin
 import pl.treksoft.kvision.annotations.KVService
 
@@ -22,15 +21,13 @@ interface IEncodingService {
     suspend fun encode(input: String, encodingType: EncodingType): String
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ### Frontend source set
 
 KVision compiler plugin will automatically generate `EncodingService` class, which implements `IEncodingService` interface. We just use this class in the frontend application.
 
-{% tabs %}
-{% tab title="FrontendApp.kt" %}
+{% code title="FrontendApp.kt" %}
 ```kotlin
 val service = EncodingService()
 
@@ -49,8 +46,7 @@ vPanel {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Notice we just call the `encode` method and get the result value directly. All asynchronous operations are hidden by the framework. We only have to use a coroutine builder function \(`launch` in this case\).
 
@@ -60,8 +56,7 @@ _\(For convenience we will use Ktor module in this chapter\)_
 
 To create an actual implementation of our `EncodingService` we just have to implement the methods of the service interface.
 
-{% tabs %}
-{% tab title="Backend.kt" %}
+{% code title="Backend.kt" %}
 ```kotlin
 import java.net.URLEncoder
 import acme.Base64Encoder
@@ -83,13 +78,11 @@ actual class EncodingService : IEncodingService {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Finally, we initialize routing in the main application function.
 
-{% tabs %}
-{% tab title="Main.kt" %}
+{% code title="Main.kt" %}
 ```kotlin
 import io.ktor.application.Application
 
@@ -100,8 +93,7 @@ fun Application.main() {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 When we run our application everything will work automatically - a call on the client side will run the code on the server and the result will be sent back to the caller.
 

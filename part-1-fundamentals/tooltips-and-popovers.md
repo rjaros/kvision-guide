@@ -88,7 +88,7 @@ button("A button") {
         content = "Manual popover content",
         triggers = listOf(Trigger.MANUAL)
     ))
-    setEventListener {
+    onEvent {
         dblclick = {
             self.showPopover()
         }

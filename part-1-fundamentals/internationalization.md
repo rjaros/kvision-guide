@@ -121,7 +121,7 @@ The current language is bound to the `I18n.language` property. This property is 
 
 ```kotlin
 select(listOf("en" to "English", "de" to "Deutsch"), I18n.language) {
-    setEventListener<Select> {
+    onEvent {
         change = {
             I18n.language = self.value ?: "en"
         }

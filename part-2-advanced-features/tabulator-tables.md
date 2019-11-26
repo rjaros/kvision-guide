@@ -190,7 +190,7 @@ val tabulator = tabulator(
     }
 }
 
-search.setEventListener {
+search.onEvent {
     input = {
         tabulator.applyFilter()
     }
@@ -252,7 +252,7 @@ tabulator(model, options = TabulatorOptions(layout = Layout.FITCOLUMNS,
             DateTimeInput(value = data.startDate, format = "YYYY-MM-DD").apply {
                 size = InputSize.SMALL
                 clearBtn = false
-                setEventListener<DateTimeInput> {
+                onEvent {
                     change = {
                         success(self.value?.toStringF())
                     }

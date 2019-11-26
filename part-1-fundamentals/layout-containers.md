@@ -118,7 +118,7 @@ tabPanel {
     addTab("Apple", tab1Content, "fa-apple", closable = true)
     addTab("Google", tab2Content, "fa-google", closable = true)
     addTab("Microsoft", tab3Content, "fa-windows", closable = true)
-    setEventListener<TabPanel> {
+    onEvent {
         tabClosing = { e ->
             if (e.detail.data == 2) {
                 e.preventDefault()

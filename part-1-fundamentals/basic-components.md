@@ -89,7 +89,7 @@ div {
 Note that all the generated HTML markup is fully dynamic and is bound to the state of the KVision components. If you change content or styling properties of any visible object, it will automatically re-render the content shown in the browser. These changes can be triggered by any source \(timers, coroutines, network events\) but probably most often they will be triggered by user interaction.
 
 ```kotlin
-link("A link to Google", "http://www.google.com").setEventListener<Link> {
+link("A link to Google", "http://www.google.com").onEvent {
     mouseover = {
         self.label = "A link to Microsoft"
         self.url = "http://www.microsoft.com"

@@ -53,7 +53,7 @@ div {
 
 ## Style objects
 
-When the CSS properties are set directly on the component, the corresponding style attributes are inlined in the generated HTML code. Sometimes it's better to define a CSS class, which can be reused by other components. In KVision you can do this using the `Style` class. By instantiating the `Style` object you create a CSS class definition. This definition can be assigned to any component with the `addCssClass` method.
+When the CSS properties are set directly on the component, the corresponding style attributes are inlined in the generated HTML code. Sometimes it's better to define a CSS class, which can be reused by other components. In KVision you can do this using the `Style` class. By instantiating the `Style` object you create a CSS class definition. This definition can be assigned to any component with the `addCssStyle` method.
 
 ```kotlin
 val myStyle = Style {
@@ -63,10 +63,10 @@ val myStyle = Style {
     margin = 10.px
 }
 div {
-    addCssClass(myStyle)
+    addCssStyle(myStyle)
 }
 div {
-    addCssClass(myStyle)
+    addCssStyle(myStyle)
 }
 ```
 
@@ -93,7 +93,7 @@ val boxStyle = Style {
 }
 
 div {
-    addCssClass(boxStyle)
+    addCssStyle(boxStyle)
     h1 {
         +"Header"
     }

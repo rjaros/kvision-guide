@@ -1,9 +1,11 @@
 # Events
 
-KVision allows you to listen to all the standard DOM events and also many custom events from many different components. You bind to an event with the `setEventListener` method of the base `Widget` class.
+KVision allows you to listen to all the standard DOM events and also many custom events from many different components. You bind your action to an event with the `onEvent` extension function.
 
 ```kotlin
-widget.setEventListener {
+import pl.treksoft.kvision.core.onEvent
+
+widget.onEvent {
     mousedown = { e ->
         console.log(e)
     }
@@ -21,17 +23,17 @@ button.onClick { e ->
 Event function parameter is not required if not used.
 
 ```kotlin
-button.setEventListener {
+button.onEvent {
     mousedown = {
         console.log("Mouse down")
     }
 }
 ```
 
-You can bind many different event handlers with one call to the `setEventListener` method.
+You can bind many different event handlers with one call to the `onEvent` function.
 
 ```kotlin
-button.setEventListener {
+button.onEvent {
     mousedown = {
         console.log("Mouse down")
     }
@@ -44,26 +46,22 @@ button.setEventListener {
 }
 ```
 
-Unfortunately, due to internal Snabbdom implementation, you can't bind two or more handlers to the same event - the latter handler will overwrite the prior one.
+Unfortunately, due to internal Snabbdom implementation, you can't bind two or more handlers to the same event - the second handler will always overwrite the first one.
 
 ## Self reference inside an event handler
 
-In the code of a basic event handler you can get the reference to the component instance with a special `self` variable.
+In the code of an event handler you can get the reference to the component instance with a special `self` variable.
 
 ```kotlin
-Div("Click to hide ...").setEventListener {
+Div("Click to hide ...").onEvent {
     click = {
-        self.hide() // self is of type Widget
+        self.hide()
     }
 }
-```
 
-The type of the `self` variable is `Widget` in the above example. If you want to call a dedicated method of a receiver component you can call `setEventListener` with the correct type parameter.
-
-```kotlin
-Div("Click to change").setEventListener<Div> {
+Div("Click to change").onEvent {
     click = {
-        self.content = "Changed" // self is of type Div
+        self.content = "Changed"
     }
 }
 ```

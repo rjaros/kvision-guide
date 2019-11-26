@@ -73,7 +73,7 @@ class Data(text: String) : BaseDataComponent() {
 val model = observableListOf(Data("One"), Data("Two"), Data("Three"))
 
 dataContainer(model, { element, _, _ ->
-    Span(element.text).setEventListener<Label> {
+    Span(element.text).onEvent {
         click = {
             element.text = "Clicked"
         }

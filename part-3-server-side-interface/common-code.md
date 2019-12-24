@@ -51,7 +51,7 @@ Supported types are:
 
 * all basic Kotlin types \(`String`, `Boolean`, `Int`, `Long`, `Short`, `Char`, `Byte`,  `Float`, `Double`\)
 * `Enum` class defined in common code
-* `pl.treksoft.kvision.types.Date`, which is automatically mapped to `kotlin.js.Date` on the frontend side and `java.util.Date` on the backend side
+* All date and time types from `pl.treksoft.kvision.types` package, which are automatically mapped to `kotlin.js.Date` on the frontend side and the appropriate `java.time.*` type on the backend side
 * any class defined in the common code with a `@Serializable` annotation
 * a `List<T>`, where T is one of the above types
 * a `T?`, where T is one of the above types \(allowed only as method parameters - see previous rule\)

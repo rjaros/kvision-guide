@@ -8,6 +8,10 @@ You have to declare the dependency on the `kvision-remote`  module in the fronte
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-js"))
+    implementation(npm("po2json"))
+    implementation(npm("grunt"))
+    implementation(npm("grunt-pot"))
+                
     implementation("pl.treksoft:kvision:$kvisionVersion")
     implementation("pl.treksoft:kvision-bootstrap:$kvisionVersion")
     implementation("pl.treksoft:kvision-bootstrap-css:$kvisionVersion")

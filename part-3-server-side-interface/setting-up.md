@@ -30,7 +30,7 @@ To run the backend application enter:
 gradlew.bat backendRun                                  (on Windows)
 ```
 
-All three frameworks have auto-reload feature, but Jooby's Gradle Plugin doesn't play well with Kotlin multiplatform projects and auto-reload is not working. In case of Ktor and Spring Boot auto-reload is based on the classpath monitoring, so you have to run another Gradle process for continuous build:
+All three frameworks have auto-reload feature, but Jooby's gradle plugin doesn't play well with Kotlin multiplatform projects and auto-reload is not working. In case of Ktor and Spring Boot auto-reload is based on the classpath monitoring, so you have to run another Gradle process for continuous build:
 
 ```text
 ### Ktor or Spring Boot

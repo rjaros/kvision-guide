@@ -2,7 +2,7 @@
 
 ## HTML markup
 
-KVision contains classes for creating typical HTML markup of a web page. The main class for this purpose is [`pl.treksoft.kvision.html.Tag`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-tag/index.html), which allows you to render any HTML element. This class is also a container, so instances of `Tag` can be nested inside other `Tag` objects. There are a few subclasses of `Tag` - `Div` , `P`, `Span`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Section`, `Header`, `Footer` - which render the most used HTML elements. With DSL builders you can declare simple markup as follows:
+KVision contains classes for creating typical HTML markup of a web page. The main class for this purpose is [`pl.treksoft.kvision.html.Tag`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-tag/index.html), which allows you to render any HTML element. This class is also a container, so instances of `Tag` can be nested inside other `Tag` objects. There are a few subclasses of `Tag` - `Div` , `P`, `Span`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Main`, `Section`, `Header`, `Footer` - which render the most used HTML elements. With DSL builders you can declare simple markup as follows:
 
 ```kotlin
 div {

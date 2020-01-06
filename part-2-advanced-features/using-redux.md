@@ -117,10 +117,8 @@ Note: You can have multiple containers bound to the same Redux store. You can al
 You can use any Redux [middleware](https://redux.js.org/introduction/ecosystem#middleware) with KVision. You just have to add a correct npm dependency to your `build.gradle.kts`.
 
 ```groovy
-kotlinFrontend {
-    npm {
-        dependency("redux-logger", "3.0.6")    
-    }
+sourceSets["main"].dependencies {
+    implementation(npm("redux-logger", "3.0.6"))
 }
 ```
 

@@ -52,6 +52,7 @@ Supported types are:
 * all basic Kotlin types \(`String`, `Boolean`, `Int`, `Long`, `Short`, `Char`, `Byte`,  `Float`, `Double`\)
 * `Enum` class defined in common code
 * All date and time types from `pl.treksoft.kvision.types` package, which are automatically mapped to `kotlin.js.Date` on the frontend side and the appropriate `java.time.*` type on the backend side
+* A `pl.treksoft.kvision.types.Decimal` type, which is automatically mapped to `Number(double)` on the frontend side and `java.math.BigDecimal` on the backend side
 * any class defined in the common code with a `@Serializable` annotation
 * a `List<T>`, where T is one of the above types
 * a `T?`, where T is one of the above types \(allowed only as method parameters - see previous rule\)
@@ -63,7 +64,7 @@ Note: Default parameters values are supported.
 Even with the above restrictions, the set of supported types is quite rich and you should be able to model almost any use case for your applications. With the help of `@Serializable` annotation you can always wrap any data structure into a serializable data class. It's also a simple way to pass around the parameters count limit.
 
 {% hint style="info" %}
-Note: You have to add `@ContextualSerialization` annotations to your `LocalDate`, `LocalDateTime`, `LocalTime`, `OffsetDateTime` and `OffsetTime` fields in order to explicitly allow serialization with the KVision context. You can also use `@file:ContextualSerialization(LocalDate::class)` file annotation if you want to keep your model classes cleaner. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/custom_serializers.md#contextualserialization-annotation) documentation.
+Note: You have to add `@ContextualSerialization` annotations to your `LocalDate`, `LocalDateTime`, `LocalTime`, `OffsetDateTime,` `OffsetTime` and `Decimal` fields in order to explicitly allow serialization with the KVision context. You can also use `@file:ContextualSerialization(LocalDate::class)` file annotation if you want to keep your model classes cleaner. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/custom_serializers.md#contextualserialization-annotation) documentation.
 {% endhint %}
 
 With an interface defined in the common code, the type safety of your whole application is forced at a compile time. Any incompatibility between the frontend and the backend code will be marked as a compile-time error.

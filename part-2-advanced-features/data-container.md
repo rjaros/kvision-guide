@@ -64,6 +64,10 @@ dataContainer(model, { element, _, _ ->
 })
 ```
 
+{% hint style="info" %}
+You can safely use DSL builder functions inside a `factory` function. KVision will  automatically detect if you are using DSL builders or just return a component to be used.
+{% endhint %}
+
 If you use mutable data elements, you can easily mutate the element \(e.g. in an event handler\).
 
 ```kotlin

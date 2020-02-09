@@ -50,6 +50,10 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">Bootstrap based upload form component.</td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-bootstrap-typeahead</td>
+      <td style="text-align:left">Bootstrap based typeahead (autocomplete) form component.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-bootstrap-dialog</td>
       <td style="text-align:left">Bootstrap based <a href="windows-and-modals.md#dialog-with-a-result">Dialog</a> component.</td>
     </tr>
@@ -136,6 +140,15 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p>Bootstrap based select form component tailored for multi-platform, full-stack
           applications.</p>
+        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-bootstrap-typeahead-remote</td>
+      <td style="text-align:left">
+        <p>Bootstrap based typeahead (autocomplete) form component tailored for multi-platform,
+          full-stack applications.</p>
         <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
         </p>
       </td>

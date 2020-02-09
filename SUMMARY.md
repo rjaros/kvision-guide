@@ -46,6 +46,7 @@
     * [Spring Boot](part-3-server-side-interface/server-side/spring-boot.md)
   * [Exception handling](part-3-server-side-interface/exception-handling.md)
   * [Select remote](part-3-server-side-interface/remote-select.md)
+  * [Typeahead remote](part-3-server-side-interface/typeahead-remote.md)
   * [Tabulator remote](part-3-server-side-interface/remote-tabulator.md)
   * [Websockets](part-3-server-side-interface/websockets.md)
   * [External usage](part-3-server-side-interface/external-usage.md)

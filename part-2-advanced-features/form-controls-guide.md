@@ -74,6 +74,37 @@ RichText(value = "<b>Bold text</b>",
     autofocus = true)
 ```
 
+### \`\`[`p.t.k.f.text.Typeahead`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.text/-typeahead/index.html)\`\`
+
+The kvision-bootstrap-typeahead module contains an enhanced text field with support for typeahead \(autocomplete\) functionality. Both local and remote data sources are supported. To use local data source pass a list of values with the `options` parameter.
+
+```kotlin
+Typeahead(
+    options = listOf("Alabama", "Alaska", "Arizona", "Arkansas", "California"),
+    label = "Select state"
+)
+```
+
+To use a remote data source \(with an AJAX or RESTful call\) pass a `TaAjaxOptions` object.
+
+```kotlin
+Typeahead(taAjaxOptions = TaAjaxOptions(
+    "https://api.github.com/search/repositories",
+    preprocessQuery = { query ->
+        obj {
+            this.q = query
+        }
+    },
+    preprocessData = {
+        it.items.map { item -> item.name }
+    }
+), items = 5, delay = 3000, minLength = 3, label = "Select a repository")
+```
+
+### \`\`[`p.t.k.f.text.TypeaheadRemote`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.text/-typeahead-remote/index.html)\`\`
+
+This component is contained in the `kvision-bootstrap-typeahead-remote` module and is a special version of the `Typeahead` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../part-3-server-side-interface/typeahead-remote.md) of this guide.
+
 ## Checkboxes and radiobuttons
 
 ### \`\`[`p.t.k.f.check.CheckBox`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.check/-check-box/index.html)\`\`
@@ -429,4 +460,16 @@ formPanel<Form> {
     }
 }
 ```
+
+### \`\`[`p.t.k.f.range.Range`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.range/-range/index.html)\`\`
+
+This component can be used to allow a user to select numeric value with a slider. You need to configure `min` \(default 0\), `max` \(default 100\) and `step` \(default 1\) attributes.
+
+```kotlin
+Range(label = "Range field 10 - 20", min = 10, max = 20)
+```
+
+{% hint style="info" %}
+Note: the actual appearance of the control may depend on your browser.
+{% endhint %}
 

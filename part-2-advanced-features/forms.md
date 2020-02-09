@@ -47,12 +47,14 @@ Form controls are KVision components implementing one of five `FormControl` inte
 | `p.t.k.f.text.Password` | `StringFormControl` | built-in | A text field for password input. |
 | `p.t.k.f.text.TextArea` | `StringFormControl` | built-in | A text area. |
 | `p.t.k.f.select.SimpleSelect` | `StringFormControl` | built-in | A standard select component. |
+| `p.t.k.f.range.Range` | `NumberFormControl` | built-in | A range selection field. |
 | `p.t.k.f.time.DateTime` | `DateFormControl` | kvision-bootstrap-datetime | A date and/or time selection control. |
 | `p.t.k.f.text.RichText` | `StringFormControl` | kvision-richtext | A rich text editor. |
 | `p.t.k.f.select.Select` | `StringFormControl` | kvision-bootstrap-select | An advanced select box with support for multiple selection and AJAX data source support. |
 | `p.t.k.f.select.SelectRemote` | `StringFormControl` | kvision-bootstrap-select-remote | A select box for multi-platform server-side connectivity. |
 | `p.t.k.f.spinner.Spinner` | `NumberFormControl` | kvision-bootstrap-spinner | A spinner control for number selection. |
 | `p.t.k.f.upload.Upload` | `KFilesFormControl` | kvision-bootstrap-upload | An upload file control with preview and multi-selection.  |
+| `p.t.k.f.text.Typeahead` | `StringFormControl` | kvision-bootstrap-typeahead | A typeahed \(autocomplete\) text field with support for data source. |
 
 {% hint style="info" %}
 Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated.
@@ -171,4 +173,76 @@ Note: `validatorMessage` parameters are functions with the same parameters as `v
 {% hint style="info" %}
 Note: `requiredMessage` and `validatorMessage` parameters are optional. The default values for them are respectively "Value is required" and "Invalid value". You should use these parameters if you want to give more precise descriptions of the problems or when you want to internationalize your application.
 {% endhint %}
+
+### Fieldsets
+
+You can group several subsequent form fields within a single fieldset container by adding the same `legend` parameter to the following `add` method calls.
+
+```kotlin
+add(
+    Form::date,
+    DateTime(format = "YYYY-MM-DD", label = tr("Date field with a placeholder")).apply {
+        placeholder = tr("Enter date")
+    }, legend = tr("Date and time fieldset")
+)
+add(
+    Form::time,
+    DateTime(format = "HH:mm", label = tr("Time field")), 
+    legend = tr("Date and time fieldset")
+)
+```
+
+### Custom field types
+
+Form data model doesn't support custom types out of the box, but it's possible to add support for your own type as long as you can use such type with a form control based on `StringFormControl` interface.
+
+Define a custom class for your model. It needs a `toString()` method to convert its data to the `String` value used within a form.
+
+```kotlin
+class ObjectId(val id: Int) {
+    override fun toString(): String {
+        return "$id"
+    }
+}
+```
+
+Next you need to define a custom serializer for this class.
+
+```kotlin
+object ObjectIdSerializer : KSerializer<ObjectId> {
+    override val descriptor: SerialDescriptor = SerialClassDescImpl("com.example.ObjectId")    
+    override fun deserialize(decoder: Decoder): ObjectId {
+        val str = decoder.decodeString()
+        return ObjectId(str.toInt())
+    }    
+    override fun serialize(encoder: Encoder, obj: ObjectId) {
+        encoder.encodeString(obj.id.toString())
+    }
+}
+```
+
+Now you can use this class within your model, by adding `@ContextualSerialization` annotation.
+
+```kotlin
+@Serializable
+data class Form(
+    val text: String? = null,
+    val password: String? = null,
+    @ContextualSerialization val objectId: ObjectId? = null
+)
+```
+
+When creating a `FormPanel` container, you need to pass a reference to your serializer.
+
+```kotlin
+formPanel<Form>(customSerializers = mapOf(ObjectId::class to ObjectIdSerializer)) {
+    // ...
+}
+```
+
+Finally you can add your data binding with a special `addCustom` method.
+
+```kotlin
+addCustom(Form::objectId, Text(label = "Object Id"))
+```
 

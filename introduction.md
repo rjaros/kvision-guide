@@ -20,7 +20,7 @@ KVision's design is quite similar to many non-web UI programming libraries inclu
 
 * sophisticated containers \(tabs, stack, dock, grid, horizontal, vertical, flexbox, responsive\)
 * forms with type-safe data model and built-in validation
-* many different text input components including rich text editor
+* many different text input components including rich text editor and typeahead
 * buttons, checkboxes and radios
 * date and time picker
 * spinner

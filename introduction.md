@@ -50,7 +50,7 @@ KVision is suitable for any kind of projects, including responsive, mobile web a
 
 #### Server side interface
 
-KVision contains innovative connectivity interface for three popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.org/) and [Spring Boot](https://spring.io/projects/spring-boot), which allows to build full-stack, multiplatform applications with shared common code. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides \(based on automatically generated routings and JSON-RPC endpoints\). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. With the help of the dedicated Kotlin compiler plugin, based on [MpApt](https://github.com/Foso/MpApt/) library, you have to write only essential, boilerplate-free code. This makes KVision full-stack applications very easy to create and maintain.
+KVision contains innovative connectivity interface for a bunch of popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.io), [Spring Boot](https://spring.io/projects/spring-boot) and [Javalin](https://javalin.io), which allows to build full-stack applications with shared common code. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides \(based on automatically generated routings and JSON-RPC endpoints\). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. With the help of the dedicated Kotlin compiler plugin, based on [MpApt](https://github.com/Foso/MpApt/) library, you have to write only essential, boilerplate-free code. This makes KVision full-stack applications very easy to create and maintain.
 
 There is also experimental support for type-safe websocket connections, based on [Kotlin coroutines channels](https://kotlinlang.org/docs/reference/coroutines/channels.html).
 
@@ -58,6 +58,7 @@ There is also experimental support for type-safe websocket connections, based on
 
 * Utilizes [Snabbdom](https://github.com/snabbdom/snabbdom) fast virtual DOM implementation
 * Type safe DSL builders
+* Event Flows
 * Internationalization support based on [Jed](http://messageformat.github.io/Jed/) library and [gettext](https://www.gnu.org/software/gettext/) translations
 * Drag & drop support
 * Type-safe REST connectivity

@@ -72,7 +72,7 @@ actual class AddressService : IAddressService {
 
 You can also inject custom Spring components, defined throughout your application.
 
-Because Spring Boot module is now based on Spring WebFlux and not Spring MVC \(which was used in KVision 1\), you cannot access servlet based objects, like `ServletContext`, `HttpServletRequest` or `HttpSession`. Instead you can use a special KVision interfaces to get access to similar objects from WebFlux world.  
+Because Spring Boot module is now based on Spring WebFlux and not Spring MVC \(which was used in KVision 1\), you cannot access servlet based objects, like `ServletContext`, `HttpServletRequest` or `HttpSession`. Instead you can use special KVision interfaces to get access to similar objects from WebFlux world.  
 
 ```kotlin
 interface WithRequest {

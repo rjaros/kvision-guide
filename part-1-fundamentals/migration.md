@@ -1,13 +1,22 @@
 # Migration
 
-This is the list of incompatibilities you may encounter when migrating your application from KVision 1.
+This is the list of incompatibilities you may encounter when migrating your application to KVision 3:
+
+* The `setEventListener()` method and the `onEvent()` extension function return now an `Int` instead of a `Widget`. The returned value can be used with `removeEventListener(id: Int)` method.
+* The old, deprecated `setEventListener()` method without type parameter has been removed. Use `onEvent` instead.
+* Problematic overloaded constructors for all css styling classes in the `core` package - `Color`, `Border`, `Background`, `TextDecoration and` `TextShadow` has been removed. Each class has only one, primary constructor.
+* There are two new factory extension functions for the `Color` class. `Color.hex()` allows you to create a `Color` object from a hexadecimal `Int` literal. `Color.name()` allows you to create a `Color` object with an `Col` enum value.
+* The dependency on the Pac4J library has been removed. The `p.t.k.remote.Profile` class has been removed as well. You can add Pac4J to your own project if you still want to use it.
+* Jooby has been updated to version 2.x. You need to upgrade your application if you are using Jooby integration. See [upgrade docs](https://jooby.io/#appendix-upgrading-from-x).
+
+This is the list of incompatibilities you may encounter when migrating your application to KVision 2:
 
 * All DSL builder functions have been moved out of the companion objects to allow better auto-completion in IntelliJ IDEA. This change is incompatible with KVision 1 code. To migrate you should just remove code based on this regular expression: `[^\.]+\.Companion\.` from all your frontend code imports \(Kotlin compiler will help you easily find all possible errors afterwards\).
 * The default font size in Bootstrap 4 is larger. You may have to adjust your application layout manually or use a [custom CSS theme](themes.md).
 * The direct child of the `Root` component is no longer 100% wide. Use `width = 100.perc` if you want it to be.
 * The modules names have changed \(the API of the components, package names, class names, methods and properties are mostly the same, with the differences described in details below\).
 
-| KVision 1 module name | KVision 2 module name |
+| KVision 1 module name | KVision 2+ module name |
 | :--- | :--- |
 | kvision-select | kvision-bootstrap-select |
 | kvision-select-remote | kvision-bootstrap-select-remote |

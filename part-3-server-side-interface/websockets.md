@@ -142,6 +142,19 @@ actual class WsService : IWsService, WithWebSocketSession {
 }
 ```
 
+When using Javalin, you can use `WithWsContext` and `WithWsSession` interfaces.
+
+```kotlin
+actual class WsService : IWsService, WithWsContext, WithWsSession {
+    lateinit var wsCtx: WsContext
+    lateinit var wsSession: Session
+
+    override suspend fun wservice(input: ReceiveChannel<Int>, output: SendChannel<String>) {
+        //
+    }
+}
+```
+
 ### Disconnection
 
 When the user leaves or closes the browser page the websocket connection is closed. On the backend side you will find both input and output channels closed and then you should return from the backend method.

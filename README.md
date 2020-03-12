@@ -8,5 +8,5 @@ description: This is a guide for KVision - an object oriented web framework for 
 
 This documentation is a work in progress.
 
-Current version: 3.5.2
+Current version: 3.0.1
 

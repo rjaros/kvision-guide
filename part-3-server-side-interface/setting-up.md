@@ -4,7 +4,7 @@ KVision supports four server-side frameworks - Ktor, Jooby, Spring Boot and Java
 
 KVision full-stack applications utilize [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) architecture \(Kotlin 1.3 MPP\). That's why you have to prepare the special Gradle configuration and the project layout. To start, it's best to just clone one of the template-fullstack projects from [kvision-examples](https://github.com/rjaros/kvision-examples) GitHub repository.
 
-The application sources are split into three source sets - `common`, `frontend` and `backend`, located in three directories: `src/commonMain` `src/frontendMain` and `src/backendMain`. The requirements and dependencies for build process are the same as mentioned in [Part 1 of this guide](../part-1-fundamentals/setting-up.md).
+The application sources are split into three source sets - `common`, `frontend` and `backend`, located in three directories: `src/commonMain` `src/frontendMain` and `src/backendMain`. The requirements and dependencies for the build process are the same as mentioned in [Part 1 of this guide](../part-1-fundamentals/setting-up.md).
 
 Since version 2.0 you can use KVision compiler plugin to generate code in the common and frontend modules. You can still create this code by hand, but it's definitely easier to use the plugin.  
 
@@ -39,7 +39,7 @@ gradlew.bat -t compileKotlinBackend                     (on Windows)
 ```
 
 {% hint style="info" %}
-Jooby's Gradle plugin has some issues with Kotlin multiplatform configuration and auto-reload works only when backed sources are put into `java` directory \(not `kotlin`\).
+Jooby's Gradle plugin has some issues with Kotlin multiplatform configuration and auto-reload works only when backend sources are put into `java` directory \(not `kotlin`\).
 {% endhint %}
 
 After both parts of your application are running, you can open [http://localhost:3000/](http://localhost:3000/) in your favorite browser. Changes made to your sources \(in any source set\) should be automatically applied to your running application. 

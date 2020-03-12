@@ -1,5 +1,10 @@
 # Migration
 
+This is the list of incompatibilities you may encounter when migrating your application to KVision 3.5.x:
+
+* Due to changes in the Kotlin/JS gradle plugin it is necessary to fix your `build.gradle.kts` file and `webpack.config.d/webpack.js` file. Carefully analyze [these changes](https://github.com/rjaros/kvision-examples/compare/9a63de5933fd0ac385b5b41468c5006176407aa1..0dd57450cc37350780ea0febcf12fcdb90b3fe37#diff-0577060241e9967978e7e7039df0646c) for frontend projects and [these changes](https://github.com/rjaros/kvision-examples/compare/9a63de5933fd0ac385b5b41468c5006176407aa1..0dd57450cc37350780ea0febcf12fcdb90b3fe37#diff-c6a77204309bf123278dd17c72f0b725) for fullstack projects.
+* `Kotlinx.serialization` library 0.20.0 contains also some [incompatible changes](https://github.com/Kotlin/kotlinx.serialization/blob/master/CHANGELOG.md#0200--2020-03-04), so you have to migrate your code if you are using this library directly.
+
 This is the list of incompatibilities you may encounter when migrating your application to KVision 3:
 
 * The `setEventListener()` method and the `onEvent()` extension function return now an `Int` instead of a `Widget`. The returned value can be used with `removeEventListener(id: Int)` method.

@@ -37,8 +37,7 @@ buildscript {
 plugins {
     val kotlinVersion: String by System.getProperties()
     id("kotlinx-serialization") version kotlinVersion
-    id("org.jetbrains.kotlin.js") version kotlinVersion
-    id("kotlin-dce-js") version kotlinVersion
+    kotlin("js") version kotlinVersion
 }
 
 version = "1.0.0-SNAPSHOT"
@@ -86,13 +85,12 @@ kotlin {
                 devServer = KotlinWebpackConfig.DevServer(
                     open = false,
                     port = 3000,
-                    proxy = mapOf("/kv/*" to "http://localhost:8080", "/kvws/*" to "http://localhost:8080"),
+                    proxy = mapOf(
+                        "/kv/*" to "http://localhost:8080",
+                        "/kvws/*" to mapOf("target" to "ws://localhost:8080", "ws" to true)
+                    ),
                     contentBase = listOf("$buildDir/processedResources/Js/main")
                 )
-            }
-            webpackTask {
-                val runDceKotlin by tasks.getting(KotlinJsDce::class)
-                dependsOn(runDceKotlin)
             }
             testTask {
                 useKarma {
@@ -135,14 +133,6 @@ kotlin {
 
 tasks {
     withType<KotlinJsDce> {
-        dceOptions {
-            devMode = !isProductionBuild
-        }
-        inputs.property("production", isProductionBuild)
-        doFirst {
-            classpath = classpath.filter { it.extension != "js" }
-            destinationDir.deleteRecursively()
-        }
         doLast {
             copy {
                 file("$buildDir/tmp/expandedArchives/").listFiles()?.forEach {
@@ -154,7 +144,7 @@ tasks {
                         }
                     }
                 }
-                into(file(buildDir.path + "/kotlin-js-min/main"))
+                into(file("${buildDir.path}/js/packages/${project.name}/kotlin-dce"))
             }
         }
     }
@@ -225,7 +215,11 @@ afterEvaluate {
                                 include("css/**")
                                 include("img/**")
                                 include("js/**")
-                                into("$kvmodule/$kvisionVersion")
+                                if (kvmodule == "kvision") {
+                                    into("kvision/$kvisionVersion")
+                                } else {
+                                    into("kvision-$kvmodule/$kvisionVersion")
+                                }
                             }
                         }
                     }
@@ -233,19 +227,22 @@ afterEvaluate {
                 }
             }
         }
-        getByName("browserWebpack").dependsOn("processResources")
         create("zip", Zip::class) {
-            dependsOn("browserWebpack")
+            dependsOn("browserProductionWebpack")
             group = "package"
             destinationDirectory.set(file("$buildDir/libs"))
-            val distribution = project.tasks.getByName("browserWebpack",KotlinWebpack::class).destinationDirectory
-            from(distribution, webDir)
+            val distribution =
+                project.tasks.getByName("browserProductionWebpack", KotlinWebpack::class).destinationDirectory!!
+            from(distribution) {
+                include("*.*")
+            }
+            from(webDir)
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
             inputs.files(distribution, webDir)
             outputs.file(archiveFile)
         }
     }
 }
-
 ```
 {% endcode %}
 
@@ -303,6 +300,10 @@ override fun start() {
 {% endcode %}
 
 You should see your changes immediately in the browser.
+
+{% hint style="info" %}
+It's recommended to use Gradle from a command line \(in a terminal window\). You may encounter problems if you run build tasks directly from IntelliJ IDEA.
+{% endhint %}
 
 ## Production
 

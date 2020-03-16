@@ -4,14 +4,13 @@
 
 ## Build configuration
 
-The integration with Jooby is contained in the `kvision-server-jooby` module. It has to be added as the dependency in the backend target. This module depends on the `jooby-guice`, `jooby-jackson` and `jackson-module-kotlin` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
+The integration with Jooby is contained in the `kvision-server-jooby` module. It has to be added as the dependency in the common target. This module depends on the `jooby-guice`, `jooby-jackson` and `jackson-module-kotlin` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
 {% code title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
-    implementation("pl.treksoft:kvision-server-jooby:$kvisionVersion")
     implementation("io.jooby:jooby-netty:$joobyVersion")
     implementation("io.jooby:jooby-hikari:$joobyVersion")
     implementation("io.jooby:jooby-pac4j:$joobyVersion")

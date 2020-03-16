@@ -4,14 +4,13 @@
 
 ## Build configuration
 
-The integration with Spring Boot is contained in the `kvision-server-spring-boot` module. It has to be added as the dependency in the server target. This module depends on the `spring-boot-starter`, `spring-boot-starter-webflux`, `spring-boot-starter-security`, `spring-data-relational` and`jackson-module-kotlin`. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
+The integration with Spring Boot is contained in the `kvision-server-spring-boot` module. It has to be added as the dependency in the common target. This module depends on the `spring-boot-starter`, `spring-boot-starter-webflux`, `spring-boot-starter-security`, `spring-data-relational` and`jackson-module-kotlin`. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
 {% code title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
-    implementation("pl.treksoft:kvision-server-spring-boot:$kvisionVersion")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.boot:spring-boot-starter-webflux")

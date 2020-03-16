@@ -1,40 +1,5 @@
 # Frontend side
 
-## Build configuration
-
-You have to declare the dependency on the `kvision-remote`  module in the frontend target. Of course you can use any of the standard KVision modules as well.
-
-{% code title="build.gradle.kts" %}
-```kotlin
-dependencies {
-    implementation(kotlin("stdlib-js"))
-    implementation(npm("po2json"))
-    implementation(npm("grunt"))
-    implementation(npm("grunt-pot"))
-                
-    implementation("pl.treksoft:kvision:$kvisionVersion")
-    implementation("pl.treksoft:kvision-bootstrap:$kvisionVersion")
-    implementation("pl.treksoft:kvision-bootstrap-css:$kvisionVersion")
-    implementation("pl.treksoft:kvision-bootstrap-select:$kvisionVersion")
-    implementation("pl.treksoft:kvision-bootstrap-datetime:$kvisionVersion")
-    implementation("pl.treksoft:kvision-bootstrap-spinner:$kvisionVersion")
-    implementation("pl.treksoft:kvision-richtext:$kvisionVersion")
-    implementation("pl.treksoft:kvision-bootstrap-upload:$kvisionVersion")
-    implementation("pl.treksoft:kvision-fontawesome:$kvisionVersion")
-    implementation("pl.treksoft:kvision-handlebars:$kvisionVersion")
-    implementation("pl.treksoft:kvision-i18n:$kvisionVersion")
-    implementation("pl.treksoft:kvision-datacontainer:$kvisionVersion")
-    implementation("pl.treksoft:kvision-bootstrap-dialog:$kvisionVersion")
-    implementation("pl.treksoft:kvision-redux:$kvisionVersion")
-    implementation("pl.treksoft:kvision-chart:$kvisionVersion")
-    implementation("pl.treksoft:kvision-tabulator:$kvisionVersion")
-    implementation("pl.treksoft:kvision-pace:$kvisionVersion")
-    implementation("pl.treksoft:kvision-moment:$kvisionVersion")
-    implementation("pl.treksoft:kvision-remote:$kvisionVersion")
-}
-```
-{% endcode %}
-
 ## Implementation
 
 {% hint style="info" %}

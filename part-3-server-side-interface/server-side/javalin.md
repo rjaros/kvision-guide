@@ -4,14 +4,13 @@
 
 ## Build configuration
 
-The integration with Javalin is contained in the `kvision-server-javalin` module. It has to be added as the dependency in the backend target. This module depends on the`jackson-module-kotlin` and `guice` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
+The integration with Javalin is contained in the `kvision-server-javalin` module. It has to be added as the dependency in the common target. This module depends on the`jackson-module-kotlin` and `guice` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
 {% code title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
-    implementation("pl.treksoft:kvision-server-javalin:$kvisionVersion")
     implementation("org.slf4j:slf4j-simple:$slf4jVersion")
     implementation("com.h2database:h2:$h2Version")
     implementation("org.jetbrains.exposed:exposed:$exposedVersion")

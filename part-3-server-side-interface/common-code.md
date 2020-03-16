@@ -2,15 +2,16 @@
 
 ## Build configuration
 
-You have to declare the dependencies on `kvision-common-types`, `kvision-common-remote` and `kvision-common-annotations` modules in the common target.
+You have to declare the dependencies on one of the `kvision-server-*` modules in the common target.
 
 {% code title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-common"))
-    implementation("pl.treksoft:kvision-common-types:$kvisionVersion")
-    implementation("pl.treksoft:kvision-common-remote:$kvisionVersion")
-    implementation("pl.treksoft:kvision-common-annotations:$kvisionVersion")
+//    api("pl.treksoft:kvision-server-javalin:$kvisionVersion")
+//    api("pl.treksoft:kvision-server-jooby:$kvisionVersion")
+    api("pl.treksoft:kvision-server-ktor:$kvisionVersion")
+//    api("pl.treksoft:kvision-server-spring-boot:$kvisionVersion")
 }
 ```
 {% endcode %}

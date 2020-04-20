@@ -47,44 +47,19 @@ actual class AddressService : IAddressService {
 }
 ```
 
-The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting object instances into your class. KVision allows you to inject `Javalin` instance.
+The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting object instances into your class. KVision allows you to inject `Javalin` instance, which give you access to the application configuration and also `Context` object, which allows you to access the current request and session information.
 
 ```kotlin
 actual class AddressService : IAddressService {
     
     @Inject
     lateinit var javalin: Javalin
-
-    override suspend fun getAddressList(search: String?, sort: Sort) {
-        return listOf()
-    }
-    // ...
-}
-```
-
-You can use special KVision interfaces to get access to `Context` and `HttpSession` objects.
-
-```kotlin
-interface WithContext {
-    var ctx: Context
-}
-
-interface WithHttpSession {
-    var httpSession: HttpSession
-}
-```
-
-Just implement any of these interfaces when you are defining you service class, and KVision will automatically assign the corresponding object for you.
-
-```kotlin
-actual class AddressService : IAddressService, WithContext, WithHttpSession {
-    
-    override lateinit var ctx: Context
-    override lateinit var httpSession: HttpSession
+    @Inject
+    lateinit var ctx: Context
 
     override suspend fun getAddressList(search: String?, sort: Sort) {
         println(ctx.req.remoteAddr)
-        println(httpSession.id)
+        println(ctx.req.session.id)
         return listOf()
     }
     // ...
@@ -97,9 +72,9 @@ You can also inject other Guice components, defined in your application and conf
 Note: The new instance of the service class will be created by Guice for every server request. Use session or request objects to store your state with appropriate scope.
 {% endhint %}
 
-### Application class
+### The main function
 
-This class is the application starting point. It's used to initialize and configure the application. Minimal implementation for KVision integration contains `kvisionInit` and `applyRoutes` function calls.
+This function is the application starting point. It's used to initialize and configure the application. Minimal implementation for KVision integration contains `kvisionInit` and `applyRoutes` function calls.
 
 ```kotlin
 import io.javalin.Javalin

@@ -111,7 +111,7 @@ actual class AddressService : IAddressService {
 }
 ```
 
-### Main function
+### The main function
 
 This function is the application starting point. It's used to initialize and configure application modules and features. Minimal implementation for KVision integration contains `kvisionInit` and `applyRoutes` function calls.
 

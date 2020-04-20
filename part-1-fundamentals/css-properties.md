@@ -15,7 +15,7 @@ div("A label with custom CSS styling") {
     fontStyle = FontStyle.OBLIQUE
     fontWeight = FontWeight.BOLDER
     fontVariant = FontVariant.SMALLCAPS
-    textDecoration = TextDecoration(TextDecorationLine.UNDERLINE, TextDecorationStyle.DOTTED, Color.name(Col.RED))
+    textDecoration = TextDecoration(TextDecorationLine.UNDERLINE, TextDecorationStyle.DOTTED, Col.RED)
 }
 ```
 
@@ -25,12 +25,12 @@ KVision supports all CSS units as an extension properties on `Number` type. So y
 
 ## Colors
 
-There are two ways to specify colors. You can use hexadecimal `Int` literals or predefined color names with two extension functions for the `Color` class. To specify the "color" property, you can also use convenient setters: `colorHex` and `colorName`.
+There are two ways to specify colors. You can use hexadecimal `Int` literals or predefined color names as the parameters of `Color` class. To specify the "color" property, you can also use convenient setters: `colorHex` and `colorName`.
 
 ```kotlin
 div {
-    color = Color.hex(0x0000ff)
-    color = Color.name(Col.BLUE)
+    color = Color(0x0000ff)
+    color = Color(Col.BLUE)
     colorHex = 0x0000ff
     colorName = Col.BLUE
 }
@@ -42,13 +42,12 @@ To specify borders, backgrounds, text decorations and text shadows you use the d
 
 ```kotlin
 div {
-    border = Border(1.px, BorderStyle.SOLID, Color.name(Col.BLACK))
+    border = Border(1.px, BorderStyle.SOLID, Col.BLACK)
     background = Background(
         0xcccccc, require("./kotlin.png"), 50.perc, 50.perc, size = BgSize.CONTAIN,
         repeat = BgRepeat.NOREPEAT, attachment = BgAttach.FIXED)
-    textDecoration = TextDecoration(TextDecorationLine.UNDERLINE, 
-        TextDecorationStyle.DOTTED, Color.name(Col.RED))
-    textShadow = TextShadow(2.px, 2.px, blurRadius = 1.px, color = Color.name(Col.BLACK))
+    textDecoration = TextDecoration(TextDecorationLine.UNDERLINE, TextDecorationStyle.DOTTED, Col.RED)
+    textShadow = TextShadow(2.px, 2.px, blurRadius = 1.px, color = Col.BLACK)
 }
 ```
 
@@ -58,7 +57,7 @@ When the CSS properties are set directly on the component, the corresponding sty
 
 ```kotlin
 val myStyle = Style {
-    border = Border(1.px, BorderStyle.SOLID, Color.name(Col.GRAY))
+    border = Border(1.px, BorderStyle.SOLID, Col.GRAY)
     width = 200.px
     height = 200.px
     margin = 10.px
@@ -84,7 +83,7 @@ Style objects can be nested to create CSS subclasses.
 
 ```kotlin
 val boxStyle = Style {
-    border = Border(1.px, BorderStyle.SOLID, Color.name(Col.GRAY))
+    border = Border(1.px, BorderStyle.SOLID, Col.GRAY)
     width = 200.px
     height = 200.px
 

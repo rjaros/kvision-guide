@@ -52,7 +52,7 @@ actual class AddressService : IAddressService {
 }
 ```
 
-Spring IoC \(Inversion of Control\) allows you to inject resources and other Spring components into your service class. You can use standard Spring `@Autowired` annotation. 
+Spring IoC \(Inversion of Control\) allows you to inject resources and other Spring components into your service class. You can use standard Spring `@Autowired` annotation or constructor based injection.
 
 ```kotlin
 @Service
@@ -71,39 +71,19 @@ actual class AddressService : IAddressService {
 
 You can also inject custom Spring components, defined throughout your application.
 
-Because Spring Boot module is now based on Spring WebFlux and not Spring MVC \(which was used in KVision 1\), you cannot access servlet based objects, like `ServletContext`, `HttpServletRequest` or `HttpSession`. Instead you can use special KVision interfaces to get access to similar objects from WebFlux world.  
-
-```kotlin
-interface WithRequest {
-    var serverRequest: ServerRequest
-}
-
-interface WithWebSession {
-    var webSession: WebSession
-}
-
-interface WithPrincipal {
-    var principal: Principal
-}
-
-interface WithProfile {
-    var profile: Profile
-}
-```
-
-Just implement one or more of these interfaces when you are defining you service class, and KVision will automatically assign the corresponding object for you.
+Because Spring Boot module is now based on Spring WebFlux and not Spring MVC \(which was used in KVision 1\), you cannot access servlet based objects, like `ServletContext`, `HttpServletRequest` or `HttpSession`. Instead KVision allows you to inject `ServerRequest` object from the WebFlux world \(it gives you access to the user session as well\).
 
 ```kotlin
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-actual class AddressService : IAddressService, WithRequest, WithWebSession {
+actual class AddressService : IAddressService {
 
-    override lateinit var serverRequest: ServerRequest
-    override lateinit var webSession: WebSession
+    @Autowired
+    lateinit var serverRequest: ServerRequest
 
     override suspend fun getAddressList(search: String?, sort: Sort) {
         println(serverRequest.uri())
-        println(webSession.id)
+        println(serverRequest.session().awaitSingle().id)
         return listOf()
     }
     // ...

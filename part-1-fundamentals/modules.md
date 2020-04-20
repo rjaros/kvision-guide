@@ -123,6 +123,10 @@ KVision consists of both required and optional functionality. Modules can be add
       </td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-toast</td>
+      <td style="text-align:left">Toast messages.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-cordova</td>
       <td style="text-align:left">
         <p>Kotlin language bindings for Apache Cordova core API.</p>
@@ -220,6 +224,15 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">
         <p><a href="https://javalin.io">Javalin</a> server-side connectivity module
           for full-stack applications.</p>
+        <p><em>See:</em>  <a href="../part-3-server-side-interface/"><em>Part 3</em></a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-server-vertx</td>
+      <td style="text-align:left">
+        <p><a href="https://vertx.io">Vert.x</a> server-side connectivity module for
+          full-stack applications.</p>
         <p><em>See:</em>  <a href="../part-3-server-side-interface/"><em>Part 3</em></a>
         </p>
       </td>

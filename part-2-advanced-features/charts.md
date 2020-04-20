@@ -37,11 +37,11 @@ Chart(
             DataSets(
                 data = listOf(6, 12, 19, 13, 7),
                 backgroundColor = listOf(
-                    Color.hex(0x3e95cd),
-                    Color.hex(0x8e5ea2),
-                    Color.hex(0x3cba9f),
-                    Color.hex(0xe8c3b9),
-                    Color.hex(0xc45850)
+                    Color(0x3e95cd),
+                    Color(0x8e5ea2),
+                    Color(0x3cba9f),
+                    Color(0xe8c3b9),
+                    Color(0xc45850)
                 )
             )
         ), listOf("Africa", "Asia", "Europe", "Latin America", "North America")

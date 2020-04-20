@@ -4,7 +4,7 @@ The `kvision-remote` module does not depend on the rest of KVision framework. It
 
 ### Requirements
 
-Of course the application has to be written in Kotlin and the project must be created with Gradle multiplatform feature. One of the supported frameworks \(Ktor, Jooby,  Spring Boot, Javalin\) must be used on the server side. A client module loader \(e.g. RequireJS\) should be used to load JavaScript modules and a jQuery library must be added as a dependency. Just like in standard configuration, all remote methods must be called with a coroutine context.
+Of course the application has to be written in Kotlin and the project must be created with Gradle multiplatform feature. One of the supported frameworks \(Ktor, Jooby,  Spring Boot\) must be used on the server side. A client module loader \(e.g. RequireJS\) should be used to load JavaScript modules and a jQuery library must be added as a dependency. Just like in standard configuration, all remote methods must be called with a coroutine context.
 
 ### Example
 

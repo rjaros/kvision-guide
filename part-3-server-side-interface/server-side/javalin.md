@@ -47,44 +47,19 @@ actual class AddressService : IAddressService {
 }
 ```
 
-The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting object instances into your class. KVision allows you to inject `Javalin` instance.
+The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting object instances into your class. KVision allows you to inject `Javalin` instance, which give you access to the application configuration and also `Context` object, which allows you to access the current request and session information.
 
 ```kotlin
 actual class AddressService : IAddressService {
     
     @Inject
     lateinit var javalin: Javalin
-
-    override suspend fun getAddressList(search: String?, sort: Sort) {
-        return listOf()
-    }
-    // ...
-}
-```
-
-You can use special KVision interfaces to get access to `Context` and `HttpSession` objects.
-
-```kotlin
-interface WithContext {
-    var ctx: Context
-}
-
-interface WithHttpSession {
-    var httpSession: HttpSession
-}
-```
-
-Just implement any of these interfaces when you are defining you service class, and KVision will automatically assign the corresponding object for you.
-
-```kotlin
-actual class AddressService : IAddressService, WithContext, WithHttpSession {
-    
-    override lateinit var ctx: Context
-    override lateinit var httpSession: HttpSession
+    @Inject
+    lateinit var ctx: Context
 
     override suspend fun getAddressList(search: String?, sort: Sort) {
         println(ctx.req.remoteAddr)
-        println(httpSession.id)
+        println(ctx.req.session.id)
         return listOf()
     }
     // ...

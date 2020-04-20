@@ -71,6 +71,20 @@ You can also inject other Guice components, defined in your application and conf
 Note: The new instance of the service class will be created by Guice for every server request. Use session or request objects to store your state with appropriate scope.
 {% endhint %}
 
+### **Blocking code**
+
+Since Vert.x architecture is asynchronous and non-blocking, you should **never** block a thread in your application code. If you have to use some blocking code \(e.g. blocking I/O, JDBC\) always use the dedicated coroutine dispatcher.
+
+```kotlin
+actual class AddressService : IAddressService {
+    override suspend fun getAddressList(search: String?, sort: Sort) {
+        return withContext(Dispatchers.IO) {
+            retrieveAddressesFromDatabase(search, sort)
+        }
+    }
+}
+```
+
 ### The main verticle
 
 Vert.x services are deployed as "verticles". Main verticle is the application starting point. It's used to initialize and configure the application. Minimal implementation for KVision integration contains `kvisionInit` and `applyRoutes` function calls.

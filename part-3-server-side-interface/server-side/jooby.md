@@ -56,7 +56,7 @@ actual class AddressService : IAddressService {
 }
 ```
 
-The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting server objects into your class. KVision allows you to inject `Kooby`, `Environment` and `Config` instances, which give you access to the application configuration and also `Context` object, which allow you to access the current request and session information.
+The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting server objects into your class. KVision allows you to inject `Kooby`, `Environment` and `Config` instances, which give you access to the application configuration.
 
 ```kotlin
 actual class AddressService : IAddressService {
@@ -68,13 +68,37 @@ actual class AddressService : IAddressService {
     @Inject
     lateinit var config: Config
 
-    @Inject
-    lateinit var ctx: Context
-
     override suspend fun getAddressList(search: String?, sort: Sort) {
         println(config.getString("option1") ?: "default")
+        return listOf()
+    }
+    // ...
+}
+```
+
+You can use special KVision interfaces to get access to `Context` and `Session` objects.
+
+```kotlin
+interface WithContext {
+    var ctx: Context
+}
+
+interface WithSession {
+    var session: Session
+}
+```
+
+Just implement any of these interfaces when you are defining you service class, and KVision will automatically assign the corresponding object for you.
+
+```kotlin
+actual class AddressService : IAddressService, WithContext, WithSession {
+    
+    override lateinit var ctx: Context
+    override lateinit var session: Session
+
+    override suspend fun getAddressList(search: String?, sort: Sort) {
         println(ctx.remoteAddress)
-        println(ctx.session().id)
+        println(session.id)
         return listOf()
     }
     // ...

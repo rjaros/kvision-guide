@@ -122,7 +122,6 @@ kotlin {
         implementation("pl.treksoft:kvision-tabulator:$kvisionVersion")
         implementation("pl.treksoft:kvision-pace:$kvisionVersion")
         implementation("pl.treksoft:kvision-moment:$kvisionVersion")
-        implementation("pl.treksoft:kvision-toast:$kvisionVersion")
     }
     sourceSets["test"].dependencies {
         implementation(kotlin("test-js"))
@@ -186,7 +185,7 @@ tasks {
         }
     }
     create("generatePotFile", Exec::class) {
-        dependsOn("compileKotlinJs", "generateGruntfile")
+        dependsOn("kotlinNpmInstall", "generateGruntfile")
         workingDir = file("$buildDir/js")
         executable = getNodeJsBinaryExecutable()
         args("$buildDir/js/node_modules/grunt/bin/grunt", "pot")
@@ -197,7 +196,7 @@ tasks {
 afterEvaluate {
     tasks {
         getByName("processResources", Copy::class) {
-            dependsOn("compileKotlinJs")
+            dependsOn("kotlinNpmInstall")
             exclude("**/*.pot")
             doLast("Convert PO to JSON") {
                 destinationDir.walkTopDown().filter {

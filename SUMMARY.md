@@ -46,6 +46,7 @@
     * [Jooby](part-3-server-side-interface/server-side/jooby.md)
     * [Spring Boot](part-3-server-side-interface/server-side/spring-boot.md)
     * [Javalin](part-3-server-side-interface/server-side/javalin.md)
+    * [Vert.x](part-3-server-side-interface/server-side/vert.x.md)
   * [Exception handling](part-3-server-side-interface/exception-handling.md)
   * [Select remote](part-3-server-side-interface/remote-select.md)
   * [Typeahead remote](part-3-server-side-interface/typeahead-remote.md)

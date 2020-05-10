@@ -98,10 +98,10 @@ store.subscribe { state ->
 
 ### State binding
 
-To help you describe the relationship between the state of the Redux store and the appearance of the application, KVision allows you to bind the store state with a content of any container. By using the `stateBinding` extension function, you can use standard KVision DSL builders to easily represent the UI as the function of the state. The container content will be automatically refreshed after the state of the application changes.
+To help you describe the relationship between the state of the Redux store and the appearance of the application, KVision allows you to bind the store state with a content of any container. By using the `bind` extension function, you can use standard KVision DSL builders to easily represent the UI as the function of the state. The container content will be automatically refreshed after the state of the application changes.
 
 ```kotlin
-hPanel(spacing = 10).stateBinding(store) { state ->
+hPanel(spacing = 10).bind(store) { state ->
     for (i in 1..state.counter) {
         div(state.content)
     }

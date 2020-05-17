@@ -46,7 +46,16 @@ button.onEvent {
 }
 ```
 
-Unfortunately, due to internal Snabbdom implementation, you can't bind two or more handlers to the same event - the second handler will always overwrite the first one.
+The `onEvent` extension function returns `Int` value, which can be used to remove the event listener from the component.
+
+```kotlin
+val id = button.onEvent {
+    mousemove = {
+        console.log("Mouse move")
+    }
+}
+button.removeEventListener(id)
+```
 
 ## Self reference inside an event handler
 
@@ -64,5 +73,22 @@ Div("Click to change").onEvent {
         self.content = "Changed"
     }
 }
+```
+
+## Event Flows
+
+The `kvision-event-flow` module, which depends on Kotlin coroutines library, allows you to easily create Flow streams of events. Using flows, you can process events from KVision components with the power of Kotlin flow API \(e.g. handling backpressure or combining multiple flows\). The module gives you universal `eventFlow` extension function and the dedicated `clickFlow`, `inputFlow` and `changeFlow` functions for the corresponding event types.
+
+```kotlin
+val button = button("A button")
+button.clickFlow.onEach {
+    console.log("Button clicked")
+}.launchIn(GlobalScope)
+
+button.eventFlow("mousemove").conflate().onEach {
+    console.log("Mouse X: "+(it.second as MouseEvent).clientX)
+    console.log("Mouse Y: "+(it.second as MouseEvent).clientY)
+    delay(1000)
+}.launchIn(GlobalScope)
 ```
 

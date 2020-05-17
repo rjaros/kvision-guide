@@ -10,7 +10,7 @@ div {
     span("A text with custom CSS styling") {
         fontFamily = "Times New Roman"
         fontSize = 32.px
-        textDecoration = TextDecoration(TextDecorationLine.UNDERLINE, TextDecorationStyle.DOTTED, Col.RED)
+        textDecoration = TextDecoration(TextDecorationLine.UNDERLINE, TextDecorationStyle.DOTTED, Color.name(Col.RED))
     }
     tag(TAG.CODE, "Some text written in <code></code> HTML tag.")
 }

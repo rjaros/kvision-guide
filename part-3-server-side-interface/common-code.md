@@ -4,8 +4,7 @@
 
 You have to declare the dependencies on `kvision-common-types` and `kvision-common-remote` modules in the common target.
 
-{% code-tabs %}
-{% code-tabs-item title="build.gradle.kts" %}
+{% code title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-common"))
@@ -13,8 +12,7 @@ dependencies {
     implementation("pl.treksoft:kvision-common-remote:$kvisionVersion")
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 ## Implementation
 

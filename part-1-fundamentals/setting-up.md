@@ -25,8 +25,7 @@ The recommended way to create a new application is to download and copy the [KVi
 
 The `build.gradle.kts` file is responsible for the definition of the build process. It declares necessary repositories \(e.g. external bintray repositories\) and all required dependencies. It declares `zip` task, typically used to build distribution pack.
 
-{% code-tabs %}
-{% code-tabs-item title="build.gradle.kts" %}
+{% code title="build.gradle.kts" %}
 ```kotlin
 import org.jetbrains.kotlin.gradle.frontend.KotlinFrontendExtension
 import org.jetbrains.kotlin.gradle.frontend.npm.NpmExtension
@@ -243,8 +242,7 @@ fun KotlinFrontendExtension.webpackBundle(block: WebPackExtension.() -> Unit) =
 
 fun KotlinFrontendExtension.npm(block: NpmExtension.() -> Unit) = configure(block)
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 ### Source code
 
@@ -267,8 +265,7 @@ You can import the project in **IntelliJ IDEA** and open `src/main/kotlin/com/ex
 
 Add some code inside the `start` function:
 
-{% code-tabs %}
-{% code-tabs-item title="App.kt" %}
+{% code title="App.kt" %}
 ```kotlin
 override fun start(state: Map<String, Any>) {
     // ...
@@ -277,8 +274,7 @@ override fun start(state: Map<String, Any>) {
     }
  }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 You should see your changes immediately in the browser.
 

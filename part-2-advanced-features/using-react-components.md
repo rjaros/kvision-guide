@@ -4,6 +4,10 @@
 
 Although KVision offers a rich set of different components, there will be occasions when you will need to use something that KVision does not offer. Fortunately both KVision and Kotlin/JS ecosystem allows you to include any [NPM](https://www.npmjs.com/) dependencies in your project. And KVision has full support for embedding external React components inside your application. React components are standardized, so it's fairly easy to learn how to use them.
 
+{% hint style="info" %}
+Note: KVision support for React components is based on [Kotlin Wrappers](https://github.com/JetBrains/kotlin-wrappers) from JetBrains, so it's good to know how to use these libraries. You can learn the most important things from [this tutorial](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction). 
+{% endhint %}
+
 ## Dependencies
 
 To use React component just add NPM dependencies to your `build.gradle.kts` file.
@@ -54,10 +58,6 @@ react {
 ```
 
 ## Advanced components
-
-{% hint style="info" %}
-Note: KVision support for React components is based on [Kotlin Wrappers](https://github.com/JetBrains/kotlin-wrappers) from JetBrains, so it's good to know how to use these libraries. You can learn the most important things from [this tutorial](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction). 
-{% endhint %}
 
 React components can be stateful and can maintain internal state data. With KVision it's possible to logically relocate this internal state from React component into KVision component, where it can be accessed from the other parts of the application.
 

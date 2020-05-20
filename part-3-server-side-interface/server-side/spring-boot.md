@@ -6,7 +6,8 @@
 
 The integration with Spring Boot is contained in the `kvision-server-spring-boot` module. It has to be added as the dependency in the server target. This module depends on the `spring-boot-starter`, `spring-boot-starter-web`, `jackson-module-kotlin` and `pac4j-core` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
-{% code title="build.gradle.kts" %}
+{% code-tabs %}
+{% code-tabs-item title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -27,7 +28,8 @@ dependencies {
     implementation("com.github.andrewoma.kwery:mapper:$kweryVersion")
 }
 ```
-{% endcode %}
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ## Application configuration
 

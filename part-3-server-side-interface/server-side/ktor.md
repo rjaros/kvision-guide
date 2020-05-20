@@ -6,7 +6,8 @@
 
 The integration with Ktor is contained in the `kvision-server-ktor` module. It has to be added as the dependency in the backend target. This module depends on the `ktor-server-core`, `ktor-jackson`, `jackson-module-kotlin` and `guice` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
-{% code title="build.gradle.kts" %}
+{% code-tabs %}
+{% code-tabs-item title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -24,7 +25,8 @@ dependencies {
     implementation("com.github.andrewoma.kwery:core:$kweryVersion")
 }
 ```
-{% endcode %}
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 {% hint style="info" %}
 Note: You can use other engines instead of Netty - see [Ktor documentation](https://ktor.io/servers/configuration#embedded-server). Remember to add the appropriate dependency.
@@ -34,7 +36,8 @@ Note: You can use other engines instead of Netty - see [Ktor documentation](http
 
 The standard way to configure Ktor application is `src/backendMain/resources/application.conf` file. Among other options it contains the name of the main function of your app.
 
-{% code title="application.conf" %}
+{% code-tabs %}
+{% code-tabs-item title="application.conf" %}
 ```text
 ktor {
   deployment {
@@ -46,7 +49,8 @@ ktor {
   }
 }
 ```
-{% endcode %}
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ## Implementation
 

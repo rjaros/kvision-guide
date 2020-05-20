@@ -4,7 +4,8 @@
 
 You have to declare the dependency on the `kvision-remote`  module in the frontend target. Except that you can use any of the standard KVision modules.
 
-{% code title="build.gradle.kts" %}
+{% code-tabs %}
+{% code-tabs-item title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-js"))
@@ -27,7 +28,8 @@ dependencies {
     implementation("pl.treksoft:kvision-remote:$kvisionVersion")
 }
 ```
-{% endcode %}
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ## Implementation
 

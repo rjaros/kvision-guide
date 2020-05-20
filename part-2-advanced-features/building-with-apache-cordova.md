@@ -36,7 +36,8 @@ Hint: when developing for the Android platform you can connect Chrome Dev Tools 
 
 Cordova project configuration is saved inside `config.xml` and `package.json` files. The template project includes all core [Cordova plugins](https://cordova.apache.org/docs/en/latest/#plugin-apis).
 
-{% code title="package.json" %}
+{% code-tabs %}
+{% code-tabs-item title="package.json" %}
 ```javascript
 {
   "cordova": {
@@ -64,7 +65,8 @@ Cordova project configuration is saved inside `config.xml` and `package.json` fi
   }
 }
 ```
-{% endcode %}
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 You can use `cordova plugin remove` command to remove unused plugins or `cordova plugin add` command to add new plugins.
 

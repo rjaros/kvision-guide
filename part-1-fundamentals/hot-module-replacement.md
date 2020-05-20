@@ -2,7 +2,8 @@
 
 The template project contains files necessary to utilize the HMR \(Hot Module Replacement\) feature of [Webpack](https://webpack.js.org/concepts/hot-module-replacement/). HMR can significantly speed up development by updating browser content automatically after changes are made in the source code. It allows you to retain the state of the application, too.
 
-{% code title="Main.kt" %}
+{% code-tabs %}
+{% code-tabs-item title="Main.kt" %}
 ```kotlin
 package com.example
 
@@ -39,11 +40,13 @@ fun start(state: dynamic): ApplicationBase? {
     return App
 }
 ```
-{% endcode %}
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 The main KVision application class is defined as an object extending `ApplicationBase` class.
 
-{% code title="App.kt" %}
+{% code-tabs %}
+{% code-tabs-item title="App.kt" %}
 ```kotlin
 package com.example
 
@@ -68,7 +71,8 @@ object App : ApplicationBase {
 
 }
 ```
-{% endcode %}
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 The HMR module calls `start` method after every change in the source code, and this method is responsible for recreating the user interface.
 

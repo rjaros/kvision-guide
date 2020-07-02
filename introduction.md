@@ -35,12 +35,14 @@ KVision's design is quite similar to many non-web UI programming libraries inclu
 * floating, re-sizable windows
 * configurable toasts
 * many HTML components including tables, lists, images, canvas and iframe
-* built-in support for [Handlebars](http://handlebarsjs.com) templates 
+* built-in support for [Handlebars](http://handlebarsjs.com) templates
 * built-in support for [Font Awesome](https://fontawesome.com/) icons
 * built-in support for [Redux](https://redux.js.org/) and [ReduxKotlin](https://reduxkotlin.org/)
 * built-in support for [React](https://reactjs.org/) components
+* built-in support for [Onsen UI](https://onsen.io/) web components
 * built-in support for [Moment.js](https://momentjs.com/) library
 * built-in support for [Pace](https://github.hubspot.com/pace/docs/welcome/) automatic page loader
+* built-in support for [Leaflet](https://leafletjs.com/) interactive maps
 
 #### Flexibility
 

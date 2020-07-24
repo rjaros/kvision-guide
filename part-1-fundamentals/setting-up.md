@@ -27,11 +27,6 @@ The `build.gradle.kts` file is responsible for the definition of the build proce
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-import org.jetbrains.kotlin.gradle.tasks.KotlinJsDce
-
-buildscript {
-    extra.set("production", (findProperty("prod") ?: findProperty("production") ?: "false") == "true")
-}
 
 plugins {
     val kotlinVersion: String by System.getProperties()
@@ -63,21 +58,10 @@ repositories {
 val kotlinVersion: String by System.getProperties()
 val kvisionVersion: String by System.getProperties()
 
-// Custom Properties
 val webDir = file("src/main/web")
-val isProductionBuild = project.extra.get("production") as Boolean
 
 kotlin {
     target {
-        compilations.all {
-            kotlinOptions {
-                moduleKind = "umd"
-                sourceMap = !isProductionBuild
-                if (!isProductionBuild) {
-                    sourceMapEmbedSources = "always"
-                }
-            }
-        }
         browser {
             runTask {
                 outputFileName = "main.bundle.js"
@@ -90,6 +74,9 @@ kotlin {
                     ),
                     contentBase = listOf("$buildDir/processedResources/Js/main")
                 )
+            }
+            webpackTask {
+                outputFileName = "main.bundle.js"
             }
             testTask {
                 useKarma {
@@ -122,6 +109,7 @@ kotlin {
         implementation("pl.treksoft:kvision-tabulator:$kvisionVersion")
         implementation("pl.treksoft:kvision-pace:$kvisionVersion")
         implementation("pl.treksoft:kvision-moment:$kvisionVersion")
+        implementation("pl.treksoft:kvision-toast:$kvisionVersion")
     }
     sourceSets["test"].dependencies {
         implementation(kotlin("test-js"))
@@ -140,22 +128,6 @@ fun getNodeJsBinaryExecutable(): String {
 }
 
 tasks {
-    withType<KotlinJsDce> {
-        doLast {
-            copy {
-                file("$buildDir/tmp/expandedArchives/").listFiles()?.forEach {
-                    if (it.isDirectory && it.name.startsWith("kvision")) {
-                        from(it) {
-                            include("css/**")
-                            include("img/**")
-                            include("js/**")
-                        }
-                    }
-                }
-                into(file("${buildDir.path}/js/packages/${project.name}/kotlin-dce"))
-            }
-        }
-    }
     create("generateGruntfile") {
         outputs.file("$buildDir/js/Gruntfile.js")
         doLast {
@@ -185,7 +157,7 @@ tasks {
         }
     }
     create("generatePotFile", Exec::class) {
-        dependsOn("kotlinNpmInstall", "generateGruntfile")
+        dependsOn("compileKotlinJs", "generateGruntfile")
         workingDir = file("$buildDir/js")
         executable = getNodeJsBinaryExecutable()
         args("$buildDir/js/node_modules/grunt/bin/grunt", "pot")
@@ -196,7 +168,7 @@ tasks {
 afterEvaluate {
     tasks {
         getByName("processResources", Copy::class) {
-            dependsOn("kotlinNpmInstall")
+            dependsOn("compileKotlinJs")
             exclude("**/*.pot")
             doLast("Convert PO to JSON") {
                 destinationDir.walkTopDown().filter {
@@ -214,24 +186,6 @@ afterEvaluate {
                         println("Converted ${it.name} to ${it.nameWithoutExtension}.json")
                     }
                     it.delete()
-                }
-                copy {
-                    file("$buildDir/tmp/expandedArchives/").listFiles()?.forEach {
-                        if (it.isDirectory && it.name.startsWith("kvision")) {
-                            val kvmodule = it.name.split("-$kvisionVersion").first()
-                            from(it) {
-                                include("css/**")
-                                include("img/**")
-                                include("js/**")
-                                if (kvmodule == "kvision") {
-                                    into("kvision/$kvisionVersion")
-                                } else {
-                                    into("kvision-$kvmodule/$kvisionVersion")
-                                }
-                            }
-                        }
-                    }
-                    into(file(buildDir.path + "/js/packages_imported"))
                 }
             }
         }
@@ -318,8 +272,8 @@ It's recommended to use Gradle from a command line \(in a terminal window\). You
 To build a complete application optimized for production, run:
 
 ```text
-./gradlew -Pprod=true clean zip                   (on Linux)
-gradlew.bat -Pprod=true clean zip                 (on Windows)
+./gradlew clean zip                   (on Linux)
+gradlew.bat clean zip                 (on Windows)
 ```
 
 The package containing all of application files will be saved as `build/libs/template-1.0.0-SNAPSHOT.zip`.

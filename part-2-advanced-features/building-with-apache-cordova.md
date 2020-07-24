@@ -405,7 +405,7 @@ GlobalScope.launch {
 To build for production, first you have to build the distribution version of your KVision application. Run the dedicated Gradle task by calling:
 
 ```text
-./gradlew -Pprod=true distCordova
+./gradlew distCordova
 ```
 
 This task will compile, generate and copy the distribution files to the Cordova's `www` directory.

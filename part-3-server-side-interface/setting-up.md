@@ -1,6 +1,6 @@
 # Setting up
 
-KVision supports five server-side frameworks - Ktor, Jooby, Spring Boot, Javalin and Vert.x - so you have to choose one of them for your needs. It's worth to mention, that common and frontend targets of your application are exactly the same for all three servers, as well as the greater part of the actual service implementation in the backend target. The differences are tied to the actual framework build configuration and initialization code.
+KVision supports six server-side frameworks - Ktor, Jooby, Spring Boot, Javalin, Vert.x and Micronaut - so you have to choose one of them for your needs. It's worth to mention, that common and frontend targets of your application are exactly the same for all three servers, as well as the greater part of the actual service implementation in the backend target. The differences are tied to the actual framework build configuration and initialization code.
 
 KVision full-stack applications utilize [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) architecture \(Kotlin 1.3 MPP\). That's why you have to prepare the special Gradle configuration and the project layout. To start, it's best to just clone one of the template-fullstack projects from [kvision-examples](https://github.com/rjaros/kvision-examples) GitHub repository.
 

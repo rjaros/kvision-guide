@@ -112,6 +112,29 @@ KVision consists of both required and optional functionality. Modules can be add
       </td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-event-flow</td>
+      <td style="text-align:left">Builder extension functions for event Flows.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-maps</td>
+      <td style="text-align:left">
+        <p>A basic module with the <code>Maps</code> component, based on <a href="https://leafletjs.com/">Leaflet</a> library.</p>
+        <p>PR welcomed!</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-toast</td>
+      <td style="text-align:left">Toast messages.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-onsenui</td>
+      <td style="text-align:left"><a href="https://onsen.io/">Onsen UI</a> mobile web components.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-onsenui-css</td>
+      <td style="text-align:left">Standard <a href="https://onsen.io/">Onsen UI</a> CSS styling.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-cordova</td>
       <td style="text-align:left">
         <p>Kotlin language bindings for Apache Cordova core API.</p>
@@ -128,18 +151,9 @@ KVision consists of both required and optional functionality. Modules can be add
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-remote</td>
-      <td style="text-align:left">
-        <p>KVision JS module for multi-platform, full-stack applications.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
-        </p>
-      </td>
-    </tr>
-    <tr>
       <td style="text-align:left">kvision-bootstrap-select-remote</td>
       <td style="text-align:left">
-        <p>Bootstrap based select form component tailored for multi-platform, full-stack
-          applications.</p>
+        <p>Bootstrap based select form component tailored for full-stack applications.</p>
         <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
         </p>
       </td>
@@ -147,8 +161,8 @@ KVision consists of both required and optional functionality. Modules can be add
     <tr>
       <td style="text-align:left">kvision-bootstrap-typeahead-remote</td>
       <td style="text-align:left">
-        <p>Bootstrap based typeahead (autocomplete) form component tailored for multi-platform,
-          full-stack applications.</p>
+        <p>Bootstrap based typeahead (autocomplete) form component tailored for full-stack
+          applications.</p>
         <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
         </p>
       </td>
@@ -156,16 +170,21 @@ KVision consists of both required and optional functionality. Modules can be add
     <tr>
       <td style="text-align:left">kvision-tabulator-remote</td>
       <td style="text-align:left">
-        <p>Tabulator component tailored for multi-platform, full-stack applications.</p>
+        <p>Tabulator component tailored for full-stack applications.</p>
         <p>See: <a href="../part-3-server-side-interface/">Part 3</a>
         </p>
       </td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-common-annotations</td>
+      <td style="text-align:left">Compiler plugin annotations for full-stack applications.
+        <br /><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-common-types</td>
       <td style="text-align:left">
-        <p>KVision common module for multi-platform, full-stack applications, with
-          types definitions.</p>
+        <p>KVision common module for full-stack applications, with types definitions.</p>
         <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
         </p>
       </td>
@@ -173,8 +192,8 @@ KVision consists of both required and optional functionality. Modules can be add
     <tr>
       <td style="text-align:left">kvision-common-remote</td>
       <td style="text-align:left">
-        <p>KVision common module for multi-platform, full-stack applications, with
-          remote services definitions.</p>
+        <p>KVision common module for full-stack applications, with remote services
+          definitions.</p>
         <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a>
         </p>
       </td>
@@ -183,7 +202,7 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">kvision-server-ktor</td>
       <td style="text-align:left">
         <p><a href="https://ktor.io/">Ktor</a> server-side connectivity module for
-          multi-platform, full-stack applications.</p>
+          full-stack applications.</p>
         <p><em>See:</em>  <a href="../part-3-server-side-interface/"><em>Part 3</em></a>
         </p>
       </td>
@@ -191,8 +210,8 @@ KVision consists of both required and optional functionality. Modules can be add
     <tr>
       <td style="text-align:left">kvision-server-jooby</td>
       <td style="text-align:left">
-        <p><a href="https://jooby.org">Jooby</a> server-side connectivity module for
-          multi-platform, full-stack applications.</p>
+        <p><a href="https://jooby.io">Jooby</a> server-side connectivity module for
+          full-stack applications.</p>
         <p><em>See:</em>  <a href="../part-3-server-side-interface/"><em>Part 3</em></a>
         </p>
       </td>
@@ -201,10 +220,38 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">kvision-server-spring-boot</td>
       <td style="text-align:left">
         <p><a href="https://spring.io/projects/spring-boot">Spring Boot</a> server-side
-          connectivity module for multi-platform, full-stack applications.</p>
+          connectivity module for full-stack applications.</p>
         <p><em>See:</em>  <a href="../part-3-server-side-interface/"><em>Part 3</em></a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-server-javalin</td>
+      <td style="text-align:left">
+        <p><a href="https://javalin.io">Javalin</a> server-side connectivity module
+          for full-stack applications.</p>
+        <p><em>See:</em>  <a href="../part-3-server-side-interface/"><em>Part 3</em></a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-server-vertx</td>
+      <td style="text-align:left">
+        <p><a href="https://vertx.io">Vert.x</a> server-side connectivity module for
+          full-stack applications.</p>
+        <p><em>See:</em>  <a href="../part-3-server-side-interface/"><em>Part 3</em></a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-server-micronaut</td>
+      <td style="text-align:left">
+        <p><a href="https://micronaut.io">Micronaut</a> server-side connectivity module
+          for full-stack applications.</p>
+        <p><em>See:</em>  <a href="../part-3-server-side-interface/"><em>Part </em></a>
         </p>
       </td>
     </tr>
   </tbody>
 </table>
+

@@ -205,7 +205,120 @@ formPanel<MyForm> {
 
 ## Dialog components
 
-## Other components
+Dialog components include ActionSheets, Alerts, Dialogs, Modals, Popovers and Toasts. To show one of these components you need o create an instance of the corresponding class from `pl.treksoft.kvision.onsenui.dialog` package, and call one of `show*` methods.
 
+```kotlin
+val alertDialog = alertDialog("Alert", true, rowfooter = true) {
+    div("Lorem Ipsum")
+    alertDialogButton("OK")
+    alertDialogButton("Cancel")
+}
+alertDialog.showDialog()
 
+val modal = modal {
+    div("Modal content")
+    onsButton("Close").onClick {
+        this@modal.hideModal()
+    }
+}
+modal.showModal()
+
+val dialog = dialog(true) {
+    div("Dialog content")
+    onsButton("Close").onClick {
+        this@dialog.hideDialog()
+    }
+}
+dialog.showDialog()
+
+val actionSheet = actionSheet("Test action", true) {
+    actionSheetButton("First", icon = "md-square-o").onClick {
+        this.icon = "md-check-square"
+    }
+    actionSheetButton("Second", icon = "md-square-o")
+    actionSheetButton("Close", icon = "md-close").onClick {
+        this@actionSheet.hideActionSheet()
+    }
+}
+actionSheet.showActionSheet()
+
+val toast = toast(animation = ToastAnimation.FALL) {
+    div("This is a toast")
+    onsButton("OK").onClick {
+        this@toast.hideToast()
+    }
+}
+toast.showToast()
+
+val popover = popover(cancelable = true) {
+    div("Test of the popover")
+}
+popover.showOnsPopover(widget) // attach popover to a widget
+```
+
+You can also use one of the top level functions: `showAlert`, `showConfirm`, `showPrompt`, `showToast`, `showActionSheet` to display popup windows without creating any objects.
+
+```kotlin
+showToast(
+    "Notification message",
+    "OK",
+    timeout = 2000,
+    animation = ToastAnimation.FALL
+)
+```
+
+## Infinite scroll
+
+With Onsen UI you can create infinite scroll effect in two different ways.
+
+### Load more
+
+Use this way if you want to load content asynchronously \(e.g. from a network\). You should use `onInfiniteScroll` event handler of the page component.
+
+```kotlin
+page {
+    p(
+        "Useful for loading more items when the scroll reaches the bottom of the page, typically after an asynchronous API call.",
+        className = "intro"
+    )
+    onsList().bind(InfiniteScrollModel.items) { items ->
+        items.forEach {
+            item("Item #$it")
+        }
+    }
+    div(className = "after-list") {
+        icon("fa-spinner", size = "26px", spin = true)
+    }
+    onInfiniteScroll { done ->
+        window.setTimeout({
+            InfiniteScrollModel.loadMore()
+            done()
+        }, 600)
+    }
+}
+```
+
+### Lazy repeat
+
+Use this way if you have very long list of items, but you don't want to add all of them to the DOM at the same time. Onsen UI will automatically unload items that are not visible.
+
+```kotlin
+page {
+    p(
+        "Automatically unloads items that are not visible and loads new ones. Useful when the list contains thousands of items.",
+        className = "intro"
+    )
+    onsList {
+        onsLazyRepeat(3000) { index ->
+            OnsenUi.createElement("<ons-list-item>Item #$index</ons-list-item>")
+        }
+    }
+}
+```
+
+{% hint style="info" %}
+Note: You can't use KVision components with lazy repeat list. You need to create native DOM elements with `OnsenUi.createElement` helper method.
+{% endhint %}
+
+ 
 

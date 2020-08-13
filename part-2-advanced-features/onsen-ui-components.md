@@ -2,7 +2,7 @@
 
 [Onsen UI](https://onsen.io) is a set of mobile friendly web components, created with native iOS and Android design standards. With Onsen UI it's possible to develop mobile sites or hybrid web applications \(e.g. with Cordova\), which share exactly the same code, but also automatically choose the look and feel based on the platform on which they are running.
 
-KVision supports all Onsen UI components with fully type-safe, consistent Kotlin API and readable DSL builders, but you should get familiar with [Onsen UI documentation](https://onsen.io/v2/api/js/) to achieve best results.
+KVision supports all Onsen UI components with fully type-safe, consistent Kotlin API and readable DSL builders, but you should get familiar with [Onsen UI documentation](https://onsen.io/v2/api/js/) to achieve best results. You will also find a lot of examples in the KVision [Onsen UI kitchensink](https://github.com/rjaros/kvision-examples/tree/master/onsenui-kitchensink) example project.
 
 To use Onsen UI with KVision you have to add `kvision-onsenui` and `kvision-onsenui-css` modules to your dependencies in `build.gradle.kts` file. Optionally you can include your own, custom CSS files to your `index.html` file instead of using css module.
 

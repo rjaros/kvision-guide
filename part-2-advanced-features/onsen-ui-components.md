@@ -277,10 +277,6 @@ Use this way if you want to load content asynchronously \(e.g. from a network\).
 
 ```kotlin
 page {
-    p(
-        "Useful for loading more items when the scroll reaches the bottom of the page, typically after an asynchronous API call.",
-        className = "intro"
-    )
     onsList().bind(InfiniteScrollModel.items) { items ->
         items.forEach {
             item("Item #$it")
@@ -304,10 +300,6 @@ Use this way if you have very long list of items, but you don't want to add all 
 
 ```kotlin
 page {
-    p(
-        "Automatically unloads items that are not visible and loads new ones. Useful when the list contains thousands of items.",
-        className = "intro"
-    )
     onsList {
         onsLazyRepeat(3000) { index ->
             OnsenUi.createElement("<ons-list-item>Item #$index</ons-list-item>")

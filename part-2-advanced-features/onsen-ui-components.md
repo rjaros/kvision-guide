@@ -4,6 +4,12 @@
 
 KVision supports all Onsen UI components with fully type-safe, consistent Kotlin API and readable DSL builders, but you should get familiar with [Onsen UI documentation](https://onsen.io/v2/api/js/) to achieve best results.
 
+To use Onsen UI with KVision you have to add `kvision-onsenui` and `kvision-onsenui-css` modules to your dependencies in `build.gradle.kts` file. Optionally you can include your own, custom CSS files to your `index.html` file instead of using css module.
+
+{% hint style="info" %}
+Note: Onsen UI components are not compatible with Bootstrap, so you can't mix both Onsen UI and Bootstrap KVision components in one application.
+{% endhint %}
+
 ## Main layout containers
 
 Onsen UI application layout is created with pages contained within three main types of components:
@@ -13,6 +19,10 @@ Onsen UI application layout is created with pages contained within three main ty
 * Tabbar
 
 KVision provides a dedicated DSL to define these layouts and to allow joining them together.
+
+{% hint style="info" %}
+Note: Layout containers are managed directly by Onsen UI library and should not be modified by KVision application. In particular, you should not use KVision data bindings \(e.g. with Redux store\) to render Onsen UI layout containers. However you can safely render content of pages or tabs.
+{% endhint %}
 
 ### Navigator
 

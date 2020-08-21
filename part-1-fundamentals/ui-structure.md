@@ -8,8 +8,7 @@ You can instantiate any KVision component and set any of its properties, but the
 
 The main interface for a component is `pl.treksoft.kvision.core.Component`. It declares `parent` and `visible` properties and some universal methods for all components.
 
-{% code-tabs %}
-{% code-tabs-item title="Component.kt" %}
+{% code title="Component.kt" %}
 ```kotlin
 interface Component {
     var parent: Container?
@@ -22,8 +21,7 @@ interface Component {
     ...
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 The base class for all components is [`pl.treksoft.kvision.core.Widget`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.core/-widget/index.html). All KVision visual components inherit \(directly or indirectly\) from the `Widget` class.
 
@@ -31,8 +29,7 @@ The base class for all components is [`pl.treksoft.kvision.core.Widget`](https:/
 
 The main interface for a container is `pl.treksoft.kvision.core.Container`. It declares the methods to manage container's children.
 
-{% code-tabs %}
-{% code-tabs-item title="Container.kt" %}
+{% code title="Container.kt" %}
 ```kotlin
 interface Container : Component {
     fun add(child: Component): Container
@@ -43,8 +40,7 @@ interface Container : Component {
     ...
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 KVision offers a lot of different containers and they can implement other methods to add or remove children.
 

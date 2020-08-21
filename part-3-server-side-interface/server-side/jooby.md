@@ -6,8 +6,7 @@
 
 The integration with Jooby is contained in the `kvision-server-jooby` module. It has to be added as the dependency in the backend target. This module depends on the `jooby-lang-kotlin`, `jooby-jackson`, `jooby-pac4j2` and `jackson-module-kotlin` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
-{% code-tabs %}
-{% code-tabs-item title="build.gradle.kts" %}
+{% code title="build.gradle.kts" %}
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -25,8 +24,7 @@ dependencies {
     implementation("com.github.andrewoma.kwery:mapper:$kweryVersion")
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 {% hint style="info" %}
 Note: You can use other engines instead of Netty - see [Jooby documentation](https://jooby.org/doc/servers/). Remember to add the appropriate dependency.

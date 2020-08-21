@@ -8,8 +8,7 @@ You can add a custom CSS file to define your own CSS classes, which can be used 
 
 You can add as many CSS files as you wish. Just save your `*.css` files in `src/main/resources/css` directory and `require` them in your main `App` object.
 
-{% code-tabs %}
-{% code-tabs-item title="App.kt" %}
+{% code title="App.kt" %}
 ```kotlin
 object App : ApplicationBase {
     override fun start(state: Map<String, Any>) {
@@ -23,15 +22,13 @@ object App : ApplicationBase {
     val css2 = require("css/other.css")
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 ## Replacing Bootstrap CSS with a custom one
 
 When you include a file called `bootstrap.min.css` \(from any local or remote location\) in the main `index.html` of your application, KVision will automatically disable standard Bootstrap CSS. This way you can replace the original stylesheet with anything you wish.
 
-{% code-tabs %}
-{% code-tabs-item title="index.html" %}
+{% code title="index.html" %}
 ```markup
 <!DOCTYPE html>
 <html>
@@ -48,8 +45,7 @@ When you include a file called `bootstrap.min.css` \(from any local or remote lo
 </body>
 </html>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 You can create such a file manually or use [Customize Bootstrap](http://getbootstrap.com/docs/3.3/customize/) online tool offered by Bootstrap's website. To include a local version of bootstrap, simply place `bootstrap.min.css` in the `src/main/web/css` directory.
 
@@ -57,8 +53,7 @@ You can create such a file manually or use [Customize Bootstrap](http://getboots
 
 There are some great free themes ready to use available at [Bootswatch CDN](https://www.bootstrapcdn.com/legacy/bootswatch/). For instance to use Paper \(material-like\) theme make the following change to your `index.html`.
 
-{% code-tabs %}
-{% code-tabs-item title="index.html" %}
+{% code title="index.html" %}
 ```markup
 <!DOCTYPE html>
 <html>
@@ -75,8 +70,7 @@ There are some great free themes ready to use available at [Bootswatch CDN](http
 </body>
 </html>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 {% hint style="info" %}
 Note: Use [Bootswatch](https://bootswatch.com/3/) themes for Bootstrap version 3.

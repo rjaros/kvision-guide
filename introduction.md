@@ -63,7 +63,7 @@ There is also experimental support for type-safe websocket connections, based on
 * Utilizes [Snabbdom](https://github.com/snabbdom/snabbdom) fast virtual DOM implementation
 * Type safe DSL builders
 * Event Flows
-* Internationalization support based on [Jed](http://messageformat.github.io/Jed/) library and [gettext](https://www.gnu.org/software/gettext/) translations
+* Internationalization support based on [gettext](https://www.gnu.org/software/gettext/) translations and [gettext.js](https://github.com/guillaumepotier/gettext.js) library.
 * Support for jQuery animations end effects
 * Drag & drop support
 * Type-safe REST connectivity

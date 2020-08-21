@@ -1,13 +1,37 @@
 # Migration
 
-This is the list of incompatibilities you may encounter when migrating your application from KVision 1.
+This is the list of incompatibilities you may encounter when migrating your application to KVision 3.13.x:
+
+* Due to changes in the Kotlin/JS gradle plugin for Kotlin 1.4.0 it is necessary to fix your `build.gradle.kts` file and `webpack.config.d/webpack.js` file. You can apply the following patch for `build.gradle.kts` file and just copy new version of `webpack.js` from the current template project \(standard or fullstack, respectively\).
+
+{% file src="../.gitbook/assets/kvision-3.13.0.txt" caption="Patch for build.gradle.kts file" %}
+
+* `Kotlinx.serialization` library 1.0.0 contains a lot of [incompatible changes](https://github.com/Kotlin/kotlinx.serialization/releases/tag/1.0.0-RC), so you have to migrate your code if you are using this library directly. 
+* `Jed` was replaced by `gettext.js` library. You can safely delete `webpack.config.d/jed.js` file. You need to make sure you `*.po` files contain both `Language` and `Plural forms` headers.
+* All flexbox and grid CSS properties and enums have been moved to the `StyledComponent` and the core package. Deprecated type aliases for refactored enums were added. Follow deprecation messages to remove deprecated types from your code.
+
+This is the list of incompatibilities you may encounter when migrating your application to KVision 3.5.x:
+
+* Due to changes in the Kotlin/JS gradle plugin it is necessary to fix your `build.gradle.kts` file and `webpack.config.d/webpack.js` file. Carefully analyze [these changes](https://github.com/rjaros/kvision-examples/compare/9a63de5933fd0ac385b5b41468c5006176407aa1..0dd57450cc37350780ea0febcf12fcdb90b3fe37#diff-0577060241e9967978e7e7039df0646c) for frontend projects and [these changes](https://github.com/rjaros/kvision-examples/compare/9a63de5933fd0ac385b5b41468c5006176407aa1..0dd57450cc37350780ea0febcf12fcdb90b3fe37#diff-c6a77204309bf123278dd17c72f0b725) for fullstack projects.
+* `Kotlinx.serialization` library 0.20.0 contains also some [incompatible changes](https://github.com/Kotlin/kotlinx.serialization/blob/master/CHANGELOG.md#0200--2020-03-04), so you have to migrate your code if you are using this library directly.
+
+This is the list of incompatibilities you may encounter when migrating your application to KVision 3:
+
+* The `setEventListener()` method and the `onEvent()` extension function return now an `Int` instead of a `Widget`. The returned value can be used with `removeEventListener(id: Int)` method.
+* The old, deprecated `setEventListener()` method without type parameter has been removed. Use `onEvent` instead.
+* Problematic overloaded constructors for all css styling classes in the `core` package - `Color`, `Border`, `Background`, `TextDecoration and` `TextShadow` has been removed. Each class has only one, primary constructor.
+* There are two new factory extension functions for the `Color` class. `Color.hex()` allows you to create a `Color` object from a hexadecimal `Int` literal. `Color.name()` allows you to create a `Color` object with an `Col` enum value.
+* The dependency on the Pac4J library has been removed. The `p.t.k.remote.Profile` class has been removed as well. You can add Pac4J to your own project if you still want to use it.
+* Jooby has been updated to version 2.x. You need to upgrade your application if you are using Jooby integration. See [upgrade docs](https://jooby.io/#appendix-upgrading-from-x).
+
+This is the list of incompatibilities you may encounter when migrating your application to KVision 2:
 
 * All DSL builder functions have been moved out of the companion objects to allow better auto-completion in IntelliJ IDEA. This change is incompatible with KVision 1 code. To migrate you should just remove code based on this regular expression: `[^\.]+\.Companion\.` from all your frontend code imports \(Kotlin compiler will help you easily find all possible errors afterwards\).
 * The default font size in Bootstrap 4 is larger. You may have to adjust your application layout manually or use a [custom CSS theme](themes.md).
 * The direct child of the `Root` component is no longer 100% wide. Use `width = 100.perc` if you want it to be.
 * The modules names have changed \(the API of the components, package names, class names, methods and properties are mostly the same, with the differences described in details below\).
 
-| KVision 1 module name | KVision 2 module name |
+| KVision 1 module name | KVision 2+ module name |
 | :--- | :--- |
 | kvision-select | kvision-bootstrap-select |
 | kvision-select-remote | kvision-bootstrap-select-remote |

@@ -9,6 +9,7 @@ This is the list of incompatibilities you may encounter when migrating your appl
 * `Kotlinx.serialization` library 1.0.0 contains a lot of [incompatible changes](https://github.com/Kotlin/kotlinx.serialization/releases/tag/1.0.0-RC), so you have to migrate your code if you are using this library directly. 
 * `Jed` was replaced by `gettext.js` library. You can safely delete `webpack.config.d/jed.js` file. You need to make sure your `*.po` files contain both `Language` and `Plural forms` headers.
 * All flexbox and grid CSS properties and enums have been moved to the `StyledComponent` and the core package. Deprecated type aliases for refactored enums were added. Follow deprecation messages to remove deprecated types from your code.
+* If you are using fullstack configuration with Spring Boot add `extra["kotlin.version"] = "1.4.0"` to your `build.gradle.kts` file.
 
 This is the list of incompatibilities you may encounter when migrating your application to KVision 3.5.x:
 

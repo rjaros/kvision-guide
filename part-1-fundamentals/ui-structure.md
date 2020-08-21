@@ -51,7 +51,7 @@ Components can be added to containers explicitly, by calling appropriate methods
 ### Explicit calls
 
 ```kotlin
-val panel = HPanel(spacing = 20, alignItems = FlexAlignItems.CENTER).apply {
+val panel = HPanel(spacing = 20, alignItems = AlignItems.CENTER).apply {
     add(Span("A label."))
     val button = Button("Click me")
     add(button)
@@ -62,7 +62,7 @@ val panel = HPanel(spacing = 20, alignItems = FlexAlignItems.CENTER).apply {
 ### DSL
 
 ```kotlin
-hPanel(spacing = 20, alignItems = FlexAlignItems.CENTER) {
+hPanel(spacing = 20, alignItems = AlignItems.CENTER) {
     span("A label.")
     val button = button("Click me")
     // do something with a Button instance

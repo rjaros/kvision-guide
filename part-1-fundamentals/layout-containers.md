@@ -155,7 +155,7 @@ The `FlexPanel` class allows you to display children components with all the pow
 
 ```kotlin
 flexPanel(
-    FlexDir.ROW, FlexWrap.WRAP, FlexJustify.FLEXSTART, FlexAlignItems.CENTER,
+    FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER,
     spacing = 5
 ) {
     add(Div("1"), order = 3)
@@ -183,10 +183,10 @@ vPanel(spacing = 5) {
 
 ## GridPanel
 
-The `GridPanel` class allows you to display children components with the use of [CSS Grid Layout Module](https://www.w3.org/TR/css-grid/) W3C recommendation - a two-dimensional layout system, which allows the children to be positioned into arbitrary slots in a predefined flexible or fixed-size grid. This specification is even more complex than Flexbox, but is still supported mostly with Kotlin enum values and type-safe parameters. You use the dedicated `add(child: Component, columnStart: Int? = null, rowStart: Int? = null, columnEnd: String? = null, rowEnd: String? = null, area: String? = null, justifySelf: GridJustify? = null, alignSelf: GridAlign? = null, classes: Set = setOf())` method of `GridPanel` class to add children components with additional grid attributes:
+The `GridPanel` class allows you to display children components with the use of [CSS Grid Layout Module](https://www.w3.org/TR/css-grid/) W3C recommendation - a two-dimensional layout system, which allows the children to be positioned into arbitrary slots in a predefined flexible or fixed-size grid. This specification is even more complex than Flexbox, but is still supported mostly with Kotlin enum values and type-safe parameters. You use the dedicated `add(child: Component, columnStart: Int? = null, rowStart: Int? = null, columnEnd: String? = null, rowEnd: String? = null, area: String? = null, justifySelf: JustifyItems? = null, alignSelf: AlignIems? = null, classes: Set = setOf())` method of `GridPanel` class to add children components with additional grid attributes:
 
 ```kotlin
-gridPanel(columnGap = 5, rowGap = 5, justifyItems = GridJustify.CENTER) {
+gridPanel(columnGap = 5, rowGap = 5, justifyItems = JustifyItems.CENTER) {
     add(Div("1,1"), 1, 1)
     add(Div("1,2"), 1, 2)
     add(Div("2,1"), 2, 1)

@@ -1,10 +1,10 @@
 # Data container
 
-The `kvision-datacontainer` module contains a data component, which allows you to easily display a list of arbitrary items with one or two-way bindings.
+Any non trivial application works with some kind of data, and providing a means for users to view and modify the data is very important task for user interface development. KVision brings you support for observable data model with one or two-way data binding, using the [`ObservableList<T>`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.state/-observable-list/index.html) and classes from `pl.treksoft.kvision.data` package, contained in the `kvision-datacontainer` module.
 
 ### Data model
 
-You have to keep your data in the instance of the `ObservableList` collection. If you like your data elements to be immutable just use a data class.
+This solution assumes that your data can be modeled as a kind of a list \(it can be a single-element list, too\). Having regard to the above, you have to keep your data in the instance of the `ObservableList` collection. If you like your data elements to be immutable just use a data class.
 
 ```kotlin
 data class Tweet(val date: Date, 

@@ -26,6 +26,7 @@
 * [Part 2: Advanced features](part-2-advanced-features/README.md)
   * [Forms](part-2-advanced-features/forms.md)
   * [Form controls guide](part-2-advanced-features/form-controls-guide.md)
+  * [Working with state](part-2-advanced-features/working-with-state.md)
   * [Data container](part-2-advanced-features/data-container.md)
   * [Drag and drop](part-2-advanced-features/drag-and-drop.md)
   * [Charts](part-2-advanced-features/charts.md)

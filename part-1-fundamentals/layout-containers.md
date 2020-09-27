@@ -82,16 +82,19 @@ splitPanel(Direction.HORIZONTAL) {
 This layout container is only available with the `kvision-bootstrap` module.
 {% endhint %}
 
-This container creates a popular tabbed layout, with tabs on the top, left or right side of the content. You use the dedicated `addTab` method of the `TabPanel` class to create tabs with given names, icons, images and routing URLs.
+This container creates a popular tabbed layout, with tabs on the top, left or right side of the content. 
 
 ```kotlin
 tabPanel {
-    val tab1Content = Div("Apple description")
-    val tab2Content = Div("Google description")
-    val tab3Content = Div("Microsoft description")
-    addTab("Apple", tab1Content, "fa-apple")
-    addTab("Google", tab2Content, "fa-google")
-    addTab("Microsoft", tab3Content, "fa-windows")
+    tab("Apple", "fas fa-apple") {
+        div("Apple description")
+    }
+    tab("Google", "fas fa-google") {
+        div("Google description")
+    }
+    tab("Microsoft", "fas fa-windows") {
+        div("Microsoft description")
+    }
 }
 ```
 
@@ -99,25 +102,31 @@ For tabs displayed on the left or right side of the content, you need to declare
 
 ```kotlin
 tabPanel(tabPosition = TabPosition.LEFT, sideTabSize = SideTabSize.SIZE_2) {
-    val tab1Content = Div("Apple description")
-    val tab2Content = Div("Google description")
-    val tab3Content = Div("Microsoft description")
-    addTab("Apple", tab1Content, "fa-apple")
-    addTab("Google", tab2Content, "fa-google")
-    addTab("Microsoft", tab3Content, "fa-windows")
+    tab("Apple", "fas fa-apple") {
+        div("Apple description")
+    }
+    tab("Google", "fas fa-google") {
+        div("Google description")
+    }
+    tab("Microsoft", "fas fa-windows") {
+        div("Microsoft description")
+    }
 }
 ```
 
-Tabs can be made closable. A closable tab displays a cross icon to the tab bar. When the user clicks this icon, the `removeTab` method is called and the tab is deleted from the container. Two events are sent - `tabClosing` and `tabClosed` with the tab index saved in `detail.data` property. The first event is cancelable -  you can call `preventDefault()` method to cancel the action.
+Tabs can be made closable. A closable tab displays a cross icon on the tab bar. When the user clicks this icon, the `removeTab` method is called and the tab is deleted from the container. Two events are sent - `tabClosing` and `tabClosed` with the tab index saved in `detail.data` property. The first event is cancelable -  you can call `preventDefault()` method to cancel the action.
 
 ```kotlin
 tabPanel {
-    val tab1Content = Div("Apple description")
-    val tab2Content = Div("Google description")
-    val tab3Content = Div("Microsoft description")
-    addTab("Apple", tab1Content, "fa-apple", closable = true)
-    addTab("Google", tab2Content, "fa-google", closable = true)
-    addTab("Microsoft", tab3Content, "fa-windows", closable = true)
+    tab("Apple", "fas fa-apple", closable = true) {
+        div("Apple description")
+    }
+    tab("Google", "fas fa-google", closable = true) {
+        div("Google description")
+    }
+    tab("Microsoft", "fas fa-windows", closable = true) {
+        div("Microsoft description")
+    }
     onEvent {
         tabClosing = { e ->
             if (e.detail.data == 2) {
@@ -133,33 +142,53 @@ tabPanel {
 }
 ```
 
+`TabPanel` container implementation allows to:
+
+* dynamically add and remove tabs
+* get the list of tabs and dynamically modify tab properties \(label, icon, image, closable\)
+* find tab containing a given child component
+* dynamically reorder tabs
+* allow user to reorder tabs with drag & drop
+
 ##  DockPanel
 
-This container can have up to five children, and it shows them in five distinct positions - CENTER, UP, DOWN, LEFT and RIGHT. The default `add` method of the `DockPanel` class \(used also by the DSL builders\) puts the given component in the CENTER position. You have to use the dedicated `add(child: Component, position: Side)` method to put your child components in the other four positions.
+This container can have up to five children, and it shows them in five distinct positions - CENTER, UP, DOWN, LEFT and RIGHT. The default `add` method of the `DockPanel` class \(used also by the DSL builders\) puts the given component in the CENTER position. Use the dedicated DSL builder functions to put your child components in the other four positions.
 
 ```kotlin
 dockPanel {
     div("CENTER") {
         margin = auto
     }
-    add(Div("LEFT"), Side.LEFT)
-    add(Div("RIGHT"), Side.RIGHT)
-    add(Div("UP"), Side.UP)
-    add(Div("DOWN"), Side.DOWN)
+    left {
+        div("LEFT")
+    }
+    right {
+        div("RIGHT")
+    }
+    up {
+        div("UP")
+    }
+    down {
+        div("DOWN")
+    }
 }
 ```
 
 ## FlexPanel
 
-The `FlexPanel` class allows you to display children components with all the power of[ CSS Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox/) W3C recommendation. In the flex layout model, the children components can be laid out horizontally or vertically, left to right, right to left, top to bottom or bottom to top. Children can change their sizes, either growing or shrinking. The specification is quite complex and most of the available CSS attributes are supported with Kotlin enum values used with the `FlexPanel` class. You use the dedicated `add(child: Component, order: Int? = null, grow: Int? = null, shrink: Int? = null, basis: Int? = null, alignSelf: FlexAlignItems? = null, classes: Set = setOf())` method of `FlexPanel` class to add children components with additional flexbox attributes:
+The `FlexPanel` class allows you to display children components with all the power of[ CSS Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox/) W3C recommendation. In the flex layout model, the children components can be laid out horizontally or vertically, left to right, right to left, top to bottom or bottom to top. Children can change their sizes, either growing or shrinking. The specification is quite complex and most of the available CSS attributes are supported with Kotlin enum values used with the `FlexPanel` class. You use the dedicated `add(child: Component, order: Int? = null, grow: Int? = null, shrink: Int? = null, basis: Int? = null, alignSelf: FlexAlignItems? = null, classes: Set = setOf())` method of `FlexPanel` class or `options` DSL builder function to add children components with additional flexbox attributes:
 
 ```kotlin
 flexPanel(
     FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER,
     spacing = 5
 ) {
-    add(Div("1"), order = 3)
-    add(Div("2"), order = 1)
+    options(order = 3) {
+        div("1")
+    }
+    options(order = 1) {
+        div("2")
+    }
     add(Div("3"), order = 2)
 }
 ```
@@ -183,12 +212,16 @@ vPanel(spacing = 5) {
 
 ## GridPanel
 
-The `GridPanel` class allows you to display children components with the use of [CSS Grid Layout Module](https://www.w3.org/TR/css-grid/) W3C recommendation - a two-dimensional layout system, which allows the children to be positioned into arbitrary slots in a predefined flexible or fixed-size grid. This specification is even more complex than Flexbox, but is still supported mostly with Kotlin enum values and type-safe parameters. You use the dedicated `add(child: Component, columnStart: Int? = null, rowStart: Int? = null, columnEnd: String? = null, rowEnd: String? = null, area: String? = null, justifySelf: JustifyItems? = null, alignSelf: AlignIems? = null, classes: Set = setOf())` method of `GridPanel` class to add children components with additional grid attributes:
+The `GridPanel` class allows you to display children components with the use of [CSS Grid Layout Module](https://www.w3.org/TR/css-grid/) W3C recommendation - a two-dimensional layout system, which allows the children to be positioned into arbitrary slots in a predefined flexible or fixed-size grid. This specification is even more complex than Flexbox, but is still supported mostly with Kotlin enum values and type-safe parameters. You use the dedicated `add(child: Component, columnStart: Int? = null, rowStart: Int? = null, columnEnd: String? = null, rowEnd: String? = null, area: String? = null, justifySelf: JustifyItems? = null, alignSelf: AlignIems? = null, classes: Set = setOf())` method of `GridPanel` class or `options` DSL builder function to add children components with additional grid attributes:
 
 ```kotlin
 gridPanel(columnGap = 5, rowGap = 5, justifyItems = JustifyItems.CENTER) {
-    add(Div("1,1"), 1, 1)
-    add(Div("1,2"), 1, 2)
+    options(1, 1) {
+        div("1,1")
+    }
+    options(1, 2) {
+        div("1,2")
+    }
     add(Div("2,1"), 2, 1)
     add(Div("2,2"), 2, 2)
 }
@@ -200,12 +233,16 @@ gridPanel(columnGap = 5, rowGap = 5, justifyItems = JustifyItems.CENTER) {
 This layout container is only available with the `kvision-bootstrap` module.
 {% endhint %}
 
-This container allows you to position children components inside Bootstrap's popular responsive 12-columns grid system. It's well suited for mobile websites and applications, but can also be used as an alternative to the CSS Grid. The `ResponsiveGridPanel` class allows you to choose grid size \(with SM, MD, LG, XL enum values\) and automatically wraps children components into appropriate rows and cols elements. The number of rows and columns can be declared as parameters of the class constructor or calculated on the fly based on children added to the container. You use the dedicated `add(child: Component, col: Int, row: Int, size: Int = 0, offset: Int = 0)` method of the `ResponsiveGridPanel` class to add children to selected positions in the grid:
+This container allows you to position children components inside Bootstrap's popular responsive 12-columns grid system. It's well suited for mobile websites and applications, but can also be used as an alternative to the CSS Grid. The `ResponsiveGridPanel` class allows you to choose grid size \(with SM, MD, LG, XL enum values\) and automatically wraps children components into appropriate rows and cols elements. The number of rows and columns can be declared as parameters of the class constructor or calculated on the fly based on children added to the container. You use the dedicated `add(child: Component, col: Int, row: Int, size: Int = 0, offset: Int = 0)` method of the `ResponsiveGridPanel` class or `options` DSL builder function to add children to selected positions in the grid:
 
 ```kotlin
 responsiveGridPanel {
-    add(Div("1,1"), 1, 1)
-    add(Div("3,1"), 3, 1)
+    options(1, 1) {
+        div("1,1")
+    }
+    options(3, 1) {
+        div("3,1")
+    }
     add(Div("2,2"), 2, 2)
     add(Div("3,3"), 3, 3)
 }

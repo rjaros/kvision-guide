@@ -8,15 +8,15 @@
 
 Kotlin is a modern programming language released in 2016 by JetBrains. It's a statically typed language with many great, practical features and outstanding tooling support \(IntelliJ IDEA\).
 
-#### Object oriented, imperative design
+#### Easy to use
 
 KVision allows you to build modern web applications with the Kotlin language, without any use of HTML, CSS or JavaScript.
 
-KVision prefers the imperative style of programming. It's object oriented and supports many well known OOP design patterns. It gives you a hierarchy of consistent components, which are used as a builder blocks for the application GUI. The classes you can just use in your project or which you can extend to modify their default behavior.
-
-KVision's design is quite similar to many non-web UI programming libraries including Swing, JavaFX, QT, WinForms and Flutter.
+KVision's basic design is quite similar to many non-web UI programming libraries including Swing, JavaFX, QT, WinForms and Flutter.
 
 #### **Ready to use components**
+
+It gives you a hierarchy of almost 100 ready to use GUI components, which can be used as a builder blocks for the application UI. Hundreds of features are available with easy to learn and consistent API.
 
 * sophisticated containers \(tabs, stack, dock, grid, horizontal, vertical, flexbox, responsive\)
 * forms with type-safe data model and built-in validation
@@ -48,13 +48,15 @@ KVision's design is quite similar to many non-web UI programming libraries inclu
 
 KVision was designed to be open and flexible. By default it gives you [Bootstrap](https://getbootstrap.com/) based look & feel. You can also use themes from [Bootswatch](https://bootswatch.com/) or you can disable them all and design your application appearance from the scratch, limited only by your own knowledge of CSS.
 
+KVision fully supports both reactive and imperative programming models. It gives you everything you may need for the state management of your apps. From simple observables to advanced redux stores. From simple event callbacks to functional event flows.
+
 KVision is open source and modular. You can create your own modules taking an example from quite a few already existing. Almost all KVision classes are declared as open. With inheritance and composition you can build your own components, with all new features you need in your apps.
 
 KVision is suitable for any kind of projects, including responsive, mobile web applications or even a simple, plain websites.
 
-#### Server side interface
+#### **Fullstack**
 
-KVision contains innovative connectivity interface for a bunch of popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.io), [Spring Boot](https://spring.io/projects/spring-boot), [Javalin](https://javalin.io), [Vert.x](https://vertx.io) and [Micronaut](https://micronaut.io), which allows to build full-stack applications with shared common code. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides \(based on automatically generated routings and JSON-RPC endpoints\). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. With the help of the dedicated Kotlin compiler plugin, based on [MpApt](https://github.com/Foso/MpApt/) library, you have to write only essential, boilerplate-free code. This makes KVision full-stack applications very easy to create and maintain.
+KVision contains innovative connectivity interface for a bunch of popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.io), [Spring Boot](https://spring.io/projects/spring-boot), [Javalin](https://javalin.io), [Vert.x](https://vertx.io) and [Micronaut](https://micronaut.io), which allows to build fullstack applications with shared code for data model and business logic. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides \(based on automatically generated routings and JSON-RPC endpoints\). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. With the help of the dedicated Kotlin compiler plugin, based on [MpApt](https://github.com/Foso/MpApt/) library, you have to write only essential, boilerplate-free code. This makes KVision full-stack applications very easy to create and maintain.
 
 There is also experimental support for type-safe websocket connections, based on [Kotlin coroutines channels](https://kotlinlang.org/docs/reference/coroutines/channels.html).
 

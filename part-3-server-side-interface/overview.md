@@ -97,7 +97,7 @@ fun Application.main() {
 
 When we run our application everything will work automatically - a call on the client side will run the code on the server and the result will be sent back to the caller.
 
-That's all - our first, full-stack KVision application is ready!
+That's all - our first, fullstack KVision application is ready!
 
 You can find "encoder-fullstack-ktor", a complete application based on this overview \(with some visual enhancements of the GUI\), in the [kvision-examples](https://github.com/rjaros/kvision-examples) repository on GitHub.
 

@@ -18,8 +18,8 @@ data class Form(
     val password2: String? = null,
     val textarea: String? = null,
     val richtext: String? = null,
-    @ContextualSerialization val date: Date? = null,
-    @ContextualSerialization val time: Date? = null,
+    @Contextual val date: Date? = null,
+    @Contextual val time: Date? = null,
     val checkbox: Boolean = false,
     val radio: Boolean = false,
     val select: String? = null,
@@ -31,7 +31,7 @@ data class Form(
 ```
 
 {% hint style="info" %}
-Note: You have to add `@ContextualSerialization` annotations to your `Date` fields in order to explicitly allow serialization with the KVision context. You can also use `@file:ContextualSerialization(Date::class)` file annotation if you want to keep your model classes cleaner. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/custom_serializers.md#contextualserialization-annotation) documentation.
+Note: You have to add `@Contextual` annotations to your `Date` fields in order to explicitly allow serialization with the KVision context. You can also use `@file:UseContextualSerialization(Date::class)` file annotation if you want to keep your model classes cleaner. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/custom_serializers.md#contextualserialization-annotation) documentation.
 {% endhint %}
 
 ### Form controls
@@ -221,14 +221,14 @@ object ObjectIdSerializer : KSerializer<ObjectId> {
 }
 ```
 
-Now you can use this class within your model, by adding `@ContextualSerialization` annotation.
+Now you can use this class within your model, by adding `@Contextual` annotation.
 
 ```kotlin
 @Serializable
 data class Form(
     val text: String? = null,
     val password: String? = null,
-    @ContextualSerialization val objectId: ObjectId? = null
+    @Contextual val objectId: ObjectId? = null
 )
 ```
 

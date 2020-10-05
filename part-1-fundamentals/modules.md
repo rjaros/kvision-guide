@@ -127,6 +127,10 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">Toast messages.</td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-print</td>
+      <td style="text-align:left">Printing support with <a href="https://printjs.crabbly.com/">Print.js</a> library.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-onsenui</td>
       <td style="text-align:left"><a href="https://onsen.io/">Onsen UI</a> mobile web components.</td>
     </tr>

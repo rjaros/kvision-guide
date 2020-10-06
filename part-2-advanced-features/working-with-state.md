@@ -35,6 +35,8 @@ div(text) {
 }
 ```
 
+## Flows
+
 With additional extension functions defined in `kvision-event-flow` module, you can also use Kotlin `Flow` and its operators to declare data bindings between different components and data stores.
 
 ```kotlin
@@ -72,6 +74,23 @@ class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default)
     }
 }
 ```
+
+## Sub-stores
+
+If case of a complex data store, you can easily create sub-stores, using `sub()` extension function. It's a way to partition your data and optimize rendering, because sub-store will notify its observers only when the specified part of the data changes.
+
+```kotlin
+data class ComplexData(val number: Int, val text: String, val check: Boolean)
+
+val mainStore = ObservableValue(ComplexData(1, "2", true))
+val subStore = mainStore.sub { it.a }
+
+simplePanel(subStore) { number ->
+    div("$number")
+}
+```
+
+ 
 
 
 

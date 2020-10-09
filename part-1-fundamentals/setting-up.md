@@ -188,7 +188,7 @@ class App : Application() {
 }
 
 fun main() {
-    startApplication(::App)
+    startApplication(::App, module.hot)
 }
 ```
 {% endcode %}

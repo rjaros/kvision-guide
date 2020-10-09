@@ -7,8 +7,8 @@ Every KVision project utilize the HMR \(Hot Module Replacement\) feature of [Web
 package com.example
 
 import pl.treksoft.kvision.Application
+import pl.treksoft.kvision.module
 import pl.treksoft.kvision.panel.root
-import pl.treksoft.kvision.require
 
 class App : Application() {
 
@@ -22,6 +22,10 @@ class App : Application() {
         return mapOf()
     }
 
+}
+
+fun main() {
+    startApplication(::App, module.hot)
 }
 ```
 {% endcode %}

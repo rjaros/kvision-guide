@@ -1,6 +1,6 @@
 # Introduction
 
-[KVision](https://github.com/rjaros/kvision) is an open source web framework created for [Kotlin](https://kotlinlang.org/) language. It allows developers to build modern web applications in Kotlin.
+[KVision](https://kvision.io) is an open source web framework created for [Kotlin](https://kotlinlang.org/) language. It allows developers to build modern web applications in Kotlin.
 
 ## Main features
 

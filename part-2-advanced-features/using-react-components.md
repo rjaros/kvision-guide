@@ -100,6 +100,27 @@ button("Set the code").onClick {
 
 You initialize the KVision `React` component with some initial state, which can be any type `T` you need. You use `getState(): () -> T` function to retrieve the current state and assign the correct value to the React component input property. And you can use `changeState(): ((T) -> T) -> Unit` function to modify the state \(most of the time this function will be used with some React callbacks\). After creating this two-way bindings you can both read and change the current state of the component with its `.state` property.
 
+## Using KVision components as React children
+
+Most React components can have children. Typically you can easily add other React components as React children. But you may also use KVision components with a help of `kv` helper function. 
+
+```kotlin
+    import pl.treksoft.kvision.react.kv
+    
+    root("kvapp") {
+        react {
+            ElTabs {
+                ElTabsPane {
+                    attrs.label = "Tab"
+                    kv {
+                        textInput(value = "KVision text input inside React")
+                    }
+                }
+            }
+        }
+    }
+```
+
 ## Resources
 
 When using React components you will also need to include resources \(like CSS\). Use `require` function inside some `init {}` block for this purpose.

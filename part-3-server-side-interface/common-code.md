@@ -72,17 +72,6 @@ Even with the above restrictions, the set of supported types is quite rich and y
 Note: You have to add `@Contextual` annotations to your `LocalDate`, `LocalDateTime`, `LocalTime`, `OffsetDateTime,` `OffsetTime` and `Decimal` fields in order to explicitly allow serialization with the KVision context. You can also use `@file:UseContextualSerialization(LocalDate::class)` file annotation if you want to keep your model classes cleaner. You can find more information about this annotation in the [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/serializers.md#contextual-serialization) documentation.
 {% endhint %}
 
-When using sealed classes as parameters or returned values you need to use additional `@JsonTypeInfo` annotation to enable polymorphic serialization/deserialization of subclasses:
-
-```kotlin
-@JsonTypeInfo(Id.CLASS, As.PROPERTY, "type", JsonTypeInfo::class, false)
-@Serializable
-sealed class Item {
-    var id: Int? = null
-    var name: String? = null
-}
-```
-
 With an interface defined in the common code, the type safety of your whole application is forced at a compile time. Any incompatibility between the frontend and the backend code will be marked as a compile-time error.
 
 ```kotlin

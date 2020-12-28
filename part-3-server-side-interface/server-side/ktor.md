@@ -4,7 +4,7 @@
 
 ## Build configuration
 
-The integration with Ktor is contained in the `kvision-server-ktor` module. It has to be added as the dependency in the common target. This module depends on the `ktor-server-core`, `ktor-jackson`, `jackson-module-kotlin` and `guice` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
+The integration with Ktor is contained in the `kvision-server-ktor` module. It has to be added as the dependency in the common target. This module depends on the `ktor-server-core`, `ktor-serialization`, and `guice` libraries. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
 {% code title="build.gradle.kts" %}
 ```kotlin
@@ -26,7 +26,7 @@ dependencies {
 {% endcode %}
 
 {% hint style="info" %}
-Note: You can use other engines instead of Netty - see [Ktor documentation](https://ktor.io/servers/configuration#embedded-server). Remember to add the appropriate dependency.
+Note: You can use other engines instead of Netty - see [Ktor documentation](https://ktor.io/docs/engines.html). Remember to add the appropriate dependency.
 {% endhint %}
 
 ## Application configuration

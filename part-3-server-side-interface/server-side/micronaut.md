@@ -1,10 +1,10 @@
 # Micronaut
 
-[Micronaut](https://micronaut.io) is a modern, JVM-based, full-stack framework for building modular, easily testable microservice and serverless applications. Micronaut provides a simple compile-time aspect-oriented programming API, which is very similar to Spring, but does not use reflection.
+[Micronaut](https://micronaut.io) is a modern, JVM-based, fullstack framework for building modular, easily testable microservice and serverless applications. Micronaut provides a simple compile-time aspect-oriented programming API, which is very similar to Spring, but does not use reflection.
 
 ## Build configuration
 
-The integration with Micronaut is contained in the `kvision-server-micronaut` module. It has to be added as the dependency in the common target. This module depends on the `micronaut-inject`, `micronaut-http`, `micronaut-router`, `micronaut-websocket` and`jackson-module-kotlin`. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
+The integration with Micronaut is contained in the `kvision-server-micronaut` module. It has to be added as the dependency in the common target. This module depends on the `micronaut-inject`, `micronaut-http`, `micronaut-router` and `micronaut-websocket`. Any other dependencies can be added to `build.gradle.kts` and then be used in your application.
 
 {% code title="build.gradle.kts" %}
 ```kotlin

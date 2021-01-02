@@ -10,7 +10,7 @@ Note: KVision support for React components is based on [Kotlin Wrappers](https:/
 
 ## Dependencies
 
-To use React component just add NPM dependencies to your `build.gradle.kts` file.
+To use React component just add `kvision-react` module and the required NPM dependencies to your `build.gradle.kts` file.
 
 ```kotlin
 kotlin {
@@ -21,6 +21,10 @@ kotlin {
 
         implementation(npm("react-ace"))
         implementation(npm("ace-builds"))
+        
+        implementation("pl.treksoft:kvision:$kvisionVersion")
+        implementation("pl.treksoft:kvision-react:$kvisionVersion")
+        // ... other KVision modules
     }
 }
 
@@ -31,6 +35,9 @@ kotlin {
 Let's start with a simple example and [react-awesome-button](https://www.npmjs.com/package/react-awesome-button) component. First you need to declare the type of data being passed into the component.
 
 ```kotlin
+import react.RProps
+import react.RClass
+
 external interface ReactButtonProps : RProps {
     var type: String
     var size: String

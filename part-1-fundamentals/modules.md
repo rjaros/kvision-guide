@@ -92,8 +92,7 @@ KVision consists of both required and optional functionality. Modules can be add
     </tr>
     <tr>
       <td style="text-align:left">kvision-pace</td>
-      <td style="text-align:left"><a href="https://github.hubspot.com/pace/docs/welcome/">Pace</a> automatic
-        page loader.</td>
+      <td style="text-align:left"><a href="https://codebyzach.github.io/pace/">Pace</a> automatic page loader.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-redux</td>

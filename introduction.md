@@ -41,7 +41,7 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * built-in support for [React](https://reactjs.org/) components
 * built-in support for [Onsen UI](https://onsen.io/) web components
 * built-in support for [Moment.js](https://momentjs.com/) library
-* built-in support for [Pace](https://github.hubspot.com/pace/docs/welcome/) automatic page loader
+* built-in support for [Pace](https://codebyzach.github.io/pace/) automatic page loader
 * built-in support for [Leaflet](https://leafletjs.com/) interactive maps
 * built-in support for printing with [Print.js](https://printjs.crabbly.com/) library
 

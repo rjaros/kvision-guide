@@ -101,3 +101,7 @@ div {
 }
 ```
 
+{% hint style="info" %}
+Note: `Style` objects are currently not designed to work with multiple `Root` containers.
+{% endhint %}
+

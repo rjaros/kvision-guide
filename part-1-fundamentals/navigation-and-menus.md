@@ -65,14 +65,14 @@ dropDown(
         "Dropdowns (disabled)" to DD.DISABLED.option,
         "Separator" to DD.SEPARATOR.option,
         "Containers" to "#!/containers"
-    ), "fas fa-asterisk", style = ButtonStyle.PRIMARY
+    ), "fa-asterisk", style = ButtonStyle.PRIMARY
 )
 ```
 
 Another way is to add all children components to the `DropDown` container manually. Use this way to have full control over menu content \(e.g. add images or other non-text components\). Use `pl.treksoft.kvision.dropdown.Header` and `pl.treksoft.kvision.dropdown.Separator` helper classes to create header or separator items. As always you should use DSL builders whenever possible.
 
 ```kotlin
-dropDown("Dropdown with custom list", icon = "fas fa-picture-o") {
+dropDown("Dropdown with custom list", icon = "fa-picture-o") {
     minWidth = 250.px
     image(require("img/cat.jpg")) { margin = 10.px; title = "Cat" }
     separator()

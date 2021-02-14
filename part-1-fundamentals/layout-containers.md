@@ -1,6 +1,6 @@
 # Layout containers
 
-Layout containers allow you to position your components in a different ways to create both simple and complex views. Different container types can be stacked together to achieve even the most sophisticated layouts. Core containers are available in `io.kvision.panel` package.
+Layout containers allow you to position your components in a different ways to create both simple and complex views. Different container types can be stacked together to achieve even the most sophisticated layouts. Core containers are available in `pl.treksoft.kvision.panel` package.
 
 ## SimplePanel
 

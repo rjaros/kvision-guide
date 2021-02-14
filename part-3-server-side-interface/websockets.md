@@ -50,10 +50,6 @@ GlobalScone.launch {
 
 ### Backend code
 
-{% hint style="info" %}
-You need to manually install WebSockets feature in your main method when using Ktor backend.
-{% endhint %}
-
 On the backend side you just have to implement the interface method. It will be automatically called when a new client is connected, and it should run as long as the connection is active.
 
 ```kotlin

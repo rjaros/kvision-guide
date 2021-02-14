@@ -78,8 +78,8 @@ This function is the application starting point. It's used to initialize and con
 
 ```kotlin
 import io.javalin.Javalin
-import io.kvision.remote.applyRoutes
-import io.kvision.remote.kvisionInit
+import pl.treksoft.kvision.remote.applyRoutes
+import pl.treksoft.kvision.remote.kvisionInit
 
 fun main() {
     Javalin.create().start(8080).apply {

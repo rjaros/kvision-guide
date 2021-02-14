@@ -20,7 +20,7 @@ data class MyState(val content: String, val counter: Int)
 
 Actions are used to describe the possible changes of the state. Actions are represented as classes and they can contain additional data.
 
-An action class have to inherit \(directly or indirectly\) from `io.kvision.redux.RAction`. It's recommended to use a sealed class, to be able to easily use  exhaustive `when` expression.
+An action class have to inherit \(directly or indirectly\) from `pl.treksoft.kvision.redux.RAction`. It's recommended to use a sealed class, to be able to easily use  exhaustive `when` expression.
 
 ```kotlin
 sealed class MyAction : RAction {

@@ -36,30 +36,28 @@ Note: You have to add `@Contextual` annotations to your `Date` fields in order t
 
 ### Form controls
 
-Form controls are KVision components implementing one of five `FormControl` interfaces inside `io.kvision.form` package: `StringFormControl`, `NumberFormControl`, `BoolFormControl`, `DateFormControl` and `KFilesFormControl`. KVision comes with a bunch of build-in or modular form components.
+Form controls are KVision components implementing one of five `FormControl` interfaces inside `pl.treksoft.kvision.form` package: `StringFormControl`, `NumberFormControl`, `BoolFormControl`, `DateFormControl` and `KFilesFormControl`. KVision comes with a bunch of build-in or modular form components.
 
 | Component | Interface | Module | Description |
 | :--- | :--- | :--- | :--- |
-| `i.k.f.check.CheckBox` | `BoolFormControl` | built-in | A check-box. |
-| `i.k.f.check.Radio` | `BoolFormControl` | built-in | A radio-button. |
-| `i.k.f.check.RadioGroup` | `StringFormControl` | built-in | A group of radio-buttons. |
-| `i.k.f.text.Text` | `StringFormControl` | built-in | A text field. |
-| `i.k.f.text.Password` | `StringFormControl` | built-in | A text field for password input. |
-| `i.k.f.text.TextArea` | `StringFormControl` | built-in | A text area. |
-| `i.k.f.select.SimpleSelect` | `StringFormControl` | built-in | A standard select component. |
-| `i.k.f.range.Range` | `NumberFormControl` | built-in | A range selection field. |
-| `i.k.f.time.DateTime` | `DateFormControl` | kvision-bootstrap-datetime | A date and/or time selection control. |
-| `i.k.f.text.RichText` | `StringFormControl` | kvision-richtext | A rich text editor. |
-| `i.k.f.select.Select` | `StringFormControl` | kvision-bootstrap-select | An advanced select box with support for multiple selection and AJAX data source support. |
-| `i.k.f.select.SelectRemote` | `StringFormControl` | kvision-bootstrap-select-remote | A select box for multi-platform server-side connectivity. |
-| `i.k.f.spinner.Spinner` | `NumberFormControl` | kvision-bootstrap-spinner | A spinner control for number selection. |
-| `i.k.f.upload.Upload` | `KFilesFormControl` | kvision-bootstrap-upload | An upload file control with preview and multi-selection.  |
-| `i.k.f.text.Typeahead` | `StringFormControl` | kvision-bootstrap-typeahead | A typeahed \(autocomplete\) text field with support for data source. |
+| `p.t.k.f.check.CheckBox` | `BoolFormControl` | built-in | A check-box. |
+| `p.t.k.f.check.Radio` | `BoolFormControl` | built-in | A radio-button. |
+| `p.t.k.f.check.RadioGroup` | `StringFormControl` | built-in | A group of radio-buttons. |
+| `p.t.k.f.text.Text` | `StringFormControl` | built-in | A text field. |
+| `p.t.k.f.text.Password` | `StringFormControl` | built-in | A text field for password input. |
+| `p.t.k.f.text.TextArea` | `StringFormControl` | built-in | A text area. |
+| `p.t.k.f.select.SimpleSelect` | `StringFormControl` | built-in | A standard select component. |
+| `p.t.k.f.range.Range` | `NumberFormControl` | built-in | A range selection field. |
+| `p.t.k.f.time.DateTime` | `DateFormControl` | kvision-bootstrap-datetime | A date and/or time selection control. |
+| `p.t.k.f.text.RichText` | `StringFormControl` | kvision-richtext | A rich text editor. |
+| `p.t.k.f.select.Select` | `StringFormControl` | kvision-bootstrap-select | An advanced select box with support for multiple selection and AJAX data source support. |
+| `p.t.k.f.select.SelectRemote` | `StringFormControl` | kvision-bootstrap-select-remote | A select box for multi-platform server-side connectivity. |
+| `p.t.k.f.spinner.Spinner` | `NumberFormControl` | kvision-bootstrap-spinner | A spinner control for number selection. |
+| `p.t.k.f.upload.Upload` | `KFilesFormControl` | kvision-bootstrap-upload | An upload file control with preview and multi-selection.  |
+| `p.t.k.f.text.Typeahead` | `StringFormControl` | kvision-bootstrap-typeahead | A typeahed \(autocomplete\) text field with support for data source. |
 
 {% hint style="info" %}
-Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated. 
-
-There is also `GenericRadioGroup<T>` component, which can return value of any type, but it can't be used inside `Form`/`FormPanel` containers. 
+Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated.
 {% endhint %}
 
 ### Form containers

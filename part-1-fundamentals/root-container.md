@@ -1,10 +1,10 @@
 # Root container
 
-Every KVision application must have at least one Root container \( an instance of `io.kvision.panel.Root` class\). Root container is initialized by an extension function of the Application class, with an ID attribute of HTML tag, which must be present in the main `index.html` file.
+Every KVision application must have at least one Root container \( an instance of `pl.treksoft.kvision.panel.Root` class\). Root container is initialized by an extension function of the Application class, with an ID attribute of HTML tag, which must be present in the main `index.html` file.
 
 {% code title="App.kt" %}
 ```kotlin
-import io.kvision.panel.root
+import pl.treksoft.kvision.panel.root
 
 override fun start() {
     root("kvapp") {

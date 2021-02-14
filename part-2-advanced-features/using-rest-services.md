@@ -1,6 +1,6 @@
 # Using REST services
 
-The `io.kvision.rest.RestClient` class can be used to connect to any RESTfull services \(it will work with any JSON over HTTP services\). You can use remote services with both dynamic and type-safe calls \(using `@Serializable` classes\). The `remoteCall` and `call` methods of `RestClient` class return `kotlin.js.Promise` object.
+The `pl.treksoft.kvision.rest.RestClient` class can be used to connect to any RESTfull services \(it will work with any JSON over HTTP services\). You can use remote services with both dynamic and type-safe calls \(using `@Serializable` classes\). The `remoteCall` and `call` methods of `RestClient` class return `kotlin.js.Promise` object.
 
 #### Dynamic parameters, dynamic result
 
@@ -61,19 +61,5 @@ val result: Promise<Response<dynamic>> = restClient.remoteRequest("https://api.g
 result.then {
     console.log(it.jqXHR.getResponseHeader("Content-Type"))
 }
-```
-
-### Custom serializers
-
-`RestClient` allows you to specify a custom serializers module with a constructor parameter and allows you to use type-safe calls with all types of data.
-
-```kotlin
-val module = SerializersModule {
-    polymorphic(A::class) {
-        subclass(B::class)
-        subclass(C::class)
-    }
-}
-val restClient = RestClient(module)
 ```
 

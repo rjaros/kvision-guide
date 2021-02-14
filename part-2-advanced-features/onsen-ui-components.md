@@ -109,7 +109,7 @@ tabbar(position = TabsPosition.AUTO, swipeable = true) {
 Using `OnsenUi` global object you get access to various methods, which allow your code to detect platform, screen orientation, customize global animations settings and define global handler for device back button.
 
 ```kotlin
-import io.kvision.onsenui.OnsenUi
+import pl.treksoft.kvision.onsenui.OnsenUi
 
 if (OnsenUi.isAndroid()) {
     OnsenUi.disableAnimations()
@@ -126,7 +126,7 @@ OnsenUi.setDefaultDeviceBackButtonListener { evt ->
 
 ## Form components
 
-OnsenUI provides a rich set of form components and they are fully integrated with KVision standard forms  implementation. You can use all components from `io.kvision.onsenui.form` package as a standalone input elements or use them together with [`FormPanel`](forms.md) container.
+OnsenUI provides a rich set of form components and they are fully integrated with KVision standard forms  implementation. You can use all components from `pl.treksoft.kvision.onsenui.form` package as a standalone input elements or use them together with [`FormPanel`](forms.md) container.
 
 ```kotlin
 @Serializable
@@ -205,7 +205,7 @@ formPanel<MyForm> {
 
 ## Dialog components
 
-Dialog components include ActionSheets, Alerts, Dialogs, Modals, Popovers and Toasts. To show one of these components you need o create an instance of the corresponding class from `io.kvision.onsenui.dialog` package, and call one of `show*` methods.
+Dialog components include ActionSheets, Alerts, Dialogs, Modals, Popovers and Toasts. To show one of these components you need o create an instance of the corresponding class from `pl.treksoft.kvision.onsenui.dialog` package, and call one of `show*` methods.
 
 ```kotlin
 val alertDialog = alertDialog("Alert", true, rowfooter = true) {

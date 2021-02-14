@@ -1,6 +1,6 @@
 # Working with state
 
-KVision gives you sophisticated but also easy to use tools to work with application state. They are designed with the reactive paradigm and based on `io.kvision.state.ObservableState` and `io.kvision.state.MutableState` interfaces. A lot of KVision classes implement one or both of these interfaces:
+KVision gives you sophisticated but also easy to use tools to work with application state. They are designed with the reactive paradigm and based on `pl.treksoft.kvision.ObservableState` interface. A lot of KVision classes implement this interface:
 
 * `ObservableValue<T>` - a single value observable
 * `ObservableList<T>` - an observable list of elements
@@ -33,24 +33,6 @@ val text = text(label = "Enter something")
 div(text) {
     +"You entered: $it"
 }
-```
-
-All form components implement `MutableState` interface. At the same time every form component can be bidirectionally bound to the external `MutableState`instance \(e.g. `ObservableValue`\).
-
-```kotlin
-val observable = ObservableValue("test")
-text().bindTo(observable)
-div(observable) { state ->
-    +state
-}
-```
-
-Yo can of course easily bind two form components with each other.
-
-```kotlin
-val text1 = text()
-val text2 = text()
-text1.bindTo(text2)
 ```
 
 ## Flows

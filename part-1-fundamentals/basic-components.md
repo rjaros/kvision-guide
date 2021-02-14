@@ -2,7 +2,7 @@
 
 ## HTML markup
 
-KVision contains classes for creating typical HTML markup of a web page. The main class for this purpose is `io.kvision.html.Tag`, which allows you to render any HTML element. This class is also a container, so instances of `Tag` can be nested inside other `Tag` objects. There are a few subclasses of `Tag` - `Div` , `P`, `Span`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Main`, `Section`, `Header`, `Footer` - which render the most used HTML elements. With DSL builders you can declare simple markup as follows:
+KVision contains classes for creating typical HTML markup of a web page. The main class for this purpose is [`pl.treksoft.kvision.html.Tag`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-tag/index.html), which allows you to render any HTML element. This class is also a container, so instances of `Tag` can be nested inside other `Tag` objects. There are a few subclasses of `Tag` - `Div` , `P`, `Span`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Main`, `Section`, `Header`, `Footer` - which render the most used HTML elements. With DSL builders you can declare simple markup as follows:
 
 ```kotlin
 div {
@@ -30,7 +30,7 @@ A test with custom CSS styling
 
 ### Lists
 
-You can use the `io.kvision.html.ListTag` class to create HTML lists. You can use a `List<String>` value to quickly populate the list:
+You can use the [`pl.treksoft.kvision.html.ListTag`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-list-tag/index.html) class to create HTML lists. You can use a `List<String>` value to quickly populate the list:
 
 ```kotlin
 div {
@@ -52,7 +52,7 @@ div {
 
 ### Tables
 
-You can use classes from the `io.kvision.table.*` package to create HTML tables:
+You can use classes from the [`pl.treksoft.kvision.table.*`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.table/index.html) package to create HTML tables:
 
 ```kotlin
 table(
@@ -77,7 +77,7 @@ For interactive, editable tables KVision also supports [`Tabulator`](https://kvi
 
 ### Links
 
-To create a link use `io.kvision.html.Linkclass`:
+To create a link use [`pl.treksoft.kvision.html.Link`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.html/-link/index.html)`class`:
 
 ```text
 div {
@@ -113,13 +113,13 @@ p(
 will render:
 
 ```markup
-<p><span style="display: contents;">Rich <b>text</b> <i>written</i> with
+<p><span>Rich <b>text</b> <i>written</i> with
 <span style="font-family: Verdana; font-size: 14pt;">any <strong>forma</strong>tting
 </span>.</span></p>
 ```
 
 {% hint style="info" %}
-Notice the extra `<span style="display: contents;">` element surrounding the given content.
+Notice the extra `<span>` element surrounding the given content.
 {% endhint %}
 
 ## Custom attributes

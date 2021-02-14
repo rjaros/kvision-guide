@@ -155,7 +155,7 @@ fun main(args: Array<String>) {
 To secure your application you can use different Micronaut components and ready to use modules. See [Micronaut Security](https://micronaut-projects.github.io/micronaut-security/latest/guide/) guide for details. You can apply different security settings for different services by defining custom `SecurityRule` using KVision `matches` helper function.
 
 ```kotlin
-import io.kvision.remote.matches
+import pl.treksoft.kvision.remote.matches
 
 @Singleton
 open class AppSecurityRule(rolesFinder: RolesFinder) : AbstractSecurityRule(rolesFinder) {

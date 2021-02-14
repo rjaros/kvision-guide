@@ -8,7 +8,7 @@ This is the list of incompatibilities you may encounter when migrating your appl
   * `pl.treksoft.jquery` with `io.kvision.jquery`
   * `pl.treksoft.kvision` with `io.kvision`
 * If you use web sockets with Ktor backend you need to manually install WebSockets feature in your main method.
-* If you use `moment` module with locale support you need to manually `require()` all or some of the needed locales.
+* If you use `moment` module with locale support you need to manually `require()` all or some of the needed locales. You should also update `moment.js` file in `webpack.config.d` directory from the current template.
 
 This is the list of incompatibilities you may encounter when migrating your application to KVision 3.13.x:
 

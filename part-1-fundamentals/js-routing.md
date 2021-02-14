@@ -1,6 +1,6 @@
 # JS routing
 
-KVision has a built-in support for the JavaScript router [Navigo](https://github.com/krasimir/navigo) by using a wrapper library [navigo-kotlin](https://github.com/rjaros/navigo-kotlin). The router object is available as a global variable `routing` in the `io.kvision.routing` package, and all [Navigo API](https://github.com/krasimir/navigo#api) methods can be called directly.
+KVision has a built-in support for the JavaScript router [Navigo](https://github.com/krasimir/navigo) by using a wrapper library [navigo-kotlin](https://github.com/rjaros/navigo-kotlin). The router object is available as a global variable `routing` in the `pl.treksoft.kvision.routing` package, and all [Navigo API](https://github.com/krasimir/navigo#api) methods can be called directly.
 
 ```kotlin
 routing.on({ _ -> println("Main page") })

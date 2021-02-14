@@ -113,19 +113,19 @@ actual class AddressService : IAddressService {
 
 ### The main function
 
-This function is the application starting point. It's used to initialize and configure application modules and features. Minimal implementation for KVision integration contains `kvisionInit` and `applyRoutes` function calls. `kvisionInit` function should be executed as last.
+This function is the application starting point. It's used to initialize and configure application modules and features. Minimal implementation for KVision integration contains `kvisionInit` and `applyRoutes` function calls.
 
 ```kotlin
 import io.ktor.application.Application
 import io.ktor.routing.routing
-import io.kvision.remote.applyRoutes
-import io.kvision.remote.kvisionInit
+import pl.treksoft.kvision.remote.applyRoutes
+import pl.treksoft.kvision.remote.kvisionInit
 
 fun Application.main() {
+    kvisionInit()
     routing {
         applyRoutes(AddressServiceManager)
     }
-    kvisionInit()
 }
 ```
 
@@ -133,10 +133,10 @@ The `kvisionInit` function can take multiple parameters of type `com.google.inje
 
 ```kotlin
 fun Application.main() {
+    kvisionInit(HelloModule())
     routing {
         applyRoutes(AddressServiceManager)
     }
-    kvisionInit(HelloModule())
 }
 
 class HelloModule() : AbstractModule() {
@@ -165,6 +165,7 @@ fun Application.main() {
             cookie.extensions["SameSite"] = "strict"
         }
     }
+    kvisionInit()
     Db.init(environment.config)
 
     install(Authentication) {
@@ -193,7 +194,6 @@ fun Application.main() {
             applyRoutes(ProfileServiceManager) // Authentication needed
         }
     }
-    kvisionInit()
 }
 ```
 

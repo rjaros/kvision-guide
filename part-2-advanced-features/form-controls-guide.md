@@ -15,7 +15,7 @@ All KVision form controls have the following properties:
 
 ## Text fields
 
-### \`\`[`p.t.k.f.text.Text`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.text/-text/index.html)\`\`
+### `i.k.f.text.Text`
 
 This component is rendered as a standard HTML text field and is used to get simple, textual data from the user. The `type` property can be set to any of these values: `TEXT`, `PASSWORD`, `EMAIL`, `TEL`, `COLOR`, `SEARCH`, `URL` and is bound to the `type` attribute of the HTML input field. Modern browsers can render such fields with additional elements \(e.g. color chooser\). Other properties allow you to define a placeholder, a maximum length, autofocus or autocomplete attributes and define if the control should be read-only.  
 
@@ -29,15 +29,15 @@ Text(type = TextInputType.URL, label = "WWW").apply {
 }
 ```
 
-### \`\`[`p.t.k.f.text.Password`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.text/-password/index.html)\`\`
+### `i.k.f.text.Password`
 
-This component is a direct subclass of `p.t.k.form.text.Text` with `type` property set to `TextInputType.PASSWORD`.
+This component is a direct subclass of `i.k.form.text.Text` with `type` property set to `TextInputType.PASSWORD`.
 
 ```kotlin
 Password(label = "Password")
 ```
 
-### \`\`[`p.t.k.f.text.TextArea`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.text/-text-area/index.html)\`\`
+### `i.k.f.text.TextArea`
 
 This component is rendered as a standard HTML textarea field and is used to get longer, multi-line textual data from the user. It can be sized with `cols` and `rows` properties \(mapped to standard HTML attributes\).
 
@@ -63,7 +63,7 @@ TextArea(width = 300.px,
         readonly = true)
 ```
 
-### \`\`[`p.t.k.f.text.RichText`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.text/-rich-text/index.html)\`\`
+### `i.k.f.text.RichText`
 
 The kvision-richtext module allows you to use a dedicated form control based on a modern [Trix Editor](https://trix-editor.org/) component. It can be used to get rich text from the user. This component renders a text editing field with a toolbar containing basic formatting options \(bold, italic, strikethrough, heading, quote, code, link and lists with indentations\). The `value` property contains properly formatted HTML markup. Other properties allow you to define a placeholder and autofocus attribute.
 
@@ -74,7 +74,7 @@ RichText(value = "<b>Bold text</b>",
     autofocus = true)
 ```
 
-### \`\`[`p.t.k.f.text.Typeahead`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.text/-typeahead/index.html)\`\`
+### `i.k.f.text.Typeahead`
 
 The kvision-bootstrap-typeahead module contains an enhanced text field with support for typeahead \(autocomplete\) functionality. Both local and remote data sources are supported. To use local data source pass a list of values with the `options` parameter.
 
@@ -101,13 +101,13 @@ Typeahead(taAjaxOptions = TaAjaxOptions(
 ), items = 5, delay = 3000, minLength = 3, label = "Select a repository")
 ```
 
-### \`\`[`p.t.k.f.text.TypeaheadRemote`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.text/-typeahead-remote/index.html)\`\`
+### `i.k.f.text.TypeaheadRemote`
 
 This component is contained in the `kvision-bootstrap-typeahead-remote` module and is a special version of the `Typeahead` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../part-3-server-side-interface/typeahead-remote.md) of this guide.
 
 ## Checkboxes and radiobuttons
 
-### \`\`[`p.t.k.f.check.CheckBox`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.check/-check-box/index.html)\`\`
+### `i.k.f.check.CheckBox`
 
 This component can be used to display a checkbox and to get true/false data from the user. The `style` property can be used to render the checkbox with one of six different styles.
 
@@ -145,7 +145,7 @@ checkBox(label = "Click me").onClick {
 }
 ```
 
-### \`\`[`p.t.k.f.check.Radio`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.check/-radio/index.html)\`\`
+### `i.k.f.check.Radio`
 
 This component is similar to the `CheckBox` component, but it is rendered as a radiobutton. By using the `name` property, you can group some radiobuttons together, with only one control selected at a time.  
 
@@ -193,7 +193,7 @@ radio(label = "Click me").onClick {
 }
 ```
 
-### \`\`[`p.t.k.f.check.RadioGroup`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.check/-radio-group/index.html)\`\`
+### `i.k.f.check.RadioGroup`
 
 Although it is possible to use basic `Radio` components to build and manage radiobutton groups \(you would have to check which radio in a group is selected\), KVision offers a dedicated `RadioGroup` component, which allows you to treat a group of radiobuttons as a single component returning a String value. It can be initialized with a list of options \(key to value pairs\) and the selected option can be easily set or get with the `value` property.
 
@@ -208,7 +208,7 @@ println(radioGroup.value)
 
 ## Select boxes
 
-### \`\`[`p.t.k.f.select.SimpleSelect`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-simple-select/index.html)\`\`
+### `i.k.f.select.SimpleSelect`
 
 This is a simple select box component, based on standard HTML select control. It can be used when there is no need for advanced options of the `Select` component. The `SimpleSelect` component should be initialized with a list of options \(key to values pairs\).
 
@@ -219,7 +219,7 @@ SimpleSelect(
 )
 ```
 
-### \`\`[`p.t.k.f.select.Select`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-select/index.html)\`\`
+### `i.k.f.select.Select`
 
 The `kvision-bootstrap-select` module allows you to use a sophisticated form control based on [Bootstrap Select](https://github.com/silviomoreto/bootstrap-select). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network with an AJAX extension. The `Select` component can be initialized with a list of options \(key to values pairs\).
 
@@ -293,7 +293,7 @@ Select(
 }
 ```
 
-`Select` component can also work with a remote data source, by integrating [Ajax Bootstrap Select](https://github.com/truckingsim/Ajax-Bootstrap-Select) extension. To use AJAX mode you should initialize`ajaxOptions` property with an instance of   [`pl.treksoft.kvision.form.select.AjaxOptions`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-ajax-options/index.html) data class. See API documentation for more information about options and parameters of AJAX mode.
+`Select` component can also work with a remote data source, by integrating [Ajax Bootstrap Select](https://github.com/truckingsim/Ajax-Bootstrap-Select) extension. To use AJAX mode you should initialize`ajaxOptions` property with an instance of   `io.kvision.form.select.AjaxOptions` data class. See API documentation for more information about options and parameters of AJAX mode.
 
 ```kotlin
 Select(label = "Select with remote data source").apply {
@@ -310,13 +310,13 @@ Select(label = "Select with remote data source").apply {
 }
 ```
 
-### \`\`[`p.t.k.f.select.SelectRemote`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.select/-select-remote/index.html)
+### `i.k.f.select.SelectRemote`
 
 This component is contained in the `kvision-bootstrap-select-remote` module and is a special version of `Select` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../part-3-server-side-interface/remote-select.md) of this guide.
 
 ## Others
 
-### \`\`[`p.t.k.f.time.DateTime`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.time/-date-time/index.html)\`\`
+### `i.k.f.time.DateTime`
 
 The `kvision-bootstrap-datetime` module allows you to use a sophisticated form control based on [Bootstrap datetime picker](https://github.com/pingcheng/bootstrap4-datetimepicker). It's a full-featured component, configurable with plenty of options. It can be used to display date and/or time picker, based on the date format specified with [Fecha library formatting tokens](https://github.com/taylorhakes/fecha#formatting-tokens). The default format is _"YYYY-MM-DD HH:mm"_, which means the control will display date and time picker.
 
@@ -349,7 +349,7 @@ DateTime(label = "Date and time field").apply {
 
  You can also use `minDate`, `maxDate`, `enabledDates` and `disabledDates` properties to control which dates the user is allowed to choose.
 
-### \`\`[`p.t.k.f.spinner.Spinner`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.spinner/-spinner/index.html)\`\`
+### `i.k.f.spinner.Spinner`
 
 The `kvision-bootstrap-spinner` module allows you to use a form component based on [Bootstrap TouchSpin](https://github.com/istvan-ujjmeszaros/bootstrap-touchspin), which can be used to get numeric input from the user. The `Spinner` component has a few options to customize its appearance and functionality. You can set `min` and `max` values \(default - no limits\) and set the `step` value \(default - 1\).
 
@@ -387,7 +387,7 @@ You can also hide spinner buttons at all and force the user to enter the value f
 Spinner(label = "Number", buttonsType = ButtonsType.NONE) 
 ```
 
-### \`\`[`p.t.k.f.upload.Upload`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.upload/-upload/index.html)\`\`
+### `i.k.f.upload.Upload`
 
 The kvision-bootstrap-upload module allows you to use a form component based on [Bootstrap fileinput](https://github.com/kartik-v/bootstrap-fileinput), which allows the user to select and upload files. It can be used as a standard file input element, with files being sent as a multi-part form submission or as an AJAX submission and it can be also used as a client-side file selection tool to be used with [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) available in modern browsers. The `Upload` component has a lot of options to customize its appearance and functionality - see API documentation for more details. 
 
@@ -461,7 +461,7 @@ formPanel<Form> {
 }
 ```
 
-### \`\`[`p.t.k.f.range.Range`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.form.range/-range/index.html)\`\`
+### `i.k.f.range.Range`
 
 This component can be used to allow a user to select numeric value with a slider. You need to configure `min` \(default 0\), `max` \(default 100\) and `step` \(default 1\) attributes.
 

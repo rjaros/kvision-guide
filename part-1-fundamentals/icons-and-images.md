@@ -9,7 +9,7 @@ val g = Button("A button with an icon", "fas fa-asterisk")
 val fb = Link("A link with an icon", "https://google.com", "fab fa-google")
 ```
 
-The dedicated `pl.treksoft.kvision.html.Icon` component lets you use those icons inside any container.
+The dedicated `io.kvision.html.Icon` component lets you use those icons inside any container.
 
 ## Images
 
@@ -31,7 +31,7 @@ To use an external image just use its URL address without `require`.
 val l = Link("A link with an external image", image = "https://www.host.com/logo.png")
 ```
 
-The dedicated `pl.treksoft.kvision.html.Image` component lets you use images inside any container. It gives you also some additional control over image align, shape and responsiveness:
+The dedicated `io.kvision.html.Image` component lets you use images inside any container. It gives you also some additional control over image align, shape and responsiveness:
 
 ```kotlin
 val catImg = Image(require("img/cat.jpg"), alt = "A rounded and responsive cat",

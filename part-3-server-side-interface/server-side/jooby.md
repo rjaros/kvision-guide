@@ -107,8 +107,8 @@ This function is the application starting point. It's used to initialize and con
 
 ```kotlin
 import io.jooby.runApp
-import pl.treksoft.kvision.remote.applyRoutes
-import pl.treksoft.kvision.remote.kvisionInit
+import io.kvision.remote.applyRoutes
+import io.kvision.remote.kvisionInit
 
 fun main(args: Array<String>) {
     runApp(args) {

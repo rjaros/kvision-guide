@@ -22,8 +22,8 @@ kotlin {
         implementation(npm("react-ace"))
         implementation(npm("ace-builds"))
         
-        implementation("pl.treksoft:kvision:$kvisionVersion")
-        implementation("pl.treksoft:kvision-react:$kvisionVersion")
+        implementation("io.kvision:kvision:$kvisionVersion")
+        implementation("io.kvision:kvision-react:$kvisionVersion")
         // ... other KVision modules
     }
 }
@@ -112,7 +112,7 @@ You initialize the KVision `React` component with some initial state, which can 
 Most React components can have children. Typically you can easily add other React components as React children. But you may also use KVision components with a help of `kv` helper function. 
 
 ```kotlin
-    import pl.treksoft.kvision.react.kv
+    import io.kvision.react.kv
     
     root("kvapp") {
         react {

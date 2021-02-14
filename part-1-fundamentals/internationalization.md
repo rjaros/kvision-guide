@@ -24,14 +24,14 @@ To create a multi-language application you have to add the `kvision-i18n` module
 ```groovy
 dependencies {
 // ...
-    compile "pl.treksoft:kvision-i18n:${kvisionVersion}"
+    compile "io.kvision:kvision-i18n:${kvisionVersion}"
 // ...
 }
 ```
 
 ## Using multi-language text in application sources
 
-To mark some text for translation just use one of the four available helper methods from the `pl.treksoft.kvision.i18n.I18n` object instead of plain string literals.
+To mark some text for translation just use one of the four available helper methods from the `io.kvision.i18n.I18n` object instead of plain string literals.
 
 | Method | Description |
 | :--- | :--- |
@@ -44,7 +44,7 @@ Dynamic translations are bound to the components they are part of \(tag content,
 
 ```kotlin
 // ...
-import pl.treksoft.kvision.i18n.tr
+import io.kvision.i18n.tr
 // ...
 
 span(tr("Label text"))
@@ -55,7 +55,7 @@ Static translations are evaluated only when the helper method is called. They ca
 
 ```kotlin
 // ...
-import pl.treksoft.kvision.i18n.gettext
+import io.kvision.i18n.gettext
 // ...
 
 console.log(gettext("Some info message"))
@@ -65,7 +65,7 @@ KVision has support for plural language forms, so you can use `ntr` or `ngettext
 
 ```kotlin
 // ...
-import pl.treksoft.kvision.i18n.I18n.ntr
+import io.kvision.i18n.I18n.ntr
 // ...
 
 val count = 5

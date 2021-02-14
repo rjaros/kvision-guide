@@ -8,7 +8,7 @@ These components are only available with the `kvision-bootstrap` module.
 
 ## Modals
 
-Modal components are grouped in the `pl.treksoft.kvision.modal` package. The base class for all modals is `pl.treksoft.kvision.modal.Modal`. You can use this class to create a modal with any content you need - just add your components to the container. You can use the standard `add` method to add typical components or containers to your modal. You can also use the `addButton` method to add some buttons to the footer of the modal \(these buttons will be right-aligned by default\).
+Modal components are grouped in the `io.kvision.modal` package. The base class for all modals is `io.kvision.modal.Modal`. You can use this class to create a modal with any content you need - just add your components to the container. You can use the standard `add` method to add typical components or containers to your modal. You can also use the `addButton` method to add some buttons to the footer of the modal \(these buttons will be right-aligned by default\).
 
 Modal dialogs are automatically added to the components tree, so there is no need to add them to any container. Modals are invisible by default. Use `show` method of the Modal class to make it visible.
 
@@ -64,7 +64,7 @@ Confirm.show(
 
 ### Dialog with a result
 
-A `pl.treksoft.kvision.modal.Dialog` component allows you to create a dialog, which can return any data as a result. This class has a suspending method `getResult()`, which must be called inside a Kotlin coroutine. You can create a subclass of the `Dialog` class or use a `Dialog` instance directly. You should call `setResult()` method from your own code to pass your data back to the caller.
+A `io.kvision.modal.Dialog` component allows you to create a dialog, which can return any data as a result. This class has a suspending method `getResult()`, which must be called inside a Kotlin coroutine. You can create a subclass of the `Dialog` class or use a `Dialog` instance directly. You should call `setResult()` method from your own code to pass your data back to the caller.
 
 ```kotlin
 GlobalScope.launch {
@@ -85,7 +85,7 @@ Note: The `Dialog` component is contained in a separate `kvision-bootstrap-dialo
 
 ## Windows
 
-The `pl.treksoft.kvision.window.Window` component allows you to create a number of floating, re-sizable windows inside your application. Every window has a frame, which can be used to change its size and position. The `Window` class constructor takes a number of parameters, two of which allow you to create windows that are not draggable and not re-sizable as well. When the window is not draggable, the close, minimize and maximize buttons are hidden and the caption is null - the caption bar won't be rendered at all.
+The `io.kvision.window.Window` component allows you to create a number of floating, re-sizable windows inside your application. Every window has a frame, which can be used to change its size and position. The `Window` class constructor takes a number of parameters, two of which allow you to create windows that are not draggable and not re-sizable as well. When the window is not draggable, the close, minimize and maximize buttons are hidden and the caption is null - the caption bar won't be rendered at all.
 
 Windows overlap each other - one is shown on top of the others. The window clicked \(inside the window caption bar\) is brought to the front. You can also use `toFront()` method to bring a given window to the front programmatically.
 

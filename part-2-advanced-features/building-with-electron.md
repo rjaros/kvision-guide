@@ -32,7 +32,7 @@ The application is build with [electron-builder](https://www.electron.build/) to
 
 ### Using NodeJS and Electron API
 
-To use NodeJS and Electron API in your application, you have to add kvision-electron module to your `build.gradle.kts` dependencies. NodeJS Kotlin bindings are provided by [node-kt](https://github.com/Shengaero/node-kt) project \(package `node.*`\) and Electron bindings are provided directly by KVision module \(package `pl.treksoft.kvision.electron.*`\).
+To use NodeJS and Electron API in your application, you have to add kvision-electron module to your `build.gradle.kts` dependencies. NodeJS Kotlin bindings are provided by [kotlinx-nodejs](https://github.com/Kotlin/kotlinx-nodejs) project and Electron bindings are provided directly by KVision module \(package `io.kvision.electron.*`\).
 
 {% hint style="info" %}
 Note: The KVision application works within [renderer process](https://electronjs.org/docs/glossary#renderer-process) of Electron, and you have to use [remote](https://electronjs.org/docs/api/remote) object or [ipcRenderer](https://electronjs.org/docs/api/ipc-renderer) to get access to some parts of Electron API.

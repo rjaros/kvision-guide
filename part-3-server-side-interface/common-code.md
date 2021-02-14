@@ -8,12 +8,12 @@ You have to declare the dependencies on one of the `kvision-server-*` modules in
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-common"))
-//    api("pl.treksoft:kvision-server-javalin:$kvisionVersion")
-//    api("pl.treksoft:kvision-server-jooby:$kvisionVersion")
-    api("pl.treksoft:kvision-server-ktor:$kvisionVersion")
-//    api("pl.treksoft:kvision-server-spring-boot:$kvisionVersion")
-//    api("pl.treksoft:kvision-server-vertx:$kvisionVersion")
-//    api("pl.treksoft:kvision-server-micronaut:$kvisionVersion")
+//    api("io.kvision:kvision-server-javalin:$kvisionVersion")
+//    api("io.kvision:kvision-server-jooby:$kvisionVersion")
+    api("io.kvision:kvision-server-ktor:$kvisionVersion")
+//    api("io.kvision:kvision-server-spring-boot:$kvisionVersion")
+//    api("io.kvision:kvision-server-vertx:$kvisionVersion")
+//    api("io.kvision:kvision-server-micronaut:$kvisionVersion")
 }
 ```
 {% endcode %}
@@ -56,8 +56,8 @@ Supported types are:
 
 * all basic Kotlin types \(`String`, `Boolean`, `Int`, `Long`, `Short`, `Char`, `Byte`,  `Float`, `Double`\)
 * `Enum` class defined in common code
-* All date and time types from `pl.treksoft.kvision.types` package, which are automatically mapped to `kotlin.js.Date` on the frontend side and the appropriate `java.time.*` type on the backend side
-* A `pl.treksoft.kvision.types.Decimal` type, which is automatically mapped to `Number(double)` on the frontend side and `java.math.BigDecimal` on the backend side
+* All date and time types from `io.kvision.types` package, which are automatically mapped to `kotlin.js.Date` on the frontend side and the appropriate `java.time.*` type on the backend side
+* A `io.kvision.types.Decimal` type, which is automatically mapped to `Number(double)` on the frontend side and `java.math.BigDecimal` on the backend side
 * any class defined in the common code with a `@Serializable` annotation
 * a `List<T>`, where T is one of the above types
 * a `T?`, where T is one of the above types \(allowed only as method parameters - see previous rule\)
@@ -75,7 +75,7 @@ Note: You have to add `@Contextual` annotations to your `LocalDate`, `LocalDateT
 With an interface defined in the common code, the type safety of your whole application is forced at a compile time. Any incompatibility between the frontend and the backend code will be marked as a compile-time error.
 
 ```kotlin
-import pl.treksoft.kvision.annotations.KVService
+import io.kvision.annotations.KVService
 
 @Serializable
 data class Address(

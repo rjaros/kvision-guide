@@ -7,6 +7,7 @@ This is the list of incompatibilities you may encounter when migrating your appl
   * `pl.treksoft.navigo` with `io.kvision.navigo`
   * `pl.treksoft.jquery` with `io.kvision.jquery`
   * `pl.treksoft.kvision` with `io.kvision`
+* Make sure you are not using any deprecated code before migrating. All methods, classes and functions deprecated before version 4.0.0 have been removed.
 * If you use web sockets with Ktor backend you need to manually install WebSockets feature in your main method.
 * If you use `moment` module with locale support you need to manually `require()` all or some of the needed locales. You should also update `moment.js` file in `webpack.config.d` directory from the current template.
 

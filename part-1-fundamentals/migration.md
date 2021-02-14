@@ -11,6 +11,7 @@ This is the list of incompatibilities you may encounter when migrating your appl
 * If you use web sockets with Ktor backend you need to manually install WebSockets feature in your `main()` function.
 * If you use Ktor backend you should move `kvisionInit()` call to the end of your `main()` function.
 * If you use `moment` module with locale support you need to manually `require()` all or some of the needed locales. You should also update `moment.js` file in the `webpack.config.d` directory from the current template.
+* You should remove all Bintray repository addresses from your Gradle build files.
 
 This is the list of incompatibilities you may encounter when migrating your application to KVision 3.13.x:
 

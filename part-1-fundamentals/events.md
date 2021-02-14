@@ -3,7 +3,7 @@
 KVision allows you to listen to all the standard DOM events and also many custom events from many different components. You bind your action to an event with the `onEvent` extension function.
 
 ```kotlin
-import pl.treksoft.kvision.core.onEvent
+import io.kvision.core.onEvent
 
 widget.onEvent {
     mousedown = { e ->

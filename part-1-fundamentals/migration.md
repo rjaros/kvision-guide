@@ -1,18 +1,5 @@
 # Migration
 
-This is the list of incompatibilities you may encounter when migrating your application to KVision 4:
-
-* Artifacts publication has been moved to Maven Central under new maven coordinates with `io.kvision` group identifier. You have to update all KVision dependencies in your `build.gradle.kts`.
-* All package names have been renamed with `io.kvision` prefix. You should replace your sources in the following order:
-  * `pl.treksoft.navigo` with `io.kvision.navigo`
-  * `pl.treksoft.jquery` with `io.kvision.jquery`
-  * `pl.treksoft.kvision` with `io.kvision`
-* Make sure you are not using any deprecated code before migrating. All methods, classes and functions deprecated before version 4.0.0 have been removed.
-* If you use web sockets with Ktor backend you need to manually install WebSockets feature in your `main()` function.
-* If you use Ktor backend you should move `kvisionInit()` call to the end of your `main()` function.
-* If you use `moment` module with locale support you need to manually `require()` all or some of the needed locales. You should also update `moment.js` file in the `webpack.config.d` directory from the current template.
-* You should remove all Bintray repository addresses from your Gradle build files.
-
 This is the list of incompatibilities you may encounter when migrating your application to KVision 3.13.x:
 
 * Due to changes in the Kotlin/JS gradle plugin for Kotlin 1.4.0 it is necessary to fix your `build.gradle.kts` file and `webpack.config.d/webpack.js` file. You can apply the following patch for `build.gradle.kts` file and just copy new version of `webpack.js` from the current template project \(standard or fullstack, respectively\).

@@ -30,9 +30,9 @@ Micronaut uses Kapt to generate code from various annotations in your applicatio
 ```kotlin
 kapt {
     arguments {
-        arg("micronaut.processing.annotations", "pl.treksoft.kvision.remote")
-        arg("micronaut.processing.group", "pl.treksoft")
-        arg("micronaut.processing.module", "kvision-server-micronaut")
+        arg("micronaut.processing.annotations", "com.example.*")
+        arg("micronaut.processing.group", "com.example")
+        arg("micronaut.processing.module", "template-fullstack-micronaut")
     }
 }
 
@@ -155,7 +155,7 @@ fun main(args: Array<String>) {
 To secure your application you can use different Micronaut components and ready to use modules. See [Micronaut Security](https://micronaut-projects.github.io/micronaut-security/latest/guide/) guide for details. You can apply different security settings for different services by defining custom `SecurityRule` using KVision `matches` helper function.
 
 ```kotlin
-import pl.treksoft.kvision.remote.matches
+import io.kvision.remote.matches
 
 @Singleton
 open class AppSecurityRule(rolesFinder: RolesFinder) : AbstractSecurityRule(rolesFinder) {

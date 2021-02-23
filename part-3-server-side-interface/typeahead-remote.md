@@ -1,6 +1,6 @@
 # Typeahead remote
 
-The `pl.treksoft.kvision.form.text.TypeaheadRemoteInput` component, contained in `kvision-bootstrap-typeahead-remote` module, is a special component you can use to render a typeahead text field with values loaded from the server. Unlike standard `TypeaheadInput` component \(which can also load values from an AJAX source but needs a defined endpoint\) `TypeaheadRemoteInput` is bound directly to the method of the remote service. The method signature looks like this:
+The `io.kvision.form.text.TypeaheadRemoteInput` component, contained in `kvision-bootstrap-typeahead-remote` module, is a special component you can use to render a typeahead text field with values loaded from the server. Unlike standard `TypeaheadInput` component \(which can also load values from an AJAX source but needs a defined endpoint\) `TypeaheadRemoteInput` is bound directly to the method of the remote service. The method signature looks like this:
 
 ```kotlin
 interface IValueService {

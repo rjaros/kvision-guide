@@ -92,8 +92,8 @@ Vert.x services are deployed as "verticles". Main verticle is the application st
 ```kotlin
 import io.vertx.core.AbstractVerticle
 import io.vertx.ext.web.Router
-import pl.treksoft.kvision.remote.applyRoutes
-import pl.treksoft.kvision.remote.kvisionInit
+import io.kvision.remote.applyRoutes
+import io.kvision.remote.kvisionInit
 
 class MainVerticle : AbstractVerticle() {
     override fun start() {
@@ -123,7 +123,7 @@ class MainVerticle : AbstractVerticle() {
 You can use standard Vert.x configuration to add authentication and authorization to your application. You can use `serviceRoute` extension function to apply your `AuthHandler` to the selected KVision services.
 
 ```kotlin
-import pl.treksoft.kvision.remote.serviceRoute
+import io.kvision.remote.serviceRoute
 
 const val SESSION_PROFILE_KEY = "com.example.profile"
 

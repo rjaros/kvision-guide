@@ -6,7 +6,7 @@ You can instantiate any KVision component and set any of its properties, but the
 
 ## Component
 
-The main interface for a component is `pl.treksoft.kvision.core.Component`. It declares `parent` and `visible` properties and some universal methods for all components.
+The main interface for a component is `io.core.Component`. It declares `parent` and `visible` properties and some universal methods for all components.
 
 {% code title="Component.kt" %}
 ```kotlin
@@ -23,11 +23,11 @@ interface Component {
 ```
 {% endcode %}
 
-The base class for all components is [`pl.treksoft.kvision.core.Widget`](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.core/-widget/index.html). All KVision visual components inherit \(directly or indirectly\) from the `Widget` class.
+The base class for all components is `io.kvision.core.Widget`. All KVision visual components inherit \(directly or indirectly\) from the `Widget` class.
 
 ## Container
 
-The main interface for a container is `pl.treksoft.kvision.core.Container`. It declares the methods to manage container's children.
+The main interface for a container is `io.kvision.core.Container`. It declares the methods to manage container's children.
 
 {% code title="Container.kt" %}
 ```kotlin
@@ -69,7 +69,7 @@ hPanel(spacing = 20, alignItems = AlignItems.CENTER) {
 }
 ```
 
-As you can see from the above example KVision defines extension functions with names matching the component classes with a first character lower case \(e.g. `HPanel` -&gt; `hPanel`, `Span` -&gt; `span`, `Button` -&gt; `button`\). These functions takes the same parameters as the primary constructors, their receiver is `pl.treksoft.kvision.core.Container` and they are returning the reference to the created object instance.
+As you can see from the above example KVision defines extension functions with names matching the component classes with a first character lower case \(e.g. `HPanel` -&gt; `hPanel`, `Span` -&gt; `span`, `Button` -&gt; `button`\). These functions takes the same parameters as the primary constructors, their receiver is `io.kvision.core.Container` and they are returning the reference to the created object instance.
 
 At the moment the DSL builders allow you to use only basic `add` method of the `Container` interface. If you want to use any of the specialized add methods of different containers you must call them explicitly.
 

@@ -8,7 +8,7 @@ Note: At the moment these functionalities are not supported: grouping, mutators,
 
 ## Creating a table
 
-To create a table use `pl.treksoft.kvision.tabulator.Tabulator` class. Although all constructor parameters have default values, you will usually want to specify Tabulator options with `pl.treksoft.kvision.tabulator.TabulatorOptions` object . The table data can be specified in a few different ways - with local Kotlin collection, local JavaScript array or remote AJAX URL. The table component can be made reactive for all types of local data.
+To create a table use `io.kvision.tabulator.Tabulator` class. Although all constructor parameters have default values, you will usually want to specify Tabulator options with `io.kvision.tabulator.TabulatorOptions` object . The table data can be specified in a few different ways - with local Kotlin collection, local JavaScript array or remote AJAX URL. The table component can be made reactive for all types of local data.
 
 ### Local Kotlin list
 

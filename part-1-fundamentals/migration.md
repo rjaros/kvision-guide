@@ -1,6 +1,11 @@
 # Migration
 
-This is the list of incompatibilities you may encounter when migrating your application to KVision 4:
+This is the list of incompatibilities you may encounter when migrating your application to KVision 4.1.0:
+
+* DSL builder functions have been annotated with `@DslMarker` annotation, which provides [strict scope control](https://kotlinlang.org/docs/type-safe-builders.html#scope-control-dslmarker) over implicit receivers. It can lead to compile errors for existing code with hard to notice bugs. Sometimes it may also be necessary to specify the receivers explicitly.
+* Routing functionality has been externalized to optional modules. If your application uses built-in KVision routing, you need to add `kvision-routing-navigo` module to your dependencies and call `Routing.init()` at the beginning of your `Application.start()` method.
+
+This is the list of incompatibilities you may encounter when migrating your application to KVision 4.0.0:
 
 * Artifacts publication has been moved to Maven Central under new maven coordinates with `io.kvision` group identifier. You have to update all KVision dependencies in your `build.gradle.kts`.
 * All package names have been renamed with `io.kvision` prefix. You should replace your sources in the following order:

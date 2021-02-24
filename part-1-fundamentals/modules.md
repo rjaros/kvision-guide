@@ -130,14 +130,6 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">Printing support with <a href="https://printjs.crabbly.com/">Print.js</a> library.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-routing-navigo</td>
-      <td style="text-align:left">Routing module based on <a href="https://github.com/krasimir/navigo/blob/master/README_v7.md">Navigo 7</a> library.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-routing-navigo-ng</td>
-      <td style="text-align:left">Routing module based on <a href="https://github.com/krasimir/navigo">Navigo 8+</a> library.</td>
-    </tr>
-    <tr>
       <td style="text-align:left">kvision-onsenui</td>
       <td style="text-align:left"><a href="https://onsen.io/">Onsen UI</a> mobile web components.</td>
     </tr>

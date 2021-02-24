@@ -86,7 +86,7 @@ You add form controls to the `FormPanel` using `add` method of the container, an
 formPanel<Form> {
     add(
         Form::text,
-        Text(label = "Text field").apply {
+        Text(label = "Text field") {
             placeholder = "Enter text"
         })
     add(Form::password, Password(label = "Password field"))
@@ -105,11 +105,27 @@ formPanel<Form> {
             inline = true, label = "Radio button group"
         )
     )
-    add(Form::upload, Upload("/", multiple = true, label = "Upload files (images only)").apply {
+    add(Form::upload, Upload("/", multiple = true, label = "Upload files (images only)") {
         explorerTheme = true
         dropZoneEnabled = false
         allowedFileTypes = setOf("image")
     })
+}
+```
+
+#### Manual binding
+
+If you need to manage your form layout directly you can create your layout using standard KVision DSL builders and bind your form controls manually using `bind` extension method.
+
+```kotlin
+formPanel<Form> {
+	hPanel(spacing = 5) {
+		text(label = "text 1").bind(Form::text, required = true)
+		vPanel(spacing = 5) {
+			textArea(label = "text 2").bind(Form::text2)
+			textArea(label = "text 3").bind(Form::text3)
+		}
+	}
 }
 ```
 

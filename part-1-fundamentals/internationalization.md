@@ -75,6 +75,33 @@ hPanel {
 }
 ```
 
+The `gettext` and `ngettext` methods allow you to use additional runtime parameters, using gettext.js substitution mechanism and the following format of translation files:
+
+{% code title="messages-en.po" %}
+```kotlin
+msgid "%2 has one car"
+msgid_plural "%2 has %1 cars"
+msgstr[0] ""
+msgstr[1] ""
+```
+{% endcode %}
+
+{% code title="messages-pl.po" %}
+```kotlin
+msgid "%2 has one car"
+msgid_plural "%2 has %1 cars"
+msgstr[0] "%2 ma jeden samochód"
+msgstr[1] "%2 ma %1 samochody"
+msgstr[2] "%2 ma %1 samochodów"
+```
+{% endcode %}
+
+Use this translation in your application like this:
+
+```kotlin
+ngettext("%2 has one car", "%2 has %1 cars", 3, "Robert")
+```
+
 ## Translation files
 
 Until you create and initialize translation files for some other language, your application will use string literals used in the source code. It's probably a good practice to use English literals in your code and other languages in the translation files.

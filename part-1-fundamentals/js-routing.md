@@ -1,12 +1,33 @@
 # JS routing
 
-KVision has a built-in support for the JavaScript router [Navigo](https://github.com/krasimir/navigo) by using a wrapper library [navigo-kotlin](https://github.com/rjaros/navigo-kotlin). The router object is available as a global variable `routing` in the `io.kvision.routing` package, and all [Navigo API](https://github.com/krasimir/navigo#api) methods can be called directly.
+KVision supports JavaScript routing with optional modules since version 4.1.0. Two modules are available `kvision-routing-navigo` , based on [Navigo 7](https://github.com/krasimir/navigo/blob/master/README_v7.md) library \(for compatibility with earlier KVision versions\) and `kvision-routing-navigo-ng` , based on current [Navigo 8+](https://github.com/krasimir/navigo). 
+
+To use JS routing you need to add one of the modules in your `build.gradle.kts` file and call `Routing.init()` method at the beginning of your `Application.start()` method. 
 
 ```kotlin
-routing.on({ _ -> println("Main page") })
-    .on("/test", { _ -> println("Test route") })
-    .on(RegExp("/test3/(.*)/(.*)/(.*)"), { x, y, z -> println("Regexp: $x $y $z") })
-    .resolve()
+override fun start() {
+    Routing.init()
+    // ...
+}
+```
+
+By default the router is configured for hash-based routing. Optional parameters of `init()` allow you to fully configure Navigo instance. 
+
+```kotlin
+override fun start() {
+    Routing.init("/app", useHash = false, strategy = Strategy.ALL)
+    // ...
+}
+```
+
+The router object is available as a global variable `routing` in the `io.kvision.routing` package, and all [Navigo API](https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md) methods can be called directly.
+
+```kotlin
+routing.on({ println("Main page") })
+    .on("/test", { println("Test route") })
+    .on(RegExp("^test2/(.*)/(.*)/(.*)"), { match -> 
+        println("Regexp: ${match.data[0]} ${match.data[1]} ${match.data[2]}") 
+    }).resolve()
 ```
 
 The JS router support is also directly available in the `TabPanel` and `StackPanel` containers. This way you can easily bind different parts of your application GUI with distinct URL addresses and make the "Back" button of the browser work as expected.

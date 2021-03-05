@@ -7,6 +7,7 @@
 You can use the `io.kvision.jquery.jQuery` object to create a jQuery instance with all supported selector types. You can use them to directly access and modify underlying DOM elements and their attributes.
 
 ```kotlin
+import io.kvision.jquery.invoke
 import io.kvision.jquery.jQuery
 
 jQuery("#ident").addClass("blue").show()

@@ -248,3 +248,40 @@ responsiveGridPanel {
 }
 ```
 
+## Non-DSL containers
+
+All standard KVision containers are annotated with `@DslMarker`, which provides [strict scope control](https://kotlinlang.org/docs/type-safe-builders.html#scope-control-dslmarker) over implicit receivers. However, since KVision 4.1.1 there are some additional containers available, which are not marked with DSL annotations. They have names starting with `Basic*` prefix \(`BasicPanel`, `BasicTabPanel`, `BasicFlexPanel`, etc.\) and are marked as experimental with `@ExperimentalNonDslContainer`annotation. These containers can be used as base classes for your own components, when strict receiver scope control is not desirable.
+
+```kotlin
+@ExperimentalNonDslContainer
+class MyComponent: BasicPanel() {
+    val button = Button("B1").apply {
+        onClick { doSomething() }
+    }
+    lateinit var button2: Button
+    init {
+        div {
+            buttonGroup {
+                add(button)
+                button2 = button("B2") {
+                    onClick { doSomething() }
+                }
+            }
+        }
+    }
+    fun doSomething() {}
+}
+```
+
+{% hint style="info" %}
+To compile code with non-DSL container classes you need to use `@ExperimentalNonDslContainer` annotation. Sometimes in maybe easier to use `@OptIn(ExperimentalNonDslContainer::class)` or even apply this annotation automatically with Gradle:
+
+```kotlin
+sourceSets.all {
+    languageSettings.apply {
+        useExperimentalAnnotation("io.kvision.core.ExperimentalNonDslContainer")
+    }
+}
+```
+{% endhint %}
+

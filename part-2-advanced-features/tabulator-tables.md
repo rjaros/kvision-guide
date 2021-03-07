@@ -39,6 +39,10 @@ tabulator(
 }
 ```
 
+{% hint style="info" %}
+You need to annotate your data class with `@JsExport` when using IR compiler backend.
+{% endhint %}
+
 To make the Tabulator component reactive just can use `ObservableList` for your model. You can also use Redux store as a table data source.
 
 ### Local JavaScript array

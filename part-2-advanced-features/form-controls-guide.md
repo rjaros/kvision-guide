@@ -20,7 +20,7 @@ All KVision form controls have the following properties:
 This component is rendered as a standard HTML text field and is used to get simple, textual data from the user. The `type` property can be set to any of these values: `TEXT`, `PASSWORD`, `EMAIL`, `TEL`, `COLOR`, `SEARCH`, `URL` and is bound to the `type` attribute of the HTML input field. Modern browsers can render such fields with additional elements \(e.g. color chooser\). Other properties allow you to define a placeholder, a maximum length, autofocus or autocomplete attributes and define if the control should be read-only.  
 
 ```kotlin
-Text(type = TextInputType.URL, label = "WWW").apply {
+Text(type = TextInputType.URL, label = "WWW") {
     placeholder = "Enter the address"
     maxlength = 255
     autofocus = true
@@ -48,19 +48,23 @@ TextArea(cols = 100, rows = 5, label = "Enter some text")
  Alternative way \(and preferred nowadays\) is to set CSS `width` and `height` properties.
 
 ```kotlin
-TextArea(width = 300.px, height = 120.px, label = "Enter some text")
+TextArea(label = "Enter some text") {
+    width = 300.px
+    height = 120.px
+}
 ```
 
 Other properties allow you to define a placeholder, a maximum length, autofocus or hard wrap attributes and define if the control should be read-only.
 
 ```kotlin
-TextArea(width = 300.px, 
-        height = 120.px, 
-        label = "Enter some text", 
-        placeholder = "Enter some text",
-        autofocus = true,
-        wrapHard = true,
-        readonly = true)
+TextArea(label = "Enter some text") {
+    width = 300.px
+    height = 120.px
+    placeholder = "Enter some text"
+    autofocus = true
+    wrapHard = true
+    readonly = true
+}
 ```
 
 ### `i.k.f.text.RichText`
@@ -68,10 +72,13 @@ TextArea(width = 300.px,
 The kvision-richtext module allows you to use a dedicated form control based on a modern [Trix Editor](https://trix-editor.org/) component. It can be used to get rich text from the user. This component renders a text editing field with a toolbar containing basic formatting options \(bold, italic, strikethrough, heading, quote, code, link and lists with indentations\). The `value` property contains properly formatted HTML markup. Other properties allow you to define a placeholder and autofocus attribute.
 
 ```kotlin
-RichText(value = "<b>Bold text</b>", 
-    label = "Rich text field with a placeholder",
-    placeholder = "Enter some text",
-    autofocus = true)
+RichText(
+    value = "<b>Bold text</b>",
+    label = "Rich text field with a placeholder"
+) {
+    placeholder = "Enter some text"
+    autofocus = true
+}
 ```
 
 ### `i.k.f.text.Typeahead`
@@ -233,7 +240,7 @@ Select(
 It can also be initialized by adding options components \(`SelectOption` and `SelectOptGroup` classes\) by hand. This way you can also use some more advanced features, like option groups, subtexts, icons and dividers.
 
 ```kotlin
-Select(label = "A select with features").apply {
+Select(label = "A select with features") {
     selectOption("first", "First Option", "Subtext")
     selectOption(divider = true)
     selectOption("second", "Second Option")
@@ -251,7 +258,7 @@ Select(
     options = listOf("first" to "First option", "second" to "Second option", "third" to "Third option"),
     multiple = true,
     label = "Multiple select"
-).apply {
+) {
     maxOptions = 2
 }
 ```
@@ -262,7 +269,7 @@ If your select has a long list of options you can use `liveSearch` property to a
 Select(
     options = listOf("first" to "First option", "second" to "Second option", "third" to "Third option"),
     label = "Select with a search box"
-).apply {
+) {
     liveSearch = true
 }
 ```
@@ -273,7 +280,7 @@ By default the `Select` component is resized to 100% of its parent width, but th
 Select(
     options = listOf("first" to "First option", "second" to "Second option"),
     label = "Resized select"
-).apply {
+) {
     // selectWidth = 800.px
     selectWidthType = SelectWidthType.AUTO
 }
@@ -285,7 +292,7 @@ Other properties allow to define a placeholder, a button style, an autofocus att
 Select(
     options = listOf("first" to "First option", "second" to "Second option"),
     label = "Styled Select"
-).apply {
+) {
     placeholder = "Select a value"
     style = ButtonStyle.DANGER
     autofocus = true
@@ -296,7 +303,7 @@ Select(
 `Select` component can also work with a remote data source, by integrating [Ajax Bootstrap Select](https://github.com/truckingsim/Ajax-Bootstrap-Select) extension. To use AJAX mode you should initialize`ajaxOptions` property with an instance of   `io.kvision.form.select.AjaxOptions` data class. See API documentation for more information about options and parameters of AJAX mode.
 
 ```kotlin
-Select(label = "Select with remote data source").apply {
+Select(label = "Select with remote data source") {
     ajaxOptions = AjaxOptions("https://api.github.com/search/repositories", preprocessData = {
         it.items.map { item ->
             obj {
@@ -321,15 +328,15 @@ This component is contained in the `kvision-bootstrap-select-remote` module and 
 The `kvision-bootstrap-datetime` module allows you to use a sophisticated form control based on [Bootstrap datetime picker](https://github.com/pingcheng/bootstrap4-datetimepicker). It's a full-featured component, configurable with plenty of options. It can be used to display date and/or time picker, based on the date format specified with [Fecha library formatting tokens](https://github.com/taylorhakes/fecha#formatting-tokens). The default format is _"YYYY-MM-DD HH:mm"_, which means the control will display date and time picker.
 
 ```kotlin
-DateTime(format = "YYYY-MM-DD", label = "Date field").apply {
+DateTime(format = "YYYY-MM-DD", label = "Date field") {
     placeholder = "Enter date"
 }
 
-DateTime(format = "HH:mm", label = "Time field").apply {
+DateTime(format = "HH:mm", label = "Time field") {
     placeholder = "Enter time"
 }
 
-DateTime(label = "Date and time field").apply {
+DateTime(label = "Date and time field") {
     placeholder = "Enter date and time"
 }
 ```
@@ -337,7 +344,7 @@ DateTime(label = "Date and time field").apply {
 Other properties allow you to set days of the week that should be disabled,  visibility of "Clear", "Close" and "Today" buttons and also the increment used to build the hour view \(default - 5 minutes\).
 
 ```kotlin
-DateTime(label = "Date and time field").apply {
+DateTime(label = "Date and time field") {
     placeholder = "Enter date and time"
     daysOfWeekDisabled = arrayOf(0, 6) // Saturday, Sunday
     showClear = false

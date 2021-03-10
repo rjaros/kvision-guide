@@ -55,35 +55,31 @@ text1.bindTo(text2)
 
 ## Flows
 
-With additional extension functions defined in `kvision-event-flow` module, you can also use Kotlin `Flow` and its operators to declare data bindings between different components and data stores.
+With additional extension functions defined in `kvision-event-flow` module, you can also use Kotlin `Flow` \(including `StateFlow` and `SharedFlow`\) and its operators to declare data bindings between different components and data stores.
 
 ```kotlin
 class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     override fun start() {
-        val store = object : ObservableValue<String>("") {
-            fun update(v: String?) {
-                value = v ?: ""
-            }
-            fun addDot() {
-                value += "."
-            }
+        val flow = MutableStateFlow("")
+
+        fun MutableStateFlow<String>.addDot() {
+            value += "."
         }
+
         root("kvapp", ContainerType.FIXED) {
             div(className = "jumbotron") {
                 width = 100.perc
                 div(className = "card") {
                     div(className = "card-body") {
-                        text(store, label = "Input") {
+                        text(label = "Input") {
                             placeholder = "Add some input"
-                            value = it
-                        }.stateFlow.onEach { store.update(it) }.launchIn(this@App)
-                        text(store, label = "Value") {
+                        }.bindTo(flow)
+                        text(label = "Value") {
                             readonly = true
-                            value = it
-                        }
+                        }.bindTo(flow)
                         div(className = "form-group") {
-                            button("Add a dot").clickFlow.onEach { store.addDot() }.launchIn(this@App)
+                            button("Add a dot").clickFlow.onEach { flow.addDot() }.launchIn(this@App)
                         }
                     }
                 }

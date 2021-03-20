@@ -107,6 +107,33 @@ button("Set the code").onClick {
 
 You initialize the KVision `React` component with some initial state, which can be any type `T` you need. You use `getState(): () -> T` function to retrieve the current state and assign the correct value to the React component input property. And you can use `changeState(): ((T) -> T) -> Unit` function to modify the state \(most of the time this function will be used with some React callbacks\). After creating this two-way bindings you can both read and change the current state of the component with its `.state` property.
 
+## Accessing internal API of React components
+
+Sometimes it may be necessary to access the internal api of a React component, beyond the attributes exposed in the interface. To do this, you can use the `ref()` function provided by RBuilder, which is part of the kotlin-react library:
+
+```kotlin
+    var internalEditor: dynamic = null
+
+    val ace: React<String>
+
+    init {
+        ace = react(state) { getState, changeState ->
+            AceEditor {
+                attrs.apply {
+                   ... // see prior examples
+                }
+                ref { comp ->
+                    internalEditor = comp?.editor
+                }
+            }
+        }
+    }
+    
+    fun moveCursorTo(line: Int, col: Int) {
+        internalEditor?.moveCursorTo(line, col)
+    }
+```
+
 ## Using KVision components as React children
 
 Most React components can have children. Typically you can easily add other React components as React children. But you may also use KVision components with a help of `kv` helper function. 

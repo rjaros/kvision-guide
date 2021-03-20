@@ -38,6 +38,7 @@
   * [Onsen UI components](part-2-advanced-features/onsen-ui-components.md)
   * [Building with Apache Cordova](part-2-advanced-features/building-with-apache-cordova.md)
   * [Building with Electron](part-2-advanced-features/building-with-electron.md)
+  * [Adding custom tags \(SVG example\)](part-2-advanced-features/adding-custom-tags-svg-example.md)
 * [Part 3: Server side interface](part-3-server-side-interface/README.md)
   * [Preface](part-3-server-side-interface/preface.md)
   * [Overview](part-3-server-side-interface/overview.md)

@@ -112,7 +112,8 @@ KVision consists of both required and optional functionality. Modules can be add
     </tr>
     <tr>
       <td style="text-align:left">kvision-event-flow</td>
-      <td style="text-align:left">Builder extension functions for event Flows.</td>
+      <td style="text-align:left">Extension functions for coroutines <code>Flow</code>, <code>StateFlow</code> and <code>SharedFlow</code>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-maps</td>
@@ -128,6 +129,14 @@ KVision consists of both required and optional functionality. Modules can be add
     <tr>
       <td style="text-align:left">kvision-print</td>
       <td style="text-align:left">Printing support with <a href="https://printjs.crabbly.com/">Print.js</a> library.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-routing-navigo</td>
+      <td style="text-align:left">Routing module based on <a href="https://github.com/krasimir/navigo/blob/master/README_v7.md">Navigo 7</a> library.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kvision-routing-navigo-ng</td>
+      <td style="text-align:left">Routing module based on <a href="https://github.com/krasimir/navigo">Navigo 8+</a> library.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-onsenui</td>

@@ -143,10 +143,6 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left"><a href="https://onsen.io/">Onsen UI</a> mobile web components.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-onsenui-css</td>
-      <td style="text-align:left">Standard <a href="https://onsen.io/">Onsen UI</a> CSS styling.</td>
-    </tr>
-    <tr>
       <td style="text-align:left">kvision-cordova</td>
       <td style="text-align:left">
         <p>Kotlin language bindings for Apache Cordova core API.</p>

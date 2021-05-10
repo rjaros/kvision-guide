@@ -4,7 +4,7 @@
 
 KVision supports all Onsen UI components with fully type-safe, consistent Kotlin API and readable DSL builders, but you should get familiar with [Onsen UI documentation](https://onsen.io/v2/api/js/) to achieve best results. You will also find a lot of examples in the KVision [Onsen UI kitchensink](https://github.com/rjaros/kvision-examples/tree/master/onsenui-kitchensink) example project.
 
-To use Onsen UI with KVision you have to add `kvision-onsenui` and `kvision-onsenui-css` modules to your dependencies in `build.gradle.kts` file. Optionally you can include your own, custom CSS files to your `index.html` file instead of using css module.
+To use Onsen UI with KVision you have to add `kvision-onsenui` module to your dependencies in `build.gradle.kts` file.
 
 {% hint style="info" %}
 Note: Onsen UI components are not compatible with Bootstrap, so you can't mix both Onsen UI and Bootstrap KVision components in one application.

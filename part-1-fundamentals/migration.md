@@ -1,6 +1,16 @@
 # Migration
 
-This is the list of incompatibilities you may encounter when migrating your application to KVision 4:
+This is the list of incompatibilities you may encounter when migrating your application to KVision 4.5.0:
+
+* Webpack used internally by Kotlin/JS plugin was upgraded to 5.x. You need to adjust any custom configuration in your `webpack.config.d` directory. Please use these [bootstrap.js](https://raw.githubusercontent.com/rjaros/kvision-examples/master/template/webpack.config.d/bootstrap.js), [css.js](https://raw.githubusercontent.com/rjaros/kvision-examples/master/template/webpack.config.d/css.js) and [file.js](https://raw.githubusercontent.com/rjaros/kvision-examples/master/template/webpack.config.d/file.js) files as examples. You can find more information [here](https://webpack.js.org/migrate/5/).
+* `kvision-onsenui-css` module was removed and integrated with `kvision-onsenui` module.
+
+This is the list of incompatibilities you may encounter when migrating your application to KVision 4.1.0:
+
+* DSL builder functions have been annotated with `@DslMarker` annotation, which provides [strict scope control](https://kotlinlang.org/docs/type-safe-builders.html#scope-control-dslmarker) over implicit receivers. It can lead to compile errors for existing code with hard to notice bugs. Sometimes it may also be necessary to specify the receivers explicitly.
+* Routing functionality has been externalized to optional modules. If your application uses built-in KVision routing, you need to add `kvision-routing-navigo` module to your dependencies and call `Routing.init()` at the beginning of your `Application.start()` method.
+
+This is the list of incompatibilities you may encounter when migrating your application to KVision 4.0.0:
 
 * Artifacts publication has been moved to Maven Central under new maven coordinates with `io.kvision` group identifier. You have to update all KVision dependencies in your `build.gradle.kts`.
 * All package names have been renamed with `io.kvision` prefix. You should replace your sources in the following order:

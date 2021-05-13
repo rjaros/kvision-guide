@@ -2,6 +2,7 @@
 
 This is the list of incompatibilities you may encounter when migrating your application to KVision 4.5.0:
 
+* You need to upgrade Kotlin to 1.5.0 and serialization to 1.2.0 in your project `gradle.properties`. 
 * Webpack used internally by Kotlin/JS plugin was upgraded to 5.x. You need to adjust any custom configuration in your `webpack.config.d` directory. Please use these [bootstrap.js](https://raw.githubusercontent.com/rjaros/kvision-examples/master/template/webpack.config.d/bootstrap.js), [css.js](https://raw.githubusercontent.com/rjaros/kvision-examples/master/template/webpack.config.d/css.js) and [file.js](https://raw.githubusercontent.com/rjaros/kvision-examples/master/template/webpack.config.d/file.js) files as examples. You can find more information [here](https://webpack.js.org/migrate/5/).
 * `kvision-onsenui-css` module was removed and integrated with `kvision-onsenui` module.
 * When developing full-stack application with Spring Boot 2.4.5, you need to add this snippet to your `build.gradle.kts`:

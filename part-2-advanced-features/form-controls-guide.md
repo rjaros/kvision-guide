@@ -245,8 +245,8 @@ Select(label = "A select with features") {
     selectOption(divider = true)
     selectOption("second", "Second Option")
     selectOptGroup("Option group") {
-        selectOption("g1", "Group 1", icon = "fa-apple")
-        selectOption("g2", "Group 2", icon = "fa-google")
+        selectOption("g1", "Group 1", icon = "fab fa-apple")
+        selectOption("g2", "Group 2", icon = "fab fa-google")
     }
 }
 ```

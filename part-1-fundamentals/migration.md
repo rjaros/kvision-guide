@@ -1,5 +1,12 @@
 # Migration
 
+This is the list of incompatibilities you may encounter when migrating your application to KVision 4.7.0:
+
+* You need to upgrade Kotlin to 1.5.10.
+* Due to changes in `webpack-dev-server` you need to modify `DevServer` options in your `build.gradle.kts` file.  Please replace:
+  * `proxy = mapOf(...)` with `proxy = mutableMapOf(...)`
+  * `contentBase = listOf(...)` with `static = mutableListOf(...)`
+
 This is the list of incompatibilities you may encounter when migrating your application to KVision 4.5.0:
 
 * You need to upgrade Kotlin to 1.5.0 and serialization to 1.2.0 in your project `gradle.properties`. 

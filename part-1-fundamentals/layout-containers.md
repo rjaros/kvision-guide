@@ -82,7 +82,7 @@ splitPanel(Direction.HORIZONTAL) {
 This layout container is only available with the `kvision-bootstrap` module.
 {% endhint %}
 
-This container creates a popular tabbed layout, with tabs on the top, left or right side of the content.
+This container creates a popular tabbed layout, with tabs on the top, left or right side of the content. 
 
 ```kotlin
 tabPanel {
@@ -102,29 +102,29 @@ For tabs displayed on the left or right side of the content, you need to declare
 
 ```kotlin
 tabPanel(tabPosition = TabPosition.LEFT, sideTabSize = SideTabSize.SIZE_2) {
-    tab("Apple", "fab fa-apple") {
+    tab("Apple", "fas fa-apple") {
         div("Apple description")
     }
-    tab("Google", "fab fa-google") {
+    tab("Google", "fas fa-google") {
         div("Google description")
     }
-    tab("Microsoft", "fab fa-windows") {
+    tab("Microsoft", "fas fa-windows") {
         div("Microsoft description")
     }
 }
 ```
 
-Tabs can be made closable. A closable tab displays a cross icon on the tab bar. When the user clicks this icon, the `removeTab` method is called and the tab is deleted from the container. Two events are sent - `tabClosing` and `tabClosed` with the tab index saved in `detail.data` property. The first event is cancelable - you can call `preventDefault()` method to cancel the action.
+Tabs can be made closable. A closable tab displays a cross icon on the tab bar. When the user clicks this icon, the `removeTab` method is called and the tab is deleted from the container. Two events are sent - `tabClosing` and `tabClosed` with the tab index saved in `detail.data` property. The first event is cancelable -  you can call `preventDefault()` method to cancel the action.
 
 ```kotlin
 tabPanel {
-    tab("Apple", "fab fa-apple", closable = true) {
+    tab("Apple", "fas fa-apple", closable = true) {
         div("Apple description")
     }
-    tab("Google", "fab fa-google", closable = true) {
+    tab("Google", "fas fa-google", closable = true) {
         div("Google description")
     }
-    tab("Microsoft", "fab fa-windows", closable = true) {
+    tab("Microsoft", "fas fa-windows", closable = true) {
         div("Microsoft description")
     }
     onEvent {
@@ -150,7 +150,7 @@ tabPanel {
 * dynamically reorder tabs
 * allow user to reorder tabs with drag & drop
 
-## DockPanel
+##  DockPanel
 
 This container can have up to five children, and it shows them in five distinct positions - CENTER, UP, DOWN, LEFT and RIGHT. The default `add` method of the `DockPanel` class \(used also by the DSL builders\) puts the given component in the CENTER position. Use the dedicated DSL builder functions to put your child components in the other four positions.
 

@@ -86,13 +86,13 @@ This container creates a popular tabbed layout, with tabs on the top, left or ri
 
 ```kotlin
 tabPanel {
-    tab("Apple", "fas fa-apple") {
+    tab("Apple", "fab fa-apple") {
         div("Apple description")
     }
-    tab("Google", "fas fa-google") {
+    tab("Google", "fab fa-google") {
         div("Google description")
     }
-    tab("Microsoft", "fas fa-windows") {
+    tab("Microsoft", "fab fa-windows") {
         div("Microsoft description")
     }
 }

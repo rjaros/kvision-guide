@@ -16,7 +16,7 @@ val result: Promise<dynamic> = restClient.remoteCall("https://api.github.com/sea
 data class Repository(val id: Int, val full_name: String?, val description: String?, val fork: Boolean)
 
 val restClient = RestClient()
-val items: Promise<List<Repository>> = restClient.remoteCall("https://api.github.com/search/repositories", obj { q = "kvision" }, deserializer = Repository.serializer().list) {
+val items: Promise<List<Repository>> = restClient.remoteCall("https://api.github.com/search/repositories", obj { q = "kvision" }, deserializer = ListSerializer(Repository.serializer())) {
     it.items
 }
 ```

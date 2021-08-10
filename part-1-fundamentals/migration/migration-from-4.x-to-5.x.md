@@ -46,5 +46,5 @@ fun main() {
 }
 ```
 
-
+* The default values for `Root` container parameters have been changed. Previously `container-fluid` was the default class applied and additional `row` was generated. In KVision 5 `Root` container doesn't generate any additional markup by default. 
 

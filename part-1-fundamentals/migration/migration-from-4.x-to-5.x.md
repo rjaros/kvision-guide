@@ -94,5 +94,7 @@ fun main() {
 
 ```
 
+* `Table` component was moved to the `kvision-bootstrap` module.
+
  
 

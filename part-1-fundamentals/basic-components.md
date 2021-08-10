@@ -132,7 +132,6 @@ button(text = "X", classes = setOf("close")) {
 }
 ```
 
-
 ## Extending KVision DSL
 
 If you want to build custom DSL types, you can override existing types such as `div`. This might be useful if a certain custom component won't know their children ahead of time, for example, a "card" component that has a fancy border.
@@ -161,10 +160,4 @@ card {
     CustomComponent()
 }
 ```
-
-
-
-
-
-
 

@@ -41,7 +41,7 @@ This is the list of incompatibilities you may encounter when migrating your appl
 
 * Due to changes in the Kotlin/JS gradle plugin for Kotlin 1.4.0 it is necessary to fix your `build.gradle.kts` file and `webpack.config.d/webpack.js` file. You can apply the following patch for `build.gradle.kts` file and just copy new version of `webpack.js` from the current template project \(standard or fullstack, respectively\).
 
-{% file src="../.gitbook/assets/kvision-3.13.0.txt" caption="Patch for build.gradle.kts file" %}
+{% file src="../../.gitbook/assets/kvision-3.13.0.txt" caption="Patch for build.gradle.kts file" %}
 
 * `Kotlinx.serialization` library 1.0.0 contains a lot of [incompatible changes](https://github.com/Kotlin/kotlinx.serialization/releases/tag/1.0.0-RC), so you have to migrate your code if you are using this library directly. 
 * `Jed` was replaced by `gettext.js` library. You can safely delete `webpack.config.d/jed.js` file. You need to make sure your `*.po` files contain both `Language` and `Plural forms` headers.
@@ -65,7 +65,7 @@ This is the list of incompatibilities you may encounter when migrating your appl
 This is the list of incompatibilities you may encounter when migrating your application to KVision 2:
 
 * All DSL builder functions have been moved out of the companion objects to allow better auto-completion in IntelliJ IDEA. This change is incompatible with KVision 1 code. To migrate you should just remove code based on this regular expression: `[^\.]+\.Companion\.` from all your frontend code imports \(Kotlin compiler will help you easily find all possible errors afterwards\).
-* The default font size in Bootstrap 4 is larger. You may have to adjust your application layout manually or use a [custom CSS theme](themes.md).
+* The default font size in Bootstrap 4 is larger. You may have to adjust your application layout manually or use a [custom CSS theme](../themes.md).
 * The direct child of the `Root` component is no longer 100% wide. Use `width = 100.perc` if you want it to be.
 * The modules names have changed \(the API of the components, package names, class names, methods and properties are mostly the same, with the differences described in details below\).
 

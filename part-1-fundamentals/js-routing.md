@@ -6,9 +6,9 @@ Add the following in your `build.gradle.kts` file
 
 Navigo 7: `implementation("io.kvision:kvision-routing-navigo:$kvisionVersion")`
 
-Navigo 8+:  `implementation("io.kvision:kvision-routing-navigo-ng:$kvisionVersion")`
+Navigo 8+: `implementation("io.kvision:kvision-routing-navigo-ng:$kvisionVersion")`
 
-### Initializing
+## Initializing
 
 Call the `Routing.init()` method at the beginning of your `Application.start()` method.
 
@@ -30,7 +30,7 @@ override fun start() {
 
 The router object is available as a global variable `routing` in the `io.kvision.routing` package, and all [Navigo API](https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md) methods can be called directly.
 
-### Adding a route
+## Adding a route
 
 To add a route, use the `on` method on the global variable `routing` you can use it different ways
 
@@ -46,13 +46,14 @@ routing
 In all of these approaches, you pass in a function that is invoked when the route is matched
 
 Resolve has to be called at least once. The method does the following
+
 * Searches for a url match
 * If yes, it calls [hooks](https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md#hooks) and your route handler
 * updates the router's internal state
 
-(Note, if you set strategy = "ALL", it will keep searching)
+\(Note, if you set strategy = "ALL", it will keep searching\)
 
-### Navigating
+## Navigating
 
 To navigate to a certain url, use the `navigate` method on the global `routing` variable
 
@@ -60,7 +61,7 @@ To navigate to a certain url, use the `navigate` method on the global `routing` 
 routing.navigate("/foo")
 ```
 
-### Hooks
+## Hooks
 
 **Note**: Hooks are not fully support yet by Kvision
 
@@ -87,7 +88,6 @@ routing
 
 or specific routes
 
-
 ```kotlin
 routing
     ...
@@ -97,9 +97,7 @@ routing
     ...
 ```
 
-
-### Usage with Panel
-
+## Usage with Panel
 
 The JS router support is also directly available in the `TabPanel` and `StackPanel` containers. This way you can easily bind different parts of your application GUI with distinct URL addresses and make the "Back" button of the browser work as expected.
 

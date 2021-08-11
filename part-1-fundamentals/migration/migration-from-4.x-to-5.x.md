@@ -109,7 +109,7 @@ text.onEvent {
 
 ### KVision custom events
 
-For custom KVision events \(defined by `SplitPanel`, `Window`, `Tabulator`, `TabPanel` and some OnsenUI components\) use the name of the event as well.
+For custom KVision events \(defined by `SplitPanel`, `Window`, `Tabulator`, `TabPanel` and some OnsenUI components\) use the name of the event as well. Note: event names for `Tabulator` and `TabPanel` component have been renamed \(e.g. `tabulatorRowClick` -&gt; `rowClickTabulator`\).
 
 ```kotlin
 tabulator.onEvent {

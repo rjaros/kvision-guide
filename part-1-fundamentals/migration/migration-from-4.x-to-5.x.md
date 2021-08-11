@@ -66,16 +66,7 @@ root("kvapp") {
 
 ## Modules
 
-* KVision 5 gives you a few new optional modules:
-  * `kvision-jquery` - jQuery bindings. Contain extension functions which previously were methods of the `Widget` class. Also contain `LegacyRestClient` - original, jQuery based HTTP client.
-  * `kvision-bootstrap-icons` - bindings for [Bootstrap Icons](https://icons.getbootstrap.com/) project.
-  * `kvision-rest` - completely new `RestClient` component, based on browser fetch API.
-  * `kvision-state` - observable data structures and data bindings.
-  * `kvision-state-flow` \(renamed from `kvision-event-flow`\) - data bindings and extension functions to work with Kotlin coroutines `Flow`, `StateFlow` and `SharedFlow`.
-* If you were using any of the `getElementJQuery()`, `getElementJQueryD()`, `showAnim()`, `hideAnim()`, `slideDown()`, `slideUp()`, `fadeIn()`, `fadeOut()`, animate\(\) methods, you need to include `kvision-jquery` module and import appropriate extension functions.
-* If you were using `RestClient` component you can either include `kvision-rest` module and use new `RestClient` \(by adjusting your code to new API\) or include `kvision-jquery` module and use deprecated `LegacyRestClient` \(without any additional changes\).
-* If you were using `ObservableList`, `ObservableSet` or data bindings with `bind()`, `bindEach()` or `bindTo()` functions, you need to include `kvision-state` module. The API is the same.
-* All modules which include CSS stylesheets require explicit initialization. This also applies to the core module. This initialization ensures a predictable order in which all styles will be applied. The initialization is performed by adding module objects as parameters to the `startApplication()` function.
+* All modules which include CSS stylesheets require explicit initialization. This also applies to the core module. This initialization ensures a predictable order in which all styles will be applied. The initialization is performed by adding dedicated module objects as parameters to the `startApplication()` function.
 
 ```kotlin
 fun main() {
@@ -91,10 +82,14 @@ fun main() {
         CoreModule
     )
 }
-
 ```
 
-* `Table` component was moved to the `kvision-bootstrap` module.
+* These methods: `getElementJQuery()`, `getElementJQueryD()`, `showAnim()`, `hideAnim()`, `slideDown()`, `slideUp()`, `fadeIn()`, `fadeOut()` and `animate()` of the `Widget` class, have been extracted to the new `kvision-jquery` module as the extension functions.
+* Other jQuery dependencies \(including static `jQuery()` function\) has been moved to the `kvision-jquery` module as well. The core module no longer depends on jQuery library.
+* The `RestClient` component has been moved to the new `kvision-rest` module and has been completely redesigned \(including its API\). To make migrations easier, the original, jQuery based client has been moved to the `kvision-jquery` module as a deprecated `LegacyRestClient`.
+* The `ObservableList` and `ObservableSet` classes and data bindings functions `bind()`, `bindEach()` and `bindTo()` have been moved to the `kvision-state` module.
+* The `Table` component has been moved to the `kvision-bootstrap` module.
+* The `kvision-event-flow` module has been renamed to `kvision-state-flow`.
 
- 
+
 

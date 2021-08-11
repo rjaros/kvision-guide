@@ -91,5 +91,66 @@ fun main() {
 * The `Table` component has been moved to the `kvision-bootstrap` module.
 * The `kvision-event-flow` module has been renamed to `kvision-state-flow`.
 
+## Events
 
+KVision no longer re-dispatches native component events as custom events. Instead it gives you the possibility to add direct listeners for all events with `event()` and `jqueryEvent()` extension functions, used inside `onEvent` function.
+
+### Standard events
+
+For standard events, just use the name.
+
+```kotlin
+text.onEvent {
+    change = {
+        console.log("Input text changed.")
+    }
+}
+```
+
+### KVision custom events
+
+For custom KVision events \(defined by `SplitPanel`, `Window`, `Tabulator`, `TabPanel` and some OnsenUI components\) use the name of the event as well.
+
+```kotlin
+tabulator.onEvent {
+    rowClickTabulator = {
+        console.log("Row selected.")
+    }
+}
+
+window.onEvent {
+    resizeWindow = {
+        console.log("Window resized.")
+    }
+}
+```
+
+###  Bootstrap custom events
+
+For events defined by Bootstrap components use `event()` extension function.
+
+```kotlin
+modal.onEvent {
+    event("shown.bs.modal") {
+        console.log("Bootstrap modal is shown.")
+    }
+    event("hidden.bs.modal") {
+        console.log("Bootstrap modal is hidden")
+    }
+}
+```
+
+### jQuery events
+
+For events defined by jQuery based components \(`Select`, `Spinner`, `DateTime`, `Typeahead`, `Upload`\) use `jqueryEvent()` extension function.
+
+```kotlin
+select(listOfPairs("Option 1", "Option 2", "Option 3")) {
+    onEvent {
+        jqueryEvent("changed.bs.select") { _ ->
+            console.log("Selection changed.")
+        }
+    }
+}
+```
 

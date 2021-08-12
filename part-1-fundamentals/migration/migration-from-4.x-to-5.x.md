@@ -179,3 +179,11 @@ select(listOfPairs("Option 1", "Option 2", "Option 3")) {
 }
 ```
 
+## Other changes
+
+* The `SplitPanel` container is now sized with percentage values. You can use `minWidth` and/or `maxWidth` properties for the child component to block automatic resizing.
+* Due to Bootstrap 5 limitation, components can't have both tooltip and popover enabled at the same time.
+* `Tabulator` component no longer uses table types enums of the `Table` component. It now has its own enum values in its own `kvision-tabulator` module.
+* `Style` objects have been refactored. The order of constructor parameters has changed. The `className` parameter has been renamed to `selector` to avoid confusion.
+* The KVision Gradle plugin ID has changed from `kvision` to `io.kvision` and maven coordinates of the plugin artifacts have changed to comply with Gradle conventions. The `resolutionStrategy` block in `settings.gradle.kts` file is no longer required for KVision plugin. The plugin is now used with frontend-only projects as well, to simplify build file configuration. 
+

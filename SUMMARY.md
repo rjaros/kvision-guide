@@ -5,7 +5,7 @@
 * [Part 1: Fundamentals](part-1-fundamentals/README.md)
   * [Setting up](part-1-fundamentals/setting-up.md)
   * [Migration](part-1-fundamentals/migration/README.md)
-    * [Migration from 4.x to 5.x \(work in progress\)](part-1-fundamentals/migration/migration-from-4.x-to-5.x.md)
+    * [Migration from 4.x to 5.x](part-1-fundamentals/migration/migration-from-4.x-to-5.x.md)
   * [Modules](part-1-fundamentals/modules.md)
   * [Hot Module Replacement](part-1-fundamentals/hot-module-replacement.md)
   * [Theming](part-1-fundamentals/themes.md)

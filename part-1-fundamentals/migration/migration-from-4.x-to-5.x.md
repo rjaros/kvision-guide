@@ -20,7 +20,7 @@ div(className = "card important") {
 } 
 ```
 
-*  All DSL builder functions with `ObservableState` parameter has been removed. Use `bind()` extension function instead \(from the new `kvision-state` module\).
+*  All DSL builder functions with `ObservableState` parameter have been removed. Use `bind()` extension function instead \(from the new `kvision-state` module\).
 
 ```kotlin
 val state = ObservableValue("Centered content")
@@ -84,9 +84,9 @@ fun main() {
 }
 ```
 
-* These methods: `getElementJQuery()`, `getElementJQueryD()`, `showAnim()`, `hideAnim()`, `slideDown()`, `slideUp()`, `fadeIn()`, `fadeOut()` and `animate()` of the `Widget` class, have been extracted to the new `kvision-jquery` module as the extension functions.
-* Other jQuery dependencies \(including static `jQuery()` function\) has been moved to the `kvision-jquery` module as well. The core module no longer depends on jQuery library.
-* The `RestClient` component has been moved to the new `kvision-rest` module and has been completely redesigned \(including its API\). To make migrations easier, the original, jQuery based client has been moved to the `kvision-jquery` module as a deprecated `LegacyRestClient`.
+* These methods: `getElementJQuery()`, `getElementJQueryD()`, `showAnim()`, `hideAnim()`, `slideDown()`, `slideUp()`, `fadeIn()`, `fadeOut()` and `animate()` of the `Widget` class have been extracted to the new `kvision-jquery` module as the extension functions.
+* Other jQuery dependencies \(including static `jQuery()` function\) have been moved to the `kvision-jquery` module as well. The core module no longer depends on jQuery library.
+* The `RestClient` component has been moved to the new `kvision-rest` module and completely redesigned \(including its API\). To make migrations easier, the original, jQuery based client has been moved to the `kvision-jquery` module as a deprecated `LegacyRestClient`.
 * The `ObservableList` and `ObservableSet` classes and data bindings functions `bind()`, `bindEach()` and `bindTo()` have been moved to the `kvision-state` module.
 * The `Table` component has been moved to the `kvision-bootstrap` module.
 * The `kvision-event-flow` module has been renamed to `kvision-state-flow`.
@@ -127,9 +127,22 @@ window.onEvent {
 
 ###  Bootstrap custom events
 
-For events defined by Bootstrap components use `event()` extension function.
+For events defined by Bootstrap components, which cannot be used like above because of their names, use `event()` extension function.
 
 ```kotlin
+// KVision 4
+
+modal.onEvent {
+    shownBsModal = {
+        console.log("Bootstrap modal is shown.")
+    }
+    hiddenBsModal = {
+        console.log("Bootstrap modal is hidden")
+    }
+}
+
+// KVision 5
+
 modal.onEvent {
     event("shown.bs.modal") {
         console.log("Bootstrap modal is shown.")
@@ -145,6 +158,18 @@ modal.onEvent {
 For events defined by jQuery based components \(`Select`, `Spinner`, `DateTime`, `Typeahead`, `Upload`\) use `jqueryEvent()` extension function.
 
 ```kotlin
+// KVision 4
+
+select(listOfPairs("Option 1", "Option 2", "Option 3")) {
+    onEvent {
+        changedBsSelect = {
+            console.log("Selection changed.")
+        }
+    }
+}
+
+// KVision 5
+
 select(listOfPairs("Option 1", "Option 2", "Option 3")) {
     onEvent {
         jqueryEvent("changed.bs.select") { _ ->

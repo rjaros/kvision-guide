@@ -63,8 +63,6 @@ root("kvapp") {
 ```
 
 * Bootstrap 5 introduces many breaking changes. You should definitely read [Bootstrap's migration guide](https://getbootstrap.com/docs/5.1/migration/) if you use Bootstrap CSS classes directly.
-* Micronaut 3.0 introduces some breaking changes. Check out [Micronaut upgrading guide](https://docs.micronaut.io/3.0.0/guide/index.html#upgrading).
-* Javalin 4.0 introduces some breaking changes. Check out the [changelog](https://javalin.io/news/javalin-4-release-candidate).
 
 ## Modules
 

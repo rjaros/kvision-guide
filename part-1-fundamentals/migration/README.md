@@ -1,5 +1,7 @@
 # Migration
 
+Check [Migration guide for KVision 5.0.0](migration-from-4.x-to-5.x.md).
+
 This is the list of incompatibilities you may encounter when migrating your application to KVision 4.7.0:
 
 * You need to upgrade Kotlin to 1.5.10.

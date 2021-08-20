@@ -8,20 +8,21 @@ KVision gives you sophisticated but also easy to use tools to work with applicat
 * `ReduxStore` -  full-featured Redux state container    
 *  all form components \(e.g. `Text`, `TextInput`, `Select`, `SelectInput`, ...\)
 
+{% hint style="info" %}
+The `ObservableValue` class is located in the core module, while `ObservableList`, `ObservableSet` and all binding functions are located in the `kvision-state` module.
+{% endhint %}
+
 Every component implementing `ObservableState` interface can notify its subscribers about state changes. You can subscribe manually by using the `subscribe` function:
 
 ```kotlin
 fun subscribe(observer: (S) -> Unit): () -> Unit
 ```
 
-or you can use automatic data binding with `bind` function or dedicated DSL builders:
+or you can use automatic data binding with `bind` function:
 
 ```kotlin
 val observable = ObservableValue("test")
 div().bind(observable) { state ->
-    +state
-}
-div(observable) { state ->
     +state
 }
 ```
@@ -30,7 +31,7 @@ You can bind directly your data producers \(observables\) with data consumers \(
 
 ```kotlin
 val text = text(label = "Enter something")
-div(text) {
+div().bind(text) {
     +"You entered: $it"
 }
 ```
@@ -40,7 +41,7 @@ All form components implement `MutableState` interface. At the same time every f
 ```kotlin
 val observable = ObservableValue("test")
 text().bindTo(observable)
-div(observable) { state ->
+div().bind(observable) { state ->
     +state
 }
 ```
@@ -55,7 +56,7 @@ text1.bindTo(text2)
 
 ## Flows
 
-With additional extension functions defined in `kvision-event-flow` module, you can also use Kotlin `Flow` \(including `StateFlow` and `SharedFlow`\) and its operators to declare data bindings between different components and data stores.
+With additional extension functions defined in `kvision-state-flow` module, you can also use Kotlin `Flow` \(including `StateFlow` and `SharedFlow`\) and its operators to declare data bindings between different components and data stores.
 
 ```kotlin
 class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default) {
@@ -104,7 +105,20 @@ simplePanel(subStore) { number ->
 }
 ```
 
- 
+##  Collections binding
+
+You can use `bindEach()` function if you want do render data contained in a collection. This function uses Myers differencing algorithm to minimize number of changes to the component tree and optimize rendering.
+
+```kotlin
+gridPanel(
+    templateColumns = "repeat(auto-fill, minmax(250px, 1fr))",
+    justifyItems = JustifyItems.CENTER,
+    columnGap = 20,
+    className = "ui cards"
+).bindEach(users) { user ->
+    card(user)
+}
+```
 
 
 

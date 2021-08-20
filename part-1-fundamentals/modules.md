@@ -58,10 +58,6 @@ KVision consists of both required and optional functionality. Modules can be add
       <td style="text-align:left">Bootstrap based <a href="windows-and-modals.md#dialog-with-a-result">Dialog</a> component.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-bootstrap-icons</td>
-      <td style="text-align:left"><a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> support.</td>
-    </tr>
-    <tr>
       <td style="text-align:left">kvision-fontawesome</td>
       <td style="text-align:left"><a href="https://fontawesome.com">Font Awesome</a> support.</td>
     </tr>
@@ -115,6 +111,11 @@ KVision consists of both required and optional functionality. Modules can be add
       </td>
     </tr>
     <tr>
+      <td style="text-align:left">kvision-event-flow</td>
+      <td style="text-align:left">Extension functions for coroutines <code>Flow</code>, <code>StateFlow</code> and <code>SharedFlow</code>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left">kvision-maps</td>
       <td style="text-align:left">
         <p>A basic module with the <code>Maps</code> component, based on <a href="https://leafletjs.com/">Leaflet</a> library.</p>
@@ -140,22 +141,6 @@ KVision consists of both required and optional functionality. Modules can be add
     <tr>
       <td style="text-align:left">kvision-onsenui</td>
       <td style="text-align:left"><a href="https://onsen.io/">Onsen UI</a> mobile web components.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-jquery</td>
-      <td style="text-align:left"><a href="https://jquery.com/">jQuery</a> bindings, events and animations.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-rest</td>
-      <td style="text-align:left">Configurable REST/HTTP client.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-state</td>
-      <td style="text-align:left">State bindings and observable data structures.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-state-flow</td>
-      <td style="text-align:left">Extensions for Kotlin coroutines <code>Flow</code>, <code>StateFlow</code> and <code>SharedFlow</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-cordova</td>

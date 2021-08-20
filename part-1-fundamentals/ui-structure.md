@@ -33,9 +33,12 @@ The main interface for a container is `io.kvision.core.Container`. It declares t
 ```kotlin
 interface Container : Component {
     fun add(child: Component): Container
+    fun add(position: Int, child: Component): Container
     fun addAll(children: List<Component>): Container
     fun remove(child: Component): Container
+    fun removeAt(position: Int): Container
     fun removeAll(): Container
+    fun disposeAll(): Container
     fun getChildren(): List<Component>
     ...
 }
@@ -71,7 +74,29 @@ hPanel(spacing = 20, alignItems = AlignItems.CENTER) {
 
 As you can see from the above example KVision defines extension functions with names matching the component classes with a first character lower case \(e.g. `HPanel` -&gt; `hPanel`, `Span` -&gt; `span`, `Button` -&gt; `button`\). These functions takes the same parameters as the primary constructors, their receiver is `io.kvision.core.Container` and they are returning the reference to the created object instance.
 
-At the moment the DSL builders allow you to use only basic `add` method of the `Container` interface. If you want to use any of the specialized add methods of different containers you must call them explicitly.
+The DSL builders allow you to use only basic `add` method of the `Container` interface. If you want to use any of the specialized add methods of different containers you have to use dedicated DSL methods, provided by some of the containers:
+
+```kotlin
+dockPanel {
+    left {
+        vPanel {
+            width = 80.px
+            height = 100.perc
+        }
+    }
+    down {
+        hPanel {
+            height = 60.px
+            width = 100.perc
+        }
+    }
+    center {
+        canvas(510, 320)
+    }
+}
+```
+
+You can also always just call the appropriate methods explicitly.
 
 ```kotlin
 dockPanel {

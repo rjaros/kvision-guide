@@ -49,7 +49,7 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 
 KVision was designed to be open and flexible. By default it gives you [Bootstrap](https://getbootstrap.com/) based look & feel. You can also use themes from [Bootswatch](https://bootswatch.com/) or you can disable them all and design your application appearance from the scratch, limited only by your own knowledge of CSS.
 
-KVision fully supports both reactive and imperative programming models. It gives you everything you may need for the state management of your apps. From simple observables to advanced redux stores and bindings to coroutines StateFlow. From simple event callbacks to functional event flows.
+KVision fully supports both reactive and imperative programming models. It gives you everything you may need for the state management of your apps. From simple observables to advanced redux stores. From simple event callbacks to functional event flows.
 
 KVision is open source and modular. You can create your own modules taking an example from quite a few already existing. Almost all KVision classes are declared as open. With inheritance and composition you can build your own components, with all new features you need in your apps.
 

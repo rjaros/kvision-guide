@@ -176,7 +176,7 @@ dockPanel {
 
 ## FlexPanel
 
-The `FlexPanel` class allows you to display children components with all the power of[ CSS Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox/) W3C recommendation. In the flex layout model, the children components can be laid out horizontally or vertically, left to right, right to left, top to bottom or bottom to top. Children can change their sizes, either growing or shrinking. The specification is quite complex and most of the available CSS attributes are supported with Kotlin enum values used with the `FlexPanel` class. You use the dedicated `add(child: Component, order: Int? = null, grow: Int? = null, shrink: Int? = null, basis: Int? = null, alignSelf: FlexAlignItems? = null, className: String? = null)` method of `FlexPanel` class or `options` DSL builder function to add children components with additional flexbox attributes:
+The `FlexPanel` class allows you to display children components with all the power of[ CSS Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox/) W3C recommendation. In the flex layout model, the children components can be laid out horizontally or vertically, left to right, right to left, top to bottom or bottom to top. Children can change their sizes, either growing or shrinking. The specification is quite complex and most of the available CSS attributes are supported with Kotlin enum values used with the `FlexPanel` class. You use the dedicated `add(child: Component, order: Int? = null, grow: Int? = null, shrink: Int? = null, basis: Int? = null, alignSelf: FlexAlignItems? = null, classes: Set = setOf())` method of `FlexPanel` class or `options` DSL builder function to add children components with additional flexbox attributes:
 
 ```kotlin
 flexPanel(
@@ -212,7 +212,7 @@ vPanel(spacing = 5) {
 
 ## GridPanel
 
-The `GridPanel` class allows you to display children components with the use of [CSS Grid Layout Module](https://www.w3.org/TR/css-grid/) W3C recommendation - a two-dimensional layout system, which allows the children to be positioned into arbitrary slots in a predefined flexible or fixed-size grid. This specification is even more complex than Flexbox, but is still supported mostly with Kotlin enum values and type-safe parameters. You use the dedicated `add(child: Component, columnStart: Int? = null, rowStart: Int? = null, columnEnd: String? = null, rowEnd: String? = null, area: String? = null, justifySelf: JustifyItems? = null, alignSelf: AlignIems? = null, className: String? = null)` method of `GridPanel` class or `options` DSL builder function to add children components with additional grid attributes:
+The `GridPanel` class allows you to display children components with the use of [CSS Grid Layout Module](https://www.w3.org/TR/css-grid/) W3C recommendation - a two-dimensional layout system, which allows the children to be positioned into arbitrary slots in a predefined flexible or fixed-size grid. This specification is even more complex than Flexbox, but is still supported mostly with Kotlin enum values and type-safe parameters. You use the dedicated `add(child: Component, columnStart: Int? = null, rowStart: Int? = null, columnEnd: String? = null, rowEnd: String? = null, area: String? = null, justifySelf: JustifyItems? = null, alignSelf: AlignIems? = null, classes: Set = setOf())` method of `GridPanel` class or `options` DSL builder function to add children components with additional grid attributes:
 
 ```kotlin
 gridPanel(columnGap = 5, rowGap = 5, justifyItems = JustifyItems.CENTER) {
@@ -247,4 +247,41 @@ responsiveGridPanel {
     add(Div("3,3"), 3, 3)
 }
 ```
+
+## Non-DSL containers
+
+All standard KVision containers are annotated with `@DslMarker`, which provides [strict scope control](https://kotlinlang.org/docs/type-safe-builders.html#scope-control-dslmarker) over implicit receivers. However, since KVision 4.1.1 there are some additional containers available, which are not marked with DSL annotations. They have names starting with `Basic*` prefix \(`BasicPanel`, `BasicTabPanel`, `BasicFlexPanel`, etc.\) and are marked as experimental with `@ExperimentalNonDslContainer`annotation. These containers can be used as base classes for your own components, when strict receiver scope control is not desirable.
+
+```kotlin
+@ExperimentalNonDslContainer
+class MyComponent: BasicPanel() {
+    val button = Button("B1").apply {
+        onClick { doSomething() }
+    }
+    lateinit var button2: Button
+    init {
+        div {
+            buttonGroup {
+                add(button)
+                button2 = button("B2") {
+                    onClick { doSomething() }
+                }
+            }
+        }
+    }
+    fun doSomething() {}
+}
+```
+
+{% hint style="info" %}
+To compile code with non-DSL container classes you need to use `@ExperimentalNonDslContainer` annotation. Sometimes in maybe easier to use `@OptIn(ExperimentalNonDslContainer::class)` or even apply this annotation automatically with Gradle:
+
+```kotlin
+sourceSets.all {
+    languageSettings.apply {
+        useExperimentalAnnotation("io.kvision.core.ExperimentalNonDslContainer")
+    }
+}
+```
+{% endhint %}
 

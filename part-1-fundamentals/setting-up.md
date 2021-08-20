@@ -16,7 +16,7 @@ Note: Make sure you are building KVision applications on the local file system.
 
 ## Creating a new application
 
-The recommended way to create a new application is to use [KVision Project Wizard](https://plugins.jetbrains.com/plugin/16533-kvision-project-wizard) plugin for IntelliJ IDEA. Just install the plugin from JetBrains Marketplace in your IDE and run `File -> New -> Project...` from the main menu. Choose `KVision` group, select desired project type and choose modules from the list on the first page. On the second page choose your project name and location. Your project will be generated and opened in IDE when you click `Finish` button.
+The recommended way to create a new application is to use [KVision Project Wizard](https://plugins.jetbrains.com/plugin/16533-kvision-project-wizard) plugin for IntelliJ IDEA. Just install the plugin from JetBrains Marketplace in your IDE and run `File -> New -> Project...` from the main menu. Choose `KVision` group, select desired project type and choose modules from the list on the first page. On the second page choose your project name and location. Your project will be generated and opened in IDE when you click `Finish` button. After a few moments required to download all required dependencies you are ready to go.
 
 You can also download and copy the [KVision template](https://github.com/rjaros/kvision-examples/tree/master/template) project, available on GitHub.
 

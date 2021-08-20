@@ -77,7 +77,7 @@ Div("Click to change").onEvent {
 
 ## Event Flows
 
-The `kvision-event-flow` module, which depends on Kotlin coroutines library, allows you to easily create Flow streams of events. Using flows, you can process events from KVision components with the power of Kotlin flow API \(e.g. handling backpressure or combining multiple flows\). The module gives you universal `eventFlow` extension function and the dedicated `clickFlow`, `inputFlow` and `changeFlow` functions for the corresponding event types.
+The `kvision-state-flow` module, which depends on Kotlin coroutines library, allows you to easily create Flow streams of events. Using flows, you can process events from KVision components with the power of Kotlin flow API \(e.g. handling back-pressure or combining multiple flows\). The module gives you universal `eventFlow` extension function and the dedicated `clickFlow`, `inputFlow` and `changeFlow` functions for the corresponding event types.
 
 ```kotlin
 val button = button("A button")

@@ -1,6 +1,6 @@
 # Tooltips and popovers
 
-Every component in KVision can display a tooltip and a popover, both are based on Bootstrap components. Due to Bootstrap 5 limitation, components can't have both tooltip and popover enabled at the same time.
+Every component in KVision can display a tooltip and a popover, both are based on Bootstrap components.
 
 {% hint style="info" %}
 This components are only available with the `kvision-bootstrap` module.

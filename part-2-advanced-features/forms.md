@@ -51,10 +51,11 @@ Form controls are KVision components implementing one of five `FormControl` inte
 | `i.k.f.time.DateTime` | `DateFormControl` | kvision-bootstrap-datetime | A date and/or time selection control. |
 | `i.k.f.text.RichText` | `StringFormControl` | kvision-richtext | A rich text editor. |
 | `i.k.f.select.Select` | `StringFormControl` | kvision-bootstrap-select | An advanced select box with support for multiple selection and AJAX data source support. |
-| `i.k.f.select.SelectRemote` | `StringFormControl` | kvision-bootstrap-select-remote | A select box for multi-platform server-side connectivity. |
+| `i.k.f.select.SelectRemote` | `StringFormControl` | kvision-bootstrap-select-remote | A select box for fullstack interfaces. |
 | `i.k.f.spinner.Spinner` | `NumberFormControl` | kvision-bootstrap-spinner | A spinner control for number selection. |
 | `i.k.f.upload.Upload` | `KFilesFormControl` | kvision-bootstrap-upload | An upload file control with preview and multi-selection.  |
 | `i.k.f.text.Typeahead` | `StringFormControl` | kvision-bootstrap-typeahead | A typeahed \(autocomplete\) text field with support for data source. |
+| i.k.f.text.TypeaheadRemote | StringFormControl | kvision-bootstrap-typeahead-remote | A typeahead \(autocomplete\) text field for fullstack interfaces. |
 
 {% hint style="info" %}
 Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated. 
@@ -115,7 +116,7 @@ formPanel<Form> {
 
 #### Manual binding
 
-If you need to manage your form layout directly you can create your layout using standard KVision DSL builders and bind your form controls manually using `bind` extension method.
+If you need to manage your form directly you can create your layout using standard KVision DSL builders and bind your form controls manually using `bind` extension method.
 
 ```kotlin
 formPanel<Form> {

@@ -77,7 +77,7 @@ For interactive, editable tables KVision also supports [`Tabulator`](https://kvi
 
 ### Links
 
-To create a link use `io.kvision.html.Link`class:
+To create a link use `io.kvision.html.Linkclass`:
 
 ```text
 div {
@@ -127,7 +127,7 @@ Notice the extra `<span style="display: contents;">` element surrounding the giv
 All KVision components support additional, custom attributes using `setAttribute`, `getAttribute` and `removeAttribute` methods from the `Widget` class.
 
 ```kotlin
-button(text = "X", className = "close") {
+button(text = "X", classes = setOf("close")) {
     setAttribute("data-dismiss", "alert")
 }
 ```
@@ -143,9 +143,11 @@ fun Container.card(
     content: String? = null,
     rich: Boolean = false,
     align: Align? = null,
+    classes: Set<String>? = null,
+    className: String? = null,
     init: (Div.() -> Unit)? = null
 ): Div {
-    val div = Div(content, rich, align, "fooCard", init) // define css classname or other overrides here
+    val div = Div(content, rich, align, setOf("fooCard"), init) // define css classname or other overrides here
     this.add(div)
     return div
 }

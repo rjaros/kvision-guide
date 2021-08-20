@@ -57,6 +57,53 @@ val id = button.onEvent {
 button.removeEventListener(id)
 ```
 
+### KVision custom events
+
+`SplitPanel`, `Window`, `Tabulator`, `TabPanel` and some OnsenUI components dispatch different custom events. You can use the name of the event just like with standard events. 
+
+```kotlin
+tabulator.onEvent {
+    rowClickTabulator = {
+        console.log("Row selected.")
+    }
+}
+
+window.onEvent {
+    resizeWindow = {
+        console.log("Window resized.")
+    }
+}
+```
+
+###  Bootstrap custom events
+
+For events defined by Bootstrap components, which cannot be used like above because of their names, you need to use `event()` extension function.
+
+```kotlin
+modal.onEvent {
+    event("shown.bs.modal") {
+        console.log("Bootstrap modal is shown.")
+    }
+    event("hidden.bs.modal") {
+        console.log("Bootstrap modal is hidden")
+    }
+}
+```
+
+### jQuery events
+
+For events defined by jQuery based components \(`Select`, `Spinner`, `DateTime`, `Typeahead`, `Upload`\) use `jqueryEvent()` extension function from the `kvision-jquery` module.
+
+```kotlin
+select(listOfPairs("Option 1", "Option 2", "Option 3")) {
+    onEvent {
+        jqueryEvent("changed.bs.select") { _ ->
+            console.log("Selection changed.")
+        }
+    }
+}
+```
+
 ## Self reference inside an event handler
 
 In the code of an event handler you can get the reference to the component instance with a special `self` variable.

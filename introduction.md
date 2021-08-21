@@ -37,6 +37,7 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * many HTML components including tables, lists, images, canvas and iframe
 * built-in support for [Handlebars](http://handlebarsjs.com) templates
 * built-in support for [Font Awesome](https://fontawesome.com/) icons
+* built-in support for [Bootstrap Icons](https://icons.getbootstrap.com/)
 * built-in support for [Redux](https://redux.js.org/) and [ReduxKotlin](https://reduxkotlin.org/)
 * built-in support for [React](https://reactjs.org/) components
 * built-in support for [Onsen UI](https://onsen.io/) web components

@@ -1,6 +1,26 @@
 # Modules
 
-KVision consists of both required and optional functionality. Modules can be added as dependencies in `build.gradle.kts` file. This is the current list of available modules.
+KVision consists of both required and optional functionality. Modules can be added as dependencies in `build.gradle.kts` file. 
+
+All modules which include CSS stylesheets require explicit initialization. This also applies to the core module. This initialization ensures a predictable order in which all styles will be applied. The initialization is performed by adding dedicated module objects as parameters to the `startApplication()` function.
+
+```kotlin
+fun main() {
+    startApplication(
+        ::App,
+        module.hot,
+        BootstrapModule,
+        BootstrapCssModule,
+        FontAwesomeModule,
+        BootstrapSelectModule,
+        BootstrapDatetimeModule,
+        BootstrapUploadModule,
+        CoreModule
+    )
+}
+```
+
+This is the current list of available modules.
 
 <table>
   <thead>

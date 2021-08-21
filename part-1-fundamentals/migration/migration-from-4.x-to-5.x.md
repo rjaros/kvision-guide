@@ -38,6 +38,10 @@ div(align = Align.CENTER).bind(state) {
 }
 ```
 
+{% hint style="info" %}
+Note: You can try to use `bindSync()` extension function in case of very rare timing problems.
+{% endhint %}
+
 * `FlexPanel`, `HPanel`, `VPanel` and `GridPanel` containers don't render wrapper DIVs by default for their children components. The previously available `noWrappers` parameter has been removed and new `useWrappers` \(defaults to `false`\) parameter has been introduced \(note the opposite meaning!\). To make migrations easier, a compatibility parameter `panelsCompatibilityMode`is available within `startApplication()` function. When set to `true`, the `useWrappers` default value will be `true`, and you will only need to replace `noWrappers = true` with `useWrappers = false` to migrate your whole app.
 
 ```kotlin
@@ -63,6 +67,8 @@ root("kvapp") {
 ```
 
 * Bootstrap 5 introduces many breaking changes. You should definitely read [Bootstrap's migration guide](https://getbootstrap.com/docs/5.1/migration/) if you use Bootstrap CSS classes directly.
+* Micronaut 3.0 introduces some breaking changes. Check out [Micronaut upgrading guide](https://docs.micronaut.io/3.0.0/guide/index.html#upgrading).
+* Javalin 4.0 introduces some breaking changes. Check out the [changelog](https://javalin.io/news/javalin-4-release-candidate).
 
 ## Modules
 

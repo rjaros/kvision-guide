@@ -63,8 +63,6 @@ routing.navigate("/foo")
 
 ## Hooks
 
-**Note**: Hooks are not fully support yet by Kvision
-
 [Hooks](https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md#hooks) are functions that are fired during the resolving process. There are four hooks that are fired:
 
 * before
@@ -75,26 +73,21 @@ routing.navigate("/foo")
 You can override hooks for all routes, e.g.
 
 ```kotlin
-routing
-    .hooks(object: RouteHooks {
-        override var before: BeforeHook?
-                = { done: dynamic, _: Match ->
-            console.log("someBeforeHookLogic")
-            done() 
-        }
-    })
-    ...
+routing.hooks(obj<RouteHooks> {
+    before = { done, _ ->
+        console.log("someBeforeHookLogic")
+        done()
+    }
+})
 ```
 
 or specific routes
 
 ```kotlin
-routing
-    ...
-    .addBeforeHook("/foo", {
-        console.log("someBeforeHookLogic")
-    })
-    ...
+routing.addBeforeHook("/foo") {
+    console.log("someBeforeHookLogic")
+    it()
+}
 ```
 
 ## Usage with Panel

@@ -1,6 +1,6 @@
-# jQuery and DOM bindings
+# jQuery bindings
 
-[jQuery](https://jquery.com/) is used internally by the framework and is available for use in all KVision applications with a wrapper library [jquery-kotlin](https://github.com/rjaros/jquery-kotlin).
+The `kvision-jquery` module allows you to work with [jQuery](https://jquery.com/) library, with the help of a wrapper library [jquery-kotlin](https://github.com/rjaros/jquery-kotlin).
 
 ## jQuery object
 
@@ -15,7 +15,7 @@ jQuery("#ident").addClass("blue").show()
 
 ## getElementJQuery\(\) method
 
-Every KVision component has a method `getElementJQuery()`, which can be used to access the jQuery instance bound to the underlying DOM element of the component. It gives you the possibility to easily access and modify the default behavior of KVision components.
+The extension function `getElementJQuery()` can be used to access the jQuery instance bound to the underlying DOM element of the component. It gives you the possibility to easily access and modify the default behavior of KVision components.
 
 {% hint style="info" %}
 This method should only be called after the component has been rendered. It returns `null` otherwise. It's a good practice to overwrite `afterInsert` method from the `Widget` class in your own classes, and call `getElementJQuery()` from there. Alternatively you can use `addAfterInsertHook` method of the `Widget` class to wait until rendering is complete without the need to create your own class.
@@ -36,8 +36,4 @@ override fun afterInsert(node: VNode) {
     getElementJQueryD()?.selectpicker("render").ajaxSelectPicker()
 }
 ```
-
-## DOM bindings
-
-Every KVision component is bound to the DOM tree after it has been rendered. You can get access to the underlying  `HTMLElement` object with the `getElement()` method from the `Widget` class. 
 

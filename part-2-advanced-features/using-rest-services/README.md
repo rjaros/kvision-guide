@@ -1,12 +1,14 @@
 # Using REST services
 
-The `io.kvision.rest.RestClient` class can be used to connect to any RESTfull services \(it will work with any JSON over HTTP services\). You can use remote services with both dynamic and type-safe calls \(using `@Serializable` classes\). The `RestClient` class has only a single `receive()` method, which uses the builder pattern for configuration and returns a `kotlin.js.Promise<RestResponse<T>>` object. A number of extension functions is defined for `RestClient`, which allow you to make typical calls easier.
+The `io.kvision.rest.RestClient` component, located in the `kvision-rest` module, can be used to connect to any RESTfull services \(it will work with any JSON over HTTP services\). You can use remote services with both dynamic and type-safe calls \(using `@Serializable` classes\). The `RestClient` class has only a single `receive()` method, which uses the builder pattern for configuration and returns a `kotlin.js.Promise<RestResponse<T>>` object. A number of extension functions is defined for `RestClient`, which allow you to make typical calls easier.
 
 #### Dynamic parameters, dynamic result
 
 ```kotlin
 val restClient = RestClient()
-val result: Promise<dynamic> = restClient.remoteCall("https://api.github.com/search/repositories", obj { q = "kvision" })
+val result: Promise<dynamic> = restClient.callDynamic("https://api.github.com/search/repositories") {
+    data = obj { q = "kvision" }
+}
 ```
 
 #### Dynamic parameters, type-safe result
@@ -16,8 +18,9 @@ val result: Promise<dynamic> = restClient.remoteCall("https://api.github.com/sea
 data class Repository(val id: Int, val full_name: String?, val description: String?, val fork: Boolean)
 
 val restClient = RestClient()
-val items: Promise<List<Repository>> = restClient.remoteCall("https://api.github.com/search/repositories", obj { q = "kvision" }, deserializer = ListSerializer(Repository.serializer())) {
-    it.items
+val items: Promise<List<Repository>> = restClient.call("https://api.github.com/search/repositories") {
+    data = obj { q = "kvision" }
+    resultTransform = { it.items }
 }
 ```
 
@@ -28,7 +31,7 @@ val items: Promise<List<Repository>> = restClient.remoteCall("https://api.github
 data class Query(val q: String?)
 
 val restClient = RestClient()
-val result: Promise<dynamic> = restClient.call("https://api.github.com/search/repositories", Query("kvision"))
+val result: Promise<dynamic> = restClient.callDynamic("https://api.github.com/search/repositories", Query("kvision"))
 ```
 
 #### Type-safe parameters, type-safe result
@@ -40,32 +43,34 @@ data class Query(val q: String?)
 data class SearchResult(val total_count: Int, val incomplete_results: Boolean)
 
 val restClient = RestClient()
-val searchResult: Promise<SearchResult> = restClient.call<SearchResult, Query>("https://api.github.com/search/repositories", Query("kvision"))
+val searchResult: Promise<SearchResult> = restClient.call("https://api.github.com/search/repositories", Query("kvision"))
 ```
 
 {% hint style="info" %}
 Note: The `Promise` object can be used directly or easily consumed as the Kotlin coroutine with `await()` extension function \(you need the kotlinx.coroutines library dependency\).
 {% endhint %}
 
-There are also `remoteRequest` and `request` methods, which work exactly like above, but return a wrapper `Response` object defined as:
+A wrapper `RestResponse` class is defined as:
 
 ```kotlin
-data class Response<T>(val data: T, val textStatus: String, val jqXHR: JQueryXHR)
+data class RestResponse<T>(val data: T, val textStatus: String, val response: Response)
 ```
 
- This object gives you access to the returned data as well as the jQuery XHR object, which allows you to get HTTP header values of the server response.
+When using `receive()` ,`request()` or `requestDynamic()` functions, the returned `RestResponse` object gives you access to the returned data as well as the native `Response` object, which gives you access to the server response \(e.g. to get HTTP header values and other information\): 
 
 ```kotlin
 val restClient = RestClient()
-val result: Promise<Response<dynamic>> = restClient.remoteRequest("https://api.github.com/search/repositories", obj { q = "kvision" })
+val result: Promise<RestResponse<dynamic>> = restClient.requestDynamic("https://api.github.com/search/repositories") {
+    data = obj { q = "kvision" }
+}
 result.then {
-    console.log(it.jqXHR.getResponseHeader("Content-Type"))
+    console.log(it.response.headers.get("Content-Type"))
 }
 ```
 
 ### Custom serializers
 
-`RestClient` allows you to specify a custom serializers module with a constructor parameter and allows you to use type-safe calls with all types of data.
+`RestClient` allows you to specify a custom serializers module with a builder parameter and allows you to use type-safe calls with all types of data.
 
 ```kotlin
 val module = SerializersModule {
@@ -74,6 +79,8 @@ val module = SerializersModule {
         subclass(C::class)
     }
 }
-val restClient = RestClient(module)
+val restClient = RestClient {
+    serializersModule = module
+}
 ```
 

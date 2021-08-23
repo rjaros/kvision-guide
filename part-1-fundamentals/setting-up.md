@@ -173,3 +173,7 @@ You can also debug KVision application directly in IntelliJ IDEA Ultimate by cre
 Note: Source maps are disabled by default in all KVision template projects, because the development cycle \(hot reload\) is a lot faster without them. To enable source maps you need to remove line `sourceMaps = false` from your `build.gradle.kts` file and remove line `config.devtool = 'eval-cheap-source-map'` from `webpack.config.d/webpack.js` file.
 {% endhint %}
 
+{% hint style="info" %}
+KVision examples are using IR backend by default, which doesn't support source maps yet. You need to use legacy backend. Set `kotlin.js.compiler=legacy` in your `gradle.properties`.
+{% endhint %}
+

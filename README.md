@@ -8,7 +8,7 @@ description: This is a guide for KVision - an object oriented web framework for 
 
 This documentation is a work in progress.
 
-Current version: 5.0.1
+Current version: 5.1.0
 
 ![](.gitbook/assets/logo4.svg.png) 
 

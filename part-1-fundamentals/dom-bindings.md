@@ -1,4 +1,4 @@
-# DOM bindings
+# DOM bindings / lifecycle hooks
 
 KVision is based on [Snabbdom](https://github.com/snabbdom/snabbdom) - a JavaScript virtual DOM implementation. Via this implementation, components can directly access the browser DOM. Every KVision component is bound to the DOM tree after it has been rendered. You can get access to the underlying  `HTMLElement` object with the `getElement()` method from the `Widget` class.
 

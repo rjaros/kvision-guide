@@ -23,7 +23,7 @@
   * [Events](part-1-fundamentals/events.md)
   * [Internationalization](part-1-fundamentals/internationalization.md)
   * [JS routing](part-1-fundamentals/js-routing.md)
-  * [DOM bindings](part-1-fundamentals/dom-bindings.md)
+  * [DOM bindings / lifecycle hooks](part-1-fundamentals/dom-bindings.md)
   * [jQuery bindings](part-1-fundamentals/jquery-bindings.md)
 * [Part 2: Advanced features](part-2-advanced-features/README.md)
   * [Forms](part-2-advanced-features/forms.md)

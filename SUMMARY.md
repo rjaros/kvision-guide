@@ -24,6 +24,7 @@
   * [Internationalization](part-1-fundamentals/internationalization.md)
   * [JS routing](part-1-fundamentals/js-routing.md)
   * [DOM bindings / lifecycle hooks](part-1-fundamentals/dom-bindings.md)
+  * [W3C, Snabdom, and KVision elements](part-1-fundamentals/w3c-snabdom-and-kvision-elements.md)
   * [jQuery bindings](part-1-fundamentals/jquery-bindings.md)
 * [Part 2: Advanced features](part-2-advanced-features/README.md)
   * [Forms](part-2-advanced-features/forms.md)

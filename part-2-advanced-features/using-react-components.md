@@ -17,10 +17,12 @@ kotlin {
 // ...
     sourceSets["main"].dependencies {
     // ...
-        implementation(npm("react-awesome-button"))
+        implementation(npm("react-awesome-button", "*"))
+        implementation(npm("prop-types", "*")) // required by react-awesome-button
 
-        implementation(npm("react-ace"))
-        implementation(npm("ace-builds"))
+        implementation(npm("react-ace", "*"))
+        implementation(npm("ace-builds", "*"))
+        implementation(npm("file-loader", "*")) // required by ace-builds
         
         implementation("io.kvision:kvision:$kvisionVersion")
         implementation("io.kvision:kvision-react:$kvisionVersion")
@@ -35,16 +37,16 @@ kotlin {
 Let's start with a simple example and [react-awesome-button](https://www.npmjs.com/package/react-awesome-button) component. First you need to declare the type of data being passed into the component.
 
 ```kotlin
-import react.RProps
-import react.RClass
+import react.ComponentClass
+import react.PropsWithChildren
 
-external interface ReactButtonProps : RProps {
+external interface ReactButtonProps : PropsWithChildren {
     var type: String
     var size: String
     var action: (dynamic, () -> Unit) -> Unit
 }
 
-val ReactButton: RClass<ReactButtonProps> = require("react-awesome-button").AwesomeButtonProgress
+val ReactButton: ComponentClass<ReactButtonProps> = require("react-awesome-button").AwesomeButtonProgress
 ```
 
  Having this declaration, you can use the component with the  `react { ... }` DSL builder function.
@@ -59,7 +61,7 @@ react {
                 next()
             }, 3000)
         }
-        +gettext("React progress button")
+        +"React progress button"
     }
 }
 ```
@@ -71,15 +73,24 @@ React components can be stateful and can maintain internal state data. With KVis
 Let's use an advanced ACE code editor with [react-ace](https://www.npmjs.com/package/react-ace) component. The basic declaration is similar to the previous example \(of course the component has a lot more properties then covered by this example\).
 
 ```kotlin
-external interface ReactAceProps : RProps {
+import react.ComponentClass
+import react.PropsWithChildren
+
+external interface ReactAceProps : PropsWithChildren {
     var value: String
     var mode: String
     var theme: String
     var onChange: (String) -> Unit
 }
 
-@Suppress("UnsafeCastFromDynamic")
-val AceEditor: RClass<ReactAceProps> = require("react-ace").default
+val AceEditor: ComponentClass<ReactAceProps> = require("react-ace").default
+
+class App : Application() {
+    init {
+        require("ace-builds/webpack-resolver") // required since webpack 5
+    }
+    // ...
+}
 ```
 
 {% hint style="info" %}
@@ -89,6 +100,7 @@ Note: Unfortunately when using `require()` function you need to "guess" how to a
 Now you can use the component with advanced form of the DSL builder function`react(initialState) { getState, changeState -> ... }`.  
 
 ```kotlin
+
 val ace = react("some initial code") { getState, changeState ->
     AceEditor {
         attrs.value = getState()
@@ -109,7 +121,7 @@ You initialize the KVision `React` component with some initial state, which can 
 
 ## Accessing internal API of React components
 
-Sometimes it may be necessary to access the internal api of a React component, beyond the attributes exposed in the interface. To do this, you can use the `ref()` function provided by RBuilder, which is part of the kotlin-react library:
+Sometimes it may be necessary to access the internal api of a React component, beyond the attributes exposed in the interface. To do this, you can use the `ref` variable provided by `RElementBuilder`, which is part of the `kotlin-react` library:
 
 ```kotlin
     var internalEditor: dynamic = null
@@ -118,13 +130,14 @@ Sometimes it may be necessary to access the internal api of a React component, b
 
     init {
         ace = react(state) { getState, changeState ->
+            val onContainerCallback = useRefCallback<dynamic> { comp ->
+                internalEditor = comp?.editor
+            }
             AceEditor {
                 attrs.apply {
                    ... // see prior examples
                 }
-                ref { comp ->
-                    internalEditor = comp?.editor
-                }
+                ref = onContainerCallback
             }
         }
     }

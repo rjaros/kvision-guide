@@ -1,6 +1,6 @@
 # Migration
 
-Check this page when upgrading to a new version of KVision. Any backwards-incompatibilities will be described here. This is an evolving framework and things may change and refactorings and improvements take place, but we aim to keep the core as stable as possible.
+Check this page when upgrading to a new version of KVision. Any backwards-incompatibilities will be described here. This is an evolving framework and things may change as refactorings and improvements take place, but we aim to keep the core as stable as possible.
 
 ----
 

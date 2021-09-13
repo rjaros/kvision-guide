@@ -1,6 +1,6 @@
 # Table of contents
 
-* [KVision guide](README.md)
+* [KVision Guide](README.md)
 * [Introduction](introduction.md)
 * [Migration](migration/README.md)
   * [Migration from 4.x to 5.x](migration/migration-from-4.x-to-5.x.md)

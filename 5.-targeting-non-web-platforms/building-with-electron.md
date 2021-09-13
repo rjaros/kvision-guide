@@ -1,4 +1,4 @@
-# Building with Electron
+# Electron
 
 KVision allows you to develop cross-platform \(Windows, Linux and Mac\), desktop applications with the full power of [Electron](https://electronjs.org) framework.  You can use all KVision components in your desktop applications, and the kvision-electron module gives you a complete set of Kotlin language bindings for Electron API.
 

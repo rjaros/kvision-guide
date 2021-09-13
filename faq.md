@@ -4,7 +4,7 @@ description: Frequently asked questions
 
 # FAQ
 
-## Why new framework?
+## Why a new framework?
 
 There are of course many different front-end frameworks on the market. A lot of them share many similarities, others offer some special and unique features. Probably most of them are plain JavaScript frameworks, but there are other languages and technologies in play as well. Just look at [TodoMVC](http://todomvc.com/) website to find them and learn about them.
 

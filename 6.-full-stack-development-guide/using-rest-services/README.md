@@ -1,4 +1,4 @@
-# Using REST services
+# Using REST Services
 
 The `io.kvision.rest.RestClient` component, located in the `kvision-rest` module, can be used to connect to any RESTfull services \(it will work with any JSON over HTTP services\). You can use remote services with both dynamic and type-safe calls \(using `@Serializable` classes\). The `RestClient` class has only a single `receive()` method, which uses the builder pattern for configuration and returns a `kotlin.js.Promise<RestResponse<T>>` object. A number of extension functions is defined for `RestClient`, which allow you to make typical calls easier.
 

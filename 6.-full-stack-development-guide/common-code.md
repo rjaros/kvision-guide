@@ -1,4 +1,4 @@
-# Common code
+# Common Code
 
 ## Build configuration
 

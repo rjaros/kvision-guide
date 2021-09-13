@@ -1,4 +1,4 @@
-# Setting up
+# Setting Up
 
 KVision applications are built with [Gradle](http://gradle.org/). The official Kotlin/JS gradle plugin is used to manage NPM dependencies, pack bundles \(via [webpack](https://webpack.github.io/)\) and test the application using [Karma](http://karma-runner.github.io/1.0/index.html). By using Gradle continuous build, you also can get hot module replacement feature \(apply code changes in the browser on the fly\).
 

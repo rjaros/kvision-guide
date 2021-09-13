@@ -1,4 +1,4 @@
-# Tabulator remote
+# Tabulator Remote
 
 The `io.kvision.tabulator.TabulatorRemote` component, contained in the `kvision-tabulator-remote` module, is a subclass of the `Tabulator` component, dedicated for use with the server side interfaces. Unlike standard Tabulator component \(which can also load data from an AJAX source but needs a defined endpoint\) `TabulatorRemote` is bound directly to the method of the remote service. The method signature looks like this:
 

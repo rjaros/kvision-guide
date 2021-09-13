@@ -1,4 +1,4 @@
-# External usage
+# External Usage
 
 The `kvision-remote` module does not depend on the rest of KVision framework. It means that you can use KVision server side interfaces in applications, those client GUI is not based on KVision at all. While it's hard to think of a good reason not to use KVision ;-\), there may be some use cases for that.
 

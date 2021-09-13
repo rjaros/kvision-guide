@@ -1,4 +1,4 @@
-# Exception handling
+# Exception Handling
 
 When the backend code throws an unhandled exception, it will be logged on the server side and then propagated by KVision to the frontend side. There are of course many different classes of exceptions on the JVM and it's not possible to transform those types directly to the JS side. So only the exception message is propagated and the generic `Exception` object is created on the frontend side. 
 

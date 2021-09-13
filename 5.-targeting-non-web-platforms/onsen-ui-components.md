@@ -1,4 +1,4 @@
-# Onsen UI components
+# Onsen UI Components
 
 [Onsen UI](https://onsen.io) is a set of mobile friendly web components, created with native iOS and Android design standards. With Onsen UI it's possible to develop mobile sites or hybrid web applications \(e.g. with Cordova\), which share exactly the same code, but also automatically choose the look and feel based on the platform on which they are running.
 

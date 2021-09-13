@@ -35,7 +35,8 @@ This is the current list of available modules.
       <td style="text-align:left">Core module required for all applications.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-bootstrap</td>
+      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/bootstrap/">kvision-bootstrap</a>
+      </td>
       <td style="text-align:left">
         <p>Bootstrap based components.</p>
         <p>Can be omitted for applications, which use only the core functionality
@@ -82,16 +83,19 @@ This is the current list of available modules.
       <td style="text-align:left"><a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> support.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-fontawesome</td>
+      <td style="text-align:left"><a href="../2.-frontend-development-guide/icons-and-images.md">kvision-fontawesome</a>
+      </td>
       <td style="text-align:left"><a href="https://fontawesome.com">Font Awesome</a> support.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-handlebars</td>
+      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/handlebars.js-templates.md">kvision-handlebars</a>
+      </td>
       <td style="text-align:left"><a href="https://handlebarsjs.com/">Handlebars.js</a> templates support
         for text components.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-i18n</td>
+      <td style="text-align:left"><a href="../6.-full-stack-development-guide/internationalization.md">kvision-i18n</a>
+      </td>
       <td style="text-align:left">Internationalization support.</td>
     </tr>
     <tr>
@@ -103,11 +107,13 @@ This is the current list of available modules.
       <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/charts.md">Chart</a> component.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-datacontainer</td>
+      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/data-container.md">kvision-datacontainer</a>
+      </td>
       <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/data-container.md">DataContainer</a> component.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-tabulator</td>
+      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/tabulator-tables.md">kvision-tabulator</a>
+      </td>
       <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/tabulator-tables.md">Tabulator</a> component.</td>
     </tr>
     <tr>
@@ -119,7 +125,8 @@ This is the current list of available modules.
       <td style="text-align:left"><a href="https://codebyzach.github.io/pace/">Pace</a> automatic page loader.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-redux</td>
+      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/using-redux.md">kvision-redux</a>
+      </td>
       <td style="text-align:left">
         <p><a href="https://redux.js.org/">Redux</a> state container.</p>
         <p>See <a href="../3.-optional-ui-functionality-via-modules/using-redux.md">Using Redux</a> chapter
@@ -154,15 +161,18 @@ This is the current list of available modules.
       <td style="text-align:left">Routing module based on <a href="https://github.com/krasimir/navigo/blob/master/README_v7.md">Navigo 7</a> library.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-routing-navigo-ng</td>
+      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/js-routing.md">kvision-routing-navigo-ng</a>
+      </td>
       <td style="text-align:left">Routing module based on <a href="https://github.com/krasimir/navigo">Navigo 8+</a> library.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-onsenui</td>
+      <td style="text-align:left"><a href="../5.-targeting-non-web-platforms/onsen-ui-components.md">kvision-onsenui</a>
+      </td>
       <td style="text-align:left"><a href="https://onsen.io/">Onsen UI</a> mobile web components.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-jquery</td>
+      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/jquery-bindings.md">kvision-jquery</a>
+      </td>
       <td style="text-align:left"><a href="https://jquery.com/">jQuery</a> bindings, events and animations.</td>
     </tr>
     <tr>
@@ -170,7 +180,8 @@ This is the current list of available modules.
       <td style="text-align:left">Configurable REST/HTTP client.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-state</td>
+      <td style="text-align:left"><a href="../2.-frontend-development-guide/working-with-state.md">kvision-state</a>
+      </td>
       <td style="text-align:left">State bindings and observable data structures.</td>
     </tr>
     <tr>
@@ -178,7 +189,8 @@ This is the current list of available modules.
       <td style="text-align:left">Extensions for Kotlin coroutines <code>Flow</code>, <code>StateFlow</code> and <code>SharedFlow</code>.</td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-cordova</td>
+      <td style="text-align:left"><a href="../5.-targeting-non-web-platforms/building-with-apache-cordova.md">kvision-cordova</a>
+      </td>
       <td style="text-align:left">
         <p>Kotlin language bindings for Apache Cordova core API.</p>
         <p>See <a href="../5.-targeting-non-web-platforms/building-with-apache-cordova.md">Building with Apache Cordova</a> chapter
@@ -186,7 +198,8 @@ This is the current list of available modules.
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-electron</td>
+      <td style="text-align:left"><a href="../5.-targeting-non-web-platforms/building-with-electron.md">kvision-electron</a>
+      </td>
       <td style="text-align:left">
         <p>Kotlin language bindings for Electron API.</p>
         <p><em>See</em>  <a href="../5.-targeting-non-web-platforms/building-with-electron.md"><em>Building with Electron</em></a>  <em>chapter for more information.</em>
@@ -194,41 +207,34 @@ This is the current list of available modules.
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-bootstrap-select-remote</td>
-      <td style="text-align:left">
-        <p>Bootstrap based select form component tailored for full-stack applications.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
-        </p>
+      <td style="text-align:left"><a href="../7.-full-stack-components/remote-select.md">kvision-bootstrap-select-remote</a>
+      </td>
+      <td style="text-align:left">Bootstrap based select form component tailored for full-stack applications.<em>&#x200B;</em>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-bootstrap-typeahead-remote</td>
-      <td style="text-align:left">
-        <p>Bootstrap based typeahead (autocomplete) form component tailored for full-stack
-          applications.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
-        </p>
+      <td style="text-align:left"><a href="../7.-full-stack-components/typeahead-remote.md">kvision-bootstrap-typeahead-remote</a>
+      </td>
+      <td style="text-align:left">Bootstrap based typeahead (autocomplete) form component tailored for full-stack
+        applications.<em>&#x200B;</em>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">kvision-tabulator-remote</td>
-      <td style="text-align:left">
-        <p>Tabulator component tailored for full-stack applications.</p>
-        <p>See: <a href>Part 3</a>
-        </p>
+      <td style="text-align:left"><a href="../7.-full-stack-components/remote-tabulator.md">kvision-tabulator-remote</a>
       </td>
+      <td style="text-align:left">Tabulator component tailored for full-stack applications.</td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-common-annotations</td>
       <td style="text-align:left">Compiler plugin annotations for full-stack applications.
-        <br /><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
+        <br /><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em>&#x200B;</em>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">kvision-common-types</td>
       <td style="text-align:left">
         <p>KVision common module for full-stack applications, with types definitions.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a><em>&#x200B;</em>
+        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em>&#x200B;</em>
         </p>
       </td>
     </tr>
@@ -237,8 +243,7 @@ This is the current list of available modules.
       <td style="text-align:left">
         <p>KVision common module for full-stack applications, with remote services
           definitions.</p>
-        <p><em>See:</em>  <a href="https://kvision.gitbook.io/kvision-guide/part-3-server-side-interface"><em>Part 3</em></a>
-        </p>
+        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>
@@ -246,8 +251,7 @@ This is the current list of available modules.
       <td style="text-align:left">
         <p><a href="https://ktor.io/">Ktor</a> server-side connectivity module for
           full-stack applications.</p>
-        <p><em>See:</em>  <a href><em>Part 3</em></a>
-        </p>
+        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>
@@ -255,8 +259,7 @@ This is the current list of available modules.
       <td style="text-align:left">
         <p><a href="https://jooby.io">Jooby</a> server-side connectivity module for
           full-stack applications.</p>
-        <p><em>See:</em>  <a href><em>Part 3</em></a>
-        </p>
+        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>
@@ -264,8 +267,7 @@ This is the current list of available modules.
       <td style="text-align:left">
         <p><a href="https://spring.io/projects/spring-boot">Spring Boot</a> server-side
           connectivity module for full-stack applications.</p>
-        <p><em>See:</em>  <a href><em>Part 3</em></a>
-        </p>
+        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>
@@ -273,8 +275,7 @@ This is the current list of available modules.
       <td style="text-align:left">
         <p><a href="https://javalin.io">Javalin</a> server-side connectivity module
           for full-stack applications.</p>
-        <p><em>See:</em>  <a href><em>Part 3</em></a>
-        </p>
+        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>
@@ -282,8 +283,7 @@ This is the current list of available modules.
       <td style="text-align:left">
         <p><a href="https://vertx.io">Vert.x</a> server-side connectivity module for
           full-stack applications.</p>
-        <p><em>See:</em>  <a href><em>Part 3</em></a>
-        </p>
+        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
     <tr>
@@ -291,8 +291,7 @@ This is the current list of available modules.
       <td style="text-align:left">
         <p><a href="https://micronaut.io">Micronaut</a> server-side connectivity module
           for full-stack applications.</p>
-        <p><em>See:</em>  <a href><em>Part </em></a>
-        </p>
+        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
       </td>
     </tr>
   </tbody>

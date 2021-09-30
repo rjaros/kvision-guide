@@ -3,6 +3,7 @@
 The `io.kvision.form.select.SelectRemoteInput` component, contained in `kvision-bootstrap-select-remote` module, is a special component you can use to render a select box with options loaded from the server. Unlike standard `SelectInput` component \(which can also load options from an AJAX source but needs a defined endpoint\) `SelectRemoteInput` is bound directly to the method of the remote service. The method signature looks like this:
 
 ```kotlin
+@KVService
 interface IDictionaryService {
     suspend fun dictionary(search: String?, initial: String?, state: String?): List<RemoteOption>
 }

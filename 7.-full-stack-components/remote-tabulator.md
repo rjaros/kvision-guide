@@ -6,6 +6,7 @@ The `io.kvision.tabulator.TabulatorRemote` component, contained in the `kvision-
 @Serializable
 data class Row(val column1: String, val column2: String, val column3: String)
 
+@KVService
 interface IRowDataService {
     suspend fun rowData(page: Int?, size: Int?, filter: List<RemoteFilter>?, sorter: List<RemoteSorter>?, state: String?): RemoteData<Row>
 }

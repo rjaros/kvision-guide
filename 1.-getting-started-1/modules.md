@@ -22,278 +22,51 @@ fun main() {
 
 This is the current list of available modules.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Module</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">kvision</td>
-      <td style="text-align:left">Core module required for all applications.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/bootstrap/">kvision-bootstrap</a>
-      </td>
-      <td style="text-align:left">
-        <p>Bootstrap based components.</p>
-        <p>Can be omitted for applications, which use only the core functionality
-          of the framework.</p>
-        <p><em>See</em>  <a href="../2.-frontend-development-guide/themes.md"><em>Theming</em></a>  <em>chapter for more information.</em>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-bootstrap-css</td>
-      <td style="text-align:left">
-        <p>Standard Bootstrap CSS styling.</p>
-        <p>Can be omitted for applications, which use external Bootstrap CSS.</p>
-        <p><em>See</em>  <a href="../2.-frontend-development-guide/themes.md"><em>Theming</em></a>  <em>chapter for more information.</em>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-bootstrap-select</td>
-      <td style="text-align:left">Bootstrap based advanced select form component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-bootstrap-datetime</td>
-      <td style="text-align:left">Bootstrap based date and time picker form components.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-bootstrap-spinner</td>
-      <td style="text-align:left">Bootstrap based spinner form component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-bootstrap-upload</td>
-      <td style="text-align:left">Bootstrap based upload form component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-bootstrap-typeahead</td>
-      <td style="text-align:left">Bootstrap based typeahead (autocomplete) form component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-bootstrap-dialog</td>
-      <td style="text-align:left">Bootstrap based <a href="../3.-optional-ui-functionality-via-modules/bootstrap/windows-and-modals.md#dialog-with-a-result">Dialog</a> component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-bootstrap-icons</td>
-      <td style="text-align:left"><a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> support.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../2.-frontend-development-guide/icons-and-images.md">kvision-fontawesome</a>
-      </td>
-      <td style="text-align:left"><a href="https://fontawesome.com">Font Awesome</a> support.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/handlebars.js-templates.md">kvision-handlebars</a>
-      </td>
-      <td style="text-align:left"><a href="https://handlebarsjs.com/">Handlebars.js</a> templates support
-        for text components.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../6.-full-stack-development-guide/internationalization.md">kvision-i18n</a>
-      </td>
-      <td style="text-align:left">Internationalization support.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-richtext</td>
-      <td style="text-align:left">Rich text form component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-chart</td>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/charts.md">Chart</a> component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/data-container.md">kvision-datacontainer</a>
-      </td>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/data-container.md">DataContainer</a> component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/tabulator-tables.md">kvision-tabulator</a>
-      </td>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/tabulator-tables.md">Tabulator</a> component.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-moment</td>
-      <td style="text-align:left">Kotlin language bindings for <a href="https://momentjs.com/">Moment.js</a> library.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-pace</td>
-      <td style="text-align:left"><a href="https://codebyzach.github.io/pace/">Pace</a> automatic page loader.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/using-redux.md">kvision-redux</a>
-      </td>
-      <td style="text-align:left">
-        <p><a href="https://redux.js.org/">Redux</a> state container.</p>
-        <p>See <a href="../3.-optional-ui-functionality-via-modules/using-redux.md">Using Redux</a> chapter
-          for more information.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-redux-kotlin</td>
-      <td style="text-align:left">
-        <p><a href="https://reduxkotlin.org/">ReduxKotlin</a> state container.</p>
-        <p>See <a href="../3.-optional-ui-functionality-via-modules/using-redux.md">Using Redux</a> chapter
-          for more information.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-maps</td>
-      <td style="text-align:left">
-        <p>A basic module with the <code>Maps</code> component, based on <a href="https://leafletjs.com/">Leaflet</a> library.</p>
-        <p>PR welcomed!</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-toast</td>
-      <td style="text-align:left">Toast messages.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-print</td>
-      <td style="text-align:left">Printing support with <a href="https://printjs.crabbly.com/">Print.js</a> library.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-routing-navigo</td>
-      <td style="text-align:left">Routing module based on <a href="https://github.com/krasimir/navigo/blob/master/README_v7.md">Navigo 7</a> library.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/js-routing.md">kvision-routing-navigo-ng</a>
-      </td>
-      <td style="text-align:left">Routing module based on <a href="https://github.com/krasimir/navigo">Navigo 8+</a> library.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../5.-targeting-non-web-platforms/onsen-ui-components.md">kvision-onsenui</a>
-      </td>
-      <td style="text-align:left"><a href="https://onsen.io/">Onsen UI</a> mobile web components.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../3.-optional-ui-functionality-via-modules/jquery-bindings.md">kvision-jquery</a>
-      </td>
-      <td style="text-align:left"><a href="https://jquery.com/">jQuery</a> bindings, events and animations.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-rest</td>
-      <td style="text-align:left">Configurable REST/HTTP client.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../2.-frontend-development-guide/working-with-state.md">kvision-state</a>
-      </td>
-      <td style="text-align:left">State bindings and observable data structures.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-state-flow</td>
-      <td style="text-align:left">Extensions for Kotlin coroutines <code>Flow</code>, <code>StateFlow</code> and <code>SharedFlow</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../5.-targeting-non-web-platforms/building-with-apache-cordova.md">kvision-cordova</a>
-      </td>
-      <td style="text-align:left">
-        <p>Kotlin language bindings for Apache Cordova core API.</p>
-        <p>See <a href="../5.-targeting-non-web-platforms/building-with-apache-cordova.md">Building with Apache Cordova</a> chapter
-          for more information.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../5.-targeting-non-web-platforms/building-with-electron.md">kvision-electron</a>
-      </td>
-      <td style="text-align:left">
-        <p>Kotlin language bindings for Electron API.</p>
-        <p><em>See</em>  <a href="../5.-targeting-non-web-platforms/building-with-electron.md"><em>Building with Electron</em></a>  <em>chapter for more information.</em>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../7.-full-stack-components/remote-select.md">kvision-bootstrap-select-remote</a>
-      </td>
-      <td style="text-align:left">Bootstrap based select form component tailored for full-stack applications.<em>&#x200B;</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../7.-full-stack-components/typeahead-remote.md">kvision-bootstrap-typeahead-remote</a>
-      </td>
-      <td style="text-align:left">Bootstrap based typeahead (autocomplete) form component tailored for full-stack
-        applications.<em>&#x200B;</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="../7.-full-stack-components/remote-tabulator.md">kvision-tabulator-remote</a>
-      </td>
-      <td style="text-align:left">Tabulator component tailored for full-stack applications.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-common-annotations</td>
-      <td style="text-align:left">Compiler plugin annotations for full-stack applications.
-        <br /><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em>&#x200B;</em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-common-types</td>
-      <td style="text-align:left">
-        <p>KVision common module for full-stack applications, with types definitions.</p>
-        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em>&#x200B;</em>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-common-remote</td>
-      <td style="text-align:left">
-        <p>KVision common module for full-stack applications, with remote services
-          definitions.</p>
-        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-server-ktor</td>
-      <td style="text-align:left">
-        <p><a href="https://ktor.io/">Ktor</a> server-side connectivity module for
-          full-stack applications.</p>
-        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-server-jooby</td>
-      <td style="text-align:left">
-        <p><a href="https://jooby.io">Jooby</a> server-side connectivity module for
-          full-stack applications.</p>
-        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-server-spring-boot</td>
-      <td style="text-align:left">
-        <p><a href="https://spring.io/projects/spring-boot">Spring Boot</a> server-side
-          connectivity module for full-stack applications.</p>
-        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-server-javalin</td>
-      <td style="text-align:left">
-        <p><a href="https://javalin.io">Javalin</a> server-side connectivity module
-          for full-stack applications.</p>
-        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-server-vertx</td>
-      <td style="text-align:left">
-        <p><a href="https://vertx.io">Vert.x</a> server-side connectivity module for
-          full-stack applications.</p>
-        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">kvision-server-micronaut</td>
-      <td style="text-align:left">
-        <p><a href="https://micronaut.io">Micronaut</a> server-side connectivity module
-          for full-stack applications.</p>
-        <p><em>See:</em>  <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a>&lt;em&gt;&lt;/em&gt;</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+| Module                                                                                       | Description                                                                                                                                                                                                                                                           |
+| -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| kvision                                                                                      | Core module required for all applications.                                                                                                                                                                                                                            |
+| [kvision-bootstrap](../3.-optional-ui-functionality-via-modules/bootstrap/)                  | <p>Bootstrap based components.</p><p>Can be omitted for applications, which use only the core functionality of the framework.</p><p><em>See</em> <a href="../2.-frontend-development-guide/themes.md"><em>Theming</em></a> <em>chapter for more information.</em></p> |
+| kvision-bootstrap-css                                                                        | <p>Standard Bootstrap CSS styling.</p><p>Can be omitted for applications, which use external Bootstrap CSS.</p><p><em>See</em> <a href="../2.-frontend-development-guide/themes.md"><em>Theming</em></a> <em>chapter for more information.</em></p>                   |
+| kvision-bootstrap-select                                                                     | Bootstrap based advanced select form component.                                                                                                                                                                                                                       |
+| kvision-bootstrap-datetime                                                                   | Bootstrap based date and time picker form components.                                                                                                                                                                                                                 |
+| kvision-bootstrap-spinner                                                                    | Bootstrap based spinner form component.                                                                                                                                                                                                                               |
+| kvision-bootstrap-upload                                                                     | Bootstrap based upload form component.                                                                                                                                                                                                                                |
+| kvision-bootstrap-typeahead                                                                  | Bootstrap based typeahead (autocomplete) form component.                                                                                                                                                                                                              |
+| kvision-bootstrap-dialog                                                                     | Bootstrap based [Dialog](../3.-optional-ui-functionality-via-modules/bootstrap/windows-and-modals.md#dialog-with-a-result) component.                                                                                                                                 |
+| kvision-bootstrap-icons                                                                      | [Bootstrap Icons](https://icons.getbootstrap.com) support.                                                                                                                                                                                                            |
+| [kvision-fontawesome](../2.-frontend-development-guide/icons-and-images.md)                  | [Font Awesome](https://fontawesome.com) support.                                                                                                                                                                                                                      |
+| [kvision-handlebars](../3.-optional-ui-functionality-via-modules/handlebars.js-templates.md) | [Handlebars.js](https://handlebarsjs.com) templates support for text components.                                                                                                                                                                                      |
+| [kvision-i18n](../6.-full-stack-development-guide/internationalization.md)                   | Internationalization support.                                                                                                                                                                                                                                         |
+| kvision-richtext                                                                             | Rich text form component.                                                                                                                                                                                                                                             |
+| kvision-chart                                                                                | [Chart](../3.-optional-ui-functionality-via-modules/charts.md) component.                                                                                                                                                                                             |
+| [kvision-datacontainer](../3.-optional-ui-functionality-via-modules/data-container.md)       | [DataContainer](../3.-optional-ui-functionality-via-modules/data-container.md) component.                                                                                                                                                                             |
+| [kvision-tabulator](../3.-optional-ui-functionality-via-modules/tabulator-tables.md)         | [Tabulator](../3.-optional-ui-functionality-via-modules/tabulator-tables.md) component.                                                                                                                                                                               |
+| kvision-moment                                                                               | Kotlin language bindings for [Moment.js](https://momentjs.com) library.                                                                                                                                                                                               |
+| kvision-pace                                                                                 | [Pace](https://codebyzach.github.io/pace/) automatic page loader.                                                                                                                                                                                                     |
+| [kvision-redux](../3.-optional-ui-functionality-via-modules/using-redux.md)                  | <p><a href="https://redux.js.org">Redux</a> state container.</p><p>See <a href="../3.-optional-ui-functionality-via-modules/using-redux.md">Using Redux</a> chapter for more information.</p>                                                                         |
+| kvision-redux-kotlin                                                                         | <p><a href="https://reduxkotlin.org">ReduxKotlin</a> state container.</p><p>See <a href="../3.-optional-ui-functionality-via-modules/using-redux.md">Using Redux</a> chapter for more information.</p>                                                                |
+| kvision-maps                                                                                 | <p>A basic module with the <code>Maps</code> component, based on <a href="https://leafletjs.com">Leaflet</a> library. </p><p>PR welcomed!</p>                                                                                                                         |
+| kvision-toast                                                                                | Toast messages.                                                                                                                                                                                                                                                       |
+| kvision-print                                                                                | Printing support with [Print.js](https://printjs.crabbly.com) library.                                                                                                                                                                                                |
+| kvision-routing-navigo                                                                       | Routing module based on [Navigo 7](https://github.com/krasimir/navigo/blob/master/README_v7.md) library.                                                                                                                                                              |
+| [kvision-routing-navigo-ng](../3.-optional-ui-functionality-via-modules/js-routing.md)       | Routing module based on [Navigo 8+](https://github.com/krasimir/navigo) library.                                                                                                                                                                                      |
+| [kvision-onsenui](../5.-targeting-non-web-platforms/onsen-ui-components.md)                  | [Onsen UI](https://onsen.io) mobile web components.                                                                                                                                                                                                                   |
+| [kvision-jquery](../3.-optional-ui-functionality-via-modules/jquery-bindings.md)             | [jQuery](https://jquery.com) bindings, events and animations.                                                                                                                                                                                                         |
+| kvision-rest                                                                                 | Configurable REST/HTTP client.                                                                                                                                                                                                                                        |
+| [kvision-state](../2.-frontend-development-guide/working-with-state.md)                      | State bindings and observable data structures.                                                                                                                                                                                                                        |
+| kvision-state-flow                                                                           | Extensions for Kotlin coroutines `Flow`, `StateFlow` and `SharedFlow`.                                                                                                                                                                                                |
+| [kvision-cordova](../5.-targeting-non-web-platforms/building-with-apache-cordova.md)         | <p>Kotlin language bindings for Apache Cordova core API.</p><p>See <a href="../5.-targeting-non-web-platforms/building-with-apache-cordova.md">Building with Apache Cordova</a> chapter for more information.</p>                                                     |
+| [kvision-electron](../5.-targeting-non-web-platforms/building-with-electron.md)              | <p>Kotlin language bindings for Electron API.</p><p><em>See</em> <a href="../5.-targeting-non-web-platforms/building-with-electron.md"><em>Building with Electron</em></a> <em>chapter for more information.</em></p>                                                 |
+| [kvision-bootstrap-select-remote](../7.-full-stack-components/remote-select.md)              | Bootstrap based select form component tailored for full-stack applications._​_                                                                                                                                                                                        |
+| [kvision-simple-select-remote](../7.-full-stack-components/simple-select-remote.md)          | Simple select form component tailored for full-stack applications.                                                                                                                                                                                                    |
+| [kvision-bootstrap-typeahead-remote](../7.-full-stack-components/typeahead-remote.md)        | Bootstrap based typeahead (autocomplete) form component tailored for full-stack applications._​_                                                                                                                                                                      |
+| [kvision-tabulator-remote](../7.-full-stack-components/remote-tabulator.md)                  | Tabulator component tailored for full-stack applications.                                                                                                                                                                                                             |
+| kvision-common-annotations                                                                   | <p>Compiler plugin annotations for full-stack applications.<br><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em>​</em></p>                                                                                             |
+| kvision-common-types                                                                         | <p>KVision common module for full-stack applications, with types definitions.</p><p><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em>​</em></p>                                                                        |
+| kvision-common-remote                                                                        | <p>KVision common module for full-stack applications, with remote services definitions.</p><p><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em></em></p>                                                               |
+| kvision-server-ktor                                                                          | <p><a href="https://ktor.io">Ktor</a> server-side connectivity module for full-stack applications.</p><p><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em></em></p>                                                    |
+| kvision-server-jooby                                                                         | <p><a href="https://jooby.io">Jooby</a> server-side connectivity module for full-stack applications.</p><p><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em></em></p>                                                  |
+| kvision-server-spring-boot                                                                   | <p><a href="https://spring.io/projects/spring-boot">Spring Boot</a> server-side connectivity module for full-stack applications.</p><p><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em></em></p>                      |
+| kvision-server-javalin                                                                       | <p><a href="https://javalin.io">Javalin</a> server-side connectivity module for full-stack applications.</p><p><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em></em></p>                                              |
+| kvision-server-vertx                                                                         | <p><a href="https://vertx.io">Vert.x</a> server-side connectivity module for full-stack applications.</p><p><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em></em></p>                                                 |
+| kvision-server-micronaut                                                                     | <p><a href="https://micronaut.io">Micronaut</a> server-side connectivity module for full-stack applications.</p><p><em>See:</em> <a href="../6.-full-stack-development-guide/">Full Stack Development Guide</a><em></em></p>                                          |

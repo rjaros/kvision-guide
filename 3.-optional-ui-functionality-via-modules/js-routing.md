@@ -1,6 +1,6 @@
 # JS Routing with Navigo
 
-KVision supports JavaScript routing with optional modules since version 4.1.0. Two modules are available `kvision-routing-navigo` , based on [Navigo 7](https://github.com/krasimir/navigo/blob/master/README_v7.md) library \(for compatibility with earlier KVision versions\) and `kvision-routing-navigo-ng` , based on current [Navigo 8+](https://github.com/krasimir/navigo).
+KVision supports JavaScript routing with optional modules since version 4.1.0. Two modules are available `kvision-routing-navigo` , based on [Navigo 7](https://github.com/krasimir/navigo/blob/master/README\_v7.md) library (for compatibility with earlier KVision versions) and `kvision-routing-navigo-ng` , based on current [Navigo 8+](https://github.com/krasimir/navigo).
 
 Add the following in your `build.gradle.kts` file
 
@@ -51,7 +51,7 @@ Resolve has to be called at least once. The method does the following
 * If yes, it calls [hooks](https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md#hooks) and your route handler
 * updates the router's internal state
 
-\(Note, if you set strategy = "ALL", it will keep searching\)
+(Note, if you set strategy = "ALL", it will keep searching)
 
 ## Navigating
 
@@ -109,3 +109,6 @@ tabPanel {
 }
 ```
 
+{% hint style="info" %}
+When using routing built into `TabPanel` or `StackPanel` components and also declaring manual routing with the same routes, remember to change the routing strategy from the default `Strategy.ONE` to `Strategy.ALL`.  &#x20;
+{% endhint %}

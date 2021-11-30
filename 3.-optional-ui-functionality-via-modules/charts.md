@@ -1,11 +1,11 @@
 # Charts
 
-KVision Chart component is based on awesome [Chart.js](https://www.chartjs.org/) library. It allows you to create many different types of charts with a lot of options and additional functionalities. This component is contained in kvision-chart module. KVision adds Kotlin type-safe bindings for most of Chart.js API but you should get familiar with [Chart.js documentation](https://www.chartjs.org/docs/latest/) to achieve best results.
+KVision Chart component is based on awesome [Chart.js](https://www.chartjs.org) library. It allows you to create many different types of charts with a lot of options and additional functionalities. This component is contained in kvision-chart module. KVision adds Kotlin type-safe bindings for most of Chart.js API but you should get familiar with [Chart.js documentation](https://www.chartjs.org/docs/latest/) to achieve best results.
 
 To create a chart use `io.kvision.chart.Chart` class. Its constructor takes one required parameter of `io.kvision.chart.Configuration` class. The configuration object specifies both the data and the options for the chart.
 
 ```kotlin
-Chart(
+chart(
     Configuration(
         ChartType.BAR,
         listOf(DataSets(data = listOf(6, 12, 19, 13, 7))), 
@@ -17,7 +17,7 @@ Chart(
 By default the chart component is responsive - its size is calculated based on the size of the outer container. You can set `responsive` option to `false` and use additional constructor parameters, `chartWidth` and `chartHeight` , to create the chart with a fixed size.
 
 ```kotlin
-Chart(
+chart(
     Configuration(
         ChartType.BAR,
         listOf(DataSets(data = listOf(6, 12, 19, 13, 7))),
@@ -27,10 +27,10 @@ Chart(
 )
 ```
 
-When specifying colors \(for lines, points, backgrounds, legend, title, hovers etc.\) use KVision's `Color` class.
+When specifying colors (for lines, points, backgrounds, legend, title, hovers etc.) use KVision's `Color` class.
 
 ```kotlin
-Chart(
+chart(
     Configuration(
         ChartType.POLARAREA,
         listOf(
@@ -45,15 +45,14 @@ Chart(
                 )
             )
         ), listOf("Africa", "Asia", "Europe", "Latin America", "North America")
-        )
     )
 )
 ```
 
-Internationalization of chart textual data is also fully supported \(including dynamic language change\).
+Internationalization of chart textual data is also fully supported (including dynamic language change).
 
 ```kotlin
-Chart(
+chart(
     Configuration(
         ChartType.BAR,
         listOf(
@@ -72,4 +71,3 @@ Chart(
 ```
 
 You can find more examples of charts usage in the [Showcase](https://rjaros.github.io/kvision-examples/showcase/#!/charts) app in the [kvision-examples](https://github.com/rjaros/kvision-examples) repository on GitHub.
-

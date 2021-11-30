@@ -3,7 +3,7 @@
 KVision Tabulator component is based on awesome [Tabulator](http://tabulator.info) library. It allows you to create interactive and reactive tables, with advanced sorting, filtering and editing capabilities. Tabulator component can be integrated with [ObservableList\<T>](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.utils/-observable-list/index.html) or [Redux](using-redux.md) store and will automatically react to all changes in your data model. This component is contained in kvision-tabulator module. KVision adds Kotlin type-safe bindings for most of Tabulator API but you should get familiar with [Tabulator documentation](http://tabulator.info/docs/5.0) to achieve best results.
 
 {% hint style="info" %}
-Note: At the moment these functionalities are not supported: grouping, mutators, column calculations, download. Please fill a [feature request ](https://github.com/rjaros/kvision/issues/new)if you require any of these.
+Note: At the moment these functionalities are not supported: grouping, column calculations, download. Please fill a [feature request ](https://github.com/rjaros/kvision/issues/new)if you require any of these.
 {% endhint %}
 
 ## Creating a table

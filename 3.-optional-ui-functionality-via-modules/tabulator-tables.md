@@ -1,6 +1,6 @@
 # Tabulator Tables
 
-KVision Tabulator component is based on awesome [Tabulator](http://tabulator.info) library. It allows you to create interactive and reactive tables, with advanced sorting, filtering and editing capabilities. Tabulator component can be integrated with [ObservableList&lt;T&gt;](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.utils/-observable-list/index.html) or [Redux](using-redux.md) store and will automatically react to all changes in your data model. This component is contained in kvision-tabulator module. KVision adds Kotlin type-safe bindings for most of Tabulator API but you should get familiar with [Tabulator documentation](http://tabulator.info/docs/4.2) to achieve best results.
+KVision Tabulator component is based on awesome [Tabulator](http://tabulator.info) library. It allows you to create interactive and reactive tables, with advanced sorting, filtering and editing capabilities. Tabulator component can be integrated with [ObservableList\<T>](https://rjaros.github.io/kvision/api/pl.treksoft.kvision.utils/-observable-list/index.html) or [Redux](using-redux.md) store and will automatically react to all changes in your data model. This component is contained in kvision-tabulator module. KVision adds Kotlin type-safe bindings for most of Tabulator API but you should get familiar with [Tabulator documentation](http://tabulator.info/docs/5.0) to achieve best results.
 
 {% hint style="info" %}
 Note: At the moment these functionalities are not supported: grouping, mutators, column calculations, download. Please fill a [feature request ](https://github.com/rjaros/kvision/issues/new)if you require any of these.
@@ -57,7 +57,7 @@ val model = JSON.parse<dynamic>(
                 "{\"title\":\"In Search of Lost Time\", \"author\":\"Marcel Proust\", \"year\":1920, \"rating\":5}]"
             )
 
-tabulator<Any>(TabulatorOptions(
+tabulator(TabulatorOptions(
         layout = Layout.FITCOLUMNS,
         columns = listOf(
             ColumnDefinition("Title", "title"),
@@ -75,17 +75,18 @@ To make the Tabulator component reactive use `reactiveData = true` parameter ins
 
 ### Remote AJAX URL
 
-Tabulator tables can get the data from the remote endpoint. You can find more information about available options in the [Tabulator documentation](http://tabulator.info/docs/4.2/data#ajax). All these options, including ajax sorting, pagination and filtering can be used with KVision component.
+Tabulator tables can get the data from the remote endpoint. You can find more information about available options in the [Tabulator documentation](http://tabulator.info/docs/5.0). All these options, including ajax sorting, pagination and filtering can be used with KVision component.
 
 ```kotlin
-tabulator<Any>(
+tabulator(
     TabulatorOptions(
         ajaxURL = "/remote/tableData",
         ajaxConfig = "POST",
         ajaxContentType = "json",
-        ajaxFiltering = true,
-        ajaxSorting = true,
-        pagination = PaginationMode.REMOTE,
+        filterMode = FilterMode.REMOTE,
+        sortMode = SortMode.REMOTE,
+        pagination = true,
+        paginationMode = PaginationMode.REMOTE,
         layout = Layout.FITCOLUMNS,
         columns = listOf(
             ColumnDefinition("Title", "title"),
@@ -127,10 +128,10 @@ val tabulator = tabulator(
 }
 ```
 
-Tabulator currently supports the following built-in formatter types: `Formatter.PLAINTEXT`, `Formatter.TEXTAREA`, `Formatter.HTML`, `Formatter.MONEY`, `Formatter.IMAGE`, `Formatter.LINK`, `Formatter.DATETIME`, `Formatter.DATATIMEDIFF`, `Formatter.TICKCROSS`, `Formatter.COLOR`, `Formatter.STAR`, `Formatter.TRAFFIC`, `Formatter.PROGRESS`, `Formatter.LOOKUP`, `Formatter.BUTTONTICK`, `Formatter.BUTTONCROSS`, `Formatter.ROWNUM`, `Formatter.HANDLE`. You can find more information about formatters configuration in the [Tabulator docs](http://tabulator.info/docs/4.2/format). 
+Tabulator currently supports the following built-in formatter types: `Formatter.PLAINTEXT`, `Formatter.TEXTAREA`, `Formatter.HTML`, `Formatter.MONEY`, `Formatter.IMAGE`, `Formatter.LINK`, `Formatter.DATETIME`, `Formatter.DATATIMEDIFF`, `Formatter.TICKCROSS`, `Formatter.COLOR`, `Formatter.STAR`, `Formatter.TRAFFIC`, `Formatter.PROGRESS`, `Formatter.LOOKUP`, `Formatter.BUTTONTICK`, `Formatter.BUTTONCROSS`, `Formatter.ROWNUM`, `Formatter.HANDLE`. You can find more information about formatters configuration in the [Tabulator docs](http://tabulator.info/docs/5.0).&#x20;
 
 {% hint style="info" %}
-Note: You need to include `kvision-moment` module to use built-in date/time formatters.
+Note: You need to include [Luxon](https://moment.github.io/luxon/) library to your `index.html` to use built-in date/time formatters.
 {% endhint %}
 
 ### Custom formatters
@@ -165,7 +166,7 @@ tabulator(model, options = TabulatorOptions(layout = Layout.FITCOLUMNS,
 
 ## Local filtering
 
-Tabulator component allows you to filter the data with external, fully type-safe Kotlin code. You can set the filtering function with `setFilter` method, and then use `applyFilter` after the condition change \(e.g. after search input value change\).
+Tabulator component allows you to filter the data with external, fully type-safe Kotlin code. You can set the filtering function with `setFilter` method, and then use `applyFilter` after the condition change (e.g. after search input value change).
 
 ```kotlin
 val model = listOf(
@@ -276,5 +277,4 @@ Note: Not all KVision edit controls work well inside Tabulator cells. Currently 
 
 When using editable table with Tabulator component bound to Kotlin `MutableList` data model, the changed data is automatically updated in the model. You can disable this function by setting `dataUpdateOnEdit` Tabulator constructor parameter to `false`.
 
- 
-
+&#x20;

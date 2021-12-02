@@ -8,7 +8,7 @@ KVision lets you work with forms in a very simple, consistent and efficient way.
 
 ### Form data model
 
-Form data is modeled with a standard Kotlin data class enhanced with `@Serializable` annotation from [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) library.  Every field of this model class holds the value of one input item rendered within a form. The model support most basic data types: `String`, `Number`\(including `Int`and `Double`\), `Boolean`, `Date` and  also a special type `List<KFile>` \(a list of uploaded files\). All properties of the model data class should have default values.
+Form data is modeled with a standard Kotlin data class enhanced with `@Serializable` annotation from [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) library.  Every field of this model class holds the value of one input item rendered within a form. The model support most basic data types: `String`, `Number`(including `Int`and `Double`), `Boolean`, `Date` and  also a special type `List<KFile>` (a list of uploaded files).
 
 ```kotlin
 @Serializable
@@ -38,29 +38,29 @@ Note: You have to add `@Contextual` annotations to your `Date` fields in order t
 
 Form controls are KVision components implementing one of five `FormControl` interfaces inside `io.kvision.form` package: `StringFormControl`, `NumberFormControl`, `BoolFormControl`, `DateFormControl` and `KFilesFormControl`. KVision comes with a bunch of build-in or modular form components.
 
-| Component | Interface | Module | Description |
-| :--- | :--- | :--- | :--- |
-| `i.k.f.check.CheckBox` | `BoolFormControl` | built-in | A check-box. |
-| `i.k.f.check.Radio` | `BoolFormControl` | built-in | A radio-button. |
-| `i.k.f.check.RadioGroup` | `StringFormControl` | built-in | A group of radio-buttons. |
-| `i.k.f.text.Text` | `StringFormControl` | built-in | A text field. |
-| `i.k.f.text.Password` | `StringFormControl` | built-in | A text field for password input. |
-| `i.k.f.text.TextArea` | `StringFormControl` | built-in | A text area. |
-| `i.k.f.select.SimpleSelect` | `StringFormControl` | built-in | A standard select component. |
-| `i.k.f.range.Range` | `NumberFormControl` | built-in | A range selection field. |
-| `i.k.f.time.DateTime` | `DateFormControl` | kvision-bootstrap-datetime | A date and/or time selection control. |
-| `i.k.f.text.RichText` | `StringFormControl` | kvision-richtext | A rich text editor. |
-| `i.k.f.select.Select` | `StringFormControl` | kvision-bootstrap-select | An advanced select box with support for multiple selection and AJAX data source support. |
-| `i.k.f.select.SelectRemote` | `StringFormControl` | kvision-bootstrap-select-remote | A select box for fullstack interfaces. |
-| `i.k.f.spinner.Spinner` | `NumberFormControl` | kvision-bootstrap-spinner | A spinner control for number selection. |
-| `i.k.f.upload.Upload` | `KFilesFormControl` | kvision-bootstrap-upload | An upload file control with preview and multi-selection.  |
-| `i.k.f.text.Typeahead` | `StringFormControl` | kvision-bootstrap-typeahead | A typeahed \(autocomplete\) text field with support for data source. |
-| i.k.f.text.TypeaheadRemote | StringFormControl | kvision-bootstrap-typeahead-remote | A typeahead \(autocomplete\) text field for fullstack interfaces. |
+| Component                   | Interface           | Module                             | Description                                                                              |
+| --------------------------- | ------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------- |
+| `i.k.f.check.CheckBox`      | `BoolFormControl`   | built-in                           | A check-box.                                                                             |
+| `i.k.f.check.Radio`         | `BoolFormControl`   | built-in                           | A radio-button.                                                                          |
+| `i.k.f.check.RadioGroup`    | `StringFormControl` | built-in                           | A group of radio-buttons.                                                                |
+| `i.k.f.text.Text`           | `StringFormControl` | built-in                           | A text field.                                                                            |
+| `i.k.f.text.Password`       | `StringFormControl` | built-in                           | A text field for password input.                                                         |
+| `i.k.f.text.TextArea`       | `StringFormControl` | built-in                           | A text area.                                                                             |
+| `i.k.f.select.SimpleSelect` | `StringFormControl` | built-in                           | A standard select component.                                                             |
+| `i.k.f.range.Range`         | `NumberFormControl` | built-in                           | A range selection field.                                                                 |
+| `i.k.f.time.DateTime`       | `DateFormControl`   | kvision-bootstrap-datetime         | A date and/or time selection control.                                                    |
+| `i.k.f.text.RichText`       | `StringFormControl` | kvision-richtext                   | A rich text editor.                                                                      |
+| `i.k.f.select.Select`       | `StringFormControl` | kvision-bootstrap-select           | An advanced select box with support for multiple selection and AJAX data source support. |
+| `i.k.f.select.SelectRemote` | `StringFormControl` | kvision-bootstrap-select-remote    | A select box for fullstack interfaces.                                                   |
+| `i.k.f.spinner.Spinner`     | `NumberFormControl` | kvision-bootstrap-spinner          | A spinner control for number selection.                                                  |
+| `i.k.f.upload.Upload`       | `KFilesFormControl` | kvision-bootstrap-upload           | An upload file control with preview and multi-selection.                                 |
+| `i.k.f.text.Typeahead`      | `StringFormControl` | kvision-bootstrap-typeahead        | A typeahed (autocomplete) text field with support for data source.                       |
+| i.k.f.text.TypeaheadRemote  | StringFormControl   | kvision-bootstrap-typeahead-remote | A typeahead (autocomplete) text field for fullstack interfaces.                          |
 
 {% hint style="info" %}
-Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated. 
+Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated.&#x20;
 
-There is also `GenericRadioGroup<T>` component, which can return value of any type, but it can't be used inside `Form`/`FormPanel` containers. 
+There is also `GenericRadioGroup<T>` component, which can return value of any type, but it can't be used inside `Form`/`FormPanel` containers.&#x20;
 {% endhint %}
 
 ### Form containers
@@ -71,7 +71,7 @@ KVision provides a dedicated container for working with forms - `FormPanel<K>`. 
 val formPanel = FormPanel(serializer = Form.serializer())
 ```
 
- You can also use a DSL builder extension function, which automatically uses default serializer for your data class.
+&#x20;You can also use a DSL builder extension function, which automatically uses default serializer for your data class.
 
 ```kotlin
 val formPanel = formPanel<Form> {}
@@ -160,7 +160,7 @@ val formPanel = formPanel<Form>(
 
 ### Validation
 
-KVision forms support validation for single fields and for the form as a whole. You can easily mark some fields as required, specify all needed validation functions and specify error messages, which will be displayed by the browser after validation action. Validation functions give you easy access to the values entered in the form. 
+KVision forms support validation for single fields and for the form as a whole. You can easily mark some fields as required, specify all needed validation functions and specify error messages, which will be displayed by the browser after validation action. Validation functions give you easy access to the values entered in the form.&#x20;
 
 ```kotlin
 formPanel<Form> {
@@ -186,7 +186,7 @@ val validationResult = formPanel.validate()
 ```
 
 {% hint style="info" %}
-Note: `validatorMessage` parameters are functions with the same parameters as `validator` functions. 
+Note: `validatorMessage` parameters are functions with the same parameters as `validator` functions.&#x20;
 {% endhint %}
 
 {% hint style="info" %}
@@ -264,4 +264,3 @@ Finally you can add your data binding with a special `addCustom` method.
 ```kotlin
 addCustom(Form::objectId, Text(label = "Object Id"))
 ```
-

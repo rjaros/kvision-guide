@@ -1,6 +1,6 @@
 # Modals and windows
 
-A KVision application can use two types of windows - modal dialogs and floating, re-sizable windows. Modals can be used to create popups with information messages, alerts, warnings or custom forms and buttons. Floating windows can be used to split your GUI into any number of separate parts, to work with them simultaneously \(multiple documents, floating toolbars etc.\)
+A KVision application can use two types of windows - modal dialogs and floating, re-sizable windows. Modals can be used to create popups with information messages, alerts, warnings or custom forms and buttons. Floating windows can be used to split your GUI into any number of separate parts, to work with them simultaneously (multiple documents, floating toolbars etc.)
 
 {% hint style="info" %}
 These components are only available with the `kvision-bootstrap` module.
@@ -8,7 +8,7 @@ These components are only available with the `kvision-bootstrap` module.
 
 ## Modals
 
-Modal components are grouped in the `io.kvision.modal` package. The base class for all modals is `io.kvision.modal.Modal`. You can use this class to create a modal with any content you need - just add your components to the container. You can use the standard `add` method to add typical components or containers to your modal. You can also use the `addButton` method to add some buttons to the footer of the modal \(these buttons will be right-aligned by default\).
+Modal components are grouped in the `io.kvision.modal` package. The base class for all modals is `io.kvision.modal.Modal`. You can use this class to create a modal with any content you need - just add your components to the container. You can use the standard `add` method to add typical components or containers to your modal. You can also use the `addButton` method to add some buttons to the footer of the modal (these buttons will be right-aligned by default).
 
 Modal dialogs are automatically added to the components tree, so there is no need to add them to any container. Modals are invisible by default. Use `show` method of the Modal class to make it visible.
 
@@ -34,7 +34,7 @@ There are some ready to use, convenience subclasses of the `Modal` class.
 
 ### Alert popups
 
-Alert popup is a simple modal window that shows information text and an OK button. You can use the companion function `Alert.show(...)` to easily create and display an Alert window. You can define a callback function for the OK button. You can also change some other parameters of the popup \(e.g. size, align, rich content or disabling animation effect\).
+Alert popup is a simple modal window that shows information text and an OK button. You can use the companion function `Alert.show(...)` to easily create and display an Alert window. You can define a callback function for the OK button. You can also change some other parameters of the popup (e.g. size, align, rich content or disabling animation effect).
 
 ```kotlin
 Alert.show("Alert dialog", "Lorem ipsum dolor sit amet, consectetur adipiscing.") {
@@ -44,7 +44,7 @@ Alert.show("Alert dialog", "Lorem ipsum dolor sit amet, consectetur adipiscing."
 
 ### Confirm popups
 
-Confirm popup is a simple modal window which displays a question and two \(YES / NO\) or three \(YES / NO / CANCEL\) buttons. You can also use the companion function `Confirm.show(...)` to easily create and display a Confirm popup. You can define two distinct callback functions for the YES and NO buttons. You can also change button titles \(e.g. to support [I18N](../../6.-full-stack-development-guide/internationalization.md)\) and some other parameters of the popup \(e.g. size, align, rich content or disabling animation effect\).
+Confirm popup is a simple modal window which displays a question and two (YES / NO) or three (YES / NO / CANCEL) buttons. You can also use the companion function `Confirm.show(...)` to easily create and display a Confirm popup. You can define two distinct callback functions for the YES and NO buttons. You can also change button titles (e.g. to support [I18N](../../2.-frontend-development-guide/internationalization.md)) and some other parameters of the popup (e.g. size, align, rich content or disabling animation effect).
 
 ```kotlin
 Confirm.show(
@@ -87,9 +87,9 @@ Note: The `Dialog` component is contained in a separate `kvision-bootstrap-dialo
 
 The `io.kvision.window.Window` component allows you to create a number of floating, re-sizable windows inside your application. Every window has a frame, which can be used to change its size and position. The `Window` class constructor takes a number of parameters, two of which allow you to create windows that are not draggable and not re-sizable as well. When the window is not draggable, the close, minimize and maximize buttons are hidden and the caption is null - the caption bar won't be rendered at all.
 
-Windows overlap each other - one is shown on top of the others. The window clicked \(inside the window caption bar\) is brought to the front. You can also use `toFront()` method to bring a given window to the front programmatically.
+Windows overlap each other - one is shown on top of the others. The window clicked (inside the window caption bar) is brought to the front. You can also use `toFront()` method to bring a given window to the front programmatically.
 
-Unlike modals, window components have to be added to a container, and they are displayed in the context of their parent \(e.g. you can hide all windows by hiding their parent container\). But windows are not confined to the parent container area - they can be positioned anywhere inside the browser window.
+Unlike modals, window components have to be added to a container, and they are displayed in the context of their parent (e.g. you can hide all windows by hiding their parent container). But windows are not confined to the parent container area - they can be positioned anywhere inside the browser window.
 
 ```kotlin
 window("Window", 600.px, 300.px, closeButton = true, 
@@ -101,4 +101,3 @@ window("Window", 600.px, 300.px, closeButton = true,
 ```
 
 Window caption can contain both minimize and maximize buttons, but the actual implementation of minimize and maximize functions must be done within the application. The `Window` component sends "maximizeWindow" and "minimizeWindow" events and both operations can be implemented by overriding `toggleMaximize()` and `toggleMinimize()` methods.
-

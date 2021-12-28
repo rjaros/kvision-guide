@@ -28,7 +28,7 @@ To actually create a websocket connection, you call a **different** method, **wh
 
 ```kotlin
 val ws = WsService()
-GlobalScone.launch {
+GlobalScope.launch {
   ws.wsservice { output /*: SendChannel<Int>*/, input /*: ReceiveChannel<String>*/ ->
     coroutineScope {
         launch {

@@ -1,9 +1,9 @@
 # Using Redux
 
-[Redux](https://redux.js.org/) is a popular predictable state container for JavaScript. You can use the full power of Redux in your KVision applications by adding the kvision-redux module to your `build.gradle.kts` file. This module contains a dedicated implementation of `ReduxStore` backed by the original JS library.
+[Redux](https://redux.js.org) is a popular predictable state container for JavaScript. You can use the full power of Redux in your KVision applications by adding the kvision-redux module to your `build.gradle.kts` file. This module contains a dedicated implementation of `ReduxStore` backed by the original JS library.
 
 {% hint style="info" %}
-KVision has built-in support for [Redux DevTools Extension](http://extension.remotedev.io/). Just install the extension for your browser and you can easily monitor and debug your Redux based application.   
+KVision has built-in support for [Redux DevTools Extension](https://www.ngxs.io/plugins/devtools). Just install the extension for your browser and you can easily monitor and debug your Redux based application.  &#x20;
 {% endhint %}
 
 ### State
@@ -20,7 +20,7 @@ data class MyState(val content: String, val counter: Int)
 
 Actions are used to describe the possible changes of the state. Actions are represented as classes and they can contain additional data.
 
-An action class have to inherit \(directly or indirectly\) from `io.kvision.redux.RAction`. It's recommended to use a sealed class, to be able to easily use  exhaustive `when` expression.
+An action class have to inherit (directly or indirectly) from `io.kvision.redux.RAction`. It's recommended to use a sealed class, to be able to easily use  exhaustive `when` expression.
 
 ```kotlin
 sealed class MyAction : RAction {
@@ -32,7 +32,7 @@ sealed class MyAction : RAction {
 
 ### Reducer function
 
-The reducer function actually changes the state. It is called after an action is dispatched to the store. A reducer is a pure function, that gets the current state and action, and calculates the new state of the application. 
+The reducer function actually changes the state. It is called after an action is dispatched to the store. A reducer is a pure function, that gets the current state and action, and calculates the new state of the application.&#x20;
 
 ```kotlin
 fun myReducer(state: MyState, action: MyAction): MyState = when (action) {
@@ -76,7 +76,7 @@ store.dispatch(MyAction.SetContent("Welcome to KVision!"))
 println(store.getState()) // MyState("Welcome to KVision!", 1)
 ```
 
-KVision comes with [Redux Thunk](https://github.com/reduxjs/redux-thunk) middleware already installed, and you can also dispatch functions, so called "action creators", which get `dispatch` and `getState` functions as parameters. This is the recommended way to dispatch actions asynchronously. 
+KVision comes with [Redux Thunk](https://github.com/reduxjs/redux-thunk) middleware already installed, and you can also dispatch functions, so called "action creators", which get `dispatch` and `getState` functions as parameters. This is the recommended way to dispatch actions asynchronously.&#x20;
 
 ```kotlin
 store.dispatch { dispatch, getState ->
@@ -122,7 +122,7 @@ sourceSets["main"].dependencies {
 }
 ```
 
-Then create a middleware object with `require()` function and pass it to the `createStore` function \(as a last, vararg parameter\).
+Then create a middleware object with `require()` function and pass it to the `createStore` function (as a last, vararg parameter).
 
 ```kotlin
 val reduxLogger = require("redux-logger").default
@@ -139,33 +139,8 @@ Note: The middleware will not work with the Kotlin object, but with the internal
 
 ### Using ReduxKotlin
 
-[ReduxKotlin](https://reduxkotlin.org/) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library, which is fully interchangable with kvision-redux module and gives you the same API. There are some pros and cons of using ReduxKotlin library, though.
+[ReduxKotlin](https://reduxkotlin.org) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library, which is fully interchangable with kvision-redux module and gives you the same API. There are some pros and cons of using ReduxKotlin library, though.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Pros</th>
-      <th style="text-align:left">Cons</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <ul>
-          <li>full compatibility with Kotlin classes</li>
-          <li>smaller resulting bundle size</li>
-          <li>multiplatform support (ability to share Redux code between client and
-            server modules)</li>
-        </ul>
-      </td>
-      <td style="text-align:left">
-        <ul>
-          <li>no support for Redux DevTools Extension</li>
-          <li>small ecosystem of existing extensions (compared to original JavaScript
-            Redux)</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+| Pros                                                                                                                                                                                           | Cons                                                                                                                                             |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <ul><li>full compatibility with Kotlin classes</li><li>smaller resulting bundle size</li><li>multiplatform support (ability to share Redux code between client and server modules)  </li></ul> | <ul><li>no support for Redux DevTools Extension</li><li>small ecosystem of existing extensions (compared to original JavaScript Redux)</li></ul> |

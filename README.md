@@ -6,9 +6,9 @@ description: This is a guide for KVision - an object oriented web framework for 
 
 ### [KVision Guide](https://kvision.gitbook.io/kvision-guide/)
 
-Current version: 5.8.3
+Current version: 5.9.0
 
-![](.gitbook/assets/logo4.svg.png)&#x20;
+<img src=".gitbook/assets/logo4.svg.png" alt="" data-size="original">&#x20;
 
 This guide will walk you through creating applications using KVision, whether for the web, mobile, or desktop. Familiarity with Kotlin (or at least Java) will help you be successful faster. You do not need a thorough understanding of Javascript to build great looking web applications, though as you get deeper into some of the browser technologies some knowledge of Javascript's many interesting quirks and features will be beneficial.
 

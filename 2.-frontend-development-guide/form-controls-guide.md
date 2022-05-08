@@ -29,6 +29,14 @@ Text(type = TextInputType.URL, label = "WWW") {
 }
 ```
 
+With an additional `kvision-imask` module loaded and initialized you can use all text input mask options supported by [Imask.js](https://imask.js.org) library.
+
+```kotlin
+text(label = "Phone number") {
+    maskOptions = ImaskOptions(pattern = PatternMask("+{7}(000)000-00-00", lazy = false, eager = true))
+}
+```
+
 ### `i.k.f.text.Password`
 
 This component is a direct subclass of `i.k.form.text.Text` with `type` property set to `TextInputType.PASSWORD`.

@@ -73,13 +73,13 @@ table(
 }
 ```
 
-For interactive, editable tables KVision also supports [`Tabulator`](https://kvision.gitbook.io/kvision-guide/3.-optional-ui-functionality-via-modules/tabulator-tables)
+For interactive, editable tables KVision also supports [`Tabulator`](../3.-optional-ui-functionality-via-modules/tabulator-tables.md)``
 
 ### Links
 
 To create a link use `io.kvision.html.Link`class:
 
-```text
+```
 div {
     link("A link to Google", "http://www.google.com")
 }
@@ -87,7 +87,7 @@ div {
 
 ## Dynamic content
 
-Note that all the generated HTML markup is fully dynamic and is bound to the state of the KVision components. If you change content or styling properties of any visible object, it will automatically re-render the content shown in the browser. These changes can be triggered by any source \(timers, coroutines, network events\) but probably most often they will be triggered by user interaction.
+Note that all the generated HTML markup is fully dynamic and is bound to the state of the KVision components. If you change content or styling properties of any visible object, it will automatically re-render the content shown in the browser. These changes can be triggered by any source (timers, coroutines, network events) but probably most often they will be triggered by user interaction.
 
 ```kotlin
 link("A link to Google", "http://www.google.com").onEvent {
@@ -158,4 +158,3 @@ card {
     CustomComponent()
 }
 ```
-

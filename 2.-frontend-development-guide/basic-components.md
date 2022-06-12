@@ -73,7 +73,7 @@ table(
 }
 ```
 
-For interactive, editable tables KVision also supports [`Tabulator`](https://kvision.gitbook.io/kvision-guide/part-2-advanced-features/tabulator-tables)
+For interactive, editable tables KVision also supports [`Tabulator`](https://kvision.gitbook.io/kvision-guide/3.-optional-ui-functionality-via-modules/tabulator-tables)
 
 ### Links
 

@@ -122,6 +122,15 @@ will render:
 Notice the extra `<span style="display: contents;">` element surrounding the given content.
 {% endhint %}
 
+## XSS Protection
+
+By default KVision is safe from XSS - all text data is processed by the virtual DOM library and is fully sanitized before rendering in the browser. There are two exceptions to watch out for:
+
+* Intentional use of rich text (described above), which is unsafe by design.
+* Use of [Handlebars.js templates](../3.-optional-ui-functionality-via-modules/handlebars.js-templates.md), which are also rendered directly (using rich text internally).
+
+If you need to use rich text with untrusted data (e.g. some input from a user), you should sanitize all the data before rendering with some proven sanitizer library.&#x20;
+
 ## Custom attributes
 
 All KVision components support additional, custom attributes using `setAttribute`, `getAttribute` and `removeAttribute` methods from the `Widget` class.

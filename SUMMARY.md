@@ -35,7 +35,7 @@
   * [Bootstrap](3.-optional-ui-functionality-via-modules/bootstrap/README.md)
     * [Navigation and menus](3.-optional-ui-functionality-via-modules/bootstrap/navigation-and-menus.md)
     * [Tooltips and popovers](3.-optional-ui-functionality-via-modules/bootstrap/tooltips-and-popovers.md)
-    * [Modals and windows](3.-optional-ui-functionality-via-modules/bootstrap/windows-and-modals.md)
+    * [Modals, windows and toasts](3.-optional-ui-functionality-via-modules/bootstrap/windows-and-modals.md)
   * [Charts](3.-optional-ui-functionality-via-modules/charts.md)
   * [Toasts](3.-optional-ui-functionality-via-modules/toasts.md)
   * [Tabulator Tables](3.-optional-ui-functionality-via-modules/tabulator-tables.md)

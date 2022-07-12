@@ -1,6 +1,6 @@
-# Modals and windows
+# Modals, windows and toasts
 
-A KVision application can use two types of windows - modal dialogs and floating, re-sizable windows. Modals can be used to create popups with information messages, alerts, warnings or custom forms and buttons. Floating windows can be used to split your GUI into any number of separate parts, to work with them simultaneously (multiple documents, floating toolbars etc.)
+A KVision application can use three types of windows - modal dialogs, floating, re-sizable windows and toasts. Modals can be used to create popups with information messages, alerts, warnings or custom forms and buttons. Floating windows can be used to split your GUI into any number of separate parts, to work with them simultaneously (multiple documents, floating toolbars etc.). With Bootstrap toasts you can display lightweight notifications, designed to mimic the push notifications that have been popularized by mobile and desktop operating systems.
 
 {% hint style="info" %}
 These components are only available with the `kvision-bootstrap` module.
@@ -101,3 +101,19 @@ window("Window", 600.px, 300.px, closeButton = true,
 ```
 
 Window caption can contain both minimize and maximize buttons, but the actual implementation of minimize and maximize functions must be done within the application. The `Window` component sends "maximizeWindow" and "minimizeWindow" events and both operations can be implemented by overriding `toggleMaximize()` and `toggleMinimize()` methods.
+
+## Toasts
+
+Bootstrap toasts are created using `io.kvision.toast.ToastContainer` class. First you need to create an instance of the container class with the appropriate position parameter. You should create only one container for a given position. Toast containers are automatically added to the components tree, so there is no need to add them to any other container.&#x20;
+
+You can display toasts with the `showToast()` method of the `ToastContainer` class.
+
+```kotlin
+val toastContainer = ToastContainer(ToastContainerPosition.TOPRIGHT)
+toastContainer.showToast(
+    "Some information message",
+    "Toast title"
+)
+```
+
+With additional parameters of the `showToast()` method you can set text color, background color, turn off the animation effect, set auto-hide delay or disable auto-hide at all.

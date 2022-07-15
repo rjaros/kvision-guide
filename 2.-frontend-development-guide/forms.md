@@ -265,3 +265,31 @@ Finally you can add your data binding with a special `addCustom` method.
 ```kotlin
 addCustom(Form::objectId, Text(label = "Object Id"))
 ```
+
+### Dynamic forms
+
+Sometimes it's not possible to know the data model of the form because the fields need to be added and/or removed dynamically. For such use cases KVision allows you to model your data with a `Map<String, Any?>` type. To work with dynamic forms you need to create a `FormPanel` container with a simplified `form()` DSL builder function. Such call will return a `FormPanel<Map<String, Any?>>` instance. When adding or binding form controls use string identifiers instead of property references.
+
+```kotlin
+val form: FormPanel<Map<String, Any?>> = form(type = FormType.HORIZONTAL) {
+    text(label = "First text field").bind("text1")
+    text(label = "Second text field").bind("text2", required = true)
+    checkBox(label = "CheckBox").bind("check1")
+    simpleSelect(listOfPairs("First option", "Second option"), 
+      label = "Select value", emptyOption = true).bind("select1", required = true)
+}
+```
+
+Although all the fields are defined dynamically, you can still treat the form as a whole. You use `getData()` and `setData()` functions using standard Kotlin maps. The identifiers used for bindings will be the keys in the map.
+
+```kotlin
+val map = form.getData()
+val textValue1 = map["text1"].unsafeCast<String?>()
+val textValue2 = map["text2"].unsafeCast<String?>()
+
+form.setData(mapOf("check1" to true, "select1" to "First option"))
+```
+
+{% hint style="info" %}
+When using dynamic forms you are intentionally loosing type safety. You need to make sure the values stored in the map are matching the types of form controls.&#x20;
+{% endhint %}

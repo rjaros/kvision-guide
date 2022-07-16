@@ -9,7 +9,7 @@ Let's make an example of a Bootstrap card component using both ways.
 
 ## Extending KVision DSL
 
-To create a new component you just need to create an extension function on the `Container` interface. You can use any parameters to describe your component look and behavior. It's recommended to use default values for parameters and use the last one for content builder.&#x20;
+To create a new component you just need to create an extension function on the `Container` interface. You can use any parameters to describe your component look and behavior. It's recommended to use default values for parameters and use the last one for a content builder.&#x20;
 
 ```kotlin
 fun Container.card(header: String? = null, title: String? = null, contentBuilder: P.() -> Unit) {
@@ -113,7 +113,7 @@ By using `refreshOnUpdate()` delegate method and overriding `buildClassSet()` me
 We can now use our new component by creating new instances and adding them to the components tree. We can easily automate our code.
 
 ```kotlin
-val listOfCards = List(3) { // generate three cards
+val listOfCards = List(3) { // generate three cards in a list
     val index = it + 1
     Card("Header $index", "Title $index", centered = it % 2 == 0) {
         +"Some content of the card $index"

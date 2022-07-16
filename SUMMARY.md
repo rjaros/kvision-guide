@@ -30,6 +30,7 @@
   * [Drag and drop](2.-frontend-development-guide/drag-and-drop.md)
   * [Internationalization](2.-frontend-development-guide/internationalization.md)
   * [Adding custom tags (SVG example)](2.-frontend-development-guide/adding-custom-tags-svg-example.md)
+  * [Custom components](2.-frontend-development-guide/custom-components.md)
 * [3. Optional UI Functionality (via modules)](3.-optional-ui-functionality-via-modules/README.md)
   * [Using Redux](3.-optional-ui-functionality-via-modules/using-redux.md)
   * [Bootstrap](3.-optional-ui-functionality-via-modules/bootstrap/README.md)

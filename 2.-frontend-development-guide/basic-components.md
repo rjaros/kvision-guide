@@ -140,30 +140,3 @@ button(text = "X", className = "close") {
     setAttribute("data-dismiss", "alert")
 }
 ```
-
-## Extending KVision DSL
-
-If you want to build custom DSL types, you can override existing types such as `div`. This might be useful if a certain custom component won't know their children ahead of time, for example, a "card" component that has a fancy border.
-
-Card type:
-
-```kotlin
-fun Container.card(
-    content: String? = null,
-    rich: Boolean = false,
-    align: Align? = null,
-    init: (Div.() -> Unit)? = null
-): Div {
-    val div = Div(content, rich, align, "fooCard", init) // define css classname or other overrides here
-    this.add(div)
-    return div
-}
-```
-
-Usage:
-
-```kotlin
-card {
-    CustomComponent()
-}
-```

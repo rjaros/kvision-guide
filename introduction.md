@@ -1,6 +1,6 @@
 # Introduction
 
-[KVision](https://kvision.io) is an open source web framework created for [Kotlin](https://kotlinlang.org) language. It allows developers to build modern web applications in Kotlin.
+[KVision](https://kvision.io) is an open source web framework created for [Kotlin](https://kotlinlang.org/) language. It allows developers to build modern web applications in Kotlin.
 
 ## Main features
 
@@ -36,19 +36,19 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * configurable toasts
 * many HTML components including tables, lists, images, canvas and iframe
 * built-in support for [Handlebars](http://handlebarsjs.com) templates
-* built-in support for [Font Awesome](https://fontawesome.com) icons
-* built-in support for [Bootstrap Icons](https://icons.getbootstrap.com)
-* built-in support for [Redux](https://redux.js.org) and [ReduxKotlin](https://reduxkotlin.org)
-* built-in support for [React](https://reactjs.org) components
-* built-in support for [Onsen UI](https://onsen.io) web components
-* built-in support for [Moment.js](https://momentjs.com) library
+* built-in support for [Font Awesome](https://fontawesome.com/) icons
+* built-in support for [Bootstrap Icons](https://icons.getbootstrap.com/)
+* built-in support for [Redux](https://redux.js.org/) and [ReduxKotlin](https://reduxkotlin.org/)
+* built-in support for [React](https://reactjs.org/) components
+* built-in support for [Onsen UI](https://onsen.io/) web components
+* built-in support for [Moment.js](https://momentjs.com/) library
 * built-in support for [Pace](https://codebyzach.github.io/pace/) automatic page loader
-* built-in support for [Leaflet](https://leafletjs.com) interactive maps
-* built-in support for printing with [Print.js](https://printjs.crabbly.com) library
+* built-in support for [Leaflet](https://leafletjs.com/) interactive maps
+* built-in support for printing with [Print.js](https://printjs.crabbly.com/) library
 
 #### Flexibility
 
-KVision was designed to be open and flexible. By default it gives you [Bootstrap](https://getbootstrap.com) based look & feel. You can also use themes from [Bootswatch](https://bootswatch.com) or you can disable them all and design your application appearance from the scratch, limited only by your own knowledge of CSS.
+KVision was designed to be open and flexible. By default it gives you [Bootstrap](https://getbootstrap.com/) based look & feel. You can also use themes from [Bootswatch](https://bootswatch.com/) or you can disable them all and design your application appearance from the scratch, limited only by your own knowledge of CSS.
 
 KVision fully supports both reactive and imperative programming models. It gives you everything you may need for the state management of your apps. From simple observables to advanced redux stores and bindings to coroutines StateFlow. From simple event callbacks to functional event flows.
 
@@ -72,8 +72,8 @@ There is also experimental support for type-safe websocket connections, based on
 * Drag & drop support
 * Type-safe REST connectivity
 * Integrated JS router
-* Support for building hybrid, mobile applications for Android and iOS with [Apache Cordova](https://cordova.apache.org).
-* Support for building cross-platform, desktop applications with [Electron](https://electronjs.org).
+* Support for building hybrid, mobile applications for Android and iOS with [Apache Cordova](https://cordova.apache.org/).
+* Support for building cross-platform, desktop applications with [Electron](https://electronjs.org/).
 * Compatible with modern browsers (MS Edge, Firefox, Chrome, Safari, Opera)
-* [Karma](https://karma-runner.github.io) testing framework support
+* [Karma](https://karma-runner.github.io/) testing framework support
 

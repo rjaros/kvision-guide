@@ -77,7 +77,7 @@ TextArea(label = "Enter some text") {
 
 ### `i.k.f.text.RichText`
 
-The kvision-richtext module allows you to use a dedicated form control based on a modern [Trix Editor](https://trix-editor.org) component. It can be used to get rich text from the user. This component renders a text editing field with a toolbar containing basic formatting options (bold, italic, strikethrough, heading, quote, code, link and lists with indentations). The `value` property contains properly formatted HTML markup. Other properties allow you to define a placeholder and autofocus attribute.
+The kvision-richtext module allows you to use a dedicated form control based on a modern [Trix Editor](https://trix-editor.org/) component. It can be used to get rich text from the user. This component renders a text editing field with a toolbar containing basic formatting options (bold, italic, strikethrough, heading, quote, code, link and lists with indentations). The `value` property contains properly formatted HTML markup. Other properties allow you to define a placeholder and autofocus attribute.
 
 ```kotlin
 RichText(

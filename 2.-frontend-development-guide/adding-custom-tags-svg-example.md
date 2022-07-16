@@ -1,10 +1,10 @@
-# Adding custom tags \(SVG example\)
+# Adding custom tags (SVG example)
 
 You may need to include HTML tags that aren't provided out of the box. For example, your app may need to draw SVG diagrams.
 
 To support this, kvision provides the **CustomTag** class, illustrated by example as follows:
 
-```text
+```kotlin
 fun Div.svg(width: Int, height: Int, block: CustomTag.() -> Unit = {}) {
     customTag("svg") {
         setAttribute("width", "$width")
@@ -27,7 +27,7 @@ fun CustomTag.line(x1: Int, y1: Int, x2: Int, y2: Int, stroke: Col, block: Custo
 
 To use it, we can simply do:
 
-```text
+```kotlin
        root("kvapp") {
             div {
                 svg(500, 500) {
@@ -37,4 +37,3 @@ To use it, we can simply do:
             }
         }
 ```
-

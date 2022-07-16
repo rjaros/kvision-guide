@@ -1,6 +1,6 @@
 # Using Redux
 
-[Redux](https://redux.js.org) is a popular predictable state container for JavaScript. You can use the full power of Redux in your KVision applications by adding the kvision-redux module to your `build.gradle.kts` file. This module contains a dedicated implementation of `ReduxStore` backed by the original JS library.
+[Redux](https://redux.js.org/) is a popular predictable state container for JavaScript. You can use the full power of Redux in your KVision applications by adding the kvision-redux module to your `build.gradle.kts` file. This module contains a dedicated implementation of `ReduxStore` backed by the original JS library.
 
 {% hint style="info" %}
 KVision has built-in support for [Redux DevTools Extension](https://www.ngxs.io/plugins/devtools). Just install the extension for your browser and you can easily monitor and debug your Redux based application.  &#x20;
@@ -139,7 +139,7 @@ Note: The middleware will not work with the Kotlin object, but with the internal
 
 ### Using ReduxKotlin
 
-[ReduxKotlin](https://reduxkotlin.org) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library, which is fully interchangable with kvision-redux module and gives you the same API. There are some pros and cons of using ReduxKotlin library, though.
+[ReduxKotlin](https://reduxkotlin.org/) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library, which is fully interchangable with kvision-redux module and gives you the same API. There are some pros and cons of using ReduxKotlin library, though.
 
 | Pros                                                                                                                                                                                           | Cons                                                                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |

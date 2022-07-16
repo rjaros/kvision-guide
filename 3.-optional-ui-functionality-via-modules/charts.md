@@ -1,6 +1,6 @@
 # Charts
 
-KVision Chart component is based on awesome [Chart.js](https://www.chartjs.org) library. It allows you to create many different types of charts with a lot of options and additional functionalities. This component is contained in kvision-chart module. KVision adds Kotlin type-safe bindings for most of Chart.js API but you should get familiar with [Chart.js documentation](https://www.chartjs.org/docs/latest/) to achieve best results.
+KVision Chart component is based on awesome [Chart.js](https://www.chartjs.org/) library. It allows you to create many different types of charts with a lot of options and additional functionalities. This component is contained in kvision-chart module. KVision adds Kotlin type-safe bindings for most of Chart.js API but you should get familiar with [Chart.js documentation](https://www.chartjs.org/docs/latest/) to achieve best results.
 
 To create a chart use `io.kvision.chart.Chart` class. Its constructor takes one required parameter of `io.kvision.chart.Configuration` class. The configuration object specifies both the data and the options for the chart.
 

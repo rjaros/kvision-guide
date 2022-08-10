@@ -21,7 +21,7 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * sophisticated containers (tabs, stack, dock, grid, horizontal, vertical, flexbox, responsive)
 * forms with type-safe data model and built-in validation
 * many different text input components including rich text editor, typeahead and input mask support
-* buttons, checkboxes and radios
+* buttons, checkboxes, radios and switches
 * date and time picker
 * spinner and range numeric input components
 * advanced select box with ajax support
@@ -29,7 +29,7 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * advanced charts
 * reactive tables
 * data binding components and observable data sources
-* navigation bar, toolbar and context menu
+* navigation bar, toolbar, context menu and offcanvas sidebar
 * tooltips and popovers
 * modals including ready to use alerts and confirm dialogs
 * floating, re-sizable windows

@@ -11,6 +11,7 @@ dependencies {
 //    api("io.kvision:kvision-server-javalin:$kvisionVersion")
 //    api("io.kvision:kvision-server-jooby:$kvisionVersion")
     api("io.kvision:kvision-server-ktor:$kvisionVersion")
+//    api("io.kvision:kvision-server-ktor-koin:$kvisionVersion")
 //    api("io.kvision:kvision-server-spring-boot:$kvisionVersion")
 //    api("io.kvision:kvision-server-vertx:$kvisionVersion")
 //    api("io.kvision:kvision-server-micronaut:$kvisionVersion")
@@ -27,7 +28,7 @@ Note: When using authentication on the server side, you can usually apply differ
 {% endhint %}
 
 {% hint style="info" %}
-Note: This guide assumes you are using KVision compiler plugin to generate code for server-side interfaces. You can write this code manually if you want - for details please check the guide for [KVision 1.x](https://kvision.gitbook.io/kvision-guide/v/kvision-1.x/part-3-server-side-interface/common-code). 
+Note: This guide assumes you are using KVision compiler plugin to generate code for server-side interfaces. You can write this code manually if you want - for details please check the guide for [KVision 1.x](https://kvision.gitbook.io/kvision-guide/v/kvision-1.x/part-3-server-side-interface/common-code).&#x20;
 {% endhint %}
 
 ### Declaring an interface
@@ -36,7 +37,7 @@ Designing the interface is probably the most important step, and during this pro
 
 #### An interface name need to start with `'I'` and end with `'Service'` phrases and must be annotated with `@KVService` annotation.
 
-This convention allows KVision compiler plugin to generate common and frontend code.
+This convention allows KVision compiler plugin to generate common, backend and frontend code.
 
 #### A method must be suspending
 
@@ -54,13 +55,13 @@ This is the restriction of the current version of the framework. It may change i
 
 Supported types are:
 
-* all basic Kotlin types \(`String`, `Boolean`, `Int`, `Long`, `Short`, `Char`, `Byte`,  `Float`, `Double`\)
-* `Enum` class defined in common code
+* all basic Kotlin types (`String`, `Boolean`, `Int`, `Long`, `Short`, `Char`, `Byte`,  `Float`, `Double`)
+* `Enum` class defined in common code annotated with `@Serializable` annotation
 * All date and time types from `io.kvision.types` package, which are automatically mapped to `kotlin.js.Date` on the frontend side and the appropriate `java.time.*` type on the backend side
 * A `io.kvision.types.Decimal` type, which is automatically mapped to `Number(double)` on the frontend side and `java.math.BigDecimal` on the backend side
 * any class defined in the common code with a `@Serializable` annotation
 * a `List<T>`, where T is one of the above types
-* a `T?`, where T is one of the above types \(allowed only as method parameters - see previous rule\)
+* a `T?`, where T is one of the above types (allowed only as method parameters - see previous rule)
 
 {% hint style="info" %}
 Note: Default parameters values are supported.
@@ -85,6 +86,7 @@ data class Address(
     val email: String? = null,
 )
 
+@Serializable
 enum class Sort {
     FN, LN, E
 }
@@ -117,14 +119,9 @@ interface IAddressService {
 ```
 
 {% hint style="info" %}
-Note: All KVision endpoint names \(even those with user defined names\) are prefixed with "/kv/" to avoid potential conflicts with other endpoints.
+Note: All KVision endpoint names (even those with user defined names) are prefixed with "/kv/" to avoid potential conflicts with other endpoints.
 {% endhint %}
 
 {% hint style="info" %}
 Note: HTTP GET can be used only for methods without parameters.
 {% endhint %}
-
-{% hint style="info" %}
-Due to this [issue](https://github.com/Kotlin/kotlinx.serialization/issues/1116) in the `kotlinx.serialization` library, sealed classes are not correctly deserialized with the IR compiler backend. You have to use the legacy backend if you want to use sealed classes as return values from your remote services. 
-{% endhint %}
-

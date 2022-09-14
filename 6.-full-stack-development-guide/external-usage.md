@@ -1,10 +1,10 @@
 # External Usage
 
-The `kvision-remote` module does not depend on the rest of KVision framework. It means that you can use KVision server side interfaces in applications, those client GUI is not based on KVision at all. While it's hard to think of a good reason not to use KVision ;-), there may be some use cases for that.
+The `kvision-remote` module does not depend on the rest of KVision framework. It means that you can use KVision server side interfaces in applications, those client GUI is not based on KVision at all. While it's hard to think of a good reason not to use KVision ;-\), there may be some use cases for that.
 
 ### Requirements
 
-Of course the application has to be written in Kotlin and the project must be created with Gradle multiplatform feature. One of the supported frameworks (Ktor, Jooby,  Spring Boot, Javalin, Vert.x, Micronaut) must be used on the server side. A client module loader (e.g. RequireJS) should be used to load JavaScript modules. Just like in standard configuration, all remote methods must be called with a coroutine context.
+Of course the application has to be written in Kotlin and the project must be created with Gradle multiplatform feature. One of the supported frameworks \(Ktor, Jooby,  Spring Boot, Javalin, Vert.x, Micronaut\) must be used on the server side. A client module loader \(e.g. RequireJS\) should be used to load JavaScript modules and a jQuery library must be added as a dependency. Just like in standard configuration, all remote methods must be called with a coroutine context.
 
 ### Example
 
@@ -24,3 +24,4 @@ fun app() {
 {% hint style="info" %}
 The external usage example doesn't use KVision compiler plugin, although it should be possible to create similar project with this plugin.
 {% endhint %}
+

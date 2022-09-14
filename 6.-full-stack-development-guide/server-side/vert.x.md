@@ -32,6 +32,7 @@ dependencies {
 The implementation of the service class comes down to implementing required interface methods.
 
 ```kotlin
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return listOf()
@@ -51,6 +52,7 @@ actual class AddressService : IAddressService {
 The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting object instances into your class. KVision allows you to inject `RoutingContext` instance, which gives you access to the `Vertx` instance and also allows you to access the current request and session information.
 
 ```kotlin
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     
     @Inject
@@ -73,9 +75,10 @@ Note: The new instance of the service class will be created by Guice for every s
 
 ### **Blocking code**
 
-Since Vert.x architecture is asynchronous and non-blocking, you should **never** block a thread in your application code. If you have to use some blocking code \(e.g. blocking I/O, JDBC\) always use the dedicated coroutine dispatcher.
+Since Vert.x architecture is asynchronous and non-blocking, you should **never** block a thread in your application code. If you have to use some blocking code (e.g. blocking I/O, JDBC) always use the dedicated coroutine dispatcher.
 
 ```kotlin
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return withContext(Dispatchers.IO) {
@@ -93,13 +96,14 @@ Vert.x services are deployed as "verticles". Main verticle is the application st
 import io.vertx.core.AbstractVerticle
 import io.vertx.ext.web.Router
 import io.kvision.remote.applyRoutes
+import io.kvision.remote.getServiceManager
 import io.kvision.remote.kvisionInit
 
 class MainVerticle : AbstractVerticle() {
     override fun start() {
         val router = Router.router(vertx)
         vertx.kvisionInit(router)
-        vertx.applyRoutes(router, PingServiceManager)
+        vertx.applyRoutes(router, getServiceManager<IPingService>())
         vertx.createHttpServer().requestHandler(router).listen(8080)
     }
 }
@@ -112,7 +116,7 @@ class MainVerticle : AbstractVerticle() {
     override fun start() {
         val router = Router.router(vertx)
         val server = vertx.createHttpServer()
-        vertx.kvisionInit(router, server, listOf(TweetServiceManager))
+        vertx.kvisionInit(router, server, listOf(getServiceManager<ITweetService>()))
         server.requestHandler(router).listen(8080)
     }
 }
@@ -135,9 +139,9 @@ class MainVerticle : AbstractVerticle() {
         val authHandler = MyAuthHandler()
         router.serviceRoute(AddressServiceManager, authHandler)
         router.serviceRoute(ProfileServiceManager, authHandler)
-        vertx.applyRoutes(router, AddressServiceManager)
-        vertx.applyRoutes(router, ProfileServiceManager)
-        vertx.applyRoutes(router, RegisterProfileServiceManager)
+        vertx.applyRoutes(router, getServiceManager<IAddressService>())
+        vertx.applyRoutes(router, getServiceManager<IProfileService>())
+        vertx.applyRoutes(router, getServiceManager<IRegisterProfileService>())
         router.route(HttpMethod.POST, "/login").handler(BodyHandler.create(false)).blockingHandler { rctx ->
             val username = rctx.request().getFormAttribute("username") ?: ""
             val password = rctx.request().getFormAttribute("password") ?: ""
@@ -161,4 +165,3 @@ class MainVerticle : AbstractVerticle() {
     }
 }
 ```
-

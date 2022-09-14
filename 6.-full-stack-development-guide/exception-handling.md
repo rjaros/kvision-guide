@@ -6,6 +6,7 @@ There is a special `io.kvision.remote.ServiceException` class defined in common 
 
 {% code title="Backend.kt" %}
 ```kotlin
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class PasswordService : IPasswordService {
     override suspend fun changePassword(oldPassword: String, newPassword: String) {
         if (oldPassword == newPassword) {

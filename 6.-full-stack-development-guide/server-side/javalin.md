@@ -31,6 +31,7 @@ dependencies {
 The implementation of the service class comes down to implementing required interface methods.
 
 ```kotlin
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return listOf()
@@ -50,6 +51,7 @@ actual class AddressService : IAddressService {
 The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting object instances into your class. KVision allows you to inject `Javalin` instance, which give you access to the application configuration and also `Context` object, which allows you to access the current request and session information.
 
 ```kotlin
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     
     @Inject
@@ -84,7 +86,7 @@ import io.kvision.remote.kvisionInit
 fun main() {
     Javalin.create().start(8080).apply {
         kvisionInit()
-        applyRoutes(AddressServiceManager)
+        applyRoutes(getServiceManager<IAddressService>())
     }
 }
 ```
@@ -102,14 +104,14 @@ fun main() {
             when {
                 permittedRoles.contains(ApiRole.ANYONE) -> handler.handle(ctx)
                 ctx.sessionAttribute<Profile>(SESSION_PROFILE_KEY) != null -> handler.handle(ctx)
-                else -> ctx.status(HttpServletResponse.SC_UNAUTHORIZED).json("Unauthorized")
+                else -> ctx.status(HttpStatus.UNAUTHORIZED).json("Unauthorized")
             }
         }
     }.start(8080).apply {
         kvisionInit(ConfigModule(), DbModule())
-        applyRoutes(AddressServiceManager, setOf(ApiRole.AUTHORIZED))
-        applyRoutes(ProfileServiceManager, setOf(ApiRole.AUTHORIZED))
-        applyRoutes(RegisterProfileServiceManager, setOf(ApiRole.ANYONE))
+        applyRoutes(getServiceManager<IAddressService>(), setOf(ApiRole.AUTHORIZED))
+        applyRoutes(getServiceManager<IProfileService>(), setOf(ApiRole.AUTHORIZED))
+        applyRoutes(getServiceManager<IRegisterProfileService>(), setOf(ApiRole.ANYONE))
 
         // Security config
         post("/login", { ctx ->
@@ -122,16 +124,14 @@ fun main() {
                     val profile =
                         Profile(it[UserDao.id], it[UserDao.name], it[UserDao.username].toString(), null, null)
                     ctx.sessionAttribute(SESSION_PROFILE_KEY, profile)
-                    ctx.status(HttpServletResponse.SC_OK)
-                } ?: ctx.status(HttpServletResponse.SC_UNAUTHORIZED)
+                    ctx.status(HttpStatus.OK)
+                } ?: ctx.status(HttpStatus.UNAUTHORIZED)
             }
         }, setOf(ApiRole.ANYONE))
         get("/logout", { ctx ->
-            ctx.req.remoteAddr
-            ctx.req.session.id
-            ctx.redirect("/", HttpServletResponse.SC_FOUND)
+            ctx.req().session.invalidate()
+            ctx.redirect("/", HttpStatus.FOUND)
         }, setOf(ApiRole.AUTHORIZED))
     }
 }
 ```
-

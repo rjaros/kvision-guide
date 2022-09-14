@@ -122,6 +122,7 @@ This function is the application starting point. It's used to initialize and con
 import io.ktor.application.Application
 import io.ktor.routing.routing
 import io.kvision.remote.applyRoutes
+import io.kvision.remote.getServiceManager
 import io.kvision.remote.kvisionInit
 
 fun Application.main() {

@@ -54,11 +54,10 @@ The standard way to configure Micronaut application is `src/backendMain/resource
 
 ### Service class
 
-The implementation of the service class comes down to implementing required interface methods and making it a Micronaut `@Prototype` component.&#x20;
+The implementation of the service class comes down to implementing required interface methods and making it a Micronaut `@Prototype` component. 
 
 ```kotlin
 @Prototype
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return listOf()
@@ -75,11 +74,10 @@ actual class AddressService : IAddressService {
 }
 ```
 
-Micronaut IoC (Inversion of Control) allows you to inject resources and other Micronaut components into your service class. You can use standard `@Inject` annotation or constructor based injection.
+Micronaut IoC \(Inversion of Control\) allows you to inject resources and other Micronaut components into your service class. You can use standard `@Inject` annotation or constructor based injection.
 
 ```kotlin
 @Prototype
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     @Inject
     lateinit var context: ApplicationContext
@@ -94,11 +92,10 @@ actual class AddressService : IAddressService {
 
 You can also inject custom Micronaut components, defined throughout your application.
 
-KVision allows you to inject `HttpRequest` Micronaut object (which can also give you access to the user session, if it is configured)
+KVision allows you to inject `HttpRequest` Micronaut object \(which can also give you access to the user session, if it is configured\)
 
 ```kotlin
 @Prototype
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
 
     @Inject
@@ -121,11 +118,10 @@ Note: The new instance of the service class will be created by Micronaut for eve
 
 ### **Blocking code**
 
-Since Micronaut architecture is asynchronous and non-blocking, you should not block threads in your application code. If you have to use some blocking code (e.g. blocking I/O, JDBC) use the dedicated coroutine dispatcher.
+Since Micronaut architecture is asynchronous and non-blocking, you should not block threads in your application code. If you have to use some blocking code \(e.g. blocking I/O, JDBC\) use the dedicated coroutine dispatcher.
 
 ```kotlin
 @Prototype
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return withContext(Dispatchers.IO) {
@@ -137,13 +133,13 @@ actual class AddressService : IAddressService {
 
 ### Application class
 
-To allow KVision work with Micronaut you have to pass all instances of the `KVServiceManager` objects (defined in common code) to the Micronaut environment. You do this by defining a provider method for the `KVManagers` instance in the main application class.
+To allow KVision work with Micronaut you have to pass all instances of the `KVServiceManager` objects \(defined in common code\) to the Micronaut environment. You do this by defining a provider method for the `KVManagers` instance in the main application class.
 
 ```kotlin
 @Factory
 class KVApplication {
     @Bean
-    fun getManagers() = KVManagers(listOf(getServiceManager<IAddressService>()))
+    fun getManagers() = KVManagers(listOf(AddressServiceManager))
 }
 
 fun main(args: Array<String>) {
@@ -168,7 +164,7 @@ open class AppSecurityRule(rolesFinder: RolesFinder) : AbstractSecurityRule(role
         routeMatch: RouteMatch<*>?,
         claims: MutableMap<String, Any>?
     ): SecurityRuleResult {
-        return if (request.matches(getServiceManager<IAddressService>(), getServiceManager<IProfileService>())) {
+        return if (request.matches(AddressServiceManager, ProfileServiceManager)) {
             compareRoles(listOf(SecurityRule.IS_AUTHENTICATED), getRoles(claims))
         } else {
             SecurityRuleResult.ALLOWED
@@ -176,3 +172,4 @@ open class AppSecurityRule(rolesFinder: RolesFinder) : AbstractSecurityRule(role
     }
 }
 ```
+

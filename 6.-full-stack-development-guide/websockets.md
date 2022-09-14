@@ -24,7 +24,7 @@ interface IWsService {
 }
 ```
 
-Both methods need to have the same name and both should have default, empty implementation in the interface.
+Both methods need to have the same name and both should have default, empty implementations in the interface.
 
 ### Frontend application
 

@@ -1,10 +1,10 @@
 # Frontend Side
 
-The whole point of server side interface is to allow the client application use the services implemented on the server. KVision makes the process of sending and receiving data fully transparent and invisible in the frontend code. Just get the instance of your Service class using `getService()` function and use it. The only thing you need to consider is  the suspending nature of the remote methods - they have to be run inside a coroutine context (of course your code will not even compile if they are not).
+The whole point of server side interface is to allow the client application use the services implemented on the server. KVision makes the process of sending and receiving data fully transparent and invisible in the frontend code. Just create an instance of your Service class and use it. The only thing you need to consider is  the suspending nature of the remote methods - they have to be run inside a coroutine context \(of course your code will not even compile if they are not\).
 
 ```kotlin
 object AddressModel {
-    private val addressService = getService<IAddressService>()
+    private val addressService = AddressService()
 
     val addresses = mutableListOf<Address>()
     var search: String? = null
@@ -23,7 +23,9 @@ object AddressModel {
 }   
 ```
 
-&#x20;
+ 
+
+
 
 
 

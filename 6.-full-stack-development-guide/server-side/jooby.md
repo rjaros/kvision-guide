@@ -1,6 +1,6 @@
 # Jooby
 
-[Jooby](https://jooby.io) is a scalable, fast and modular micro web framework for Java and Kotlin. It is very easy to use and has a lot of different kind, ready to use [modules](https://jooby.io/#modules).&#x20;
+[Jooby](https://jooby.io) is a scalable, fast and modular micro web framework for Java and Kotlin. It is very easy to use and has a lot of different kind, ready to use [modules](https://jooby.io/#modules). 
 
 ## Build configuration
 
@@ -40,7 +40,6 @@ The standard way to configure Jooby application is `src/backendMain/resources/ap
 The implementation of the service class comes down to implementing required interface methods.
 
 ```kotlin
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return listOf()
@@ -60,7 +59,6 @@ actual class AddressService : IAddressService {
 The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting server objects into your class. KVision allows you to inject `Kooby`, `Environment` and `Config` instances, which give you access to the application configuration and also `Context` object, which allow you to access the current request and session information.
 
 ```kotlin
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     
     @Inject
@@ -91,10 +89,9 @@ Note: The new instance of the service class will be created by Guice for every s
 
 ### **Blocking code**
 
-Since Jooby execution model assumes suspending endpoints are non-blocking, you should **never** block a thread in your application code. If you have to use some blocking code (e.g. blocking I/O, JDBC) always use the dedicated coroutine dispatcher.
+Since Jooby execution model assumes suspending endpoints are non-blocking, you should **never** block a thread in your application code. If you have to use some blocking code \(e.g. blocking I/O, JDBC\) always use the dedicated coroutine dispatcher.
 
 ```kotlin
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return withContext(Dispatchers.IO) {
@@ -111,18 +108,17 @@ This function is the application starting point. It's used to initialize and con
 ```kotlin
 import io.jooby.runApp
 import io.kvision.remote.applyRoutes
-import io.kvision.remote.getServiceManager
 import io.kvision.remote.kvisionInit
 
 fun main(args: Array<String>) {
     runApp(args) {
         kvisionInit()
-        applyRoutes(getServiceManager<IAddressService>())
+        applyRoutes(AddressServiceManager)
     }
 }
 ```
 
-Apart from the above KVision configuration you are free to use any other module of the Jooby framework.&#x20;
+Apart from the above KVision configuration you are free to use any other module of the Jooby framework. 
 
 ### Authentication with Pac4j
 
@@ -133,14 +129,14 @@ fun main(args: Array<String>) {
     runApp(args) {
         kvisionInit()
         install(HikariModule("db"))
-        applyRoutes(getServiceManager<IRegisterProfileService>()) // No authentication needed
+        applyRoutes(RegisterProfileServiceManager) // No authentication needed
         install(Pac4jModule().client { _ ->
             FormClient("/") { credentials, context ->
                 require(MyDbProfileService::class).validate(credentials as UsernamePasswordCredentials, context)
             }
         })
-        applyRoutes(getServiceManager<IAddressService>())    // Authentication needed
-        applyRoutes(getServiceManager<IProfileService>())    // Authentication needed
+        applyRoutes(AddressServiceManager)        // Authentication needed
+        applyRoutes(ProfileServiceManager)        // Authentication needed
         onStarted {
             val db = require(DataSource::class, "db")
             val session = ThreadLocalSession(db, getDbDialect(require(Config::class)), LoggingInterceptor())
@@ -154,3 +150,4 @@ fun main(args: Array<String>) {
     }
 }
 ```
+

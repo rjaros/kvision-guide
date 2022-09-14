@@ -34,7 +34,7 @@ Note: You can use other engines instead of Netty - see [Ktor documentation](http
 The standard way to configure Ktor application is `src/backendMain/resources/application.conf` file. Among other options it contains the name of the main function of your app.
 
 {% code title="application.conf" %}
-```
+```text
 ktor {
   deployment {
     port = 8080
@@ -54,7 +54,6 @@ ktor {
 The implementation of the service class comes down to implementing required interface methods.
 
 ```kotlin
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return listOf()
@@ -71,10 +70,9 @@ actual class AddressService : IAddressService {
 }
 ```
 
-The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting server objects into your class. KVision allows you to inject `Application` and `ApplicationCall` instances. These objects give you access to the application configuration, its state, the current request and the user session (if it is configured).
+The integration module utilizes [Guice](https://github.com/google/guice) and you can access external components and resources by injecting server objects into your class. KVision allows you to inject `Application` and `ApplicationCall` instances. These objects give you access to the application configuration, its state, the current request and the user session \(if it is configured\).
 
 ```kotlin
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     @Inject
     lateinit var application: Application
@@ -101,10 +99,9 @@ Note: The new instance of the service class will be created by Guice for every s
 
 ### **Blocking code**
 
-Since Ktor architecture is asynchronous and non-blocking, you should **never** block a thread in your application code. If you have to use some blocking code (e.g. blocking I/O, JDBC) always use the dedicated coroutine dispatcher.
+Since Ktor architecture is asynchronous and non-blocking, you should **never** block a thread in your application code. If you have to use some blocking code \(e.g. blocking I/O, JDBC\) always use the dedicated coroutine dispatcher.
 
 ```kotlin
-@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return withContext(Dispatchers.IO) {
@@ -122,12 +119,11 @@ This function is the application starting point. It's used to initialize and con
 import io.ktor.application.Application
 import io.ktor.routing.routing
 import io.kvision.remote.applyRoutes
-import io.kvision.remote.getServiceManager
 import io.kvision.remote.kvisionInit
 
 fun Application.main() {
     routing {
-        applyRoutes(getServiceManager<IAddressService>())
+        applyRoutes(AddressServiceManager)
     }
     kvisionInit()
 }
@@ -138,7 +134,7 @@ The `kvisionInit` function can take multiple parameters of type `com.google.inje
 ```kotlin
 fun Application.main() {
     routing {
-        applyRoutes(getServiceManager<IAddressService>())
+        applyRoutes(AddressServiceManager)
     }
     kvisionInit(HelloModule())
 }
@@ -184,7 +180,7 @@ fun Application.main() {
     }
 
     routing {
-        applyRoutes(getServiceManager<IRegisterProfileService>()) // No authentication needed
+        applyRoutes(RegisterProfileServiceManager) // No authentication needed
         authenticate {
             post("login") {
                 // ...
@@ -193,10 +189,11 @@ fun Application.main() {
                 call.sessions.clear<Profile>()
                 call.respondRedirect("/")
             }
-            applyRoutes(getServiceManager<IAddressService>()) // Authentication needed
-            applyRoutes(getServiceManager<IProfileService>()) // Authentication needed
+            applyRoutes(AddressServiceManager) // Authentication needed
+            applyRoutes(ProfileServiceManager) // Authentication needed
         }
     }
     kvisionInit()
 }
 ```
+

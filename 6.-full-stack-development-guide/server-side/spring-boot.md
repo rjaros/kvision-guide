@@ -31,11 +31,12 @@ The standard way to configure Spring Boot application is `src/backendMain/resour
 
 ### Service class
 
-The implementation of the service class comes down to implementing required interface methods and making it a Spring component by using a `@Service` annotation with a "prototype" scope. 
+The implementation of the service class comes down to implementing required interface methods and making it a Spring component by using a `@Service` annotation with a "prototype" scope.&#x20;
 
 ```kotlin
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return listOf()
@@ -52,11 +53,12 @@ actual class AddressService : IAddressService {
 }
 ```
 
-Spring IoC \(Inversion of Control\) allows you to inject resources and other Spring components into your service class. You can use standard Spring `@Autowired` annotation or constructor based injection.
+Spring IoC (Inversion of Control) allows you to inject resources and other Spring components into your service class. You can use standard Spring `@Autowired` annotation or constructor based injection.
 
 ```kotlin
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     @Autowired
     lateinit var env: Environment
@@ -71,11 +73,12 @@ actual class AddressService : IAddressService {
 
 You can also inject custom Spring components, defined throughout your application.
 
-Because Spring Boot module is now based on Spring WebFlux and not Spring MVC \(which was used in KVision 1\), you cannot access servlet based objects, like `ServletContext`, `HttpServletRequest` or `HttpSession`. Instead KVision allows you to inject `ServerRequest` object from the WebFlux world \(it gives you access to the user session as well\).
+KVision allows you to inject `ServerRequest` object, which gives you access to the user session as well.
 
 ```kotlin
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
 
     @Autowired
@@ -96,11 +99,12 @@ Note: The new instance of the service class will be created by Spring for every 
 
 ### **Blocking code**
 
-Since Spring WebFlux architecture is asynchronous and non-blocking, you should not block threads in your application code. If you have to use some blocking code \(e.g. blocking I/O, JDBC\) use the dedicated coroutine dispatcher.
+Since Spring WebFlux architecture is asynchronous and non-blocking, you should not block threads in your application code. If you have to use some blocking code (e.g. blocking I/O, JDBC) use the dedicated coroutine dispatcher.
 
 ```kotlin
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class AddressService : IAddressService {
     override suspend fun getAddressList(search: String?, sort: Sort) {
         return withContext(Dispatchers.IO) {
@@ -112,7 +116,7 @@ actual class AddressService : IAddressService {
 
 ### Application class
 
-To allow KVision work with Spring Boot you have to pass all instances of the `KVServiceManager` objects \(defined in common code\) to the Spring environment. You do this by defining a provider method for the `List<KVServiceManager<Any>>` instance in the main application class.
+To allow KVision work with Spring Boot you have to pass all instances of the `KVServiceManager` objects (defined in common code) to the Spring environment. You do this by defining a provider method for the `List<KVServiceManager<Any>>` instance in the main application class.
 
 {% hint style="info" %}
 Use `@EnableAutoConfiguration` annotation to disable security if your app doesn't need it.
@@ -132,7 +136,7 @@ import org.springframework.context.annotation.Bean
 )
 class KVApplication {
     @Bean
-    fun getManagers() = listOf(AddressServiceManager)
+    fun getManagers() = listOf(getServiceManager<IAddressService>())
 }
 
 fun main(args: Array<String>) {
@@ -152,7 +156,7 @@ class SecurityConfiguration {
     @Bean
     fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
         return http.authorizeExchange()
-            .serviceMatchers(AddressServiceManager, ProfileServiceManager).authenticated()
+            .serviceMatchers(getServiceManager<IAddressService>(), getServiceManager<IProfileService>()).authenticated()
             .pathMatchers("/**").permitAll().and().csrf().disable()
             .exceptionHandling().authenticationEntryPoint { exchange, _ ->
                 val response = exchange.response
@@ -182,4 +186,3 @@ class SecurityConfiguration {
     }
 }
 ```
-

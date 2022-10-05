@@ -31,25 +31,14 @@ try {
 
 ## User-defined exceptions
 
-Since KVision 5.8.2 it is possible to define custom exception types in the common module, that will be propagated from the backend to the fronted side. Such exception need to inherit from `AbstractServiceException` and the serialization configuration of polymorphic serializers need to be declared with `RemoteSerialization.customConfiguration` property.
+Since KVision 5.8.2 it is possible to define custom exception types in the common module, that will be propagated from the backend to the fronted side. Such exceptions need to inherit from `AbstractServiceException` and need to be annotated with `@KVServiceException` annotation.
 
 ```kotlin
-@Serializable
+@KVServiceException
 class MyFirstException(override val message: String) : AbstractServiceException()
 
-@Serializable
+@KVServiceException
 class MySecondException(override val message: String) : AbstractServiceException()
-
-fun configureSerialization() {
-    RemoteSerialization.customConfiguration = Json {
-        serializersModule = SerializersModule {
-            polymorphic(AbstractServiceException::class) {
-                subclass(MyFirstException::class)
-                subclass(MySecondException::class)
-            }
-        }
-    }
-}
 ```
 
-When this function is called on both the frontend and the backend (e.g. in both `main()` functions), you should be able to throw custom exceptions on the backend side and catch them on the frontend side.
+Such exceptions are automatically registered by the framework and you should be able to throw custom exceptions on the backend side and catch them on the frontend side.

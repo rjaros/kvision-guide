@@ -48,6 +48,7 @@ Form controls are KVision components implementing one of six `FormControl` inter
 | `i.k.f.text.Password`          | `StringFormControl`   | built-in                           | A text field for password input.                                                         |
 | `i.k.f.text.TextArea`          | `StringFormControl`   | built-in                           | A text area.                                                                             |
 | `i.k.f.select.SimpleSelect`    | `StringFormControl`   | built-in                           | A standard select component.                                                             |
+| `i.k.f.spinner.SimpleSpinner`  | `NumberFormControl`   | built-in                           | Numeric text field.                                                                      |
 | `i.k.f.range.Range`            | `NumberFormControl`   | built-in                           | A range selection field.                                                                 |
 | `i.k.f.time.DateTime`          | `DateFormControl`     | kvision-bootstrap-datetime         | A date and/or time selection control.                                                    |
 | `i.k.f.text.RichText`          | `StringFormControl`   | kvision-richtext                   | A rich text editor.                                                                      |

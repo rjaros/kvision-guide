@@ -383,6 +383,17 @@ DateTime(label = "Date and time field") {
 
 &#x20;You can also use `minDate`, `maxDate`, `enabledDates` and `disabledDates` properties to control which dates the user is allowed to choose.
 
+### `i.k.f.spinner.SimpleSpinner`
+
+This is a simple number field component, based on standard HTML input control. It can be used when there is no need for advanced options of the `Spinner` component. You can set `min` and `max` values (default - no limits) and set the `step` value (default - 1).
+
+```kotlin
+SimpleSpinner(label = "Number 10 - 20", 
+    min = 10, 
+    max = 20, 
+    step = 2)
+```
+
 ### `i.k.f.spinner.Spinner`
 
 The `kvision-bootstrap-spinner` module allows you to use a form component based on [Bootstrap TouchSpin](https://github.com/istvan-ujjmeszaros/bootstrap-touchspin), which can be used to get numeric input from the user. The `Spinner` component has a few options to customize its appearance and functionality. You can set `min` and `max` values (default - no limits) and set the `step` value (default - 1).

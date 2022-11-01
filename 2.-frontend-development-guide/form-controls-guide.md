@@ -352,7 +352,7 @@ This component is contained in the `kvision-bootstrap-select-remote` module and 
 
 ### `i.k.f.time.DateTime`
 
-Both `kvision-datetime` and `kvision-bootstrap-datetime` modules allows you to use a sophisticated form control based on either [Tempus-dominus](https://getdatepicker.com/) or [Bootstrap datetime picker](https://github.com/pingcheng/bootstrap4-datetimepicker) libraries. Both modules share almost the same API. The `kvision-datetime` module is based on more modern component, which doesn't depend on Bootstrap or jQuery.&#x20;
+Both `kvision-datetime` and `kvision-bootstrap-datetime` modules allow you to use a sophisticated form control based on either [Tempus-dominus](https://getdatepicker.com/) or [Bootstrap datetime picker](https://github.com/pingcheng/bootstrap4-datetimepicker) libraries. Both modules share almost the same API. The `kvision-datetime` module is based on more modern component, which doesn't depend on Bootstrap or jQuery.&#x20;
 
 Is It's a full-featured component, configurable with plenty of options. It can be used to display date and/or time picker, based on the date format specified with [Fecha library formatting tokens](https://github.com/taylorhakes/fecha#formatting-tokens). The default format is _"YYYY-MM-DD HH:mm"_, which means the control will display date and time picker.
 

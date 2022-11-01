@@ -57,7 +57,7 @@ Form controls are KVision components implementing one of six `FormControl` inter
 | `i.k.f.spinner.Spinner`        | `NumberFormControl`   | kvision-bootstrap-spinner          | A spinner control for number selection.                                                  |
 | `i.k.f.upload.Upload`          | `KFilesFormControl`   | kvision-bootstrap-upload           | An upload file control with preview and multi-selection.                                 |
 | `i.k.f.text.Typeahead`         | `StringFormControl`   | kvision-bootstrap-typeahead        | A typeahed (autocomplete) text field with support for data source.                       |
-| i.k.f.text.TypeaheadRemote     | StringFormControl     | kvision-bootstrap-typeahead-remote | A typeahead (autocomplete) text field for fullstack interfaces.                          |
+| `i.k.f.text.TypeaheadRemote`   | `StringFormControl`   | kvision-bootstrap-typeahead-remote | A typeahead (autocomplete) text field for fullstack interfaces.                          |
 
 {% hint style="info" %}
 Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated.&#x20;

@@ -157,7 +157,7 @@ Most React components can have children. Typically you can easily add other Reac
         react {
             ElTabs {
                 ElTabsPane {
-                    attrs.label = "Tab"
+                    label = "Tab"
                     kv {
                         textInput(value = "KVision text input inside React")
                     }

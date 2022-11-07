@@ -1,11 +1,11 @@
 # Integrating With React Components
 
-[React](https://reactjs.org/) is one of the most popular JavaScript libraries for building user interfaces. It's architecture is based on encapsulated components that manage their own state. There are a lot of free React components available, you can find a list of most popular on [this page](https://github.com/brillout/awesome-react-components). 
+[React](https://reactjs.org/) is one of the most popular JavaScript libraries for building user interfaces. It's architecture is based on encapsulated components that manage their own state. There are a lot of free React components available, you can find a list of most popular on [this page](https://github.com/brillout/awesome-react-components).&#x20;
 
 Although KVision offers a rich set of different components, there will be occasions when you will need to use something that KVision does not offer. Fortunately both KVision and Kotlin/JS ecosystem allows you to include any [NPM](https://www.npmjs.com/) dependencies in your project. And KVision has full support for embedding external React components inside your application. React components are standardized, so it's fairly easy to learn how to use them.
 
 {% hint style="info" %}
-Note: KVision support for React components is based on [Kotlin Wrappers](https://github.com/JetBrains/kotlin-wrappers) from JetBrains, so it's good to know how to use these libraries. You can learn the most important things from [this tutorial](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction). 
+Note: KVision support for React components is based on [Kotlin Wrappers](https://github.com/JetBrains/kotlin-wrappers) from JetBrains, so it's good to know how to use these libraries. You can learn the most important things from [this tutorial](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01\_Introduction).&#x20;
 {% endhint %}
 
 ## Dependencies
@@ -17,11 +17,11 @@ kotlin {
 // ...
     sourceSets["main"].dependencies {
     // ...
-        implementation(npm("react-awesome-button", "*"))
+        implementation(npm("react-awesome-button", "6.5.1"))
         implementation(npm("prop-types", "*")) // required by react-awesome-button
 
-        implementation(npm("react-ace", "*"))
-        implementation(npm("ace-builds", "*"))
+        implementation(npm("react-ace", "10.1.0"))
+        implementation(npm("ace-builds", "1.12.5"))
         implementation(npm("file-loader", "*")) // required by ace-builds
         
         implementation("io.kvision:kvision:$kvisionVersion")
@@ -49,14 +49,14 @@ external interface ReactButtonProps : PropsWithChildren {
 val ReactButton: ComponentClass<ReactButtonProps> = require("react-awesome-button").AwesomeButtonProgress
 ```
 
- Having this declaration, you can use the component with the  `react { ... }` DSL builder function.
+&#x20;Having this declaration, you can use the component with the  `react { ... }` DSL builder function.
 
 ```kotlin
 react {
     ReactButton {
-        attrs.type = "primary"
-        attrs.size = "large"
-        attrs.action = { _, next ->
+        type = "primary"
+        size = "large"
+        action = { _, next ->
             window.setTimeout({
                 next()
             }, 3000)
@@ -70,13 +70,13 @@ react {
 
 React components can be stateful and can maintain internal state data. With KVision it's possible to logically relocate this internal state from React component into KVision component, where it can be accessed from the other parts of the application.
 
-Let's use an advanced ACE code editor with [react-ace](https://www.npmjs.com/package/react-ace) component. The basic declaration is similar to the previous example \(of course the component has a lot more properties then covered by this example\).
+Let's use an advanced ACE code editor with [react-ace](https://www.npmjs.com/package/react-ace) component. The basic declaration is similar to the previous example (of course the component has a lot more properties then covered by this example).
 
 ```kotlin
 import react.ComponentClass
 import react.PropsWithChildren
 
-external interface ReactAceProps : PropsWithChildren {
+external interface ReactAceProps : PropsWithRef<dynamic>, PropsWithChildren {
     var value: String
     var mode: String
     var theme: String
@@ -97,16 +97,16 @@ class App : Application() {
 Note: Unfortunately when using `require()` function you need to "guess" how to access the component class. Sometimes you need `.default` property, sometimes you can use the name of the class e.g.  `.AwesomeButtonProgress`, and sometimes simple `require()` is enough.
 {% endhint %}
 
-Now you can use the component with advanced form of the DSL builder function`react(initialState) { getState, changeState -> ... }`.  
+Now you can use the component with advanced form of the DSL builder function`react(initialState) { getState, changeState -> ... }`. &#x20;
 
 ```kotlin
 
 val ace = react("some initial code") { getState, changeState ->
     AceEditor {
-        attrs.value = getState()
-        attrs.mode = "kotlin"
-        attrs.theme = "monokai"
-        attrs.onChange = { value -> changeState { value } }
+        value = getState()
+        mode = "kotlin"
+        theme = "monokai"
+        onChange = { value -> changeState { value } }
     }
 }
 button("Get the code").onClick {
@@ -117,11 +117,11 @@ button("Set the code").onClick {
 }
 ```
 
-You initialize the KVision `React` component with some initial state, which can be any type `T` you need. You use `getState(): () -> T` function to retrieve the current state and assign the correct value to the React component input property. And you can use `changeState(): ((T) -> T) -> Unit` function to modify the state \(most of the time this function will be used with some React callbacks\). After creating this two-way bindings you can both read and change the current state of the component with its `.state` property.
+You initialize the KVision `React` component with some initial state, which can be any type `T` you need. You use `getState(): () -> T` function to retrieve the current state and assign the correct value to the React component input property. And you can use `changeState(): ((T) -> T) -> Unit` function to modify the state (most of the time this function will be used with some React callbacks). After creating this two-way bindings you can both read and change the current state of the component with its `.state` property.
 
 ## Accessing internal API of React components
 
-Sometimes it may be necessary to access the internal api of a React component, beyond the attributes exposed in the interface. To do this, you can use the `ref` variable provided by `RElementBuilder`, which is part of the `kotlin-react` library:
+Sometimes it may be necessary to access the internal api of a React component, beyond the attributes exposed in the interface. To do this, you can use the `ref` variable provided by `PropsWithRef<T>`, which is part of the `kotlin-react` library:
 
 ```kotlin
     var internalEditor: dynamic = null
@@ -134,9 +134,8 @@ Sometimes it may be necessary to access the internal api of a React component, b
                 internalEditor = comp?.editor
             }
             AceEditor {
-                attrs.apply {
-                   ... // see prior examples
-                }
+                value = getState()
+                // other parameters
                 ref = onContainerCallback
             }
         }
@@ -149,7 +148,7 @@ Sometimes it may be necessary to access the internal api of a React component, b
 
 ## Using KVision components as React children
 
-Most React components can have children. Typically you can easily add other React components as React children. But you may also use KVision components with a help of `kv` helper function. 
+Most React components can have children. Typically you can easily add other React components as React children. But you may also use KVision components with a help of `kv` helper function.&#x20;
 
 ```kotlin
     import io.kvision.react.kv
@@ -170,7 +169,7 @@ Most React components can have children. Typically you can easily add other Reac
 
 ## Resources
 
-When using React components you will also need to include resources \(like CSS\). Use `require` function inside some `init {}` block for this purpose.
+When using React components you will also need to include resources (like CSS). Use `require` function inside some `init {}` block for this purpose.
 
 ```kotlin
 init {
@@ -180,4 +179,3 @@ init {
     require("ace-builds/src-noconflict/theme-monokai")
 }
 ```
-

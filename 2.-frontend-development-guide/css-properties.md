@@ -1,6 +1,6 @@
-# CSS Properties
+# Type safe CSS Properties
 
-Every KVision component has a full range of properties based on CSS specification. Most of them are 100% type-safe - based on enumeration values, dedicated classes and functions. You can of course use custom CSS stylesheets and assign predefined classes to your components \(as explained in the [Theming](themes.md#adding-a-custom-css-file-to-your-application) chapter\), but KVision gives you a choice. With CSS properties you can style any component's size, position, margins, paddings, borders, colors, backgrounds, text and fonts with pure Kotlin code.
+Every KVision component has a full range of properties based on CSS specification. Most of them are 100% type-safe - based on enumeration values, dedicated classes and functions. You can of course use custom CSS stylesheets and assign predefined classes to your components (as explained in the [Theming](themes.md#adding-a-custom-css-file-to-your-application) chapter), but KVision gives you a choice. With CSS properties you can style any component's size, position, margins, paddings, borders, colors, backgrounds, text and fonts with pure Kotlin code.
 
 Most of the CSS properties are defined in the `io.kvision.core.StyledComponent` class.
 
@@ -101,7 +101,51 @@ div {
 }
 ```
 
+## Global Styles
+
+You can declare global styles as a val on any class that is referenced by your application; for example:
+
+```
+    val bodyStyle = style("body") {
+        margin = 0.px
+        padding = 0.px
+        background = Background(color = Color.hex(APP_BACKGROUND))
+        fontFamily = "Lato"
+        overflow = Overflow.HIDDEN
+    }
+```
+
+If you prefer, you can keep these isolated in their own file:
+
+```
+
+class App {
+    val styles = GlobalStyles
+}
+
+// own file
+object GlobalStyles {
+
+    val bodyStyle = style("body") {
+        // ...
+    }
+}
+```
+
 {% hint style="info" %}
 Note: `Style` objects are currently not designed to work with multiple `Root` containers.
 {% endhint %}
 
+## Pseudo Class Support
+
+The `Style` class as a pClass property which will set the style [pseudoclass](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes).
+
+For example:
+
+```
+    div {    
+        addCssStyle(style(pClass = HOVER) {
+            color = Color.name(YELLOWGREEN)
+        })
+    }     
+```

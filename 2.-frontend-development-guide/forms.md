@@ -38,27 +38,26 @@ Note: You have to add `@Contextual` annotations to your `Date` fields in order t
 
 Form controls are KVision components implementing one of six `FormControl` interfaces inside `io.kvision.form` package: `StringFormControl`, `NumberFormControl`, `BoolFormControl`, `TriStateFormControl`, `DateFormControl` and `KFilesFormControl`. KVision comes with a bunch of build-in or modular form components.
 
-| Component                      | Interface             | Module                             | Description                                                                              |
-| ------------------------------ | --------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------- |
-| `i.k.f.check.CheckBox`         | `BoolFormControl`     | built-in                           | A check-box.                                                                             |
-| `i.k.f.check.Radio`            | `BoolFormControl`     | built-in                           | A radio-button.                                                                          |
-| `i.k.f.check.RadioGroup`       | `StringFormControl`   | built-in                           | A group of radio-buttons.                                                                |
-| `i.k.f.check.TriStateCheckBox` | `TriStateFormControl` | built-in                           | A tri-state check-box.                                                                   |
-| `i.k.f.text.Text`              | `StringFormControl`   | built-in                           | A text field.                                                                            |
-| `i.k.f.text.Password`          | `StringFormControl`   | built-in                           | A text field for password input.                                                         |
-| `i.k.f.text.TextArea`          | `StringFormControl`   | built-in                           | A text area.                                                                             |
-| `i.k.f.select.SimpleSelect`    | `StringFormControl`   | built-in                           | A standard select component.                                                             |
-| `i.k.f.spinner.SimpleSpinner`  | `NumberFormControl`   | built-in                           | Numeric text field.                                                                      |
-| `i.k.f.range.Range`            | `NumberFormControl`   | built-in                           | A range selection field.                                                                 |
-| `i.k.f.time.DateTime`          | `DateFormControl`     | kvision-datetime                   | A date and/or time selection control.                                                    |
-| `i.k.f.text.RichText`          | `StringFormControl`   | kvision-richtext                   | A rich text editor.                                                                      |
-| `i.k.f.select.Select`          | `StringFormControl`   | kvision-bootstrap-select           | An advanced select box with support for multiple selection and AJAX data source support. |
-| i.k.f.select.TomSelect         | StringFormControl     | kvision-tom-select                 | Advanced select boxwith support for multiple selection and remote data source.           |
-| `i.k.f.select.SelectRemote`    | `StringFormControl`   | kvision-bootstrap-select-remote    | A select box for fullstack interfaces.                                                   |
-| `i.k.f.spinner.Spinner`        | `NumberFormControl`   | kvision-bootstrap-spinner          | A spinner control for number selection.                                                  |
-| `i.k.f.upload.Upload`          | `KFilesFormControl`   | kvision-bootstrap-upload           | An upload file control with preview and multi-selection.                                 |
-| `i.k.f.text.Typeahead`         | `StringFormControl`   | kvision-bootstrap-typeahead        | A typeahed (autocomplete) text field with support for data source.                       |
-| `i.k.f.text.TypeaheadRemote`   | `StringFormControl`   | kvision-bootstrap-typeahead-remote | A typeahead (autocomplete) text field for fullstack interfaces.                          |
+| Component                       | Interface             | Module                    | Description                                                                    |
+| ------------------------------- | --------------------- | ------------------------- | ------------------------------------------------------------------------------ |
+| `i.k.f.check.CheckBox`          | `BoolFormControl`     | built-in                  | A check-box.                                                                   |
+| `i.k.f.check.Radio`             | `BoolFormControl`     | built-in                  | A radio-button.                                                                |
+| `i.k.f.check.RadioGroup`        | `StringFormControl`   | built-in                  | A group of radio-buttons.                                                      |
+| `i.k.f.check.TriStateCheckBox`  | `TriStateFormControl` | built-in                  | A tri-state check-box.                                                         |
+| `i.k.f.text.Text`               | `StringFormControl`   | built-in                  | A text field.                                                                  |
+| `i.k.f.text.Password`           | `StringFormControl`   | built-in                  | A text field for password input.                                               |
+| `i.k.f.text.TextArea`           | `StringFormControl`   | built-in                  | A text area.                                                                   |
+| `i.k.f.select.SimpleSelect`     | `StringFormControl`   | built-in                  | A standard select component.                                                   |
+| `i.k.f.spinner.SimpleSpinner`   | `NumberFormControl`   | built-in                  | Numeric text field.                                                            |
+| `i.k.f.range.Range`             | `NumberFormControl`   | built-in                  | A range selection field.                                                       |
+| `i.k.f.time.DateTime`           | `DateFormControl`     | kvision-datetime          | A date and/or time selection control.                                          |
+| `i.k.f.text.RichText`           | `StringFormControl`   | kvision-richtext          | A rich text editor.                                                            |
+| `i.k.f.select.TomSelect`        | `StringFormControl`   | kvision-tom-select        | Advanced select boxwith support for multiple selection and remote data source. |
+| `i.k.f.select.TomSelectRemote`  | `StringFormControl`   | kvision-tom-select-remote | A select box for fullstack interfaces.                                         |
+| `i.k.f.spinner.Spinner`         | `NumberFormControl`   | kvision-bootstrap-spinner | A spinner control for number selection.                                        |
+| `i.k.f.upload.Upload`           | `KFilesFormControl`   | kvision-bootstrap-upload  | An upload file control with preview and multi-selection.                       |
+| `i.k.f.text.TomTypeahead`       | `StringFormControl`   | kvision-tom-select        | A typeahed (autocomplete) text field with support for data source.             |
+| `i.k.f.text.TomTypeaheadRemote` | `StringFormControl`   | kvision-tom-select-remote | A typeahead (autocomplete) text field for fullstack interfaces.                |
 
 {% hint style="info" %}
 Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated.&#x20;

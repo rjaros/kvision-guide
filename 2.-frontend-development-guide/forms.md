@@ -99,7 +99,7 @@ formPanel<Form> {
     add(Form::time, DateTime(format = "HH:mm", label = "Time field"))
     add(Form::checkbox, CheckBox(label = "Required checkbox"))
     add(Form::radio, Radio(label = "Radio button"))
-    add(Form::select, Select(options = listOf("first" to "First option", "second" to "Second option"),
+    add(Form::select, TomSelect(options = listOf("first" to "First option", "second" to "Second option"),
             label = "Simple select"
         )
     )

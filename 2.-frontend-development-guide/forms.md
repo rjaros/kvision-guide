@@ -50,9 +50,10 @@ Form controls are KVision components implementing one of six `FormControl` inter
 | `i.k.f.select.SimpleSelect`    | `StringFormControl`   | built-in                           | A standard select component.                                                             |
 | `i.k.f.spinner.SimpleSpinner`  | `NumberFormControl`   | built-in                           | Numeric text field.                                                                      |
 | `i.k.f.range.Range`            | `NumberFormControl`   | built-in                           | A range selection field.                                                                 |
-| `i.k.f.time.DateTime`          | `DateFormControl`     | kvision-bootstrap-datetime         | A date and/or time selection control.                                                    |
+| `i.k.f.time.DateTime`          | `DateFormControl`     | kvision-datetime                   | A date and/or time selection control.                                                    |
 | `i.k.f.text.RichText`          | `StringFormControl`   | kvision-richtext                   | A rich text editor.                                                                      |
 | `i.k.f.select.Select`          | `StringFormControl`   | kvision-bootstrap-select           | An advanced select box with support for multiple selection and AJAX data source support. |
+| i.k.f.select.TomSelect         | StringFormControl     | kvision-tom-select                 | Advanced select boxwith support for multiple selection and remote data source.           |
 | `i.k.f.select.SelectRemote`    | `StringFormControl`   | kvision-bootstrap-select-remote    | A select box for fullstack interfaces.                                                   |
 | `i.k.f.spinner.Spinner`        | `NumberFormControl`   | kvision-bootstrap-spinner          | A spinner control for number selection.                                                  |
 | `i.k.f.upload.Upload`          | `KFilesFormControl`   | kvision-bootstrap-upload           | An upload file control with preview and multi-selection.                                 |

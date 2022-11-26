@@ -89,34 +89,37 @@ RichText(
 }
 ```
 
-### `i.k.f.text.Typeahead`
+### `i.k.f.text.TomTypeahead`
 
-The kvision-bootstrap-typeahead module contains an enhanced text field with support for typeahead (autocomplete) functionality. Both local and remote data sources are supported. To use local data source pass a list of values with the `options` parameter.
+The kvision-tom-select module contains an enhanced text field with support for typeahead (autocomplete) functionality. Both local and remote data sources are supported. To use local data source pass a list of values with the `options` parameter.
 
 ```kotlin
-Typeahead(
+TomTypeahead(
     options = listOf("Alabama", "Alaska", "Arizona", "Arkansas", "California"),
     label = "Select state"
 )
 ```
 
-To use a remote data source (with an AJAX or RESTful call) pass a `TaAjaxOptions` object.
+To use a remote data source pass a `TomSelectCallbacks` object with a `load` callback.
 
 ```kotlin
-Typeahead(taAjaxOptions = TaAjaxOptions(
-    "https://api.github.com/search/repositories",
-    preprocessQuery = { query ->
-        obj {
-            this.q = query
+TomTypeahead(
+    label = "Select a repository",
+    tsCallbacks = TomSelectCallbacks(
+        load = { query, callback ->
+            restClient.callDynamic("https://api.github.com/search/repositories") {
+                data = obj { q = query }
+                resultTransform = { it.items }
+            }.then { items: dynamic ->
+                @Suppress("UnsafeCastFromDynamic")
+                callback(items.map { item -> item.name })
+            }
         }
-    },
-    preprocessData = {
-        it.items.map { item -> item.name }
-    }
-), items = 5, delay = 3000, minLength = 3, label = "Select a repository")
+    )
+)
 ```
 
-### `i.k.f.text.TypeaheadRemote`
+### `i.k.f.text.TomTypeaheadRemote`
 
 This component is contained in the `kvision-bootstrap-typeahead-remote` module and is a special version of the `Typeahead` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../7.-full-stack-components/typeahead-remote.md) of this guide.
 
@@ -253,9 +256,9 @@ SimpleSelect(
 )
 ```
 
-### `i.k.f.select.Select`
+### `i.k.f.select.TomSelect`
 
-The `kvision-bootstrap-select` module allows you to use a sophisticated form control based on [Bootstrap Select](https://github.com/silviomoreto/bootstrap-select). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network with an AJAX extension. The `Select` component can be initialized with a list of options (key to values pairs).
+The `kvision-tom-select` module allows you to use a sophisticated form control based on [Tom Select](https://tom-select.js.org/). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network. The `TomSelect` component can be initialized with a list of options (key to values pairs).
 
 ```kotlin
 Select(
@@ -264,21 +267,7 @@ Select(
 )
 ```
 
-It can also be initialized by adding options components (`SelectOption` and `SelectOptGroup` classes) by hand. This way you can also use some more advanced features, like option groups, subtexts, icons and dividers.
-
-```kotlin
-Select(label = "A select with features") {
-    selectOption("first", "First Option", "Subtext")
-    selectOption(divider = true)
-    selectOption("second", "Second Option")
-    selectOptGroup("Option group") {
-        selectOption("g1", "Group 1", icon = "fab fa-apple")
-        selectOption("g2", "Group 2", icon = "fab fa-google")
-    }
-}
-```
-
-You can select many options at the same time  with `multiple` property. You can use `maxOptions` property to limit the number of selected options.
+You can select many options at the same time  with `multiple` property. You can use `maxItems` property to limit the number of selected options.
 
 ```kotlin
 Select(
@@ -286,34 +275,11 @@ Select(
     multiple = true,
     label = "Multiple select"
 ) {
-    maxOptions = 2
+    maxItems = 2
 }
 ```
 
-If your select has a long list of options you can use `liveSearch` property to add a simple search box.
-
-```kotlin
-Select(
-    options = listOf("first" to "First option", "second" to "Second option", "third" to "Third option"),
-    label = "Select with a search box"
-) {
-    liveSearch = true
-}
-```
-
-By default the `Select` component is resized to 100% of its parent width, but this can be changed with properties`selectWidth` (any CSS size) or `selectWidthType` (`AUTO` or `FIT` values).
-
-```kotlin
-Select(
-    options = listOf("first" to "First option", "second" to "Second option"),
-    label = "Resized select"
-) {
-    // selectWidth = 800.px
-    selectWidthType = SelectWidthType.AUTO
-}
-```
-
-Other properties allow to define a placeholder, a button style, an autofocus attribute and to automatically generate an empty option (to be able to de-select value).
+Other properties allow to define a placeholder, an autofocus attribute and to automatically generate an empty option (to be able to de-select value).
 
 ```kotlin
 Select(
@@ -321,32 +287,49 @@ Select(
     label = "Styled Select"
 ) {
     placeholder = "Select a value"
-    style = ButtonStyle.DANGER
     autofocus = true
     emptyOption = true
 }
 ```
 
-`Select` component can also work with a remote data source, by integrating [Ajax Bootstrap Select](https://github.com/truckingsim/Ajax-Bootstrap-Select) extension. To use AJAX mode you should initialize`ajaxOptions` property with an instance of   `io.kvision.form.select.AjaxOptions` data class. See API documentation for more information about options and parameters of AJAX mode.
+`TomSelect` component can also work with a remote data source - just pass a `TomSelectCallbacks` object with a `load` callback
 
 ```kotlin
-Select(label = "Select with remote data source") {
-    ajaxOptions = AjaxOptions("https://api.github.com/search/repositories", preprocessData = {
-        it.items.map { item ->
-            obj {
-                this.value = item.id
-                this.text = item.name
+TomSelect(label = "Select a repository",
+    emptyOption = true,
+    tsCallbacks = TomSelectCallbacks(
+        load = { query, callback ->
+            restClient.callDynamic("https://api.github.com/search/repositories") {
+                data = obj { q = query }
+                resultTransform = { it.items }
+            }.then { items: dynamic ->
+                @Suppress("UnsafeCastFromDynamic")
+                callback(items.map { item ->
+                    obj {
+                        this.value = item.id
+                        this.text = item.name
+                        this.subtext = item.owner.login
+                    }
+                })
             }
-        }
-    }, data = obj {
-        q = "{{{q}}}"
-    }, minLength = 3, requestDelay = 1000)
-}
+        },
+        shouldLoad = { it.length >= 3 }
+    ),
+    tsRenders = TomSelectRenders(option = { item, escape ->
+        """
+            <div>
+                <span class="title">${escape(item.text)}</span>
+                <small>(${escape(item.subtext)})</small>
+            </div>
+        """.trimIndent()
+    })
+)
+
 ```
 
-### `i.k.f.select.SelectRemote`
+### `i.k.f.select.TomSelectRemote`
 
-This component is contained in the `kvision-bootstrap-select-remote` module and is a special version of `Select` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../7.-full-stack-components/remote-select.md) of this guide.
+This component is contained in the `kvision-tom-select-remote` module and is a special version of `TomSelect` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../7.-full-stack-components/remote-select.md) of this guide.
 
 ## Others
 

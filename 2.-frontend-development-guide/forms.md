@@ -60,7 +60,7 @@ Form controls are KVision components implementing one of six `FormControl` inter
 | `i.k.f.text.TomTypeaheadRemote` | `StringFormControl`   | kvision-tom-select-remote | A typeahead (autocomplete) text field for fullstack interfaces.                |
 
 {% hint style="info" %}
-Note: `RadioGroup` and `Select` controls always return `String` values. Multiple selections are comma-separated.&#x20;
+Note: `RadioGroup` and `TomSelect` controls always return `String` values. Multiple selections are comma-separated.&#x20;
 
 There is also `GenericRadioGroup<T>` component, which can return value of any type, but it can't be used inside `Form`/`FormPanel` containers.&#x20;
 {% endhint %}

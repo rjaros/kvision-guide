@@ -1,41 +1,194 @@
-# Migration from 5.x to 6.x
+# Migration from 4.x to 5.x
 
-This is the list of incompatibilities you may encounter when migrating your application to KVision 6.0.0.
+This is the list of incompatibilities you may encounter when migrating your application to KVision 5.0.0.
 
 ## General changes
 
-* Java 17 is now required to develop all KVision applications and to run KVision fullstack applications. You may need to select JDK 17 in the `File -> Project structure` menu in the IntelliJ IDEA.
-* The legacy backend is no longer supported - be sure you are using IR.
-* The fluent pattern has been removed from many components and containers which means some methods no longer return the component instance. Most notably the `onClick` method now returns handler id (like all other event methods). It could be a problem if you directly use `add()` methods instead of DSL.
+* All `classes: Set<String>` constructor parameters and DSL builder parameters for all KVision components have been replaced with `className: String?` parameters (previously available only for DSL builders), taking a space-separated list of CSS class names.
 
 ```kotlin
-// Works in KVision 5, doesn't work in KVision 6
-add(Button("OK").onClick {
-    // do something
-})
+// KVision 4
 
-// Works is KVision 5 and KVision 6
-button("OK").onClick {
-    // do something
+div(classes = setOf("card", "important")) {
+   + "Some content"
+} 
+
+// KVision 5
+
+div(className = "card important") {
+   + "Some content"
+} 
+```
+
+* &#x20;All DSL builder functions with `ObservableState` parameter have been removed. Use `bind()` extension function instead (from the new `kvision-state` module).
+
+```kotlin
+val state = ObservableValue("Centered content")
+
+// KVision 4
+
+div(state, align = Align.CENTER) { 
+    p(it)
+}
+
+// KVision 5
+
+div(align = Align.CENTER).bind(state) {
+    p(it)
 }
 ```
 
-## Modules and components
+{% hint style="info" %}
+Note: You can try to use `bindSync()` extension function in case of very rare timing problems.
+{% endhint %}
 
-* `Spinner` and `Range` components have been moved to the new `io.kvision.form.number` package.
-* `Select`, `Spinner` and `Upload` are now different components. The old `Upload` component based on bootstrap-fileinput library is still available as `BootstrapUpload`.  The old `Select` and `Spinner` component are no longer available. If you need advanced features use new `TomSelect` , `Spinner`, `Numeric` and `IMaskNumeric`  components.
-* The `Spinner` component is now only for integer values. Use `Numeric` or `ImaskNumeric` components for decimal/float values.
-* `Typeahead` component is no longer available. Use `TomTypeahead` from `kvision-tom-select` module instead.
-* The `kvision-bootstrap-css` and `kvision-bootstrap-dialog` modules have been removed and are no longer necessary. `BootstrapCssModule` initializer works like before but is contained in the main `kvision-bootstrap` module.
-* When using `Tabulator` component you need to use one of available css initializers. Use `TabulatorCssBootstrapModule` initializer for Bootstrap 5 theme.
-* The `serializer` parameter is now required when initializing `Tabulator` with Kotlin data model. In most cases it should be enough to use `serializer = serializer()`. Of course your data model must be `@Serializable` now.
-* The Navigo 7 router from `kvision-routing-navigo` module uses `#` as the default hash sign. Use `Routing.init(hash = "#!")` if you want to restore the previous behaviour.
-* The `routing` global variable has been removed. The internal router instance is returned by the `Routing.init()` method.
-* The `kvision-toast` module is no longer available. Use `kvision-toastify` instead with `ToastifyModule` initializer. The new `Toast` component has a bit different API (e.g. use `danger()` method instead of `error()`)
+* `FlexPanel`, `HPanel`, `VPanel` and `GridPanel` containers don't render wrapper DIVs by default for their children components. The previously available `noWrappers` parameter has been removed and new `useWrappers` (defaults to `false`) parameter has been introduced (note the opposite meaning!). To make migrations easier, a compatibility parameter `panelsCompatibilityMode`is available within `startApplication()` function. When set to `true`, the `useWrappers` default value will be `true`, and you will only need to replace `noWrappers = true` with `useWrappers = false` to migrate your whole app.
+
+```kotlin
+fun main() {
+    startApplication(::App, module.hot, panelsCompatibilityMode = true)
+}
+```
+
+* The default values for `Root` container parameters have been changed. Previously `container-fluid` was the default CSS class applied and additional element with `row` class was also generated. In KVision 5 `Root` container by default doesn't render any additional markup.
+
+```kotlin
+// KVision 4
+
+root("kvapp", containerType = ContainerType.NONE, addRow = false) {
+    // ...
+}
+
+// KVision 5
+
+root("kvapp") {
+    // ...
+}
+```
+
+* Bootstrap 5 introduces many breaking changes. You should definitely read [Bootstrap's migration guide](https://getbootstrap.com/docs/5.1/migration/) if you use Bootstrap CSS classes directly.
+* Micronaut 3.0 introduces some breaking changes. Check out [Micronaut upgrading guide](https://docs.micronaut.io/3.0.0/guide/index.html#upgrading).
+* Javalin 4.0 introduces some breaking changes. Check out the [changelog](https://javalin.io/news/javalin-4-release-candidate).
+
+## Modules
+
+* All modules which include CSS stylesheets require explicit initialization. This also applies to the core module. This initialization ensures a predictable order in which all styles will be applied. The initialization is performed by adding dedicated module objects as parameters to the `startApplication()` function.
+
+```kotlin
+fun main() {
+    startApplication(
+        ::App,
+        module.hot,
+        BootstrapModule,
+        BootstrapCssModule,
+        FontAwesomeModule,
+        BootstrapSelectModule,
+        BootstrapDatetimeModule,
+        BootstrapUploadModule,
+        CoreModule
+    )
+}
+```
+
+* These methods: `getElementJQuery()`, `getElementJQueryD()`, `showAnim()`, `hideAnim()`, `slideDown()`, `slideUp()`, `fadeIn()`, `fadeOut()` and `animate()` of the `Widget` class have been extracted to the new `kvision-jquery` module as the extension functions.
+* Other jQuery dependencies (including static `jQuery()` function) have been moved to the `kvision-jquery` module as well. The core module no longer depends on jQuery library.
+* The `RestClient` component has been moved to the new `kvision-rest` module and completely redesigned (including its API). To make migrations easier, the original, jQuery based client has been moved to the `kvision-jquery` module as a deprecated `LegacyRestClient`.
+* The `ObservableList` and `ObservableSet` classes and data bindings functions `bind()`, `bindEach()` and `bindTo()` have been moved to the `kvision-state` module.
+* The `Table` component has been moved to the `kvision-bootstrap` module.
+* The `kvision-event-flow` module has been renamed to `kvision-state-flow`.
+
+## Events
+
+KVision no longer re-dispatches native component events as custom events. Instead it gives you the possibility to add direct listeners for all events with `event()` and `jqueryEvent()` extension functions, used inside `onEvent` function.
+
+### Standard events
+
+For standard events, just use the name.
+
+```kotlin
+text.onEvent {
+    change = {
+        console.log("Input text changed.")
+    }
+}
+```
+
+### KVision custom events
+
+For custom KVision events (defined by `SplitPanel`, `Window`, `Tabulator`, `TabPanel` and some OnsenUI components) use the name of the event as well. Note: events for `Tabulator` and `TabPanel` component have been renamed (e.g. `tabulatorRowClick` -> `rowClickTabulator`).
+
+```kotlin
+tabulator.onEvent {
+    rowClickTabulator = {
+        console.log("Row selected.")
+    }
+}
+
+window.onEvent {
+    resizeWindow = {
+        console.log("Window resized.")
+    }
+}
+```
+
+### &#x20;Bootstrap custom events
+
+For events defined by Bootstrap components, which cannot be used like above because of their names, use `event()` extension function.
+
+```kotlin
+// KVision 4
+
+modal.onEvent {
+    shownBsModal = {
+        console.log("Bootstrap modal is shown.")
+    }
+    hiddenBsModal = {
+        console.log("Bootstrap modal is hidden")
+    }
+}
+
+// KVision 5
+
+modal.onEvent {
+    event("shown.bs.modal") {
+        console.log("Bootstrap modal is shown.")
+    }
+    event("hidden.bs.modal") {
+        console.log("Bootstrap modal is hidden")
+    }
+}
+```
+
+### jQuery events
+
+For events defined by jQuery based components (`Select`, `Spinner`, `DateTime`, `Typeahead`, `Upload`) use `jqueryEvent()` extension function.
+
+```kotlin
+// KVision 4
+
+select(listOfPairs("Option 1", "Option 2", "Option 3")) {
+    onEvent {
+        changedBsSelect = {
+            console.log("Selection changed.")
+        }
+    }
+}
+
+// KVision 5
+
+select(listOfPairs("Option 1", "Option 2", "Option 3")) {
+    onEvent {
+        jqueryEvent("changed.bs.select") { _ ->
+            console.log("Selection changed.")
+        }
+    }
+}
+```
 
 ## Other changes
 
-* The `getElement()` method returns `HTMLElement` type instead of `Node`. In some rare cases your code may not compile until the type is changed.
-* The Cordova KVision API uses now `kotlin.Result<T>` instead of a self-implemented `Result` class. You need to adjust your code if you develop Cordova applications with KVision.
-* The `panelsCompatibilityMode` option (compatibility with KVision 4) has been removed.
-* Lots of old, deprecated API has been removed. Be sure you to fix all your deprecation warnings before upgrading to KVision 6.
+* The `SplitPanel` container is now sized with percentage values. You can use `minWidth` and/or `maxWidth` properties for the child component to block automatic resizing.
+* Due to Bootstrap 5 limitation, components can't have both tooltip and popover enabled at the same time.
+* `Tabulator` component no longer uses table types enums of the `Table` component. It now has its own enum values in its own `kvision-tabulator` module.
+* `Style` objects have been refactored. The order of constructor parameters has changed. The `className` parameter has been renamed to `selector` to avoid confusion.
+* The KVision Gradle plugin ID has changed from `kvision` to `io.kvision` and maven coordinates of the plugin artifacts have changed to comply with Gradle conventions. The `resolutionStrategy` block in `settings.gradle.kts` file is no longer required for KVision plugin. The plugin is now used with frontend-only projects as well, to simplify build file configuration.&#x20;

@@ -23,8 +23,8 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * many different text input components including rich text editor, typeahead and input mask support
 * buttons, checkboxes, radios and switches
 * date and time picker
-* spinner and range numeric input components
-* advanced select box with ajax support
+* spinner, range and numeric input components
+* advanced select box with remote data support
 * file upload with preview and multi-selection
 * advanced charts
 * reactive tables
@@ -44,6 +44,7 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * built-in support for [Pace](https://codebyzach.github.io/pace/) automatic page loader
 * built-in support for [Leaflet](https://leafletjs.com/) interactive maps
 * built-in support for printing with [Print.js](https://printjs.crabbly.com/) library
+* built-in support for [Ballast](https://copper-leaf.github.io/ballast/) state management framework
 
 #### Flexibility
 
@@ -57,7 +58,7 @@ KVision is suitable for any kind of projects, including responsive, mobile web a
 
 #### **Fullstack**
 
-KVision contains innovative connectivity interface for a bunch of popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.io), [Spring Boot](https://spring.io/projects/spring-boot), [Javalin](https://javalin.io), [Vert.x](https://vertx.io) and [Micronaut](https://micronaut.io), which allows to build fullstack applications with shared code for data model and business logic. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides (based on automatically generated routings and JSON-RPC endpoints). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. With the help of the dedicated Kotlin compiler plugin, based on [MpApt](https://github.com/Foso/MpApt/) library, you have to write only essential, boilerplate-free code. This makes KVision full-stack applications very easy to create and maintain.
+KVision contains innovative connectivity interface for a bunch of popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.io), [Spring Boot](https://spring.io/projects/spring-boot), [Javalin](https://javalin.io), [Vert.x](https://vertx.io) and [Micronaut](https://micronaut.io), which allows to build fullstack applications with shared code for data model and business logic. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides (based on automatically generated routings and JSON-RPC endpoints). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. With the help of the dedicated Kotlin compiler plugin, based on [KSP](https://kotlinlang.org/docs/ksp-overview.html) library, you have to write only essential, boilerplate-free code. This makes KVision full-stack applications very easy to create and maintain.
 
 There is also experimental support for type-safe websocket connections, based on [Kotlin coroutines channels](https://kotlinlang.org/docs/reference/coroutines/channels.html).
 

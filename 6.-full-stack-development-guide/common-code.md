@@ -62,6 +62,7 @@ Supported types are:
 * any class defined in the common code with a `@Serializable` annotation
 * a `List<T>`, where T is one of the above types
 * a `T?`, where T is one of the above types (allowed only as method parameters - see previous rule)
+* a `Result<T>`, where T is one of the above types, can be used as a method return value.
 
 {% hint style="info" %}
 Note: Default parameters values are supported.

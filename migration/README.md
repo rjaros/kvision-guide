@@ -4,7 +4,13 @@ Check this page when upgrading to a new version of KVision. Any backwards-incomp
 
 \----
 
+Check [Migration guide for KVision 6.0.0](migration-from-5.x-to-6.x.md).
+
+\----
+
 Check [Migration guide for KVision 5.0.0](migration-from-4.x-to-5.x.md).
+
+\----
 
 This is the list of incompatibilities you may encounter when migrating your application to KVision 4.7.0:
 

@@ -6,7 +6,7 @@ KVision applications are built with [Gradle](http://gradle.org/). The official K
 
 To build a typical KVision application you should have some tools installed on your machine and available on the system PATH:
 
-* [JDK](https://jdk.java.net/) 8 or higher
+* [JDK](https://jdk.java.net/) 17 or higher
 * [Git](https://git-scm.com) (with additional UNIX tools if using Windows)
 * GNU [xgettext](https://www.gnu.org/software/gettext) and [msgmerge](https://www.gnu.org/software/gettext) utilities to use [Internationalization](../2.-frontend-development-guide/internationalization.md) features   &#x20;
 

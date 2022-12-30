@@ -23,7 +23,7 @@ button("OK").onClick {
 ## Modules and components
 
 * `Spinner` and `Range` components have been moved to the new `io.kvision.form.number` package.
-* `Select`, `Spinner` and `Upload` are now different components. The old `Upload` component based on bootstrap-fileinput library is still available as `BootstrapUpload`.  The old `Select` and `Spinner` component are no longer available. If you need advanced features use new `TomSelect` , `Spinner`, `Numeric` and `IMaskNumeric`  components.
+* `Select`, `Spinner` and `Upload` are now different components. The old `Upload` component based on bootstrap-fileinput library is still available as `BootstrapUpload`.  The old `Select` and `Spinner` components are no longer available. If you need advanced features use new `TomSelect` , `Spinner`, `Numeric` and `IMaskNumeric`  components.
 * The `Spinner` component is now only for integer values. Use `Numeric` or `ImaskNumeric` components for decimal/float values.
 * `Typeahead` component is no longer available. Use `TomTypeahead` from `kvision-tom-select` module instead.
 * The `kvision-bootstrap-css` and `kvision-bootstrap-dialog` modules have been removed and are no longer necessary. `BootstrapCssModule` initializer works like before but is contained in the main `kvision-bootstrap` module.

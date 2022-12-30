@@ -79,10 +79,6 @@ GlobalScope.launch {
 }
 ```
 
-{% hint style="info" %}
-Note: The `Dialog` component is contained in a separate `kvision-bootstrap-dialog` module, because of its dependency on Kotlin coroutines.
-{% endhint %}
-
 ## Windows
 
 The `io.kvision.window.Window` component allows you to create a number of floating, re-sizable windows inside your application. Every window has a frame, which can be used to change its size and position. The `Window` class constructor takes a number of parameters, two of which allow you to create windows that are not draggable and not re-sizable as well. When the window is not draggable, the close, minimize and maximize buttons are hidden and the caption is null - the caption bar won't be rendered at all.

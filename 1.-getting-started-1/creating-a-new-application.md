@@ -8,7 +8,7 @@ You can also download and copy the [KVision template](https://github.com/rjaros/
 
 ### build.gradle.kts
 
-The `build.gradle.kts` file is responsible for the definition of the build process. It declares all required dependencies \(in particular KVision optional modules\). KVision Gradle plugin is used to simplify the configuration. 
+The `build.gradle.kts` file is responsible for the definition of the build process. It declares all required dependencies (in particular KVision optional modules). KVision Gradle plugin is used to simplify the configuration.&#x20;
 
 {% code title="build.gradle.kts" %}
 ```kotlin
@@ -67,7 +67,6 @@ kotlin {
     sourceSets["main"].dependencies {
         implementation("io.kvision:kvision:$kvisionVersion")
         implementation("io.kvision:kvision-bootstrap:$kvisionVersion")
-        implementation("io.kvision:kvision-bootstrap-css:$kvisionVersion")
         implementation("io.kvision:kvision-i18n:$kvisionVersion")
     }
     sourceSets["test"].dependencies {
@@ -81,7 +80,7 @@ kotlin {
 
 ### Source code
 
-The source code for the application is contained in `src/main` directory. It consists of Kotlin sources in `kotlin` directory, optional `resources` \(e.g. images, CSS files, Handlebars templates, translation files\), and main `index.html` file in a `web` directory.
+The source code for the application is contained in `src/main` directory. It consists of Kotlin sources in `kotlin` directory, optional `resources` (e.g. images, CSS files, Handlebars templates, translation files), and main `index.html` file in a `web` directory.
 
 Test sources are contained in `src/test` directory.
 
@@ -106,5 +105,4 @@ fun main() {
 ```
 {% endcode %}
 
-## 
-
+##

@@ -44,7 +44,7 @@
   * [Handlebars.js Templates](3.-optional-ui-functionality-via-modules/handlebars.js-templates.md)
   * [JS Routing with Navigo](3.-optional-ui-functionality-via-modules/js-routing.md)
   * [jQuery Bindings](3.-optional-ui-functionality-via-modules/jquery-bindings.md)
-  * [Using REST Services](3.-optional-ui-functionality-via-modules/using-rest-services.md)
+  * [Using REST Services](3.-optional-ui-functionality-via-modules/using-rest-services/README.md)
 * [4. Integrating With Javascript Libraries](4.-integrating-with-javascript-libraries/README.md)
   * [Integrating With React Components](4.-integrating-with-javascript-libraries/using-react-components.md)
 * [5. Targeting Non-Web Platforms](5.-targeting-non-web-platforms/README.md)

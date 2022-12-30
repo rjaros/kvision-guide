@@ -1,6 +1,6 @@
 # Using REST Services
 
-The `io.kvision.rest.RestClient` component, located in the `kvision-rest` module, can be used to connect to any RESTfull services \(it will work with any JSON over HTTP services\). You can use remote services with both dynamic and type-safe calls \(using `@Serializable` classes\). The `RestClient` class has only a single `receive()` method, which uses the builder pattern for configuration and returns a `kotlin.js.Promise<RestResponse<T>>` object. A number of extension functions is defined for `RestClient`, which allow you to make typical calls easier.
+The `io.kvision.rest.RestClient` component, located in the `kvision-rest` module, can be used to connect to any RESTfull services (it will work with any JSON over HTTP services). You can use remote services with both dynamic and type-safe calls (using `@Serializable` classes). The `RestClient` class has only a single `receive()` method, which uses the builder pattern for configuration and returns a `kotlin.js.Promise<RestResponse<T>>` object. A number of extension functions is defined for `RestClient`, which allow you to make typical calls easier.
 
 #### Dynamic parameters, dynamic result
 
@@ -47,7 +47,7 @@ val searchResult: Promise<SearchResult> = restClient.call("https://api.github.co
 ```
 
 {% hint style="info" %}
-Note: The `Promise` object can be used directly or easily consumed as the Kotlin coroutine with `await()` extension function \(you need the kotlinx.coroutines library dependency\).
+Note: The `Promise` object can be used directly or easily consumed as the Kotlin coroutine with `await()` extension function (you need the kotlinx.coroutines library dependency).
 {% endhint %}
 
 A wrapper `RestResponse` class is defined as:
@@ -56,7 +56,7 @@ A wrapper `RestResponse` class is defined as:
 data class RestResponse<T>(val data: T, val textStatus: String, val response: Response)
 ```
 
-When using `receive()` ,`request()` or `requestDynamic()` functions, the returned `RestResponse` object gives you access to the returned data as well as the native `Response` object, which gives you access to the server response \(e.g. to get HTTP header values and other information\): 
+When using `receive()` ,`request()` or `requestDynamic()` functions, the returned `RestResponse` object gives you access to the returned data as well as the native `Response` object, which gives you access to the server response (e.g. to get HTTP header values and other information):&#x20;
 
 ```kotlin
 val restClient = RestClient()
@@ -83,4 +83,3 @@ val restClient = RestClient {
     serializersModule = module
 }
 ```
-

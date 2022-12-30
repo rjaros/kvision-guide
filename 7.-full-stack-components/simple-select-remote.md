@@ -1,6 +1,6 @@
-# Simple Select Remote
+# Select Remote
 
-The `io.kvision.form.select.SimpleSelectRemoteInput` component, contained in `kvision-simple-select-remote` module, is a special component you can use to render a simple select box with options loaded from the server.  `SimpleSelectRemoteInput` is bound directly to the method of the remote service. The method signature looks like this:
+The `io.kvision.form.select.SelectRemoteInput` component, contained in `kvision-select-remote` module, is a special component you can use to render a select box with options loaded from the server.  `SelectRemoteInput` is bound directly to the method of the remote service. The method signature looks like this:
 
 ```kotlin
 @KVService
@@ -9,7 +9,7 @@ interface IDictionaryService {
 }
 ```
 
-The `state` parameter allows you to send optional, additional data to the backend service, with the help of the `stateFunction` parameter of the `SimpleSelectRemoteInput` constructor.
+The `state` parameter allows you to send optional, additional data to the backend service, with the help of the `stateFunction` parameter of the `SelectRemoteInput` constructor.
 
 The `SimpleRemoteOption` class is defined as:
 
@@ -23,7 +23,7 @@ data class SimpleRemoteOption(
 
 and allows to send value and label for every option.
 
-To use `SimpleSelectRemote` form control, you initialize it with the `ServiceManager` instance and a callable reference to the right method. 
+To use `SelectRemote` form control, you initialize it with the `ServiceManager` instance and a callable reference to the right method.&#x20;
 
 ```kotlin
 SimpleSelectRemote(serviceManager = DictionaryServiceManager, 

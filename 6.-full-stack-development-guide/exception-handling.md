@@ -42,7 +42,3 @@ class MySecondException(override val message: String) : AbstractServiceException
 ```
 
 Such exceptions are automatically registered by the framework and you should be able to throw custom exceptions on the backend side and catch them on the frontend side.
-
-## Returning Result\<T>
-
-When returning `Result<T>` from the remote methods, the exceptions wrapped in the `Result` class are serialized and deserialized the same way as when being thrown. So you can safely use `ServiceException` and other user-defined exceptions when working with `Result<T>` on both the frontend and the backend side of your application.

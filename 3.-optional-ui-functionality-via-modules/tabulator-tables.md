@@ -15,7 +15,6 @@ To create a table use `io.kvision.tabulator.Tabulator` class. Although all const
 Data classes are preferred objects representing a single row data.
 
 ```kotlin
-@Serializable
 data class Book(val title: String, val author: String, val year: Int, val rating: Int)
 
 val model = listOf(
@@ -34,11 +33,15 @@ tabulator(
             ColumnDefinition("Year", "year"),
             ColumnDefinition("Rating", "rating", formatter = Formatter.STAR)
         )
-    ), serializer = serializer()
+    )
 ) {
     height = 400.px
 }
 ```
+
+{% hint style="info" %}
+You need to annotate your data class with `@JsExport` when using IR compiler backend.
+{% endhint %}
 
 To make the Tabulator component reactive just can use `ObservableList` for your model. You can also use Redux store as a table data source.
 
@@ -119,7 +122,7 @@ val tabulator = tabulator(
             ColumnDefinition("Year", "year"),
             ColumnDefinition("Rating", "rating", formatter = Formatter.STAR)
         )
-    ), serializer = serializer()
+    )
 ) {
     height = 400.px
 }
@@ -136,7 +139,6 @@ Note: You need to include [Luxon](https://moment.github.io/luxon/) library to yo
 You can use any KVision components to display data in Tabulator cells. You define the component with the `formatterComponentFunction` property of the `ColumnDefinition` class. When the Tabulator component is bound to the Kotlin data source, this function gives you also direct and type-safe access to the Kotlin data model for the current row.
 
 ```kotlin
-@Serializable
 data class Employee(
     val name: String?,
     val position: String?,
@@ -159,7 +161,7 @@ tabulator(model, options = TabulatorOptions(layout = Layout.FITCOLUMNS,
       )
     )
     // ...
-), serializar = serializer())
+))
 ```
 
 ## Local filtering
@@ -185,7 +187,7 @@ val tabulator = tabulator(
             ColumnDefinition("Year", "year"),
             ColumnDefinition("Rating", "rating", formatter = Formatter.STAR)
         )
-    ), serializer = serializer()
+    )
 ) {
     height = 400.px
     setFilter { book ->
@@ -222,7 +224,7 @@ val tabulator = tabulator(
             ColumnDefinition("Year", "year", editor = Editor.NUMBER),
             ColumnDefinition("Rating", "rating", formatter = Formatter.STAR, editor = Editor.STAR)
         )
-    ), serializer = serializer()
+    )
 ) {
     height = 400.px
 }
@@ -234,9 +236,9 @@ Tabulator currently supports the following built-in editor types: `Editor.INPUT`
 
 You can use most of KVision components to edit data in Tabulator cells. You define the component with the `editorComponentFunction` property of the `ColumnDefinition` class. When the Tabulator component is bound to the Kotlin data source, this function gives you also direct and type-safe access to the Kotlin data model for the current row.
 
-<pre class="language-kotlin"><code class="lang-kotlin"><strong>@Serializable
-</strong><strong>data class Employee(
-</strong>    val name: String?,
+```kotlin
+data class Employee(
+    val name: String?,
     val position: String?,
     val office: String?,
     val active: Boolean = false,
@@ -244,7 +246,7 @@ You can use most of KVision components to edit data in Tabulator cells. You defi
     val salary: Int?
 )
 // ...
-val model = mutableListOf&#x3C;Employee>()
+val model = mutableListOf<Employee>()
 // ...
 tabulator(model, options = TabulatorOptions(layout = Layout.FITCOLUMNS,
     columns = listOf(
@@ -264,8 +266,12 @@ tabulator(model, options = TabulatorOptions(layout = Layout.FITCOLUMNS,
         })
     )
     // ...
-), serializer = serializer())
-</code></pre>
+))
+```
+
+{% hint style="info" %}
+Note: Not all KVision edit controls work well inside Tabulator cells. Currently you cannot use `Select` component, because of conflict in event handling. You can use `SimpleSelect` without problems, though.
+{% endhint %}
 
 ### Automatic model update
 

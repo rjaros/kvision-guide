@@ -70,7 +70,7 @@
   * [Exception Handling](6.-full-stack-development-guide/exception-handling.md)
 * [7. Full Stack Components](7.-full-stack-components/README.md)
   * [Tom Select Remote](7.-full-stack-components/remote-select.md)
-  * [Simple Select Remote](7.-full-stack-components/simple-select-remote.md)
+  * [Select Remote](7.-full-stack-components/simple-select-remote.md)
   * [Tom Typeahead Remote](7.-full-stack-components/typeahead-remote.md)
   * [Tabulator Remote](7.-full-stack-components/remote-tabulator.md)
 * [FAQ](faq.md)

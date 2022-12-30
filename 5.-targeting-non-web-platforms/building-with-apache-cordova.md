@@ -1,6 +1,6 @@
 # Mobile, Using Apache Cordova
 
-KVision allows you to develop hybrid, mobile applications (for Android and iOS) with the [Apache Cordova](https://cordova.apache.org/) framework. You can use all KVision components in your mobile applications, and the kvision-cordova module gives you a complete set of Kotlin language bindings for core Cordova API. You can develop your applications in a productive way, with Webpack's HMR and instantaneous hot reload of your application code in the phone emulator.
+KVision allows you to develop hybrid, mobile applications \(for Android and iOS\) with the [Apache Cordova](https://cordova.apache.org/) framework. You can use all KVision components in your mobile applications, and the kvision-cordova module gives you a complete set of Kotlin language bindings for core Cordova API. You can develop your applications in a productive way, with Webpack's HMR and instantaneous hot reload of your application code in the phone emulator.
 
 {% hint style="info" %}
 Note: We aim to support both Android and iOS platforms. But at the time of writing only the Android platform and toolchain were properly tested.
@@ -10,7 +10,7 @@ KVision adds Kotlin type-safe bindings for most of core Cordova API, but you sho
 
 ## Requirements
 
-Before using KVision with Apache Cordova you have to install [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/index.html#installing-the-cordova-cli). You will use `cordova` command the same way as in standard Cordova applications (JavaScript based).
+Before using KVision with Apache Cordova you have to install [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/index.html#installing-the-cordova-cli). You will use `cordova` command the same way as in standard Cordova applications \(JavaScript based\).
 
 ### Android platform
 
@@ -26,10 +26,10 @@ The easiest way to start is to clone `template-cordova` project from [kvision-ex
 
 This template is just a typical KVision application with some additional files and directories required for Cordova framework. You need to initialize Cordova project with `cordova prepare` command. After this you are ready to build and run your app.
 
-The recommended way to work with the project is using the emulator/simulator and running your application from your local Webpack dev server. This way, you get all the benefits of Webpack's HMR and hot reload. Just like with the standard KVision app, you should run `./gradlew -t run` command in the dedicated terminal window. When the webpack dev server is running, you should execute `cordova emulate` command inside the second terminal window. It will start the emulator/simulator and deploy your application inside the emulated device. The content of the main WebView will be served from your webpack dev server, so it will be reloaded when you make some changes to your source code.&#x20;
+The recommended way to work with the project is using the emulator/simulator and running your application from your local Webpack dev server. This way, you get all the benefits of Webpack's HMR and hot reload. Just like with the standard KVision app, you should run `./gradlew -t run` command in the dedicated terminal window. When the webpack dev server is running, you should execute `cordova emulate` command inside the second terminal window. It will start the emulator/simulator and deploy your application inside the emulated device. The content of the main WebView will be served from your webpack dev server, so it will be reloaded when you make some changes to your source code. 
 
 {% hint style="info" %}
-Hint: when developing for the Android platform you can connect Chrome Dev Tools to your emulated phone and get full access (DOM, console, network, sources, storage etc.) to your app. Just open  chrome://inspect/ URL in your Chrome browser and select your device.
+Hint: when developing for the Android platform you can connect Chrome Dev Tools to your emulated phone and get full access \(DOM, console, network, sources, storage etc.\) to your app. Just open  [chrome://inspect/](chrome://inspect/#devices) URL in your Chrome browser and select your device.
 {% endhint %}
 
 ## Cordova configuration
@@ -69,7 +69,7 @@ Cordova project configuration is saved inside `config.xml` and `package.json` fi
 You can use `cordova plugin remove` command to remove unused plugins or `cordova plugin add` command to add new plugins.
 
 {% hint style="info" %}
-Note: kvision-cordova module offers Kotlin bindings for all core Cordova plugins. You can also use any [external Cordova plugin](https://cordova.apache.org/plugins/) in your application, but you need to manage JS interoperation on your own. You can declare external classes or use dynamic types, whatever suits you more.&#x20;
+Note: kvision-cordova module offers Kotlin bindings for all core Cordova plugins. You can also use any [external Cordova plugin](https://cordova.apache.org/plugins/) in your application, but you need to manage JS interoperation on your own. You can declare external classes or use dynamic types, whatever suits you more. 
 {% endhint %}
 
 Currently the template project targets only the Android platform. You can use `cordova platform add ios` command to add iOS target.
@@ -77,6 +77,8 @@ Currently the template project targets only the Android platform. You can use `c
 ## Cordova API
 
 Most of the original, callback-based Cordova API has been wrapped into simple suspending functions. They can be used with the full power of Kotlin coroutines, although the Cordova's usage patterns are closely followed, so the standard Cordova documentation should give enough knowledge to work with KVision.
+
+A special `Result<V, E: Exception>` class is used whenever possible to handle both success and failure of Cordova API function call.
 
 ### Device
 
@@ -101,7 +103,7 @@ addCordovaEventListener(CordovaEvent.VOLUMEUPBUTTON) {
 ```
 
 {% hint style="info" %}
-All Cordova API is available only after `deviceready` event is dispatched. Most of KVision functions already handle this event internally, so usually there is no need to wrap your code into `deviceready` listener.&#x20;
+All Cordova API is available only after `deviceready` event is dispatched. Most of KVision functions already handle this event internally, so usually there is no need to wrap your code into `deviceready` listener. 
 {% endhint %}
 
 ### Battery status
@@ -142,19 +144,17 @@ button("Take a photo", "fa-camera") {
 Camera.addCameraResultCallback {
     processCameraResult(it)
 }
-fun processCameraResult(result: Result<String>) {
-    result.fold(
-        onSuccess = {
-            GlobalScope.launch {
-                File.resolveLocalFileSystemURLForFile(it).success {
-                    store.dispatch(ImageAction.Image(it.toInternalURL()))
-                }
+fun processCameraResult(result: Result<String, CameraException>) {
+    result.success {
+        GlobalScope.launch {
+            File.resolveLocalFileSystemURLForFile(it).success {
+                store.dispatch(ImageAction.Image(it.toInternalURL()))
             }
-        },
-        onFailure = {
-            store.dispatch(ImageAction.Error(it.message ?: "No data"))
         }
-    )
+    }
+    result.failure {
+        store.dispatch(ImageAction.Error(it.message ?: "No data"))
+    }
 }
 ```
 
@@ -181,7 +181,7 @@ Notification.beep(3)
 
 ### Network information
 
-This plugin allows to get information about the current network connection and add listeners for the network status events.&#x20;
+This plugin allows to get information about the current network connection and add listeners for the network status events. 
 
 ```kotlin
 GlobalScope.launch {
@@ -265,7 +265,7 @@ button("Set background color").onClick {
 
 ### Vibration
 
-This plugin provides a way to vibrate the device with a single vibration or with a given pattern&#x20;
+This plugin provides a way to vibrate the device with a single vibration or with a given pattern 
 
 ```kotlin
 button("Vibrate for 1 second").onClick {
@@ -283,37 +283,37 @@ The File plugin provides a comprehensive API to access the device's file system.
 ```kotlin
 GlobalScope.launch {
     // Get external data directory root
-    File.getSystemDirectories().externalDataDirectory?.toDirectoryEntry()?.getOrNull()?.let { root ->
+    File.getSystemDirectories().externalDataDirectory?.toDirectoryEntry()?.success { root ->
         // Print root directory information.
         console.log(root)
-        root.getMetadata().getOrNull()?.let { console.log(it) }
+        root.getMetadata().success { console.log(it) }
         // List root directory entries.
-        root.readEntries().getOrNull()?.let {
+        root.readEntries().success {
             console.log(it)
         }
         // Create new file from a Blob.
-        root.getFile("test.txt").getOrNull()?.let { it.write(Blob(arrayOf("A test content."))) }
+        root.getFile("test.txt").success { it.write(Blob(arrayOf("A test content."))) }
         // List root directory entries (with new file on the list).
-        root.readEntries().getOrNull()?.let {
+        root.readEntries().success {
             console.log(it)
         }
         // Read file content as text.
-        root.getFile("test.txt").getOrNull()?.let { console.log(it.readAsText()) }
+        root.getFile("test.txt").success { console.log(it.readAsText()) }
         // Append content to the file.
-        root.getFile("test.txt").getOrNull()?.let { it.append(Blob(arrayOf("two"))) }
+        root.getFile("test.txt").success { it.append(Blob(arrayOf("two"))) }
         // Access the file.
-        root.getFile("test.txt").getOrNull()?.let {
+        root.getFile("test.txt").success {
             // Read file content as a buffer.
             val buf = it.readAsArrayBuffer().component1()
             // Create a blob from a buffer.
             val blob = Blob(arrayOf(Uint8Array(buf!!)))
             // Write blob to a new file.
-            root.getFile("test2.txt").getOrNull()?.let {
+            root.getFile("test2.txt").success {
                 it.write(blob)
             }
         }
         // Access the file.
-        root.getFile("test.txt").getOrNull()?.let {
+        root.getFile("test.txt").success {
             // Get native file URL.
             console.log(it.toURL())
             // Get Cordova cdvfile:// file URL.
@@ -325,26 +325,24 @@ GlobalScope.launch {
 
 ### Geolocation
 
-This plugin provides information about the device's location, such as latitude and longitude.&#x20;
+This plugin provides information about the device's location, such as latitude and longitude. 
 
 ```kotlin
 GlobalScope.launch {
-    Geolocation.getCurrentPosition().getOrNull()?.let {
+    Geolocation.getCurrentPosition().success {
         console.log("Timestamp: ${it.timestamp}")
         console.log("Lat: ${it.coords.latitude}")
         console.log("Lng: ${it.coords.longitude}")
     }
     val watchId = Geolocation.watchPosition(timeout = 5000, maximumAge = 3000) {
-        it.fold(
-            onSuccess = {
-                console.log("Timestamp: ${it.timestamp}")
-                console.log("Lat: ${it.coords.latitude}")
-                console.log("Lng: ${it.coords.longitude}")
-            }
-            onFailure =, {
-                console.log(it)
-            }
-        )
+        it.success {
+            console.log("Timestamp: ${it.timestamp}")
+            console.log("Lat: ${it.coords.latitude}")
+            console.log("Lng: ${it.coords.longitude}")
+        }
+        it.failure {
+            console.log(it)
+        }
     }
     window.setTimeout({
         Geolocation.clearWatch(watchId)
@@ -358,7 +356,7 @@ KVision has support for an additional Cordova plugin, dedicated for the Android 
 
 ### In app browser
 
-The browser plugin allows to open external URL address inside your application.&#x20;
+The browser plugin allows to open external URL address inside your application. 
 
 ```kotlin
 GlobalScope.launch {
@@ -391,7 +389,7 @@ This plugin provides access to the device's audio, image, and video capture capa
 ```kotlin
 GlobalScope.launch {
     val media = MediaCapture.captureImage()
-    media.getOrNull()?.let {
+    media.success {
         it.forEach {
             console.log(it)
             console.log(it.lastModifiedDate)
@@ -406,7 +404,7 @@ GlobalScope.launch {
 
 To build for production, first you have to build the distribution version of your KVision application. Run the dedicated Gradle task by calling:
 
-```
+```text
 ./gradlew distCordova
 ```
 
@@ -414,10 +412,11 @@ This task will compile, generate and copy the distribution files to the Cordova'
 
 After that you are ready to sign the code and build the final package, by calling:
 
-```
+```text
 cordova build --release --buildConfig=signingConfig.json
 ```
 
 You have to create signingConfig.json file containing [private signing information](https://cordova.apache.org/docs/en/dev/guide/platforms/android/index.html#using-buildjson).
 
-Refer to Cordova documentation for details regarding all supported platforms.&#x20;
+Refer to Cordova documentation for details regarding all supported platforms. 
+

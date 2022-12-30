@@ -20,7 +20,7 @@ button.onClick { e ->
 }
 ```
 
-If you are using coroutines you can also use `onClickLaunch` method:
+If you are using coroutines you can also use `onClickLaunch` extension function:
 
 ```kotlin
 button.onClickLaunch { e ->

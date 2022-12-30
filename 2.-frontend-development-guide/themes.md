@@ -1,6 +1,6 @@
 # Theming
 
-By default KVision includes the standard [Bootstrap](https://getbootstrap.com/) look and feel. It's modern, elegant and proven in many production environments. Just include `kvision-bootstrap` and `kvision-bootstrap-css` modules in your `build.gradle.kts` file. But there are other possibilities as well.&#x20;
+By default KVision includes the standard [Bootstrap](https://getbootstrap.com/) look and feel. It's modern, elegant and proven in many production environments. Just include `kvision-bootstrap` module in your `build.gradle.kts` file. But there are other possibilities as well.&#x20;
 
 ## Adding a custom CSS file to your application
 
@@ -25,7 +25,7 @@ class App : Application() {
 
 ## Replacing Bootstrap CSS with a custom one
 
-You can remove `kvision-bootstrap-css` module from your application and include different CSS file in the main `index.html` of your application. It can be loaded from any local or remote source.
+You can remove `BootstrapCssModule` initializer from your application and include different CSS file in the main `index.html` of your application. It can be loaded from any local or remote source.
 
 {% code title="index.html" %}
 ```markup

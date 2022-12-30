@@ -1,8 +1,8 @@
 # UI Structure
 
-A KVision application is built with components and containers. A container can be a parent of one or more components \(called children\) and its purpose is to lay out children in some type of order. Every container is a component as well, so it can be a child of another container.
+A KVision application is built with components and containers. A container can be a parent of one or more components (called children) and its purpose is to lay out children in some type of order. Every container is a component as well, so it can be a child of another container.
 
-You can instantiate any KVision component and set any of its properties, but the component won't be rendered on the page until it is added to a container \(exception: [Modals](../3.-optional-ui-functionality-via-modules/bootstrap/windows-and-modals.md)\). Of course this container has to be a child of another container and so on until the [Root container](root-container.md).
+You can instantiate any KVision component and set any of its properties, but the component won't be rendered on the page until it is added to a container (exception: [Modals](../3.-optional-ui-functionality-via-modules/bootstrap/windows-and-modals.md)). Of course this container has to be a child of another container and so on until the [Root container](root-container.md).
 
 ## Component
 
@@ -13,15 +13,15 @@ The main interface for a component is `io.core.Component`. It declares `parent` 
 interface Component {
     var parent: Container?
     var visible: Boolean
-    fun addCssClass(css: String): Component
-    fun removeCssClass(css: String): Component
-    fun getElement(): Node?
+    fun addCssClass(css: String)
+    fun removeCssClass(css: String)
+    fun getElement(): HTMLElement?
     ...
 }
 ```
 {% endcode %}
 
-The base class for all components is `io.kvision.core.Widget`. All KVision visual components inherit \(directly or indirectly\) from the `Widget` class.
+The base class for all components is `io.kvision.core.Widget`. All KVision visual components inherit (directly or indirectly) from the `Widget` class.
 
 ## Container
 
@@ -30,13 +30,13 @@ The main interface for a container is `io.kvision.core.Container`. It declares t
 {% code title="Container.kt" %}
 ```kotlin
 interface Container : Component {
-    fun add(child: Component): Container
-    fun add(position: Int, child: Component): Container
-    fun addAll(children: List<Component>): Container
-    fun remove(child: Component): Container
-    fun removeAt(position: Int): Container
-    fun removeAll(): Container
-    fun disposeAll(): Container
+    fun add(child: Component)
+    fun add(position: Int, child: Component)
+    fun addAll(children: List<Component>)
+    fun remove(child: Component)
+    fun removeAt(position: Int)
+    fun removeAll()
+    fun disposeAll()
     fun getChildren(): List<Component>
     ...
 }
@@ -47,7 +47,7 @@ KVision offers a lot of different containers and they can implement other method
 
 ## DSL builders
 
-Components can be added to containers explicitly, by calling appropriate methods \(`add`, `addAll`\), or by using DSL builders based on extension functions. Both ways allow you to get the reference of the created component for further use.
+Components can be added to containers explicitly, by calling appropriate methods (`add`, `addAll`), or by using DSL builders based on extension functions. Both ways allow you to get the reference of the created component for further use.
 
 ### Explicit calls
 
@@ -70,7 +70,7 @@ hPanel(spacing = 20, alignItems = AlignItems.CENTER) {
 }
 ```
 
-As you can see from the above example KVision defines extension functions with names matching the component classes with a first character lower case \(e.g. `HPanel` -&gt; `hPanel`, `Span` -&gt; `span`, `Button` -&gt; `button`\). These functions takes the same parameters as the primary constructors, their receiver is `io.kvision.core.Container` and they are returning the reference to the created object instance.
+As you can see from the above example KVision defines extension functions with names matching the component classes with a first character lower case (e.g. `HPanel` -> `hPanel`, `Span` -> `span`, `Button` -> `button`). These functions takes the same parameters as the primary constructors, their receiver is `io.kvision.core.Container` and they are returning the reference to the created object instance.
 
 The DSL builders allow you to use only basic `add` method of the `Container` interface. If you want to use any of the specialized add methods of different containers you have to use dedicated DSL methods, provided by some of the containers:
 
@@ -113,4 +113,3 @@ dockPanel {
     canvas(510, 320)
 }
 ```
-

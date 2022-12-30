@@ -20,6 +20,14 @@ button.onClick { e ->
 }
 ```
 
+If you are using coroutines you can also use `onClickLaunch` method:
+
+```kotlin
+button.onClickLaunch { e ->
+    someSuspendingFunction()
+}
+```
+
 Event function parameter is not required if not used.
 
 ```kotlin
@@ -66,10 +74,10 @@ One is to call functions on [HTMLElement](w3c-snabdom-and-kvision-elements.md), 
 ```kotlin
 // note that this won't work unless the button is mounted; see the link above
 // for ways around this
-button.getElement()?.unsafeCast<HTMLElement>().click()
+button.getElement()?.click()
 ```
 
-If there isn't a function representing your event, you can instead use [dispatchEvent](https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom.events/-event-target/dispatch-event.html)\(\), i.e.
+If there isn't a function representing your event, you can instead use [dispatchEvent](https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom.events/-event-target/dispatch-event.html)(), i.e.
 
 ```kotlin
 button.getElement()?.dispatchEvent(MouseEvent("click"))
@@ -77,7 +85,7 @@ button.getElement()?.dispatchEvent(MouseEvent("click"))
 
 ### KVision custom events
 
-`SplitPanel`, `Window`, `Tabulator`, `TabPanel` and some OnsenUI components dispatch different custom events. You can use the name of the event just like with standard events. 
+`SplitPanel`, `Window`, `Tabulator`, `TabPanel` and some OnsenUI components dispatch different custom events. You can use the name of the event just like with standard events.&#x20;
 
 ```kotlin
 tabulator.onEvent {
@@ -93,7 +101,7 @@ window.onEvent {
 }
 ```
 
-###  Bootstrap custom events
+### &#x20;Bootstrap custom events
 
 For events defined by Bootstrap components, which cannot be used like above because of their names, you need to use `event()` extension function.
 
@@ -110,14 +118,12 @@ modal.onEvent {
 
 ### jQuery events
 
-For events defined by jQuery based components \(`Select`, `Spinner`, `DateTime`, `Typeahead`, `Upload`\) use `jqueryEvent()` extension function from the `kvision-jquery` module.
+For events defined by jQuery based components (`Upload`) use `jqueryEvent()` extension function from the `kvision-jquery` module.
 
 ```kotlin
-select(listOfPairs("Option 1", "Option 2", "Option 3")) {
-    onEvent {
-        jqueryEvent("changed.bs.select") { _ ->
-            console.log("Selection changed.")
-        }
+bootstrapUpload.onEvent {
+    jqueryEvent("filecleared") { _ ->
+        console.log("File cleared.")
     }
 }
 ```
@@ -142,7 +148,7 @@ Div("Click to change").onEvent {
 
 ## Event Flows
 
-The `kvision-state-flow` module, which depends on Kotlin coroutines library, allows you to easily create Flow streams of events. Using flows, you can process events from KVision components with the power of Kotlin flow API \(e.g. handling back-pressure or combining multiple flows\). The module gives you universal `eventFlow` extension function and the dedicated `clickFlow`, `inputFlow` and `changeFlow` functions for the corresponding event types.
+The `kvision-state-flow` module, which depends on Kotlin coroutines library, allows you to easily create Flow streams of events. Using flows, you can process events from KVision components with the power of Kotlin flow API (e.g. handling back-pressure or combining multiple flows). The module gives you universal `eventFlow` extension function and the dedicated `clickFlow`, `inputFlow` and `changeFlow` functions for the corresponding event types.
 
 ```kotlin
 val button = button("A button")
@@ -156,4 +162,3 @@ button.eventFlow("mousemove").conflate().onEach {
     delay(1000)
 }.launchIn(GlobalScope)
 ```
-

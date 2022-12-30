@@ -245,12 +245,12 @@ button("Make indeterminate").onClick {
 
 ## Select boxes
 
-### `i.k.f.select.SimpleSelect`
+### `i.k.f.select.Select`
 
 This is a simple select box component, based on standard HTML select control. It can be used when there is no need for advanced options of the `Select` component. The `SimpleSelect` component should be initialized with a list of options (key to values pairs).
 
 ```kotlin
-SimpleSelect(
+Select(
     options = listOf("first" to "First option", "second" to "Second option"),
     label = "Simple select"
 )
@@ -335,9 +335,7 @@ This component is contained in the `kvision-tom-select-remote` module and is a s
 
 ### `i.k.f.time.DateTime`
 
-Both `kvision-datetime` and `kvision-bootstrap-datetime` modules allow you to use a sophisticated form control based on either [Tempus-dominus](https://getdatepicker.com/) or [Bootstrap datetime picker](https://github.com/pingcheng/bootstrap4-datetimepicker) libraries. Both modules share almost the same API. The `kvision-datetime` module is based on more modern component, which doesn't depend on Bootstrap or jQuery.&#x20;
-
-Is It's a full-featured component, configurable with plenty of options. It can be used to display date and/or time picker, based on the date format specified with [Fecha library formatting tokens](https://github.com/taylorhakes/fecha#formatting-tokens). The default format is _"YYYY-MM-DD HH:mm"_, which means the control will display date and time picker.
+Both `kvision-datetime` module allows you to use a sophisticated form control based on [Tempus-dominus](https://getdatepicker.com/) library. Is It's a full-featured component, configurable with plenty of options. It can be used to display date and/or time picker, based on the date format specified with [Fecha library formatting tokens](https://github.com/taylorhakes/fecha#formatting-tokens). The default format is _"YYYY-MM-DD HH:mm"_, which means the control will display date and time picker.
 
 ```kotlin
 DateTime(format = "YYYY-MM-DD", label = "Date field") {
@@ -368,56 +366,18 @@ DateTime(label = "Date and time field") {
 
 &#x20;You can also use `minDate`, `maxDate`, `enabledDates` and `disabledDates` properties to control which dates the user is allowed to choose.
 
-### `i.k.f.spinner.SimpleSpinner`
+### `i.k.f.number.Spinner`
 
-This is a simple number field component, based on standard HTML input control. It can be used when there is no need for advanced options of the `Spinner` component. You can set `min` and `max` values (default - no limits) and set the `step` value (default - 1).
-
-```kotlin
-SimpleSpinner(label = "Number 10 - 20", 
-    min = 10, 
-    max = 20, 
-    step = 2)
-```
-
-### `i.k.f.spinner.Spinner`
-
-The `kvision-bootstrap-spinner` module allows you to use a form component based on [Bootstrap TouchSpin](https://github.com/istvan-ujjmeszaros/bootstrap-touchspin), which can be used to get numeric input from the user. The `Spinner` component has a few options to customize its appearance and functionality. You can set `min` and `max` values (default - no limits) and set the `step` value (default - 1).
+This is a simple integer field component , based on standard HTML input control. It can be used when there is no need for advanced options of the `Spinner` component. You can set `min` and `max` values (default - no limits) and set the `step` value (default - 1).
 
 ```kotlin
 Spinner(label = "Number 10 - 20", 
     min = 10, 
     max = 20, 
-    step = 2.0) 
+    step = 2)
 ```
 
-&#x20;You can force rounding type with `forceType` property (`NONE`, `ROUND`, `FLOOR` and `CEIL` - default `NONE`) and set the number of decimal places of the result with `decimals` property.
-
-```kotlin
-Spinner(label = "Number 0.0 - 2.0", 
-    min = 0, 
-    max = 2, 
-    step = 0.1,
-    decimals = 1,
-    forceType = ForceType.ROUND) 
-```
-
-{% hint style="info" %}
-When using this component inside a form container, make sure the form model data class field is of correct type (e.g. Double) when `decimals` is set > 0.
-{% endhint %}
-
-You can put spinner buttons in horizontal position with `buttonsType` property.
-
-```kotlin
-Spinner(label = "Number", buttonsType = ButtonsType.HORIZONTAL) 
-```
-
-You can also hide spinner buttons at all and force the user to enter the value from the keyboard (all the constraints remain active).
-
-```kotlin
-Spinner(label = "Number", buttonsType = ButtonsType.NONE) 
-```
-
-### `i.k.f.upload.Upload`
+### `i.k.f.upload.BootstrapUpload`
 
 The kvision-bootstrap-upload module allows you to use a form component based on [Bootstrap fileinput](https://github.com/kartik-v/bootstrap-fileinput), which allows the user to select and upload files. It can be used as a standard file input element, with files being sent as a multi-part form submission or as an AJAX submission and it can be also used as a client-side file selection tool to be used with [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) available in modern browsers. The `Upload` component has a lot of options to customize its appearance and functionality - see API documentation for more details.&#x20;
 
@@ -428,7 +388,7 @@ You can use the `Upload` component to upload files to the server with standard m
 ```kotlin
 formPanel<Form>(FormMethod.POST, "/upload", FormEnctype.MULTIPART) {
     add(Form::text, Text(label = "Text", name = "text_field"))
-    add(Form::upload, Upload(label = "Upload file").apply {
+    add(Form::upload, BootstrapUpload(label = "Upload file").apply {
         name = "file_field"
     })
     hPanel {
@@ -444,7 +404,7 @@ To use this mode you have to create a server endpoint responsible for processing
 ```kotlin
 formPanel<Form> {
     add(Form::text, Text(label = "Text"))
-    add(Form::upload, Upload("/ajax-upload", label = "Upload file").apply {
+    add(Form::upload, BootstrapUpload("/ajax-upload", label = "Upload file").apply {
         multiple = true
         explorerTheme = true
         dropZoneEnabled = false
@@ -458,7 +418,7 @@ In this mode you have to handle your uploaded files and the rest of your form da
 ```kotlin
 formPanel<Form> {
     add(Form::text, Text(label = "Text"))
-    add(Form::upload, Upload("/ajax-upload", label = "Upload file").apply {
+    add(Form::upload, BootstrapUpload("/ajax-upload", label = "Upload file").apply {
         uploadExtraData = { _, _ -> this@formPanel.getDataJson() }
     })
 }
@@ -471,20 +431,18 @@ Modern browsers support FileReader API and allow you to work with files entirely
 ```kotlin
 formPanel<Form> {
     add(Form::text, Text(label = "Caption"))
-    add(Form::upload, Upload("/", label = "Image").apply {
+    add(Form::upload, BootstrapUpload("/", label = "Image").apply {
         showUpload = false
         showCancel = false
         explorerTheme = true
         allowedFileTypes = setOf("image")
     })
     hPanel {
-        button("Use form data").onClick {
-            GlobalScope.launch {
-                val fdata = this@formPanel.getDataWithFileContent()
-                val firstImage = fdata.upload?.firstOrNull()?.content
-                if (firstImage != null) {
-                    Alert.show(fdata.text, "<img src=\"$firstImage\">", rich = true)
-                }
+        button("Use form data").onClickLaunch {
+            val fdata = this@formPanel.getDataWithFileContent()
+            val firstImage = fdata.upload?.firstOrNull()?.content
+            if (firstImage != null) {
+                Alert.show(fdata.text, "<img src=\"$firstImage\">", rich = true)
             }
         }
     }
@@ -495,7 +453,7 @@ formPanel<Form> {
 Note: You need to set `uploadUrl` parameter (e.g. to "/" value), even though it's not directly used in this mode.
 {% endhint %}
 
-### `i.k.f.range.Range`
+### `i.k.f.number.Range`
 
 This component can be used to allow a user to select numeric value with a slider. You need to configure `min` (default 0), `max` (default 100) and `step` (default 1) attributes.
 

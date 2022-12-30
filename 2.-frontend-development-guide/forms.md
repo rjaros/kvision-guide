@@ -23,7 +23,7 @@ data class Form(
     val checkbox: Boolean = false,
     val radio: Boolean = false,
     val select: String? = null,
-    val ajaxselect: String? = null,
+    val tomselect: String? = null,
     val spinner: Int? = null,
     val radiogroup: String? = null,
     val upload: List<KFile>? = null
@@ -47,15 +47,17 @@ Form controls are KVision components implementing one of six `FormControl` inter
 | `i.k.f.text.Text`               | `StringFormControl`   | built-in                  | A text field.                                                                  |
 | `i.k.f.text.Password`           | `StringFormControl`   | built-in                  | A text field for password input.                                               |
 | `i.k.f.text.TextArea`           | `StringFormControl`   | built-in                  | A text area.                                                                   |
-| `i.k.f.select.SimpleSelect`     | `StringFormControl`   | built-in                  | A standard select component.                                                   |
-| `i.k.f.spinner.SimpleSpinner`   | `NumberFormControl`   | built-in                  | Numeric text field.                                                            |
-| `i.k.f.range.Range`             | `NumberFormControl`   | built-in                  | A range selection field.                                                       |
+| `i.k.f.select.Select`           | `StringFormControl`   | built-in                  | A standard select component.                                                   |
+| `i.k.f.number.Spinner`          | `NumberFormControl`   | built-in                  | Spinner numeric text field.                                                    |
+| `i.k.f.number.Range`            | `NumberFormControl`   | built-in                  | A range selection field.                                                       |
+| `i.k.f.number.Numeric`          | `NumberFormControl`   | built-in                  | A numeric form field.                                                          |
+| `i.k.f.upload.Upload`           | `KFilesFormControl`   | build-in                  | A simple file upload component.                                                |
+| `i.k.f.number.ImaskNumeric`     | `NumberFormControl`   | kvision-imask             | A numeric form field with masking.                                             |
 | `i.k.f.time.DateTime`           | `DateFormControl`     | kvision-datetime          | A date and/or time selection control.                                          |
 | `i.k.f.text.RichText`           | `StringFormControl`   | kvision-richtext          | A rich text editor.                                                            |
 | `i.k.f.select.TomSelect`        | `StringFormControl`   | kvision-tom-select        | Advanced select boxwith support for multiple selection and remote data source. |
 | `i.k.f.select.TomSelectRemote`  | `StringFormControl`   | kvision-tom-select-remote | A select box for fullstack interfaces.                                         |
-| `i.k.f.spinner.Spinner`         | `NumberFormControl`   | kvision-bootstrap-spinner | A spinner control for number selection.                                        |
-| `i.k.f.upload.Upload`           | `KFilesFormControl`   | kvision-bootstrap-upload  | An upload file control with preview and multi-selection.                       |
+| `i.k.f.upload.BootstapUpload`   | `KFilesFormControl`   | kvision-bootstrap-upload  | An upload file control with preview and multi-selection.                       |
 | `i.k.f.text.TomTypeahead`       | `StringFormControl`   | kvision-tom-select        | A typeahed (autocomplete) text field with support for data source.             |
 | `i.k.f.text.TomTypeaheadRemote` | `StringFormControl`   | kvision-tom-select-remote | A typeahead (autocomplete) text field for fullstack interfaces.                |
 
@@ -108,7 +110,7 @@ formPanel<Form> {
             inline = true, label = "Radio button group"
         )
     )
-    add(Form::upload, Upload("/", multiple = true, label = "Upload files (images only)") {
+    add(Form::upload, BootstrapUpload("/", multiple = true, label = "Upload files (images only)") {
         explorerTheme = true
         dropZoneEnabled = false
         allowedFileTypes = setOf("image")
@@ -276,7 +278,7 @@ val form: FormPanel<Map<String, Any?>> = form(type = FormType.HORIZONTAL) {
     text(label = "First text field").bind("text1")
     text(label = "Second text field").bind("text2", required = true)
     checkBox(label = "CheckBox").bind("check1")
-    simpleSelect(listOfPairs("First option", "Second option"), 
+    select(listOfPairs("First option", "Second option"), 
       label = "Select value", emptyOption = true).bind("select1", required = true)
 }
 ```

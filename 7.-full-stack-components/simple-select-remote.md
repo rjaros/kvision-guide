@@ -26,7 +26,7 @@ and allows to send value and label for every option.
 To use `SelectRemote` form control, you initialize it with the `ServiceManager` instance and a callable reference to the right method.&#x20;
 
 ```kotlin
-SimpleSelectRemote(serviceManager = DictionaryServiceManager, 
+SelectRemote(serviceManager = DictionaryServiceManager, 
     function = IDictionaryService::dictionary,
     stateFunction = { someState.toString() },
     label = "Select option from the dictionary"

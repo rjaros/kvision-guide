@@ -358,7 +358,7 @@ Note: the actual appearance of the control may depend on your browser.
 
 ### `i.k.f.number.Numeric`
 
-This component can be used for fixed precision decimal numbers (e.g. currency). You need do set a number of decimal digits (default 2) and the component will automatically format the number. You can set `min` and `max` values (default - no limits). You can also specify a decimal digit character or just use the autodetected defaut.
+This component can be used for fixed precision decimal numbers (e.g. currency). You need do set a number of decimal digits (default 2) and the component will automatically format the number. You can set `min` and `max` values (default - no limits). You can also specify a decimal digit character or just use the auto-detected default.
 
 ```kotlin
 Numeric(label = "Product price", min = 0)
@@ -366,7 +366,22 @@ Numeric(label = "Product price", min = 0)
 
 ### `i.k.f.number.ImaskNumeric`
 
-With `kvision-imask` module you can use the advanced numeric component, which allows you to work with all decimal numbers (with or without fixed number of decimal digits).
+With `kvision-imask` module you can use the advanced numeric component, which allows you to work with all decimal numbers (with or without fixed number of decimal digits) and fully controls the characters entered by the user. By setting `decimals` property to a larger value (up to 15) you can support inputs with different number of decimal digits.
+
+<pre class="language-kotlin"><code class="lang-kotlin"><strong>ImaskNumeric(label = "Enter number", decimals = 15)
+</strong></code></pre>
+
+If you want to support fixed decimals, set `padFractionalZeros = true` - the component will automatically format the number.
+
+```kotlin
+ImaskNumeric(label = "Product price", min = 0, padFractionalZeros = true)
+```
+
+You can also use decimals and thousands separator chars (both are automatically detected from the current locale).
+
+{% hint style="info" %}
+Note: All numeric components are based on JavaScript `Number` type, which is double-precision 64-bit binary format IEEE 754. The range and precision of represented numbers is limited. To prevent rounding errors KVision limits the range of supported numbers to about 14 digits.  &#x20;
+{% endhint %}
 
 ## Others
 

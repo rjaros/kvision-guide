@@ -331,6 +331,43 @@ TomSelect(label = "Select a repository",
 
 This component is contained in the `kvision-tom-select-remote` module and is a special version of `TomSelect` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../7.-full-stack-components/remote-select.md) of this guide.
 
+## Numeric
+
+### `i.k.f.number.Spinner`
+
+This is a simple integer field component, based on standard HTML input control. You can set `min` and `max` values (default - no limits) and set the `step` value (default 1).
+
+```kotlin
+Spinner(label = "Number 10 - 20", 
+    min = 10, 
+    max = 20, 
+    step = 2)
+```
+
+### `i.k.f.number.Range`
+
+This component can be used to allow a user to select numeric value with a slider. You need to configure `min` (default 0), `max` (default 100) and `step` (default 1) attributes.
+
+```kotlin
+Range(label = "Range field 10 - 20", min = 10, max = 20)
+```
+
+{% hint style="info" %}
+Note: the actual appearance of the control may depend on your browser.
+{% endhint %}
+
+### `i.k.f.number.Numeric`
+
+This component can be used for fixed precision decimal numbers (e.g. currency). You need do set a number of decimal digits (default 2) and the component will automatically format the number. You can set `min` and `max` values (default - no limits). You can also specify a decimal digit character or just use the autodetected defaut.
+
+```kotlin
+Numeric(label = "Product price", min = 0)
+```
+
+### `i.k.f.number.ImaskNumeric`
+
+With `kvision-imask` module you can use the advanced numeric component, which allows you to work with all decimal numbers (with or without fixed number of decimal digits).
+
 ## Others
 
 ### `i.k.f.time.DateTime`
@@ -365,17 +402,6 @@ DateTime(label = "Date and time field") {
 ```
 
 &#x20;You can also use `minDate`, `maxDate`, `enabledDates` and `disabledDates` properties to control which dates the user is allowed to choose.
-
-### `i.k.f.number.Spinner`
-
-This is a simple integer field component , based on standard HTML input control. It can be used when there is no need for advanced options of the `Spinner` component. You can set `min` and `max` values (default - no limits) and set the `step` value (default - 1).
-
-```kotlin
-Spinner(label = "Number 10 - 20", 
-    min = 10, 
-    max = 20, 
-    step = 2)
-```
 
 ### `i.k.f.upload.BootstrapUpload`
 
@@ -451,16 +477,4 @@ formPanel<Form> {
 
 {% hint style="info" %}
 Note: You need to set `uploadUrl` parameter (e.g. to "/" value), even though it's not directly used in this mode.
-{% endhint %}
-
-### `i.k.f.number.Range`
-
-This component can be used to allow a user to select numeric value with a slider. You need to configure `min` (default 0), `max` (default 100) and `step` (default 1) attributes.
-
-```kotlin
-Range(label = "Range field 10 - 20", min = 10, max = 20)
-```
-
-{% hint style="info" %}
-Note: the actual appearance of the control may depend on your browser.
 {% endhint %}

@@ -20,6 +20,10 @@ fun main() {
 }
 ```
 
+{% hint style="info" %}
+Some modules include more than one, optional initializers. E.g. `kvision-tabulator` module includes mandatory `TabulatorModule` but also `TabulatorCssBootstrapModule` , `TabulatorCssBulmaModule`, `TabulatorCssMaterializeModule`, `TabulatorCssMidnightModule`, `TabulatorCssModernModule`, `TabulatorCssSemanticModule`, `TabulatorCssSimpleModule` and `TabulatorCssStandardModule` for all CSS styles supported by the Tabulator component.
+{% endhint %}
+
 This is the current list of available modules.
 
 | Module                                                                                       | Description                                                                                                                                                                                                                                                           |

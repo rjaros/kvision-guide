@@ -3,6 +3,9 @@
 The `io.kvision.form.select.TomSelectRemoteInput` component, contained in `kvision-tom-select-remote` module, is a special component you can use to render a select box with options loaded from the server. Unlike standard `TomSelectInput` component (which can also load options from an AJAX source but needs a defined endpoint) `TomSelectRemoteInput` is bound directly to the method of the remote service. The method signature looks like this:
 
 ```kotlin
+import io.kvision.annotations.KVService
+import io.kvision.remote.RemoteOption
+
 @KVService
 interface IDictionaryService {
     suspend fun dictionary(search: String?, initial: String?, state: String?): List<RemoteOption>

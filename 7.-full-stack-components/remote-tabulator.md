@@ -1,6 +1,6 @@
 # Tabulator Remote
 
-The `io.kvision.tabulator.TabulatorRemote` component, contained in the `kvision-tabulator-remote` module, is a subclass of the `Tabulator` component, dedicated for use with the server side interfaces. Unlike standard Tabulator component \(which can also load data from an AJAX source but needs a defined endpoint\) `TabulatorRemote` is bound directly to the method of the remote service. The method signature looks like this:
+The `io.kvision.tabulator.TabulatorRemote` component, contained in the `kvision-tabulator-remote` module, is a subclass of the `Tabulator` component, dedicated for use with the server side interfaces. Unlike standard Tabulator component (which can also load data from an AJAX source but needs a defined endpoint) `TabulatorRemote` is bound directly to the method of the remote service. The method signature looks like this:
 
 ```kotlin
 @Serializable
@@ -21,10 +21,11 @@ tabulatorRemote(
     { someState.toString() },
     TabulatorOptions(
         layout = Layout.FITCOLUMNS,
-        pagination = PaginationMode.REMOTE,
+        pagination = true,
+        paginationMode = PaginationMode.REMOTE,
         paginationSize = 3,
-        ajaxFiltering = true,
-        ajaxSorting = true,
+        filterMode = FilterMode.REMOTE,
+        sortMode = SortMode.REMOTE,
         columns = listOf(
             ColumnDefinition("Column 1", Row::column1.name, headerFilter = Editor.INPUT),
             ColumnDefinition("Column 2", Row::column2.name),
@@ -42,4 +43,3 @@ data class RemoteData<T>(val data: List<T> = listOf(), val last_page: Int = 0)
 ```
 
 You can ignore `last_page` value, if the `RemoteTabulator` component is not configured for remote pagination.
-

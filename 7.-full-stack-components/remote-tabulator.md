@@ -16,7 +16,7 @@ This model is prepared for server side pagination, sorting, filtering and also r
 
 ```kotlin
 tabulatorRemote(
-    RowDataServiceManager,
+    getServiceManager(),
     IRowDataService::rowData,
     { someState.toString() },
     TabulatorOptions(

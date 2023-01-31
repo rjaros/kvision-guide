@@ -139,8 +139,13 @@ Note: The middleware will not work with the Kotlin object, but with the internal
 
 ### Using ReduxKotlin
 
-[ReduxKotlin](https://reduxkotlin.org/) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library, which is fully interchangable with kvision-redux module and gives you the same API. There are some pros and cons of using ReduxKotlin library, though.
+[ReduxKotlin](https://reduxkotlin.org/) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library, which is almost fully interchangable with kvision-redux module and gives you very similar API. There are some pros and cons of using ReduxKotlin library, though.
 
 | Pros                                                                                                                                                                                           | Cons                                                                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <ul><li>full compatibility with Kotlin classes</li><li>smaller resulting bundle size</li><li>multiplatform support (ability to share Redux code between client and server modules)  </li></ul> | <ul><li>no support for Redux DevTools Extension</li><li>small ecosystem of existing extensions (compared to original JavaScript Redux)</li></ul> |
+
+{% hint style="info" %}
+When using kvision-redux-kotlin module you should be using `createTypedReduxStore` function for creating your redux store (instead of `createReduxStore`, which is available but deprecated since KVision 6.1.2).
+{% endhint %}
+

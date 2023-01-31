@@ -6,7 +6,7 @@ description: This is a guide for KVision - an object oriented web framework for 
 
 ### [KVision Guide](https://kvision.gitbook.io/kvision-guide/)
 
-Current version: 6.1.1
+Current version: 6.1.2
 
 <img src=".gitbook/assets/logo4.svg.png" alt="" data-size="original">&#x20;
 

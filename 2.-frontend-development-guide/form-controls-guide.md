@@ -261,7 +261,7 @@ Select(
 The `kvision-tom-select` module allows you to use a sophisticated form control based on [Tom Select](https://tom-select.js.org/). It's a full-featured component, configurable with plenty of options. It can be used for a simple select picker with a few static options as well as a searchable, dynamic lists pulled over the network. The `TomSelect` component can be initialized with a list of options (key to values pairs).
 
 ```kotlin
-Select(
+TomSelect(
     options = listOf("first" to "First option", "second" to "Second option"),
     label = "Select"
 )
@@ -270,7 +270,7 @@ Select(
 You can select many options at the same time  with `multiple` property. You can use `maxItems` property to limit the number of selected options.
 
 ```kotlin
-Select(
+TomSelect(
     options = listOf("first" to "First option", "second" to "Second option", "third" to "Third option"),
     multiple = true,
     label = "Multiple select"
@@ -282,7 +282,7 @@ Select(
 Other properties allow to define a placeholder, an autofocus attribute and to automatically generate an empty option (to be able to de-select value).
 
 ```kotlin
-Select(
+TomSelect(
     options = listOf("first" to "First option", "second" to "Second option"),
     label = "Styled Select"
 ) {

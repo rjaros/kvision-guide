@@ -267,16 +267,15 @@ TomSelect(
 )
 ```
 
-You can select many options at the same time  with `multiple` property. You can use `maxItems` property to limit the number of selected options.
+You can select many options at the same time  with `multiple` property. You can use `tsOptions` parameter to provide additional options (e.g. limit the number of selected items). See TomSelect [documentation](https://tom-select.js.org/docs/) for detailed information about available options.
 
 ```kotlin
 TomSelect(
     options = listOf("first" to "First option", "second" to "Second option", "third" to "Third option"),
     multiple = true,
-    label = "Multiple select"
-) {
-    maxItems = 2
-}
+    label = "Multiple select",
+    tsOptions = TomSelectOptions(maxItems = 2)
+)
 ```
 
 Other properties allow to define a placeholder, an autofocus attribute and to automatically generate an empty option (to be able to de-select value).

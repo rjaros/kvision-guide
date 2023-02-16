@@ -8,13 +8,17 @@ Navigo 7: `implementation("io.kvision:kvision-routing-navigo:$kvisionVersion")`
 
 Navigo 8+: `implementation("io.kvision:kvision-routing-navigo-ng:$kvisionVersion")`
 
+{% hint style="info" %}
+The following examples are using `kvision-routing-navigo-ng` module.
+{% endhint %}
+
 ## Initializing
 
 Call the `Routing.init()` method at the beginning of your `Application.start()` method.
 
 ```kotlin
 override fun start() {
-    Routing.init()
+    val routing = Routing.init()
     // ...
 }
 ```
@@ -23,16 +27,16 @@ By default, the router uses hash-based routing and sets the strategy equal to "O
 
 ```kotlin
 override fun start() {
-    Routing.init("/app", useHash = false, strategy = Strategy.ALL)
+    val routing = Routing.init("/app", useHash = false, strategy = Strategy.ALL)
     // ...
 }
 ```
 
-The router object is available as a global variable `routing` in the `io.kvision.routing` package, and all [Navigo API](https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md) methods can be called directly.
+The `init()` function returns the configured router object, which can be used to call all [Navigo API](https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md) methods.
 
 ## Adding a route
 
-To add a route, use the `on` method on the global variable `routing` you can use it different ways
+To add a route, use the `on` method of the router object, which can take different different parameters.
 
 ```kotlin
 routing
@@ -40,7 +44,7 @@ routing
     .on({ console.log("Main page") }) // omitting the url parameter defaults to the root url
     .on(RegExp("^test2/(.*)/(.*)/(.*)"), { match ->
         console.log("Regexp: ${match.data[0]} ${match.data[1]} ${match.data[2]}") }) //match with regex
-    .resolve() as Unit
+    .resolve()
 ```
 
 In all of these approaches, you pass in a function that is invoked when the route is matched
@@ -55,7 +59,7 @@ Resolve has to be called at least once. The method does the following
 
 ## Navigating
 
-To navigate to a certain url, use the `navigate` method on the global `routing` variable
+To navigate to a certain url, use the `navigate` method on the router object.
 
 ```kotlin
 routing.navigate("/foo")

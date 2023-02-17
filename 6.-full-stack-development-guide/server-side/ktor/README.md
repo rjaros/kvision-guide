@@ -161,10 +161,11 @@ When using [authentication feature](https://ktor.io/servers/features/authenticat
 
 ```kotlin
 fun Application.main() {
+    install(Compression)
     install(DefaultHeaders)
     install(CallLogging)
     install(Sessions) {
-        cookie<Profile>("SESSION", storage = SessionStorageMemory()) {
+        cookie<Profile>("KTSESSION", storage = SessionStorageMemory()) {
             cookie.path = "/"
             cookie.extensions["SameSite"] = "strict"
         }
@@ -175,8 +176,7 @@ fun Application.main() {
         form {
             userParamName = "username"
             passwordParamName = "password"
-            challenge = FormAuthChallenge.Unauthorized
-            validate { 
+            validate { credentials ->
                 // ...
             }
             skipWhen { call -> call.sessions.get<Profile>() != null }

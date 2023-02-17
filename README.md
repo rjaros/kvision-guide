@@ -4,7 +4,59 @@ description: This is a guide for KVision - an object oriented web framework for 
 
 # KVision Guide
 
-### [KVision Guide](https://kvision.gitbook.io/kvision-guide/)
+### fun Application.main() { install(Compression) install(DefaultHeaders) install(CallLogging) install(Sessions) { cookie("KTSESSION", storage = SessionStorageMemory()) { cookie.path = "/" cookie.extensions\["SameSite"] = "strict" } } Db.init(environment.config)
+
+```
+install(Authentication) {
+    form {
+        userParamName = "username"
+        passwordParamName = "password"
+        validate { credentials ->
+            dbQuery {
+                UserDao.select {
+                    (UserDao.username eq credentials.name) and (UserDao.password eq DigestUtils.sha256Hex(
+                        credentials.password
+                    ))
+                }.firstOrNull()?.let {
+                    UserIdPrincipal(credentials.name)
+                }
+            }
+        }
+        skipWhen { call -> call.sessions.get<Profile>() != null }
+    }
+}
+
+routing {
+    applyRoutes(getServiceManager<IRegisterProfileService>())
+    authenticate {
+        post("login") {
+            val principal = call.principal<UserIdPrincipal>()
+            val result = if (principal != null) {
+                dbQuery {
+                    UserDao.select { UserDao.username eq principal.name }.firstOrNull()?.let {
+                        val profile =
+                            Profile(it[UserDao.id], it[UserDao.name], it[UserDao.username].toString(), null, null)
+                        call.sessions.set(profile)
+                        HttpStatusCode.OK
+                    } ?: HttpStatusCode.Unauthorized
+                }
+            } else {
+                HttpStatusCode.Unauthorized
+            }
+            call.respond(result)
+        }
+        get("logout") {
+            call.sessions.clear<Profile>()
+            call.respondRedirect("/")
+        }
+        applyRoutes(getServiceManager<IAddressService>())
+        applyRoutes(getServiceManager<IProfileService>())
+    }
+}
+kvisionInit()
+```
+
+}[KVision Guide](https://kvision.gitbook.io/kvision-guide/)
 
 Current version: 6.2.0
 

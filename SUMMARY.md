@@ -17,6 +17,7 @@
   * [UI Structure](2.-frontend-development-guide/ui-structure.md)
   * [Root Container](2.-frontend-development-guide/root-container.md)
   * [Theming](2.-frontend-development-guide/themes.md)
+  * [Dark mode](2.-frontend-development-guide/dark-mode.md)
   * [Type safe CSS Properties](2.-frontend-development-guide/css-properties.md)
   * [Basic Components](2.-frontend-development-guide/basic-components.md)
   * [Icons and Images](2.-frontend-development-guide/icons-and-images.md)

@@ -134,9 +134,13 @@ fun main(args: Array<String>) {
         kvisionInit()
         install(HikariModule("db"))
         applyRoutes(getServiceManager<IRegisterProfileService>()) // No authentication needed
-        install(Pac4jModule().client { _ ->
-            FormClient("/") { credentials, context ->
-                require(MyDbProfileService::class).validate(credentials as UsernamePasswordCredentials, context)
+        val config = org.pac4j.core.config.Config()
+        config.addAuthorizer("Authorizer") { _, _, _ -> true }
+        install(Pac4jModule(Pac4jOptions().apply {
+            defaultUrl = "/"
+        }, config).client("*", "Authorizer") { _ ->
+            FormClient("/") { credentials, context, sessionStore ->
+                require(MyDbProfileService::class).validate(credentials as UsernamePasswordCredentials, context, sessionStore)
             }
         })
         applyRoutes(getServiceManager<IAddressService>())    // Authentication needed

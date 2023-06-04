@@ -12,7 +12,7 @@ Kotlin is a modern programming language released in 2016 by JetBrains. It's a st
 
 KVision allows you to build modern web applications with the Kotlin language, without any use of HTML, CSS or JavaScript.
 
-KVision's basic design is quite similar to many non-web UI programming libraries including Swing, JavaFX, QT, WinForms and Flutter.
+KVision's basic design is quite similar to many non-web UI programming libraries including Swing, JavaFX, QT and WinForms.
 
 #### **Ready to use components**
 
@@ -35,6 +35,7 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * floating, re-sizable windows
 * configurable toasts
 * many HTML components including tables, lists, images, canvas and iframe
+* theme switcher for dark mode with auto-detection
 * built-in support for [Handlebars](http://handlebarsjs.com) templates
 * built-in support for [Font Awesome](https://fontawesome.com/) icons
 * built-in support for [Bootstrap Icons](https://icons.getbootstrap.com/)

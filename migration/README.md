@@ -2,6 +2,11 @@
 
 Check this page when upgrading to a new version of KVision. Any backwards-incompatibilities will be described here. This is an evolving framework and things may change as refactorings and improvements take place, but we aim to keep the core as stable as possible.
 
+This is the list of incompatibilities you may encounter when migrating your application to KVision 6.4.0:
+
+* Guice was upgraded to 7.0.0 and you need to replace your `javax.inject` imports with new `jakarta.inject` namespace when using Guice with Javalin, Jooby, Ktor or Vert.x. See: [https://github.com/google/guice/wiki/Guice700#jee-jakarta-transition](https://github.com/google/guice/wiki/Guice700#jee-jakarta-transition)
+* Jooby was upgraded to 3.0.0.M9 (a milestone release). See: [https://github.com/jooby-project/jooby/blob/3.x/docs/asciidoc/migration.adoc](https://github.com/jooby-project/jooby/blob/3.x/docs/asciidoc/migration.adoc)
+
 \----
 
 Check [Migration guide for KVision 6.0.0](migration-from-5.x-to-6.x.md).

@@ -72,3 +72,44 @@ There are some great free themes ready to use available at [JSDelivr](https://ww
 ## Using KVision without Bootstrap
 
 KVision can also be used with no Bootstrap at all. Just exclude all \*bootstrap\* modules from your `build.gradle.kts` file. You won't be able to use components from these modules, which depend on Bootstrap's JavaScript and styling. But you can use any other CSS framework (see examples for [Fomantic UI](https://github.com/rjaros/kvision-examples/tree/master/fomantic) and [Patternfly](https://github.com/rjaros/kvision-examples/tree/master/patternfly)).&#x20;
+
+## Dark mode
+
+KVision fully supports Bootstrap dark mode. You can use `io.kvision.theme.ThemeManager` component from the `kvision-bootstrap` module to work with color themes.&#x20;
+
+```kotlin
+import io.kvision.theme.ThemeManager
+
+class MyApp : Application() {
+    init {
+        ThemeManager.init()
+    }
+}
+```
+
+By default theme manager is initialized with auto-detected mode and saves the mode selected by the user in the brower local storage. You can modify this behavior with additional parameters of the `init()` method.
+
+```kotlin
+import io.kvision.theme.Theme
+import io.kvision.theme.ThemeManager
+
+class MyApp : Application() {
+    init {
+        ThemeManager.init(initialTheme = Theme.DARK, remember = false)
+    }
+}
+```
+
+You can use `ThemeManager.theme` property to manually select the color theme.
+
+```kotlin
+button("Switch to dark mode").onClick {
+    ThemeManager.theme = Theme.DARK
+}
+```
+
+You can also use built-in `ThemeSwitcher`, component which is a `Button` subclass designed as the color mode toggler (you need to also include Font Awesome module for icons).
+
+```kotlin
+themeSwitcher(style = ButtonStyle.OUTLINESECONDARY, round = true)
+```

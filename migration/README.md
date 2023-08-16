@@ -9,7 +9,7 @@ This is the list of incompatibilities you may encounter when migrating your appl
 
 \----
 
-Check [Migration guide for KVision 6.0.0](migration-from-5.x-to-6.x-1.md).
+Check [Migration guide for KVision 6.0.0](migration-from-5.x-to-6.x.md).
 
 \----
 

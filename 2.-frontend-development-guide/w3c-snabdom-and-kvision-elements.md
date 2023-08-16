@@ -38,7 +38,7 @@ As discussed in the prior chapter, Snabbdom provides both a virtual DOM and the 
 
 So, how do you work across these APIs?
 
-The **Component **_****_ class provides _getElement()_, which gives you a nullable w3c HTMLElement instance. However, it's important to understand that if your Component hasn't yet been rendered (and, rendering does _not_ necessarily take place as soon as you _add()_ the Component to a Container), then you'll receive null as a result from getElement(). If your code is handling a DOM event _from_ the component, then it's a safe bet that the Element will be non-null, and you can go ahead and add the behavior you need to it.
+The **Component** class provides _getElement()_, which gives you a nullable w3c HTMLElement instance. However, it's important to understand that if your Component hasn't yet been rendered (and, rendering does _not_ necessarily take place as soon as you _add()_ the Component to a Container), then you'll receive null as a result from getElement(). If your code is handling a DOM event _from_ the component, then it's a safe bet that the Element will be non-null, and you can go ahead and add the behavior you need to it.
 
 However, if you need access to the Element during component setup, then this is where Snabbdom's lifecycle functions come into play. For example, let's say we want to get access to component geometry to figure out how to render something else.
 

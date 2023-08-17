@@ -9,17 +9,19 @@ The integration with Micronaut is contained in the `kvision-server-micronaut` mo
 {% code title="build.gradle.kts" %}
 ```kotlin
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
-    implementation(project.dependencies.enforcedPlatform("io.micronaut:micronaut-bom:$micronautVersion"))
     implementation("io.micronaut:micronaut-inject")
-    implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut.validation:micronaut-validation")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut:micronaut-runtime")
     implementation("io.micronaut:micronaut-http-server-netty")
     implementation("io.micronaut:micronaut-http-client")
-    implementation("io.micronaut:micronaut-session")
+    implementation("io.micronaut.session:micronaut-session")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("jakarta.validation:jakarta.validation-api")
     implementation("ch.qos.logback:logback-classic")
+    implementation("org.yaml:snakeyaml")
 }
 ```
 {% endcode %}
@@ -30,6 +32,7 @@ Micronaut uses Kapt to generate code from various annotations in your applicatio
 ```kotlin
 kapt {
     arguments {
+        arg("micronaut.processing.incremental", true)
         arg("micronaut.processing.annotations", "com.example.*")
         arg("micronaut.processing.group", "com.example")
         arg("micronaut.processing.module", "template-fullstack-micronaut")
@@ -37,10 +40,10 @@ kapt {
 }
 
 dependencies {
-    "kapt"(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    "kapt"(platform("io.micronaut.platform:micronaut-platform:$micronautVersion"))
     "kapt"("io.micronaut:micronaut-inject-java")
-    "kapt"("io.micronaut:micronaut-validation")
-    "kaptTest"("io.micronaut:micronaut-bom:$micronautVersion")
+    "kapt"("io.micronaut.validation:micronaut-validation")
+    "kaptTest"(platform("io.micronaut.platform:micronaut-platform:$micronautVersion"))
     "kaptTest"("io.micronaut:micronaut-inject-java")
 }
 ```
@@ -48,7 +51,7 @@ dependencies {
 
 ## Application configuration
 
-The standard way to configure Micronaut application is `src/backendMain/resources/application.yml` file. It contains options needed for optional dependencies. It can be empty if they are not used.
+The standard way to configure Micronaut application is `src/jvmMain/resources/application.yml` file. It contains options needed for optional dependencies. It can be empty if they are not used.
 
 ## Implementation
 
@@ -147,10 +150,7 @@ class KVApplication {
 }
 
 fun main(args: Array<String>) {
-    build()
-        .args(*args)
-        .packages("com.example")
-        .start()
+    run(*args)
 }
 ```
 
@@ -162,16 +162,12 @@ To secure your application you can use different Micronaut components and ready 
 import io.kvision.remote.matches
 
 @Singleton
-open class AppSecurityRule(rolesFinder: RolesFinder) : AbstractSecurityRule(rolesFinder) {
-    override fun check(
-        request: HttpRequest<*>,
-        routeMatch: RouteMatch<*>?,
-        claims: MutableMap<String, Any>?
-    ): SecurityRuleResult {
+open class AppSecurityRule(rolesFinder: RolesFinder) : AbstractSecurityRule<HttpRequest<*>>(rolesFinder) {
+    override fun check(request: HttpRequest<*>, authentication: Authentication?): Publisher<SecurityRuleResult> {
         return if (request.matches(getServiceManager<IAddressService>(), getServiceManager<IProfileService>())) {
-            compareRoles(listOf(SecurityRule.IS_AUTHENTICATED), getRoles(claims))
+            compareRoles(listOf(SecurityRule.IS_AUTHENTICATED), getRoles(authentication))
         } else {
-            SecurityRuleResult.ALLOWED
+            Mono.just(SecurityRuleResult.ALLOWED)
         }
     }
 }

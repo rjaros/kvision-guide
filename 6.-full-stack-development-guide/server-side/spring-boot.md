@@ -25,7 +25,7 @@ dependencies {
 
 ## Application configuration
 
-The standard way to configure Spring Boot application is `src/backendMain/resources/application.yml` file. It contains options needed for optional dependencies. It can be empty if they are not used.
+The standard way to configure Spring Boot application is `src/jvmMain/resources/application.yml` file. It contains options needed for optional dependencies. It can be empty if they are not used.
 
 ## Implementation
 
@@ -155,34 +155,42 @@ class SecurityConfiguration {
 
     @Bean
     fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
-        return http.authorizeExchange()
-            .serviceMatchers(getServiceManager<IAddressService>(), getServiceManager<IProfileService>()).authenticated()
-            .pathMatchers("/**").permitAll().and().csrf().disable()
-            .exceptionHandling().authenticationEntryPoint { exchange, _ ->
+        return http.authorizeExchange {
+            it.serviceMatchers(getServiceManager<IAddressService>(), getServiceManager<IProfileService>())
+                .authenticated().pathMatchers("/**").permitAll()
+        }.csrf {
+            it.disable()
+        }.exceptionHandling {
+            it.authenticationEntryPoint { exchange, _ ->
                 val response = exchange.response
                 response.statusCode = HttpStatus.UNAUTHORIZED
                 exchange.mutate().response(response)
                 Mono.empty()
-            }.and().formLogin().loginPage("/login")
-            .authenticationSuccessHandler(RedirectServerAuthenticationSuccessHandler().apply {
-                this.setRedirectStrategy { exchange, _ ->
-                    Mono.fromRunnable {
-                        val response = exchange.response
-                        response.statusCode = HttpStatus.OK
+            }
+        }.formLogin {
+            it.loginPage("/login")
+                .authenticationSuccessHandler(RedirectServerAuthenticationSuccessHandler().apply {
+                    this.setRedirectStrategy { exchange, _ ->
+                        Mono.fromRunnable {
+                            val response = exchange.response
+                            response.statusCode = HttpStatus.OK
+                        }
                     }
-                }
-            }).authenticationFailureHandler(RedirectServerAuthenticationFailureHandler("/login").apply {
-                this.setRedirectStrategy { exchange, _ ->
-                    Mono.fromRunnable {
-                        val response = exchange.response
-                        response.statusCode = HttpStatus.UNAUTHORIZED
+                }).authenticationFailureHandler(RedirectServerAuthenticationFailureHandler("/login").apply {
+                    this.setRedirectStrategy { exchange, _ ->
+                        Mono.fromRunnable {
+                            val response = exchange.response
+                            response.statusCode = HttpStatus.UNAUTHORIZED
+                        }
                     }
-                }
-            }).and().logout().logoutUrl("/logout")
-            .requiresLogout(ServerWebExchangeMatchers.pathMatchers(HttpMethod.GET, "/logout"))
-            .logoutSuccessHandler(RedirectServerLogoutSuccessHandler().apply {
-                setLogoutSuccessUrl(URI.create("/"))
-            }).and().build()
+                })
+        }.logout {
+            it.logoutUrl("/logout")
+                .requiresLogout(ServerWebExchangeMatchers.pathMatchers(HttpMethod.GET, "/logout"))
+                .logoutSuccessHandler(RedirectServerLogoutSuccessHandler().apply {
+                    setLogoutSuccessUrl(URI.create("/"))
+                })
+        }.build()
     }
 }
 ```

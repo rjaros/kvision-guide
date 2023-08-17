@@ -31,7 +31,7 @@ Note: You can use other engines instead of Netty - see [Jooby documentation](htt
 
 ## Application configuration
 
-The standard way to configure Jooby application is `src/backendMain/resources/application.conf` file. It contains options needed for optional modules. It can be empty if no modules are used.
+The standard way to configure Jooby application is `src/jvmMain/resources/application.conf` file. It contains options needed for optional modules. It can be empty if no modules are used.
 
 ## Implementation
 

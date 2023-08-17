@@ -2,10 +2,6 @@
 
 In addition to using RPC-style interfaces, KVision support two-way type-safe connections via websockets, based on [Kotlin coroutines channels](https://kotlinlang.org/docs/reference/coroutines/channels.html).
 
-{% hint style="info" %}
-Note: Since channels API in Kotlin is still marked as experimental, you should treat websockets support in KVision as experimental feature, too.
-{% endhint %}
-
 ### Common code
 
 The way the websocket connections are defined is in many ways similar to defining remote methods (see previous chapters). You start by declaring two interface methods in the common code, which will be used in the frontend and backend parts. The methods needs to have specific signatures:

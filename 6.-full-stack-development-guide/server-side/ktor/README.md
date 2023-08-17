@@ -31,7 +31,7 @@ Note: You can use other engines instead of Netty - see [Ktor documentation](http
 
 ## Application configuration
 
-The standard way to configure Ktor application is `src/backendMain/resources/application.conf` file. Among other options it contains the name of the main function of your app.
+The standard way to configure Ktor application is `src/jvmMain/resources/application.conf` file. Among other options it contains the name of the main function of your app.
 
 {% code title="application.conf" %}
 ```

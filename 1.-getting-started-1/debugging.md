@@ -12,7 +12,7 @@ Note: Source maps are disabled by default in all KVision template projects, beca
 
 Some UI interactions may be tricky to handle with a debugger, and so being able to fall back to console logging is useful. We find it useful to create a debug function, which is turned on and off with a global boolean.
 
-```
+```kotlin
 const val DEBUG = true  // in your App class
 
 ...

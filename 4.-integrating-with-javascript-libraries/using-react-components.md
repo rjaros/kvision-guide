@@ -15,7 +15,7 @@ To use React component just add `kvision-react` module and the required NPM depe
 ```kotlin
 kotlin {
 // ...
-    sourceSets["main"].dependencies {
+    sourceSets["jsMain"].dependencies {
     // ...
         implementation(npm("react-awesome-button", "6.5.1"))
         implementation(npm("prop-types", "*")) // required by react-awesome-button

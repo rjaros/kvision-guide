@@ -146,6 +146,6 @@ Note: The middleware will not work with the Kotlin object, but with the internal
 | <ul><li>full compatibility with Kotlin classes</li><li>smaller resulting bundle size</li><li>multiplatform support (ability to share Redux code between client and server modules)  </li></ul> | <ul><li>no support for Redux DevTools Extension</li><li>small ecosystem of existing extensions (compared to original JavaScript Redux)</li></ul> |
 
 {% hint style="info" %}
-When using kvision-redux-kotlin module you should be using `createTypedReduxStore` function for creating your redux store (instead of `createReduxStore`, which is available but deprecated since KVision 6.1.2).
+When using kvision-redux-kotlin module you should be using `createTypedReduxStore` function for creating your redux store.
 {% endhint %}
 

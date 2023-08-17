@@ -2,7 +2,7 @@
 
 ## Icons
 
-KVision has built-in support for free font icons from the [Font Awesome](https://fontawesome.com) project \(you have to include `kvision-fontawesome` module\) and from the [Bootstrap Icons](https://icons.getbootstrap.com/) project \(with `kvision-bootstrap-icons` module\). Components like buttons, links, drop-downs, select options and tabs have an `icon` property, which can be set to one of many available icon names. KVision supports all free Font Awesome style prefixes  - Solid \(`fas`\), Regular \(`far`\) and Brands \(`fab`\). You can check icon availability at [Font Awesome gallery page](https://fontawesome.com/icons?d=gallery&m=free).
+KVision has built-in support for free font icons from the [Font Awesome](https://fontawesome.com) project (you have to include `kvision-fontawesome` module) and from the [Bootstrap Icons](https://icons.getbootstrap.com/) project (with `kvision-bootstrap-icons` module). Components like buttons, links, drop-downs, select options and tabs have an `icon` property, which can be set to one of many available icon names. KVision supports all free Font Awesome style prefixes  - Solid (`fas`), Regular (`far`) and Brands (`fab`). You can check icon availability at [Font Awesome gallery page](https://fontawesome.com/icons?d=gallery\&m=free).
 
 ```kotlin
 val g = Button("A button with an icon", "fas fa-asterisk")
@@ -13,7 +13,7 @@ The dedicated `io.kvision.html.Icon` component lets you use those icons inside a
 
 ## Images
 
-Components like buttons, links, tabs and the css background class have an `image` property, which can be used to display custom images. To use your own graphical resources, put them inside the `src/main/resources/img` directory and refer to them with a `require` function:
+Components like buttons, links, tabs and the css background class have an `image` property, which can be used to display custom images. To use your own graphical resources, put them inside the `src/jsMain/resources/img` directory and refer to them with a `require` function:
 
 ```kotlin
 val i = Button("A button with an image") {
@@ -39,4 +39,3 @@ val catImg = Image(require("img/cat.jpg"), alt = "A rounded and responsive cat",
 val dogImg = Image(require("img/dog.jpg"), alt = "Centered dog in a circle",
     shape = ImageShape.CIRCLE, centered = true)
 ```
-

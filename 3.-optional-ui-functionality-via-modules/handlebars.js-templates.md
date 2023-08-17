@@ -2,7 +2,7 @@
 
 Support for [Handlebars.js](https://handlebarsjs.com/) templates is contained in kvision-handlebars module and is based on webpack's [handlebars loader](https://github.com/pcardune/handlebars-loader). Templates are automatically transformed to JavaScript functions during the build process of the application.
 
-You put your template files (with `*.hbs` extension) into `src/main/resources/hbs` directory of your application. Then in your code you can just `require` your `*.hbs` files. All components which render textual content (`io.kvision.html.Tag` class and subclasses) have `template` and `templates` properties. The second one allows you to define different templates for other supported languages (see. [Internationalization](../2.-frontend-development-guide/internationalization.md)).
+You put your template files (with `*.hbs` extension) into `src/jsMain/resources/hbs` directory of your application. Then in your code you can just `require` your `*.hbs` files. All components which render textual content (`io.kvision.html.Tag` class and subclasses) have `template` and `templates` properties. The second one allows you to define different templates for other supported languages (see. [Internationalization](../2.-frontend-development-guide/internationalization.md)).
 
 ```kotlin
 div {

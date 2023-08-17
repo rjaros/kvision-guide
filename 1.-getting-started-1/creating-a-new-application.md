@@ -17,7 +17,7 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     val kotlinVersion: String by System.getProperties()
     kotlin("plugin.serialization") version kotlinVersion
-    kotlin("js") version kotlinVersion
+    kotlin("multiplatform") version kotlinVersion
     val kvisionVersion: String by System.getProperties()
     id("io.kvision") version kvisionVersion
 }
@@ -27,7 +27,6 @@ group = "com.example"
 
 repositories {
     mavenCentral()
-    jcenter()
     mavenLocal()
 }
 
@@ -35,13 +34,11 @@ repositories {
 val kotlinVersion: String by System.getProperties()
 val kvisionVersion: String by System.getProperties()
 
-val webDir = file("src/main/web")
-
 kotlin {
-    js {
+    js(IR) {
         browser {
-            runTask {
-                outputFileName = "main.bundle.js"
+            runTask(Action {
+                mainOutputFileName = "main.bundle.js"
                 sourceMaps = false
                 devServer = KotlinWebpackConfig.DevServer(
                     open = false,
@@ -52,37 +49,36 @@ kotlin {
                     ),
                     static = mutableListOf("$buildDir/processedResources/js/main")
                 )
-            }
-            webpackTask {
-                outputFileName = "main.bundle.js"
-            }
-            testTask {
+            })
+            webpackTask(Action {
+                mainOutputFileName = "main.bundle.js"
+            })
+            testTask(Action {
                 useKarma {
                     useChromeHeadless()
                 }
-            }
+            })
         }
         binaries.executable()
     }
-    sourceSets["main"].dependencies {
+    sourceSets["jsMain"].dependencies {
         implementation("io.kvision:kvision:$kvisionVersion")
         implementation("io.kvision:kvision-bootstrap:$kvisionVersion")
         implementation("io.kvision:kvision-i18n:$kvisionVersion")
     }
-    sourceSets["test"].dependencies {
+    sourceSets["jsTest"].dependencies {
         implementation(kotlin("test-js"))
         implementation("io.kvision:kvision-testutils:$kvisionVersion")
     }
-    sourceSets["main"].resources.srcDir(webDir)
 }
 ```
 {% endcode %}
 
 ### Source code
 
-The source code for the application is contained in `src/main` directory. It consists of Kotlin sources in `kotlin` directory, optional `resources` (e.g. images, CSS files, Handlebars templates, translation files), and main `index.html` file in a `web` directory.
+The source code for the application is contained in `src/jsMain` directory. It consists of Kotlin sources in `kotlin` directory, optional `resources` (e.g. images, CSS files, Handlebars templates, translation files), and main `index.html` file in a `web` directory.
 
-Test sources are contained in `src/test` directory.
+Test sources are contained in `src/jsTest` directory.
 
 ### The Application class
 

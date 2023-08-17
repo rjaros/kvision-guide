@@ -28,7 +28,7 @@ If your application doesn't use any NodeJS or Electron API, you can use standard
 
 ### Configuring Electron builder
 
-The application is build with [electron-builder](https://www.electron.build/) tool. The configuration is contained in the `src/main/electron/electron-builder.yml` configuration file. You can find documentation of electron-builder [here](https://www.electron.build/configuration/configuration). By default the application is built for the current platform only. Cross-platform build (e.g. for Windows on Linux host) is sometimes possible, but there are some [additional requirements](https://www.electron.build/multi-platform-build).
+The application is build with [electron-builder](https://www.electron.build/) tool. The configuration is contained in the `src/jsMain/electron/electron-builder.yml` configuration file. You can find documentation of electron-builder [here](https://www.electron.build/configuration/configuration). By default the application is built for the current platform only. Cross-platform build (e.g. for Windows on Linux host) is sometimes possible, but there are some [additional requirements](https://www.electron.build/multi-platform-build).
 
 ### Using NodeJS and Electron API
 

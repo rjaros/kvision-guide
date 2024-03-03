@@ -122,7 +122,3 @@ interface IAddressService {
 {% hint style="info" %}
 Note: All KVision endpoint names (even those with user defined names) are prefixed with "/kv/" to avoid potential conflicts with other endpoints.
 {% endhint %}
-
-{% hint style="info" %}
-Note: HTTP GET can be used only for methods without parameters.
-{% endhint %}

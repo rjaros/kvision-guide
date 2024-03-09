@@ -36,7 +36,7 @@ The `init()` function returns the configured router object, which can be used to
 
 ## Adding a route
 
-To add a route, use the `on` method of the router object, which can take different different parameters.
+To add a route, use the `on` method of the router object, which can take different parameters.
 
 ```kotlin
 routing

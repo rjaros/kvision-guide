@@ -47,7 +47,7 @@ routing
     .resolve()
 ```
 
-In all of these approaches, you pass in a function that is invoked when the route is matched
+In all of these approaches, you pass in a function that is invoked when the route is matched.
 
 Resolve has to be called at least once. The method does the following
 

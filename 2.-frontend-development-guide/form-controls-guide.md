@@ -121,7 +121,7 @@ TomTypeahead(
 
 ### `i.k.f.text.TomTypeaheadRemote`
 
-This component is contained in the `kvision-tom-select-remote` module and is a special version of the `Typeahead` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../7.-full-stack-components/typeahead-remote.md) of this guide.
+This component is contained in the `kvision-tom-select-remote` module and is a special version of the `Typeahead` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../7.-full-stack-components/tom-typeahead-remote.md) of this guide.
 
 ## Checkboxes and radiobuttons
 
@@ -328,7 +328,7 @@ TomSelect(label = "Select a repository",
 
 ### `i.k.f.select.TomSelectRemote`
 
-This component is contained in the `kvision-tom-select-remote` module and is a special version of `TomSelect` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../7.-full-stack-components/remote-select.md) of this guide.
+This component is contained in the `kvision-tom-select-remote` module and is a special version of `TomSelect` control, tailored for use with KVision server side interfaces. You can find more information in [part 3](../7.-full-stack-components/tom-select-remote.md) of this guide.
 
 ## Numeric
 

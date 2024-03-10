@@ -56,9 +56,9 @@ This is the restriction of the current version of the framework. It may change i
 Supported types are:
 
 * all basic Kotlin types (`String`, `Boolean`, `Int`, `Long`, `Short`, `Char`, `Byte`,  `Float`, `Double`)
-* `Enum` class defined in common code annotated with `@Serializable` annotation
+* `Enum` classes defined in common code annotated with `@Serializable` annotation
 * All date and time types from `io.kvision.types` package, which are automatically mapped to `kotlin.js.Date` on the frontend side and the appropriate `java.time.*` type on the backend side
-* A `io.kvision.types.Decimal` type, which is automatically mapped to `Number(double)` on the frontend side and `java.math.BigDecimal` on the backend side
+* A `io.kvision.types.Decimal` type, which is automatically mapped to `Double` on the frontend side and `java.math.BigDecimal` on the backend side
 * any class defined in the common code with a `@Serializable` annotation
 * a `List<T>`, where T is one of the above types
 * a `T?`, where T is one of the above types (allowed only as method parameters - see previous rule)

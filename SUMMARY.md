@@ -3,6 +3,7 @@
 * [KVision Guide](README.md)
 * [Introduction](introduction.md)
 * [Migration](migration/README.md)
+  * [Migration from 7.x to 8.x](migration/migration-from-7.x-to-8.x.md)
   * [Migration from 6.x to 7.x](migration/migration-from-6.x-to-7.x.md)
   * [Migration from 5.x to 6.x](migration/migration-from-5.x-to-6.x.md)
   * [Migration from 4.x to 5.x](migration/migration-from-4.x-to-5.x.md)

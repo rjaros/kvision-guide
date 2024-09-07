@@ -1,10 +1,6 @@
 # Using Redux
 
-[Redux](https://redux.js.org/) is a popular predictable state container for JavaScript. You can use the full power of Redux in your KVision applications by adding the kvision-redux module to your `build.gradle.kts` file. This module contains a dedicated implementation of `ReduxStore` backed by the original JS library.
-
-{% hint style="info" %}
-KVision has built-in support for [Redux DevTools Extension](https://www.ngxs.io/plugins/devtools). Just install the extension for your browser and you can easily monitor and debug your Redux based application.  &#x20;
-{% endhint %}
+[Redux](https://redux.js.org/) is a popular predictable state container for JavaScript. [ReduxKotlin](https://reduxkotlin.org/) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library. You can use the full power of Redux in your KVision applications by adding the kvision-redux-kotlin module to your `build.gradle.kts` file. This module contains a dedicated implementation of `ReduxStore.`
 
 ### State
 
@@ -54,7 +50,7 @@ Note: You should not mutate the state parameter. It's recommended to use immutab
 
 ### Store
 
-You create a Redux store with a `createReduxStore` function, passing the reducer function reference and the initial state of the application.
+You create a Redux store with a `createTypedReduxStore` function, passing the reducer function reference and the initial state of the application.
 
 ```kotlin
 val store = createReduxStore(::myReducer, MyState("Hello World!", 0))
@@ -76,7 +72,7 @@ store.dispatch(MyAction.SetContent("Welcome to KVision!"))
 println(store.getState()) // MyState("Welcome to KVision!", 1)
 ```
 
-KVision comes with [Redux Thunk](https://github.com/reduxjs/redux-thunk) middleware already installed, and you can also dispatch functions, so called "action creators", which get `dispatch` and `getState` functions as parameters. This is the recommended way to dispatch actions asynchronously.&#x20;
+You can also dispatch functions, so called "action creators", which get `dispatch` and `getState` functions as parameters. This is the recommended way to dispatch actions asynchronously.&#x20;
 
 ```kotlin
 store.dispatch { dispatch, getState ->
@@ -110,42 +106,5 @@ hPanel(spacing = 10).bind(store) { state ->
 
 {% hint style="info" %}
 Note: You can have multiple containers bound to the same Redux store. You can also create and use multiple stores, although this is not considered a good practice.
-{% endhint %}
-
-### Using additional middleware
-
-You can use any Redux [middleware](https://redux.js.org/introduction/ecosystem#middleware) with KVision. You just have to add a correct npm dependency to your `build.gradle.kts`.
-
-```groovy
-sourceSets["main"].dependencies {
-    implementation(npm("redux-logger", "3.0.6"))
-}
-```
-
-Then create a middleware object with `require()` function and pass it to the `createStore` function (as a last, vararg parameter).
-
-```kotlin
-val reduxLogger = require("redux-logger").default
-val store = createReduxStore(::myReducer, MyState("Hello World!", 0), reduxLogger)
-```
-
-{% hint style="info" %}
-Note: Different middleware can have different ways and options of creating their main objects.
-{% endhint %}
-
-{% hint style="info" %}
-Note: The middleware will not work with the Kotlin object, but with the internal state of the JS Redux store.
-{% endhint %}
-
-### Using ReduxKotlin
-
-[ReduxKotlin](https://reduxkotlin.org/) is a multiplatform Kotlin library, created from scratch as a port of the JavaScript Redux. KVision contains the kvision-redux-kotlin module, based on this Kotlin library, which is almost fully interchangable with kvision-redux module and gives you very similar API. There are some pros and cons of using ReduxKotlin library, though.
-
-| Pros                                                                                                                                                                                           | Cons                                                                                                                                             |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <ul><li>full compatibility with Kotlin classes</li><li>smaller resulting bundle size</li><li>multiplatform support (ability to share Redux code between client and server modules)  </li></ul> | <ul><li>no support for Redux DevTools Extension</li><li>small ecosystem of existing extensions (compared to original JavaScript Redux)</li></ul> |
-
-{% hint style="info" %}
-When using kvision-redux-kotlin module you should be using `createTypedReduxStore` function for creating your redux store.
 {% endhint %}
 

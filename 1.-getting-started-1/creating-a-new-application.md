@@ -12,8 +12,6 @@ The `build.gradle.kts` file is responsible for the definition of the build proce
 
 {% code title="build.gradle.kts" %}
 ```kotlin
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-
 plugins {
     val kotlinVersion: String by System.getProperties()
     kotlin("plugin.serialization") version kotlinVersion
@@ -37,27 +35,15 @@ val kvisionVersion: String by System.getProperties()
 kotlin {
     js(IR) {
         browser {
-            runTask(Action {
-                mainOutputFileName = "main.bundle.js"
+            commonWebpackConfig {
+                outputFileName = "main.bundle.js"
                 sourceMaps = false
-                devServer = KotlinWebpackConfig.DevServer(
-                    open = false,
-                    port = 3000,
-                    proxy = mutableMapOf(
-                        "/kv/*" to "http://localhost:8080",
-                        "/kvws/*" to mapOf("target" to "ws://localhost:8080", "ws" to true)
-                    ),
-                    static = mutableListOf("$buildDir/processedResources/js/main")
-                )
-            })
-            webpackTask(Action {
-                mainOutputFileName = "main.bundle.js"
-            })
-            testTask(Action {
+            }
+            testTask {
                 useKarma {
                     useChromeHeadless()
                 }
-            })
+            }
         }
         binaries.executable()
     }

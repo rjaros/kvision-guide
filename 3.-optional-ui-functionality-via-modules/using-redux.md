@@ -53,7 +53,7 @@ Note: You should not mutate the state parameter. It's recommended to use immutab
 You create a Redux store with a `createTypedReduxStore` function, passing the reducer function reference and the initial state of the application.
 
 ```kotlin
-val store = createReduxStore(::myReducer, MyState("Hello World!", 0))
+val store = createTypedReduxStore(::myReducer, MyState("Hello World!", 0))
 ```
 
 You can get the current state with a `getState` method.

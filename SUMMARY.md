@@ -68,7 +68,6 @@
     * [Vert.x](6.-full-stack-development-guide/server-side/vert.x.md)
     * [Micronaut](6.-full-stack-development-guide/server-side/micronaut.md)
   * [Frontend Side](6.-full-stack-development-guide/client-side.md)
-  * [External Usage](6.-full-stack-development-guide/external-usage.md)
   * [Websockets](6.-full-stack-development-guide/websockets.md)
   * [Exception Handling](6.-full-stack-development-guide/exception-handling.md)
 * [7. Full Stack Components](7.-full-stack-components/README.md)

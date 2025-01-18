@@ -1,6 +1,10 @@
 # Onsen UI Components
 
-[Onsen UI](https://onsen.io) is a set of mobile friendly web components, created with native iOS and Android design standards. With Onsen UI it's possible to develop mobile sites or hybrid web applications \(e.g. with Cordova\), which share exactly the same code, but also automatically choose the look and feel based on the platform on which they are running.
+{% hint style="info" %}
+The Onsen UI module is deprecated and will be removed in the future version.
+{% endhint %}
+
+[Onsen UI](https://onsen.io) is a set of mobile friendly web components, created with native iOS and Android design standards. With Onsen UI it's possible to develop mobile sites or hybrid web applications (e.g. with Cordova), which share exactly the same code, but also automatically choose the look and feel based on the platform on which they are running.
 
 KVision supports all Onsen UI components with fully type-safe, consistent Kotlin API and readable DSL builders, but you should get familiar with [Onsen UI documentation](https://onsen.io/v2/api/js/) to achieve best results. You will also find a lot of examples in the KVision [Onsen UI kitchensink](https://github.com/rjaros/kvision-examples/tree/master/onsenui-kitchensink) example project.
 
@@ -21,12 +25,12 @@ Onsen UI application layout is created with pages contained within three main ty
 KVision provides a dedicated DSL to define these layouts and to allow joining them together.
 
 {% hint style="info" %}
-Note: Layout containers are managed directly by Onsen UI library and should not be modified by KVision application. In particular, you should not use KVision data bindings \(e.g. with Redux store\) to render Onsen UI layout containers. However you can safely render content of pages or tabs.
+Note: Layout containers are managed directly by Onsen UI library and should not be modified by KVision application. In particular, you should not use KVision data bindings (e.g. with Redux store) to render Onsen UI layout containers. However you can safely render content of pages or tabs.
 {% endhint %}
 
 ### Navigator
 
-A `Navigator` component allows you to define a stack of pages, where only the top level page is visible on the screen. The first page defined \(without ID parameter\) is visible on start. All other pages should have unique ID values and will not be visible until pushed with `pushPage` method of the `Navigator` component \(other methods like `insertPage` or `replacePage` can be used as well\). You can use the `BackButton` default action or `popPage` method of the `Navigator` component to return to the previous visible page. With `Navigator` component constructor parameters or `pushPage` method parameters you can specify additional effects and animations.
+A `Navigator` component allows you to define a stack of pages, where only the top level page is visible on the screen. The first page defined (without ID parameter) is visible on start. All other pages should have unique ID values and will not be visible until pushed with `pushPage` method of the `Navigator` component (other methods like `insertPage` or `replacePage` can be used as well). You can use the `BackButton` default action or `popPage` method of the `Navigator` component to return to the previous visible page. With `Navigator` component constructor parameters or `pushPage` method parameters you can specify additional effects and animations.
 
 ```kotlin
 navigator(forceSwipeable = true) {
@@ -48,7 +52,7 @@ navigator(forceSwipeable = true) {
 
 ### Splitter
 
-A `Splitter` component enables responsive layout by implementing a two-column layout or an additional sliding menu. You need to add exactly two components to a `Splitter` container - a `SplitterSide` and a `SplitterContent`. The first one defines a sliding menu and the second defines main content. A menu may be always visible, always collapsed or may be collapsed based on the device orientation \(portrait or landscape\). Within `SplitterContent` component you can define one or more pages \(with unique IDs\). You can use `load` method of the `SplitterContent` class to select visible page.
+A `Splitter` component enables responsive layout by implementing a two-column layout or an additional sliding menu. You need to add exactly two components to a `Splitter` container - a `SplitterSide` and a `SplitterContent`. The first one defines a sliding menu and the second defines main content. A menu may be always visible, always collapsed or may be collapsed based on the device orientation (portrait or landscape). Within `SplitterContent` component you can define one or more pages (with unique IDs). You can use `load` method of the `SplitterContent` class to select visible page.
 
 ```kotlin
 splitter {
@@ -273,7 +277,7 @@ With Onsen UI you can create infinite scroll effect in two different ways.
 
 ### Load more
 
-Use this way if you want to load content asynchronously \(e.g. from a network\). You should use `onInfiniteScroll` event handler of the page component.
+Use this way if you want to load content asynchronously (e.g. from a network). You should use `onInfiniteScroll` event handler of the page component.
 
 ```kotlin
 page {
@@ -312,5 +316,4 @@ page {
 Note: You can't use KVision components with lazy repeat list. You need to create native DOM elements with `OnsenUi.createElement` helper method.
 {% endhint %}
 
- 
-
+&#x20;

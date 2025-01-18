@@ -1,5 +1,9 @@
 # Mobile, Using Apache Cordova
 
+{% hint style="info" %}
+The Apache Cordova module is deprecated and will be removed in the future version.
+{% endhint %}
+
 KVision allows you to develop hybrid, mobile applications (for Android and iOS) with the [Apache Cordova](https://cordova.apache.org/) framework. You can use all KVision components in your mobile applications, and the kvision-cordova module gives you a complete set of Kotlin language bindings for core Cordova API. You can develop your applications in a productive way, with Webpack's HMR and instantaneous hot reload of your application code in the phone emulator.
 
 {% hint style="info" %}

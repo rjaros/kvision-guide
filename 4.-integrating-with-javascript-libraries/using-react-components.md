@@ -5,7 +5,7 @@
 Although KVision offers a rich set of different components, there will be occasions when you will need to use something that KVision does not offer. Fortunately both KVision and Kotlin/JS ecosystem allows you to include any [NPM](https://www.npmjs.com/) dependencies in your project. And KVision has full support for embedding external React components inside your application. React components are standardized, so it's fairly easy to learn how to use them.
 
 {% hint style="info" %}
-Note: KVision support for React components is based on [Kotlin Wrappers](https://github.com/JetBrains/kotlin-wrappers) from JetBrains, so it's good to know how to use these libraries. You can learn the most important things from [this tutorial](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01\_Introduction).&#x20;
+Note: KVision support for React components is based on [Kotlin Wrappers](https://github.com/JetBrains/kotlin-wrappers) from JetBrains, so it's good to know how to use these libraries. You can learn the most important things from [this tutorial](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction).&#x20;
 {% endhint %}
 
 ## Dependencies
@@ -37,7 +37,7 @@ kotlin {
 Let's start with a simple example and [react-awesome-button](https://www.npmjs.com/package/react-awesome-button) component. First you need to declare the type of data being passed into the component.
 
 ```kotlin
-import react.ComponentClass
+import react.ComponentType
 import react.PropsWithChildren
 
 external interface ReactButtonProps : PropsWithChildren {
@@ -46,7 +46,7 @@ external interface ReactButtonProps : PropsWithChildren {
     var action: (dynamic, () -> Unit) -> Unit
 }
 
-val ReactButton: ComponentClass<ReactButtonProps> = require("react-awesome-button").AwesomeButtonProgress
+val ReactButton: ComponentType<ReactButtonProps> = require("react-awesome-button").AwesomeButtonProgress
 ```
 
 &#x20;Having this declaration, you can use the component with the  `react { ... }` DSL builder function.
@@ -73,7 +73,7 @@ React components can be stateful and can maintain internal state data. With KVis
 Let's use an advanced ACE code editor with [react-ace](https://www.npmjs.com/package/react-ace) component. The basic declaration is similar to the previous example (of course the component has a lot more properties then covered by this example).
 
 ```kotlin
-import react.ComponentClass
+import react.ComponentType
 import react.PropsWithChildren
 
 external interface ReactAceProps : PropsWithRef<dynamic>, PropsWithChildren {
@@ -83,7 +83,7 @@ external interface ReactAceProps : PropsWithRef<dynamic>, PropsWithChildren {
     var onChange: (String) -> Unit
 }
 
-val AceEditor: ComponentClass<ReactAceProps> = require("react-ace").default
+val AceEditor: ComponentType<ReactAceProps> = require("react-ace").default
 
 class App : Application() {
     init {

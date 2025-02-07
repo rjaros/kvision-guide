@@ -30,7 +30,7 @@ To run the backend application enter:
 gradlew.bat jvmRun                                  (on Windows)
 ```
 
-There are different levels of support when it comes to auto-reload. Javalin doesn't support auto-reload at all. Jooby and Vert.x have built-in auto-reload based on sources monitoring, so it works out of the box. In case of Ktor and Spring Boot auto-reload is based on the classpath monitoring, so you have to run another Gradle process for continuous build:
+There are different levels of support when it comes to auto-reload. Javalin doesn't support auto-reload at all. Jooby, Vert.x and Micronaut have built-in auto-reload based on sources monitoring, so it works out of the box. In case of Ktor and Spring Boot auto-reload is based on the classpath monitoring, so you have to run another Gradle process for continuous build:
 
 ```
 ### Ktor or Spring Boot

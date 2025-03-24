@@ -1,6 +1,6 @@
 # JS Routing with Navigo
 
-KVision supports JavaScript routing with optional modules since version 4.1.0. Two modules are available `kvision-routing-navigo` , based on [Navigo 7](https://github.com/krasimir/navigo/blob/master/README\_v7.md) library (for compatibility with earlier KVision versions) and `kvision-routing-navigo-ng` , based on current [Navigo 8+](https://github.com/krasimir/navigo).
+KVision supports JavaScript routing with optional modules since version 4.1.0. Two modules are available `kvision-routing-navigo` , based on [Navigo 7](https://github.com/krasimir/navigo/blob/master/README_v7.md) library (for compatibility with earlier KVision versions) and `kvision-routing-navigo-ng` , based on current [Navigo 8+](https://github.com/krasimir/navigo).
 
 Add the following in your `build.gradle.kts` file
 
@@ -63,6 +63,16 @@ To navigate to a certain url, use the `navigate` method on the router object.
 
 ```kotlin
 routing.navigate("/foo")
+```
+
+To ensure that routing in link elements also works correctly with Navigo, augment the `link()` element according to Navigo’s conventions. This will align your links with Navigo’s handling of navigation events. For more details, refer to the official documentation: [Navigo Augmenting Links](https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md#augment-your-a-tags).
+
+```kotlin
+link(
+    url = "/foo",
+    label = "Foo Page",
+    dataNavigo = true
+)
 ```
 
 ## Hooks

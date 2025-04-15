@@ -29,12 +29,12 @@ repositories {
 }
 
 // Versions
-val kotlinVersion: String by System.getProperties()
 val kvisionVersion: String by System.getProperties()
 
 kotlin {
     js(IR) {
         browser {
+            useEsModules()
             commonWebpackConfig {
                 outputFileName = "main.bundle.js"
                 sourceMaps = false
@@ -46,6 +46,9 @@ kotlin {
             }
         }
         binaries.executable()
+        compilerOptions {
+            target.set("es2015")
+        }
     }
     sourceSets["jsMain"].dependencies {
         implementation("io.kvision:kvision:$kvisionVersion")
@@ -62,7 +65,7 @@ kotlin {
 
 ### Source code
 
-The source code for the application is contained in `src/jsMain` directory. It consists of Kotlin sources in `kotlin` directory, optional `resources` (e.g. images, CSS files, Handlebars templates, translation files), and main `index.html` file in a `web` directory.
+The source code for the application is contained in `src/jsMain` directory. It consists of Kotlin sources in `kotlin` directory, and some other files in the `resources` directory (e.g. main `index.html`, images, CSS files, Handlebars templates, translation files).
 
 Test sources are contained in `src/jsTest` directory.
 
@@ -82,9 +85,8 @@ class App : Application() {
 }
 
 fun main() {
-    startApplication(::App, module.hot, CoreModule)
+    startApplication(::App, js("import.meta.webpackHot").unsafeCast<Hot?>(), CoreModule)
 }
 ```
 {% endcode %}
 
-##

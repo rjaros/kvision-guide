@@ -6,7 +6,7 @@
 This component is only available with the `kvision-bootstrap` module.
 {% endhint %}
 
-This components allows you to create a navigation bar on the top or bottom of the page. A navigation bar can contain different types of navigation components: links, menus and forms. A navigation bar is created with the `io.kvision.navbar.Navbar` class. You can choose a label, a type \(normal, fixed to top, fixed to bottom, sticky to top\) and also foreground and background colors. 
+This components allows you to create a navigation bar on the top or bottom of the page. A navigation bar can contain different types of navigation components: links, menus and forms. A navigation bar is created with the `io.kvision.navbar.Navbar` class. You can choose a label, a type (normal, fixed to top, fixed to bottom, sticky to top) and also foreground and background colors.&#x20;
 
 ```kotlin
 navbar(label = "A super brand", type = NavbarType.FIXEDTOP, nColor = NavbarColor.DARK) {
@@ -14,7 +14,7 @@ navbar(label = "A super brand", type = NavbarType.FIXEDTOP, nColor = NavbarColor
 }
 ```
 
-Next you can add some navs \(by using the `io.kvision.navbar.Nav` or `io.kvision.navbar.Navform` classes\) and finally you can add your navigation components.
+Next you can add some navs (by using the `io.kvision.navbar.Nav` or `io.kvision.navbar.Navform` classes) and finally you can add your navigation components.
 
 ```kotlin
 navbar("NavBar") {
@@ -69,14 +69,14 @@ dropDown(
 )
 ```
 
-Another way is to add all children components to the `DropDown` container manually. Use this way to have full control over menu content \(e.g. add images or other non-text components\). Use `io.kvision.dropdown.Header` and `io.kvision.dropdown.Separator` helper classes to create header or separator items. As always you should use DSL builders whenever possible.
+Another way is to add all children components to the `DropDown` container manually. Use this way to have full control over menu content (e.g. add images or other non-text components). Use `io.kvision.dropdown.Header` and `io.kvision.dropdown.Separator` helper classes to create header or separator items. As always you should use DSL builders whenever possible.
 
 ```kotlin
 dropDown("Dropdown with custom list", icon = "fas fa-picture-o") {
     minWidth = 250.px
-    image(require("img/cat.jpg")) { margin = 10.px; title = "Cat" }
+    image(catJpg) { margin = 10.px; title = "Cat" }
     separator()
-    image(require("img/dog.jpg")) { margin = 10.px; title = "Dog" }
+    image(dogJpg) { margin = 10.px; title = "Dog" }
 }
 ```
 
@@ -104,4 +104,3 @@ contextMenu {
 {% hint style="info" %}
 Please note setting `forDropDown = true` property when adding the `DropDown` component to the the context menu.
 {% endhint %}
-

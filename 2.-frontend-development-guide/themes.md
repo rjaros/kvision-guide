@@ -6,14 +6,22 @@ By default KVision includes the standard [Bootstrap](https://getbootstrap.com/) 
 
 You can add a custom CSS file to define your own CSS classes, which can be used throughout your code (almost every component supports the `className: String?` constructor parameter and the `addCssClass(css: String)` and `removeCssClass(css: String)` methods). Of course you can also overwrite and change the standard Bootstrap classes.
 
-You can add as many CSS files as you wish. Just save your `*.css` files in `src/main/resources/css` directory and `require` them in your main `App` object.
+You can add as many CSS files as you wish. Just save your `*.css` files in `src/jsMain/resources/modules/css` directory and use `@JsModule` annotation in your main `App` object.
 
 {% code title="App.kt" %}
 ```kotlin
+import io.kvision.utils.useModule
+
+@JsModule("/kotlin/modules/css/kvapp.css")
+external val kvappCss: dynamic
+
+@JsModule("/kotlin/modules/css/other.css")
+external val otherCss: dynamic
+
 class App : Application() {
     init {
-        require("css/kvapp.css")
-        require("css/other.css")
+        useModule(kvappCss)
+        useModule(otherCss)
     }
     
     override fun start() {
@@ -45,7 +53,7 @@ You can remove `BootstrapCssModule` initializer from your application and includ
 ```
 {% endcode %}
 
-You can create such a file manually or [build your own Bootstrap](https://getbootstrap.com/docs/5.1/customize/overview/) version from sources. To include a local version of Bootstrap, simply place `mybootstrap.min.css` in the `src/main/web/css` directory.
+You can create such a file manually or [build your own Bootstrap](https://getbootstrap.com/docs/5.1/customize/overview/) version from sources. To include a local version of Bootstrap, simply place `mybootstrap.min.css` in the `src/jsMain/resources/css` directory.
 
 ## Using free themes from [Bootswatch](https://bootswatch.com/)
 
@@ -71,4 +79,4 @@ There are some great free themes ready to use available at [JSDelivr](https://ww
 
 ## Using KVision without Bootstrap
 
-KVision can also be used with no Bootstrap at all. Just exclude all \*bootstrap\* modules from your `build.gradle.kts` file. You won't be able to use components from these modules, which depend on Bootstrap's JavaScript and styling. But you can use any other CSS framework (see examples for [Fomantic UI](https://github.com/rjaros/kvision-examples/tree/master/fomantic) and [Patternfly](https://github.com/rjaros/kvision-examples/tree/master/patternfly)).&#x20;
+KVision can also be used with no Bootstrap at all. Just exclude all \*bootstrap\* modules from your `build.gradle.kts` file. You won't be able to use components from these modules, which depend on Bootstrap's JavaScript and styling. But you can use any other CSS framework (see examples for [TailwindCSS](https://github.com/rjaros/kvision-examples/tree/master/tailwindcss), [Fomantic UI](https://github.com/rjaros/kvision-examples/tree/master/fomantic) and [Patternfly](https://github.com/rjaros/kvision-examples/tree/master/patternfly)).&#x20;

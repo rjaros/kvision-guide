@@ -13,11 +13,14 @@ The dedicated `io.kvision.html.Icon` component lets you use those icons inside a
 
 ## Images
 
-Components like buttons, links, tabs and the css background class have an `image` property, which can be used to display custom images. To use your own graphical resources, put them inside the `src/jsMain/resources/img` directory and refer to them with a `require` function:
+Components like buttons, links, tabs and the css background class have an `image` property, which can be used to display custom images. To use your own graphical resources, put them inside the `src/jsMain/resources/modules/img` directory and refer to them with a `@JsModule` annotation.
 
 ```kotlin
+@JsModule("/kotlin/modules/img/dog.jpg")
+external val dogJpg: dynamic
+
 val i = Button("A button with an image") {
-    image = require("img/dog.jpg")
+    image = dogJpg
 }
 ```
 
@@ -25,7 +28,7 @@ val i = Button("A button with an image") {
 Note: All local files referenced in your application will be processed by Webpack and saved under a mangled name in the output directory.
 {% endhint %}
 
-To use an external image just use its URL address without `require`.
+To use an external image just use its URL address:
 
 ```kotlin
 val l = Link("A link with an external image", image = "https://www.host.com/logo.png")
@@ -34,8 +37,8 @@ val l = Link("A link with an external image", image = "https://www.host.com/logo
 The dedicated `io.kvision.html.Image` component lets you use images inside any container. It gives you also some additional control over image align, shape and responsiveness:
 
 ```kotlin
-val catImg = Image(require("img/cat.jpg"), alt = "A rounded and responsive cat",
+val catImg = Image(catJpg, alt = "A rounded and responsive cat",
     responsive = true, shape = ImageShape.ROUNDED)
-val dogImg = Image(require("img/dog.jpg"), alt = "Centered dog in a circle",
+val dogImg = Image(dogJpg, alt = "Centered dog in a circle",
     shape = ImageShape.CIRCLE, centered = true)
 ```

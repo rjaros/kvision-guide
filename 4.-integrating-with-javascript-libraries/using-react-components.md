@@ -46,7 +46,10 @@ external interface ReactButtonProps : PropsWithChildren {
     var action: (dynamic, () -> Unit) -> Unit
 }
 
-val ReactButton: ComponentType<ReactButtonProps> = require("react-awesome-button").AwesomeButtonProgress
+@JsModule("react-awesome-button")
+external val reactButtonModule: dynamic
+
+val ReactButton: ComponentType<ReactButtonProps> = reactButtonModule.AwesomeButtonProgress
 ```
 
 &#x20;Having this declaration, you can use the component with the  `react { ... }` DSL builder function.
@@ -83,19 +86,21 @@ external interface ReactAceProps : PropsWithRef<dynamic>, PropsWithChildren {
     var onChange: (String) -> Unit
 }
 
-val AceEditor: ComponentType<ReactAceProps> = require("react-ace").default
+@JsModule("react-ace")
+external val reactAceModule: dynamic
+
+@JsModule("ace-builds/webpack-resolver")
+external val webpackResolver: dynamic
+
+val AceEditor: ComponentType<ReactAceProps> = reactAceModule.default
 
 class App : Application() {
     init {
-        require("ace-builds/webpack-resolver") // required since webpack 5
+        useModule(webpackResolver) // required since webpack 5
     }
     // ...
 }
 ```
-
-{% hint style="info" %}
-Note: Unfortunately when using `require()` function you need to "guess" how to access the component class. Sometimes you need `.default` property, sometimes you can use the name of the class e.g.  `.AwesomeButtonProgress`, and sometimes simple `require()` is enough.
-{% endhint %}
 
 Now you can use the component with advanced form of the DSL builder function`react(initialState) { getState, changeState -> ... }`. &#x20;
 
@@ -169,13 +174,13 @@ Most React components can have children. Typically you can easily add other Reac
 
 ## Resources
 
-When using React components you will also need to include resources (like CSS). Use `require` function inside some `init {}` block for this purpose.
+When using React components you will also need to include resources (like CSS). Use `useModule` function inside some `init {}` block for this purpose.
 
 ```kotlin
+@JsModule("react-awesome-button/dist/themes/theme-blue.css")
+external val cssThemeBlue: dynamic
+
 init {
-    require("react-awesome-button/dist/themes/theme-blue.css")
-    
-    require("ace-builds/src-noconflict/mode-kotlin")
-    require("ace-builds/src-noconflict/theme-monokai")
+    useModule(cssThemeBlue)
 }
 ```

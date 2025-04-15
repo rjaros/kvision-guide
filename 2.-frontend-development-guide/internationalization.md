@@ -112,28 +112,37 @@ To generate basic translation files run the command:
 gradlew.bat generatePotFile                              (on Windows)
 ```
 
-This command will search your sources for any usages of internationalization methods (`tr` or others) and generate a `messages.pot` file in the `src/jsMain/resources/i18n` directory. This file is the base for your translations. For any language you would like to support, copy the `messages.pot` file to `messages-XX.po`, where XX is a country code (en, de, es, fr etc.). These files should be translated according to the [PO format specification](https://www.gnu.org/software/gettext/manual/html\_node/PO-Files.html). You can use many popular tools for editing PO files to simplify the translation process.
+This command will search your sources for any usages of internationalization methods (`tr` or others) and generate a `messages.pot` file in the `src/jsMain/resources/modules/i18n` directory. This file is the base for your translations. For any language you would like to support, copy the `messages.pot` file to `messages-XX.po`, where XX is a country code (en, de, es, fr etc.). These files should be translated according to the [PO format specification](https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html). You can use many popular tools for editing PO files to simplify the translation process.
 
 {% hint style="info" %}
 You should correctly set `Language` and `Plural-Forms` headers of your PO files.
 {% endhint %}
 
-After adding some new texts to your sources you can call the `./gradlew generatePotFile` task to refresh the `messages.pot` file. You can then use the [`msgmerge`](https://www.gnu.org/software/gettext/manual/html\_node/msgmerge-Invocation.html) tool from the GNU gettext package to merge new keys with existing translation files. You can also add new `msgid` and `msgstr` lines to your translation files by hand.
+After adding some new texts to your sources you can call the `./gradlew generatePotFile` task to refresh the `messages.pot` file. You can then use the [`msgmerge`](https://www.gnu.org/software/gettext/manual/html_node/msgmerge-Invocation.html) tool from the GNU gettext package to merge new keys with existing translation files. You can also add new `msgid` and `msgstr` lines to your translation files by hand.
 
 ## Initializing translations
 
 To initialize translations for one or more languages, you need to initialize the `I18n.manager` property during application initialization (preferably in the `start` method of your `Application` object). You should add all supported languages to the map given as the parameter to the `DefaultI18nManager` constructor.
 
 ```kotlin
+@JsModule("/kotlin/modules/i18n/messages-en.json")
+external val messagesEn: dynamic
+
+@JsModule("/kotlin/modules/i18n/messages-pl.json")
+external val messagesPl: dynamic
+
+@JsModule("/kotlin/modules/i18n/messages-de.json")
+external val messagesDe: dynamic
+
 class Helloworld : Application() {
     override fun start() {
         // ...
         I18n.manager =
                 DefaultI18nManager(
                     mapOf(
-                        "en" to require("i18n/messages-en.json"),
-                        "pl" to require("i18n/messages-pl.json"),
-                        "de" to require("i18n/messages-de.json")
+                        "en" to messagesEn,
+                        "pl" to messagesPl,
+                        "de" to messagesDe
                     )
                 )
         // ...

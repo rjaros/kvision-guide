@@ -4,10 +4,6 @@
 
 ## Main features
 
-#### Compiled and strongly typed programming language
-
-Kotlin is a modern programming language released in 2016 by JetBrains. It's a statically typed language with many great, practical features and outstanding tooling support (IntelliJ IDEA).
-
 #### Easy to use
 
 KVision allows you to build modern web applications with the Kotlin language, without any use of HTML, CSS or JavaScript.
@@ -36,13 +32,13 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * configurable toasts
 * many HTML components including tables, lists, images, canvas and iframe
 * theme switcher for dark mode with auto-detection
+* built-in support for [TailwindCSS](https://tailwindcss.com/) with dark mode switcher
 * built-in support for [Handlebars](http://handlebarsjs.com) templates
 * built-in support for [Font Awesome](https://fontawesome.com/) icons
 * built-in support for [Bootstrap Icons](https://icons.getbootstrap.com/)
 * built-in support for [ReduxKotlin](https://reduxkotlin.org/)
 * built-in support for [Material 3](https://material-web.dev/) web components
 * built-in support for [React](https://reactjs.org/) components
-* built-in support for [Onsen UI](https://onsen.io/) web components
 * built-in support for [Pace](https://codebyzach.github.io/pace/) automatic page loader
 * built-in support for [Leaflet](https://leafletjs.com/) interactive maps
 * built-in support for printing with [Print.js](https://printjs.crabbly.com/) library
@@ -60,7 +56,7 @@ KVision is suitable for any kind of projects, including responsive, mobile web a
 
 #### **Fullstack**
 
-KVision contains innovative connectivity interface for a bunch of popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.io), [Spring Boot](https://spring.io/projects/spring-boot), [Javalin](https://javalin.io), [Vert.x](https://vertx.io) and [Micronaut](https://micronaut.io), which allows to build fullstack applications with shared code for data model and business logic. KVision closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides (based on automatically generated routings and JSON-RPC endpoints). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. With the help of the dedicated Kotlin compiler plugin, based on [KSP](https://kotlinlang.org/docs/ksp-overview.html) library, you have to write only essential, boilerplate-free code. This makes KVision full-stack applications very easy to create and maintain.
+KVision apps can be integrated with [Kilua RPC](https://github.com/rjaros/kilua-rpc) companion library, which allows you to easily create fullstack interfaces for a bunch of popular server side frameworks - [Ktor](https://ktor.io), [Jooby](https://jooby.io), [Spring Boot](https://spring.io/projects/spring-boot), [Javalin](https://javalin.io), [Vert.x](https://vertx.io) and [Micronaut](https://micronaut.io). This allows you to build fullstack applications with shared code for data model and business logic. Kilua RPC closely integrates the client and the server side of the project with a shared data model and fully type-safe connectivity between both sides (based on automatically generated routings and JSON-RPC endpoints). This architecture is based on Kotlin coroutines, wrapping asynchronous client-server calls into easy-to-read synchronous-like code. With the help of the dedicated Kotlin compiler plugin, based on [KSP](https://kotlinlang.org/docs/ksp-overview.html) library, you have to write only essential, boilerplate-free code. This makes KVision fullstack applications very easy to create and maintain.
 
 There is also support for type-safe websocket connections and SSE (server-sent events), based on [Kotlin coroutines channels](https://kotlinlang.org/docs/reference/coroutines/channels.html).
 
@@ -74,8 +70,6 @@ There is also support for type-safe websocket connections and SSE (server-sent e
 * Drag & drop support
 * Type-safe REST connectivity
 * Integrated JS router
-* Support for building hybrid, mobile applications for Android and iOS with [Apache Cordova](https://cordova.apache.org/).
-* Support for building cross-platform, desktop applications with [Electron](https://electronjs.org/).
 * Compatible with modern browsers (MS Edge, Firefox, Chrome, Safari, Opera)
 * [Karma](https://karma-runner.github.io/) testing framework support
 

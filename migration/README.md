@@ -2,6 +2,10 @@
 
 Check this page when upgrading to a new version of KVision. Any backwards-incompatibilities will be described here. This is an evolving framework and things may change as refactorings and improvements take place, but we aim to keep the core as stable as possible.
 
+Check [Migration guide for KVision 9.0.0](migration-from-8.x-to-9.x.md).
+
+Check [Migration guide for KVision 8.0.0](migration-from-7.x-to-8.x.md).
+
 Check [Migration guide for KVision 7.0.0](migration-from-6.x-to-7.x.md).
 
 \----

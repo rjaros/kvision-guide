@@ -14,7 +14,7 @@ I don’t really like to go with the mainstream. I like to explore and learn new
 
 ## Why the name "KVision"?
 
-This framework is a great-great-grandson of [Turbo Vision](https://en.wikipedia.org/wiki/Turbo\_Vision). And K is for Kotlin of course.
+This framework is a great-great-grandson of [Turbo Vision](https://en.wikipedia.org/wiki/Turbo_Vision). And K is for Kotlin of course.
 
 ## Is it similar to ...?
 
@@ -26,5 +26,5 @@ You can find some of the concepts and ideas implemented in KVision in:
 
 ## What is the size of a typical application?
 
-KVision applications are built with [Kotlin JavaScript DCE (dead code elimination)](https://kotlinlang.org/docs/reference/javascript-dce.html) so the size of an application depends on what components are used. Of course Kotlin run-time library and other required dependencies add an overhead, so you can't expect resulting code to be as small as with plain JavaScript projects. Currently the size of the smallest "Hello World" application is 110KB (34KB gzipped). The size of the "TodoMVC" is about 266KB (77KB gzipped) and the size of the "Showcase" application, which presents most of the framework features, is about 3147KB (778KB gzipped).
+KVision applications are built with DCE (dead code elimination) so the size of an application depends on what components are used. Of course Kotlin run-time library and other required dependencies add an overhead, so you can't expect resulting code to be as small as with plain JavaScript projects. Currently the size of the smallest "Hello World" application is 107KB (35KB gzipped). The size of the "TodoMVC" is about 252KB (77KB gzipped) and the size of the "Showcase" application, which presents most of the framework features, is about 3,2MB (836KB gzipped).
 

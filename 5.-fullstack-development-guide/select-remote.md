@@ -3,10 +3,10 @@
 The `io.kvision.form.select.SelectRemoteInput` component, contained in `kvision-select-remote` module, is a special component you can use to render a select box with options loaded from the server.  `SelectRemoteInput` is bound directly to the method of the remote service. The method signature looks like this:
 
 ```kotlin
-import io.kvision.annotations.KVService
-import io.kvision.remote.SimpleRemoteOption
+import dev.kilua.rpc.annotations.RpcService
+import dev.kilua.rpc.SimpleRemoteOption
 
-@KVService
+@RpcService
 interface IDictionaryService {
     suspend fun dictionary(state: String?): List<SimpleRemoteOption>
 }
@@ -29,7 +29,7 @@ and allows to send value and label for every option.
 To use `SelectRemote` form control, you initialize it with the `ServiceManager` instance and a callable reference to the right method.&#x20;
 
 ```kotlin
-SelectRemote(serviceManager = DictionaryServiceManager, 
+SelectRemote(serviceManager = getServiceManager<IDictionaryService>(), 
     function = IDictionaryService::dictionary,
     stateFunction = { someState.toString() },
     label = "Select option from the dictionary"

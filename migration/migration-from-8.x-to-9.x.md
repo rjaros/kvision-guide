@@ -32,13 +32,13 @@ you should now use this:
 ```kotlin
 import io.kvision.utils.useModule
 
-@JsModule("/kotlin/css/kvapp.css")
+@JsModule("/kotlin/modules/css/kvapp.css")
 external val kvappCss: dynamic
 
-@JsModule("/kotlin/i18n/messages-en.json")
+@JsModule("/kotlin/modules/i18n/messages-en.json")
 external val messagesEn: dynamic
 
-@JsModule("/kotlin/i18n/messages-pl.json")
+@JsModule("/kotlin/modules/i18n/messages-pl.json")
 external val messagesPl: dynamic
 
 class App : Application() {
@@ -58,9 +58,7 @@ class App : Application() {
 }
 ```
 
-{% hint style="info" %}
-Note the usage of `/kotlin/` prefix, when importing resources located in the `src/jsMain/resources` folder.
-{% endhint %}
+You need to move the resources processed by webpack (e.g. css files, images, po files or hbs templates) to the `src/jsMain/resources/modules` directory and use `/kotlin/modules` prefix, when importing them.
 
 * Change `module.hot` to `js("import.meta.webpackHot").unsafeCast<Hot?>()` when using [HMR](../1.-getting-started-1/hot-module-replacement.md).
 * Move the content of the `src/jsMain/web` directory to `src/jsMain/resources` . The `web` directory is no longer used.

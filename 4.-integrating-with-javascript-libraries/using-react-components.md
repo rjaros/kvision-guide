@@ -20,9 +20,7 @@ kotlin {
         implementation(npm("react-awesome-button", "6.5.1"))
         implementation(npm("prop-types", "*")) // required by react-awesome-button
 
-        implementation(npm("react-ace", "10.1.0"))
-        implementation(npm("ace-builds", "1.12.5"))
-        implementation(npm("file-loader", "*")) // required by ace-builds
+        implementation(npm("react-ace", "14.0.1"))
         
         implementation("io.kvision:kvision:$kvisionVersion")
         implementation("io.kvision:kvision-react:$kvisionVersion")
@@ -87,16 +85,26 @@ external interface ReactAceProps : PropsWithRef<dynamic>, PropsWithChildren {
 }
 
 @JsModule("react-ace")
-external val reactAceModule: dynamic
+external object reactAce {
+    val default: dynamic
+}
 
-@JsModule("ace-builds/webpack-resolver")
-external val webpackResolver: dynamic
+@JsModule("ace-builds/src-noconflict/ace.js")
+external val ace: dynamic
 
-val AceEditor: ComponentType<ReactAceProps> = reactAceModule.default
+@JsModule("ace-builds/src-noconflict/mode-kotlin.js")
+external val modeKotlin: dynamic
+
+@JsModule("ace-builds/src-noconflict/theme-monokai.js")
+external val themeMonokai: dynamic
+
+val AceEditor: ComponentType<ReactAceProps> = reactAce.default.default
 
 class App : Application() {
     init {
-        useModule(webpackResolver) // required since webpack 5
+        useModule(ace)
+        useModule(modeKotlin)
+        useModule(themeMonokai)
     }
     // ...
 }

@@ -60,6 +60,7 @@ class App : Application() {
 
 You need to move the resources processed by webpack (e.g. css files, images, po files or hbs templates) to the `src/jsMain/resources/modules` directory and use `/kotlin/modules` prefix, when importing them.
 
+* Replace `src/jsMain/resources/i18n/messages.pot` with `src/jsMain/resources/modules/i18n/messages.pot` in the `.gettext.json` file, if you have it in your project.
 * Change `module.hot` to `js("import.meta.webpackHot").unsafeCast<Hot?>()` when using [HMR](../1.-getting-started-1/hot-module-replacement.md).
 * Move the content of the `src/jsMain/web` directory to `src/jsMain/resources` . The `web` directory is no longer used.
 * Add `useEsModules()` and `compilerOptions { target.set("es2015") }` to your `build.gradle.kts` file. Check [Creating new application](../1.-getting-started-1/creating-a-new-application.md) chapter for reference.

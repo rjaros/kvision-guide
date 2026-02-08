@@ -1,6 +1,6 @@
 # jQuery Bindings
 
-The `kvision-jquery` module allows you to work with [jQuery](https://jquery.com/) library, with the help of a wrapper library [jquery-kotlin](https://github.com/rjaros/jquery-kotlin).
+The `kvision-jquery` module allows you to work with the [jQuery](https://jquery.com/) library.
 
 ## jQuery object
 
@@ -13,7 +13,7 @@ import io.kvision.jquery.jQuery
 jQuery("#ident").addClass("blue").show()
 ```
 
-## getElementJQuery\(\) method
+## getElementJQuery() method
 
 The extension function `getElementJQuery()` can be used to access the jQuery instance bound to the underlying DOM element of the component. It gives you the possibility to easily access and modify the default behavior of KVision components.
 
@@ -36,4 +36,3 @@ override fun afterInsert(node: VNode) {
     getElementJQueryD()?.selectpicker("render").ajaxSelectPicker()
 }
 ```
-

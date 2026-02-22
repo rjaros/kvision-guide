@@ -43,6 +43,7 @@ It gives you a hierarchy of almost 100 ready to use GUI components, which can be
 * built-in support for [Leaflet](https://leafletjs.com/) interactive maps
 * built-in support for printing with [Print.js](https://printjs.crabbly.com/) library
 * built-in support for [Ballast](https://copper-leaf.github.io/ballast/) state management framework
+* built-in support for [Signal](https://github.com/Fenrur/Signal) reactive state library
 
 #### Flexibility
 

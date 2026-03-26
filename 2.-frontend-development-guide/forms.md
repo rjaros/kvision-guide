@@ -296,3 +296,84 @@ form.setData(mapOf("check1" to true, "select1" to "First option"))
 {% hint style="info" %}
 When using dynamic forms you are intentionally loosing type safety. You need to make sure the values stored in the map are matching the types of form controls.&#x20;
 {% endhint %}
+
+### Field converters
+
+The [Custom field types](forms.md#custom-field-types) approach requires writing a full `KSerializer` for each custom type. When you only need a simple transformation between model values and form control values — for example, mapping an enum to a string or reformatting a value for display — you can use a `FormFieldConverter` instead.
+
+A `FormFieldConverter` is a simple interface with two methods:
+
+```kotlin
+interface FormFieldConverter {
+    fun fromJson(jsonValue: dynamic): Any?   // model → control (called during setData)
+    fun toJson(controlValue: Any?): dynamic  // control → model (called during getData)
+}
+```
+
+You can pass a converter directly when adding a control to the form:
+
+```kotlin
+@Serializable
+data class Order(
+    val item: String? = null,
+    val priority: String? = null
+)
+
+val priorityConverter = object : FormFieldConverter {
+    override fun fromJson(jsonValue: dynamic): Any? {
+        // Model stores "low"/"medium"/"high", display as uppercase in the form
+        return (jsonValue as? String)?.uppercase()
+    }
+    override fun toJson(controlValue: Any?): dynamic {
+        // Convert back to lowercase for the model
+        return (controlValue as? String)?.lowercase()
+    }
+}
+
+formPanel<Order> {
+    add(Order::item, Text(label = "Item name"))
+    add(Order::priority, Text(label = "Priority"), converter = priorityConverter)
+}
+```
+
+When calling `setData()`, the converter's `fromJson` transforms the model value before it reaches the control. When calling `getData()`, the converter's `toJson` transforms the control value before it goes back into the model.
+
+You can also register or remove converters dynamically after the form has been created:
+
+```kotlin
+formPanel.registerConverter(Order::priority, priorityConverter)
+// later, to revert to default behavior:
+formPanel.removeConverter(Order::priority)
+```
+
+{% hint style="info" %}
+Field converters work with both `@Serializable` data classes and dynamic `Map<String, Any?>` forms. Converters survive `clearData()` calls — only `remove()` or `removeAll()` will clear them.
+{% endhint %}
+
+### Data overlay provider
+
+Sometimes external components — such as tabulators, custom editors, or other widgets — need to contribute data to a form without implementing the `FormControl` interface. The `dataOverlayProvider` property lets you inject additional key-value pairs into `getData()` results from any source.
+
+```kotlin
+@Serializable
+data class Survey(
+    val name: String? = null,
+    val notes: String? = null
+)
+
+formPanel<Survey> {
+    add(Survey::name, Text(label = "Name"))
+}
+// Inject "notes" from an external component
+formPanel.dataOverlayProvider = {
+    mapOf("notes" to externalEditor.getContent())
+}
+
+val result = formPanel.getData() // includes both "name" and "notes"
+```
+
+Overlay values take precedence over field values when keys conflict. This is useful when you want an external component to override a form field's value under certain conditions.
+
+{% hint style="info" %}
+Overlay values are not subject to form validation — they are injected directly during `getData()`, after `validate()` has been called. Null overlay values are skipped. When using `@Serializable` models, all overlay keys must correspond to properties in the model class; unknown keys will cause a deserialization error.
+{% endhint %}

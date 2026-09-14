@@ -26,5 +26,5 @@ You can find some of the concepts and ideas implemented in KVision in:
 
 ## What is the size of a typical application?
 
-KVision applications are built with DCE (dead code elimination) so the size of an application depends on what components are used. Of course Kotlin run-time library and other required dependencies add an overhead, so you can't expect resulting code to be as small as with plain JavaScript projects. Currently the size of the smallest "Hello World" application is 107KB (35KB gzipped). The size of the "TodoMVC" is about 252KB (77KB gzipped) and the size of the "Showcase" application, which presents most of the framework features, is about 3,2MB (836KB gzipped).
+KVision applications are built with DCE (dead code elimination) so the size of an application depends on what components are used. Of course Kotlin run-time library and other required dependencies add an overhead, so you can't expect resulting code to be as small as with plain JavaScript projects. Currently the size of the smallest "Hello World" application is 140KB (39KB gzipped). The size of the "TodoMVC" is about 350KB (90KB gzipped) and the size of the "Showcase" application, which presents most of the framework features, is about 3,7MB (900KB gzipped).
 
